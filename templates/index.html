@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oblicz Problemy</title>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script>
+        window.onload = function() {
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        };
+    </script>
+</head>
+<body>
+    <h2>1: Find all positive integers \(n\) such that \( n^2 + 1 \) is divisible by \( n + 1 \)</h2>
+    <input type="number" id="inputNumber1" min="1" required>
+    <button onclick="sendNumber(1, ['inputNumber1'])">Oblicz</button>
+    <p id="result1"></p>
+
+    <h2>2: Find all integers \( x \neq 3 \) such that \( x - 3 | x^3 - 3\)</h2>
+    <label for="inputMin">Minimalna wartość:</label>
+    <input type="number" id="inputMin" placeholder="Podaj min">
+    <label for="inputMax">Maksymalna wartość:</label>
+    <input type="number" id="inputMax" placeholder="Podaj max">
+    <button onclick="sendNumber(2, ['inputMin','inputMax'])">Oblicz</button>
+    <p id="result2"></p>
+
+    <h2>3: Prove that there exists infinitely many positive integers \(n\) such that
+    \(4n^2+1\) is divisible both by \(5\) and \(13\)</h2>
+    <input type="number" id="inputNumber3" min="1" required>
+    <button onclick="sendNumber(3, ['inputNumber3'])">Oblicz</button>
+    <p id="result3"></p>
+
+    <h2>4: Prove that for positive integer \(n\) we have \(169|3^{3n+3}-26n-27\)</h2>
+    <input type="number" id="inputNumber4" min="1" required>
+    <button onclick="sendNumber(4, ['inputNumber4'])">Oblicz</button>
+    <p id="result4"></p>
+
+    <h2>5: Prove that \(19|2^{2^{6k+2}}+3\) for \(k = 0, 1, 2, ...\)</h2>
+    <input type="number" id="inputNumber5" min="1" required>
+    <button onclick="sendNumber(5, ['inputNumber5'])">Oblicz</button>
+    <p id="result5"></p>
+
+    <h2>6: Prove the theorem, due to Kraitchik, asserting that \(13|2^70+3^70\)</h2>
+    <button onclick="sendNumber(6)">Oblicz</button>
+    <p id="result6"></p>
+
+    <h2>7: Prove that \(11*31*61|20^15-1\)</h2>
+    <button onclick="sendNumber(7)">Oblicz</button>
+    <p id="result7"></p>
+
+    <h2>9: Prove that for every positive integer \(n\) the number \(3(1^5+2^5+...+n^5)\)
+    is divisible by \(1^3+2^3+...+n^3\).</h2>
+    <input type="number" id="inputNumber9" min="1" required>
+    <button onclick="sendNumber(9, ['inputNumber9'])">Oblicz</button>
+    <p id="result9"></p>
+
+    <h2>10: Find all integers \(n>1\) such that \(1^n+2^n+...+(n-1)^n\) is divisible by \(n\).</h2>
+    <input type="number" id="inputNumber10" min="1" required>
+    <button onclick="sendNumber(10, ['inputNumber10'])">Oblicz</button>
+    <p id="result10"></p>
+
+    <h2>11: For positive integer \(n\), find which of the two numbers \(a_n=2^{2n+1}-2^{n+1}+1\)
+    and \(b_n=2^{2n+1}+2^{n+1}+1\) is divisible by \(5\) and which is not.</h2>
+    <input type="number" id="inputNumber11" min="1" required>
+    <button onclick="sendNumber(11, ['inputNumber11'])">Oblicz</button>
+    <p id="result11"></p>
+
+    <h2>12: Prove that for every positive integer \(n\) there exists a positive integer \(x\) such that each of the terms
+    of the infinite sequence \(x+1,x^x+1,x^{x^x}+1,...\) is divisible by \(n\)</h2>
+    <input type="number" id="inputNumber12" min="1" required>
+    <input type="number" id="inputNumberMax12" min="1" required>
+    <input type="number" id="inputNumberIt12" min="1" required>
+    <button onclick="sendNumber(12, ['inputNumber12','inputNumberMax12','inputNumberIt12'])">Oblicz</button>
+    <p id="result12"></p>
+
+    <h2>13. Prove that there exists infinitely many positive integers \(n\) such that for every even \(x\) none of the
+    terms of the sequence \(x^x+1,x^{x^x}+1,x^{x^{x^x}}+1,...\) is divisible by \(n\).</h2>
+    <input type="number" id="inputNumber13" min="2" required>
+    <input type="number" id="inputNumberMax13" min="1" required>
+    <input type="number" id="inputNumberIt13" min="1" required>
+    <button onclick="sendNumber(13, ['inputNumber13','inputNumberMax13','inputNumberIt13'])">Oblicz</button>
+    <p id="result13"></p>
+
+    <h2>14: Prove that for positive integer \(n\) we have \(n^2|(n+1)^n-1.\)</h2>
+    <input type="number" id="inputNumber14" min="1" required>
+    <button onclick="sendNumber(14, ['inputNumber14'])">Oblicz</button>
+    <p id="result14"></p>
+
+    <h2>15: Prove that for positive integer \(n\) we have \((2^n-1)^2|2^{(2^{n}-1)n}-1.\)</h2>
+    <input type="number" id="inputNumber15" min="1" required>
+    <button onclick="sendNumber(15, ['inputNumber15'])">Oblicz</button>
+    <p id="result15"></p>
+
+    <h2>16: Prove that there exist infinitely many positive integers \(n\) such that \(n|2^n+1\);
+        find all such prime numbers</h2>
+    <input type="number" id="inputNumber16" min="1" required>
+    <button onclick="sendNumber(16, ['inputNumber16'])">Oblicz</button>
+    <p id="result16"></p>
+
+    <h2>17: Prove that for every positive integer \(a>1\) there exist infinitely many positive integers
+    \(n\) such that \(n|a^n+1\).</h2>
+    <input type="number" id="inputNumberA17" min="1" required>
+    <input type="number" id="inputNumberRange17" min="1" required>
+    <button onclick="sendNumber(17, ['inputNumberA17', 'inputNumberRange17'])">Oblicz</button>
+    <p id="result17"></p>
+
+    <h2>18. Prove that there exist infinitely many positive integers \(n\) such that \(n|2^n+2\).</h2>
+    <input type="number" id="inputNumber18" min="1" required>
+    <button onclick="sendNumber(18, ['inputNumber18'])">Oblicz</button>
+    <p id="result18"></p>
+
+    <h2>19. Find all positive integers \(a\) for which \(a^{10}+1\) is divisible by \(10\).</h2>
+    <input type="number" id="inputNumber19" min="1" required>
+    <button onclick="sendNumber(19, ['inputNumber19'])">Oblicz</button>
+    <p id="result19"></p>
+
+    <h2>20. Prove that there are no integers \(n>1\) for which \(n|2^n-1\).</h2>
+    <input type="number" id="inputNumber20" min="1" required>
+    <button onclick="sendNumber(20, ['inputNumber20'])">Oblicz</button>
+    <p id="result20"></p>
+
+    <h2>21. Find all odd \(n\) such that \(n|3^n+1\).</h2>
+    <input type="number" id="inputNumber21" min="1" required>
+    <button onclick="sendNumber(21, ['inputNumber21'])">Oblicz</button>
+    <p id="result21"></p>
+
+    <h2>22. Find all positive integers \(n\) for which \(3|n2^n+1\).</h2>
+    <input type="number" id="inputNumber22" min="1" required>
+    <button onclick="sendNumber(22, ['inputNumber22'])">Oblicz</button>
+    <p id="result22"></p>
+
+    <h2>23.Prove that for every odd prime \(p\) there exist infinitely many positive integers
+        \(n\) such that \(p|n2^n+1\).</h2>
+    <input type="number" id="inputNumberPRange23" min="1" required>
+    <input type="number" id="inputNumberNRange23" min="1" required>
+    <button onclick="sendNumber(23, ['inputNumberPRange23','inputNumberNRange23'])">Oblicz</button>
+    <p id="result23"></p>
+
+    <h2>25. Prove that for odd \(n\) we have \(n|2^{2!}-1\).</h2>
+    <input type="number" id="inputNumber25" min="1" required>
+    <button onclick="sendNumber(25, ['inputNumber25'])">Oblicz</button>
+    <p id="result25"></p>
+
+    <h2>26. Prove that the infinite sequence \(2^n-3 (n=2,3,4,...)\) contains infinitely many
+        terms divisible by \(5\) and infinitely many terms divisible by 13, but contains no term
+        divisible by \(5*13\).</h2>
+    <input type="number" id="inputNumber26" min="1" required>
+    <button onclick="sendNumber(26, ['inputNumber26'])">Oblicz</button>
+    <p id="result26"></p>
+
+    <h2>27. Find two least composite numbers \(n\) such that \(n|2^n-2\) and \(n|3^n-3\).</h2>
+    <button onclick="sendNumber(27)">Oblicz</button>
+    <p id="result27"></p>
+
+    <h2>28. Find the least positive integer \(n\) such that \(n|2^n-2\) but \(n\not|\;3^n-3\).</h2>
+    <button onclick="sendNumber(28)">Oblicz</button>
+    <p id="result28"></p>
+
+    <h2>29. Find the least integer \(n\) such that \(n\not|\;2^n-2\) but \(n|3^n-3\) .</h2>
+    <button onclick="sendNumber(29)">Oblicz</button>
+    <p id="result29"></p>
+
+    <h2>30. For every positive integer \(a\), find a composite number \(n\) such that \(n|a^n-a\).</h2>
+    <input type="number" id="inputNumber30" min="1" required>
+    <button onclick="sendNumber(30, ['inputNumber30'])">Oblicz</button>
+    <p id="result30"></p>
+
+    <h2>31. Prove that if for some integers \(a,b,c\) we have \(9|a^3+b^3+c^3\), then at least one of the
+        numbers \(a,b,c\) is divisible by \(3\).</h2>
+    <input type="number" id="inputNumberA31" required>
+    <input type="number" id="inputNumberB31" required>
+    <input type="number" id="inputNumberC31" required>
+    <button onclick="sendNumber(31, ['inputNumberA31','inputNumberB31','inputNumberC31'])">Oblicz</button>
+    <p id="result31"></p>
+
+    <h2>32. Prove that if for positive integers \(a_k(k=1,2,3,4,5)\) we have
+        \(9|a_1^3+a_2^3+a_3^3+a_4^3+a_5^3\), then \(3|a_1a_2a_3a_4a_5\).</h2>
+    <input type="number" id="inputNumber32" min="1" required>
+    <button onclick="sendNumber(32, ['inputNumber32'])">Oblicz</button>
+    <p id="result32"></p>
+
+    <h2>34. Prove that if for integers \(a\) and \(b\) we have \(7|a^2+b^2\), then \(7|a\) and \(7|b\).</h2>
+    <button onclick="sendNumber(34)">Oblicz</button>
+    <p id="result34"></p>
+
+    <h2>35. Prove that there exist infinitely many pairs of positive integers \(x,y\) such that <br>
+        \(x(x+1)|y(y+1)\), \(x\not|y\), \(x+1\not|y\), \(x\not|y+1\), \(x+1\not|y+1\), <br>
+        and find the least such pair.</h2>
+    <input type="number" id="inputNumber35" min="1" required>
+    <button onclick="sendNumber(35, ['inputNumber35'])">Oblicz</button>
+    <p id="result35"></p>
+
+    <h2>36. For every positive integer \(s\leq25\) and for \(s = 100\), find the least positive integer \(n\)
+        with the sum of digits (in decimal system) equal to \(s\), which is divisible by \(s\).</h2>
+    <input type="number" id="inputNumber36" min="1" required>
+    <button onclick="sendNumber(36, ['inputNumber36'])">Oblicz</button>
+    <p id="result36"></p>
+
+    <h2>38(a). Prove that every positive integer has at least as many divisiors of the form \(4k+1\) as divisors of the form \(4k+3\).</h2>
+    <input type="number" id="inputNumber381" min="1" required>
+    <button onclick="sendNumber(381, ['inputNumber381'])">Oblicz</button>
+    <p id="result381"></p>
+
+    <h2>38(b). Prove that there exist infinitely many positive integers which have as many divisors of the form \(4k+1\)
+    as divisors of the form \(4k+3\).</h2>
+    <input type="number" id="inputNumber382" min="1" required>
+    <button onclick="sendNumber(382, ['inputNumber382'])">Oblicz</button>
+    <p id="result382"></p>
+
+    <h2>38(c). Prove that there exist infinitely many positive integers which have more divisors of the form \(4k+1\) than
+    divisors of the form \(4k+3\).</h2>
+    <input type="number" id="inputNumber383" min="1" required>
+    <button onclick="sendNumber(383, ['inputNumber383'])">Oblicz</button>
+    <p id="result383"></p>
+
+    <h2>39. Prove that if \(a,b,c\) are any integers, and \(n\) is and integer \(>3\), then there exists an integer
+        \(k\) such that none of the numbers \(k+a,k+b,k+c\) is divisible by \(n\).</h2>
+    <input type="number" id="inputNumberA39" required>
+    <input type="number" id="inputNumberB39" required>
+    <input type="number" id="inputNumberC39" required>
+    <input type="number" id="inputNumberN39" min="3" required>
+    <button onclick="sendNumber(39, ['inputNumberA39','inputNumberB39','inputNumberC39','inputNumberN39'])">Oblicz</button>
+    <p id="result39"></p>
+
+    <h2>40. Prove that for \(F_n = 2^{2^n}+1\) we have \(F_n|2^{F_n}-2 (n=1,2,...)\).</h2>
+    <input type="number" id="inputNumber40" min="1" required>
+    <button onclick="sendNumber(40, ['inputNumber40'])">Oblicz</button>
+    <p id="result40"></p>
+
+    <h2>41. Prove that for every integer \(k\) the numbers \(2k+1\) and \(9k+4\) are relatively prime, and for numbers
+        \(2k-1\) and \(9k+4\) find their greatest common divisor as a function of \(a\).</h2>
+    <input type="number" id="inputNumber41" min="1" required>
+    <button onclick="sendNumber(41, ['inputNumber41'])">Oblicz</button>
+    <p id="result41"></p>
+
+    <h2>42. Prove that there exists an increasing infinite sequence of triangular numbers
+        (i.e. numbers of the form \(t_n=\frac{1}{2}n(n + 1),\;n=1,2,...)\) such that every two of them are relatively prime.</h2>
+    <input type="number" id="inputNumber42" min="1" required>
+    <button onclick="sendNumber(42, ['inputNumber42'])">Oblicz</button>
+    <p id="result42"></p>
+
+    <h2>43. Prove that there exists an increasing infinite sequence of tetrahedral numbers
+        (i.e. numbers of the form \(T_n=\frac{1}{6}n(n + 1)(n + 2),\;n=1,2,...)\) such that every two of them are relatively prime.</h2>
+    <input type="number" id="inputNumber43" min="1" required>
+    <button onclick="sendNumber(43, ['inputNumber43'])">Oblicz</button>
+    <p id="result43"></p>
+
+    <h2>44. Prove that if \(a\) and \(b\) are different integers, then there exist infinitely many positive integers
+        \(n\) such that \(a+n\) and \(b+n\) are relatively prime.</h2>
+    <input type="number" id="inputNumberA44" required>
+    <input type="number" id="inputNumberB44" required>
+    <input type="number" id="inputNumberLimit44" min="1" required>
+    <button onclick="sendNumber(44, ['inputNumberA44','inputNumberB44','inputNumberLimit44'])">Oblicz</button>
+    <p id="result44"></p>
+
+    <h2>45. Prove that if \(a,b,c\) are three different integers, then there exist infinitely many positive integers
+        \(n\) such that \(a+n,b+n,c+n\) are pairwise relatively prime.</h2>
+    <input type="number" id="inputNumberA45" required>
+    <input type="number" id="inputNumberB45" required>
+    <input type="number" id="inputNumberC45" required>
+    <input type="number" id="inputNumberN45" min="1" required>
+    <button onclick="sendNumber(45, ['inputNumberA45','inputNumberB45','inputNumberC45','inputNumberN45'])">Oblicz</button>
+    <p id="result45"></p>
+
+    <h2>46. Give an example of four different positive integers \(a,b,c,d\) such that there exists no positive integer
+        \(n\) for which \(a+n,b+n,c+n,\) and \(d+n\) are pairwise relatively prime.</h2>
+    <input type="number" id="inputNumberA46" min="1" required>
+    <input type="number" id="inputNumberB46" min="1" required>
+    <input type="number" id="inputNumberC46" min="1" required>
+    <input type="number" id="inputNumberD46" min="1" required>
+    <input type="number" id="inputNumberN46" min="1" required>
+    <button onclick="sendNumber(46, ['inputNumberA46','inputNumberB46','inputNumberC46','inputNumberD46','inputNumberN46'])">Oblicz</button>
+    <p id="result46"></p>
+
+    <h2>47. Prove that every integer \(>6\) can be represented as a sum of two integers \(>1\) which are relatively prime.</h2>
+    <input type="number" id="inputNumber47" min="1" required>
+    <button onclick="sendNumber(47, ['inputNumber47'])">Oblicz</button>
+    <p id="result47"></p>
+
+    <h2>48. Prove that every integer \(> 17\) can be repesented as a sum of three integers \(>1\) which are pairwise relatively prime
+    , and show that \(17\) does not have this property.</h2>
+    <input type="number" id="inputNumber48" min="1" required>
+    <button onclick="sendNumber(48, ['inputNumber48'])">Oblicz</button>
+    <p id="result48"></p>
+
+    <h2>49. Prove that for every positive integer \(m\) every even number \(2k\) can be
+    represented as a difference of two positive integers relatively prime to \(m\).</h2>
+    <input type="number" id="inputNumberM49" min="1" required>
+    <input type="number" id="inputNumberE49" min="1" required>
+    <button onclick="sendNumber(49, ['inputNumberM49', 'inputNumberE49'])">Oblicz</button>
+    <p id="result49"></p>
+
+    <h2>50. Prove that Fibonacci's sequence (definied by conditions \(u_1 = u_2 = 1, u_{n+2} = u_n+u_{n+1},n=1,2,...)\)
+        contains an infinite increasing sequence such that every two terms of this sequence are relatively prime.</h2>
+    <input type="number" id="inputNumber50" min="1" required>
+    <button onclick="sendNumber(50, ['inputNumber50'])">Oblicz</button>
+    <p id="result50"></p>
+
+    <h2>51. Prove that \((n,2^{2^n}+1) = 1\) for \(n = 1,2,...\).</h2>
+    <input type="number" id="inputNumber51" min="1" required>
+    <button onclick="sendNumber(51, ['inputNumber51'])">Oblicz</button>
+    <p id="result51"></p>
+
+    <h2>51a. Prove that there exist infinitely many positive integers \(n\) such that \((n,2^n-1)>1\), and find the least of them.</h2>
+    <input type="number" id="inputNumber511" min="1" required>
+    <button onclick="sendNumber(511, ['inputNumber511'])">Oblicz</button>
+    <p id="result511"></p>
+
+    <h2>52. Prove that there exist arbitrarily long arithmetic progressions formed of different positive integers such that
+        every two terms of these progressions are relatively prime..</h2>
+    <input type="number" id="inputNumber52" min="1" required>
+    <button onclick="sendNumber(52, ['inputNumber52'])">Oblicz</button>
+    <p id="result52"></p>
+
+    <h2>54. Prove that there exist infinitely many triplets of positive integers \(x,y,z\) for which the numbers
+        \(x(x+1),y(y+1),z(z+1)\) form an increasing arithmetic progressions.</h2>
+    <input type="number" id="inputNumber54" min="1" required>
+    <button onclick="sendNumber(54, ['inputNumber54'])">Oblicz</button>
+    <p id="result54"></p>
+
+    <h2>55. Find all rectangular triangles with integer sides forming an arithmetic progressions.</h2>
+    <input type="number" id="inputNumber55" min="1" required>
+    <button onclick="sendNumber(55, ['inputNumber55'])">Oblicz</button>
+    <p id="result55"></p>
+
+    <h2>56. Find an increasing arithmetic progression with the least possible difference, formed of positive integers
+        and containing no triangular number.</h2>
+    <input type="number" id="inputNumber56" min="1" required>
+    <button onclick="sendNumber(56, ['inputNumber56'])">Oblicz</button>
+    <p id="result56"></p>
+
+    <h2>57. Give a necessary and sufficient condition for an arithmetic progression \(ak+b(k=0,1,2,...\) with positive
+        integer \(a\) and \(b\) to contain infinitely many squares of integers.</h2>
+    <input type="number" id="inputNumberA57" min="1" required>
+    <input type="number" id="inputNumberB57" min="1" required>
+    <button onclick="sendNumber(57, ['inputNumberA57', 'inputNumberB57'])">Oblicz</button>
+    <p id="result57"></p>
+
+    <h2>58. Prove that there exist arbitrarily long arithmetic progressions formed of different positive integers, whose
+        tetms are powers of positive integers with integer exponents \(>1\).</h2>
+    <input type="number" id="inputNumber58" min="1" required>
+    <button onclick="sendNumber(58, ['inputNumber58'])">Oblicz</button>
+    <p id="result58"></p>
+
+    <h2>60. Prove that there are no four consecutive positive integers such that each of them is a power of a positive
+        integer with an integer exponent \(>1\).</h2>
+    <input type="number" id="inputNumberStart60" min="1" required>
+    <input type="number" id="inputNumberEnd60" min="1" required>
+    <button onclick="sendNumber(60, ['inputNumberStart60', 'inputNumberEnd60'])">Oblicz</button>
+    <p id="result60"></p>
+
+    <h2>62. Prove by elementary means that if \(a\) and \(b\) are relatively prime positive integers, then for every positive integer \(m\) the arithmetic
+        progressions \(ak+b(k=0,1,2,...)\) contains infinitely many terms relatively prime to m.</h2>
+    <input type="number" id="inputNumberA62" min="1" required>
+    <input type="number" id="inputNumberB62" min="1" required>
+    <input type="number" id="inputNumberM62" min="1" required>
+    <input type="number" id="inputNumberN62" min="1" required>
+    <button onclick="sendNumber(62, ['inputNumberA62', 'inputNumberB62', 'inputNumberM62', 'inputNumberN62'])">Oblicz</button>
+    <p id="result62"></p>
+
+    <h2>66. Find a progression \(ak+b(k=0,1,2,...)\), with positive integers \(a\) and \(b\) such that \((a,b)=1\), which
+        does not contain any term of Fibonacci sequence.</h2>
+    <input type="number" id="inputNumber66" min="1" required>
+    <button onclick="sendNumber(66, ['inputNumber66'])">Oblicz</button>
+    <p id="result66"></p>
+
+    <h2>67. Prove that the arithmetic progression \(ak+b(k=0,1,2,...)\) with positive integers \(a\) and \(b\) such that
+    \((a,b)=1\) contains infinitely many terms pairwise relatively prime.</h2>
+    <input type="number" id="inputNumberA67" min="1" required>
+    <input type="number" id="inputNumberB67" min="1" required>
+    <input type="number" id="inputNumberN67" min="1" required>
+    <button onclick="sendNumber(67, ['inputNumberA67', 'inputNumberB67', 'inputNumberN67'])">Oblicz</button>
+    <p id="result67"></p>
+
+    <h2>68. Prove that in each arithmetic progression \(ak+b(k=0,1,2,...)\) with positive integers \(a\) and \(b\) there
+        exist infinitely many terms with the same prime divisors.</h2>
+    <input type="number" id="inputNumberA68" min="1" required>
+    <input type="number" id="inputNumberB68" min="1" required>
+    <input type="number" id="inputNumberN68" min="1" required>
+    <button onclick="sendNumber(68, ['inputNumberA68', 'inputNumberB68', 'inputNumberN68'])">Oblicz</button>
+    <p id="result68"></p>
+
+
+    <script>
+        function sendNumber(probNumber, inputIds = []) {
+
+            let requestBody = { probNumber };
+
+            inputIds.forEach(id => {
+                let inputElement = document.getElementById(id);
+                if (inputElement) {
+                    let value = inputElement.value.trim();
+                    if (value !== "") {
+                        requestBody[id] = isNaN(value) ? value : Number(value);
+                    }
+                }
+            });
+
+            console.log("Request Body:", requestBody);
+
+            fetch('http://127.0.0.1:5000/calculate' + probNumber, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(requestBody)
+            })
+            .then(response => response.json())
+            .then(data => {
+                let resultElement = document.getElementById("result" + probNumber);
+
+                if (data.result !== undefined) {
+                    if (Array.isArray(data.result)) {
+                        resultElement.innerText = "Wynik: " + data.result.join(", ");
+                    } else if (typeof data.result === "object") {
+                        let resultText = Object.entries(data.result)
+                            .map(([key, value]) => `${key}: ${value}`)
+                            .join(", ");
+                        resultElement.innerText = "Wynik: " + resultText;
+                    } else {
+                        resultElement.innerText = "Wynik: " + data.result;
+                    }
+                }
+            })
+
+            .catch(error => console.error('Error:', error));
+        }
+
+        function sendRange() {
+            let minVal = document.getElementById("inputMin").value;
+            let maxVal = document.getElementById("inputMax").value;
+
+            fetch('http://127.0.0.1:5000/calculate2', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ min: minVal, max: maxVal })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result !== undefined) {
+                    document.getElementById("result2").innerText = "Wynik: " + data.result.join(", ");
+                } else {
+                    document.getElementById("result2").innerText = "Błąd: " + data.error;
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
