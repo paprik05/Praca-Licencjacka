@@ -1,0 +1,20 @@
+# w wynikach w ksiazce jest po kolei prime rowny 2,17,97,257,641 natomiast tutaj mozemy zauwazyc ze po 257 pomiedzy 641 pojawia sie takze 337
+# mozna zoptymalizowac
+
+from sympy import primerange
+def prob83(limit=1000, num_of_results=5):
+    counter = 0
+    results = []
+    primes = list(primerange(2, limit + 1))
+
+    for p in primes:
+        for i in range(p):
+            for j in range(i,p):
+                if pow(i,4) + pow(j,4) == p:
+                    print(i,j,p)
+                    results.append(f"{p} = {i}^4 + {j}^4")
+                    counter += 1
+        if counter >= num_of_results:
+            break
+
+    return {"result": results}
