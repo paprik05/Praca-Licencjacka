@@ -61,6 +61,31 @@ from problems.prob62 import prob62
 from problems.prob66 import prob66
 from problems.prob67 import prob67
 from problems.prob68 import prob68
+from problems.prob74 import prob74
+from problems.prob75 import prob75
+from problems.prob76 import prob76
+from problems.prob78 import prob78
+from problems.prob80 import prob80
+from problems.prob82 import prob82
+from problems.prob83 import prob83
+from problems.prob86 import prob86
+from problems.prob87 import prob87
+from problems.prob88 import prob88
+from problems.prob89 import prob89
+from problems.prob91 import prob91
+from problems.prob97 import prob97
+from problems.prob98 import prob98
+from problems.prob99 import prob99
+from problems.prob105 import prob105
+from problems.prob111 import prob111
+from problems.prob116 import prob116
+from problems.prob121 import prob121
+from problems.prob122 import prob122
+from problems.prob123 import prob123
+from problems.prob124 import prob124
+from problems.prob125 import prob125
+from problems.prob131 import prob131
+from.problems.prob135 import prob135
 
 
 app = Flask(__name__)

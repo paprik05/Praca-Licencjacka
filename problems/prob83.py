@@ -2,7 +2,7 @@
 # mozna zoptymalizowac
 
 from sympy import primerange
-def prob83(limit=1000, num_of_results=5):
+def prob83(limit=10, num_of_results=5):
     counter = 0
     results = []
     primes = list(primerange(2, limit + 1))

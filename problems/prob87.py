@@ -1,5 +1,5 @@
 from sympy import primerange
-def prob87(limit=100, num_of_results = 5):
+def prob87(limit=10, num_of_results = 5):
     counter = 0
     results = []
     odd_result = []
