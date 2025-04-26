@@ -13,4 +13,4 @@ def prob111(limit = 100):
         if square(sum, limit):
             results.append(p)
 
-    return {"result:": results}
+    return {"result": results}

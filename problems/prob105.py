@@ -18,4 +18,4 @@ def prob105(limit=1000,num_of_results=1):
         if counter >= num_of_results:
             break
 
-    return {"result:": results}
+    return {"result": results}

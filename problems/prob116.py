@@ -10,4 +10,4 @@ def prob116(limit=10):
                 break
 
 
-    return {"result:": composite}
+    return {"result": composite}

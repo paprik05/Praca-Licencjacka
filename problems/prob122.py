@@ -14,4 +14,4 @@ def prob122(limit=10):
         if composite:
             results.append(k)
 
-    return {"result:": results}
+    return {"result": results}

@@ -11,4 +11,4 @@ def prob125(a):
             results.append((a,n))
 
 
-    return {"result:": results}
+    return {"result": results}

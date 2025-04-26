@@ -18,4 +18,4 @@ def prob86(limit, num_of_results = 5):
         if counter >= num_of_results:
             break
 
-    return {"result:": results}
+    return {"result": results}

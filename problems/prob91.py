@@ -14,6 +14,4 @@ def prob91(limit=1000):
                 if form == p*q:
                     results.append((p, q, form))
 
-    return {"result:": results}
-
-print(prob91())
+    return {"result": results}

@@ -7,4 +7,4 @@ def prob121(k, limit=100):
         result = k * pow(2,pow(2,n)) + 1
 
         if not isprime(result):
-            return {"result:": n}
+            return {"result": n}

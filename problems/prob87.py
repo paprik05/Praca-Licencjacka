@@ -41,6 +41,6 @@ def prob87(limit=10, num_of_results = 5):
                         break
 
 
-    return {"result:": f"Pierwsze pięć liczb dla któych warunek jest spełniony: {results}, Pierwsza liczba całkowita dodatnia "
+    return {"result": f"Pierwsze pięć liczb dla któych warunek jest spełniony: {results}, Pierwsza liczba całkowita dodatnia "
                        f"dla której dodatkowy warunek jest spełniony: {odd_result}"}
 

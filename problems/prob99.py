@@ -7,4 +7,4 @@ def prob99(limit=10):
         if not isprime(formula):
             results.append(n)
 
-    return {"result:": results}
+    return {"result": results}

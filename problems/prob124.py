@@ -14,4 +14,4 @@ def prob124(n_range=10,max_time=5):
         if not isprime(value):
             results.append(value)
 
-    return {"result:": results}
+    return {"result": results}

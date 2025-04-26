@@ -11,7 +11,6 @@ def prob83(limit=10, num_of_results=5):
         for i in range(p):
             for j in range(i,p):
                 if pow(i,4) + pow(j,4) == p:
-                    print(i,j,p)
                     results.append(f"{p} = {i}^4 + {j}^4")
                     counter += 1
         if counter >= num_of_results:

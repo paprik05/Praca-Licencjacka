@@ -6,4 +6,4 @@ def prob47(n):
         j = n - i
         if i > 1 and j > 1 and gcd(i, j) == 1:
             return {"result": (i, j)}
-    return {"result": None}
+    return {"result ": None}

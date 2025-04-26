@@ -73,19 +73,21 @@ from problems.prob87 import prob87
 from problems.prob88 import prob88
 from problems.prob89 import prob89
 from problems.prob91 import prob91
+from problems.prob92 import prob92
 from problems.prob97 import prob97
 from problems.prob98 import prob98
 from problems.prob99 import prob99
 from problems.prob105 import prob105
 from problems.prob111 import prob111
 from problems.prob116 import prob116
+from problems.prob120 import prob120
 from problems.prob121 import prob121
 from problems.prob122 import prob122
 from problems.prob123 import prob123
 from problems.prob124 import prob124
 from problems.prob125 import prob125
 from problems.prob131 import prob131
-from.problems.prob135 import prob135
+from problems.prob135 import prob135
 
 
 app = Flask(__name__)
@@ -879,6 +881,345 @@ def calculate68():
         return jsonify(prob68(a,b,n))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate74', methods=['POST'])
+def calculate74():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        n = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob74(n))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate75', methods=['POST'])
+def calculate75():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob75(limit))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate76', methods=['POST'])
+def calculate76():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob76(limit))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate78', methods=['POST'])
+def calculate78():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        num_of_sol = next((int(value) for key, value in data.items() if key.startswith("inputNumberSol")), None)
+        return jsonify(prob78(limit, num_of_sol))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate80', methods=['POST'])
+def calculate80():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob80(limit))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate82', methods=['POST'])
+def calculate82():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob82(limit))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+
+@app.route('/calculate83', methods=['POST'])
+def calculate83():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        num_of_sol = next((int(value) for key, value in data.items() if key.startswith("inputNumberSol")), None)
+        return jsonify(prob83(limit, num_of_sol))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate86', methods=['POST'])
+def calculate86():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        num_of_sol = next((int(value) for key, value in data.items() if key.startswith("inputNumberSol")), None)
+        return jsonify(prob86(limit, num_of_sol))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate87', methods=['POST'])
+def calculate87():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        num_of_sol = next((int(value) for key, value in data.items() if key.startswith("inputNumberSol")), None)
+        return jsonify(prob87(limit, num_of_sol))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate88', methods=['POST'])
+def calculate88():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        i = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob88(i))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate89', methods=['POST'])
+def calculate89():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        num_of_sol = next((int(value) for key, value in data.items() if key.startswith("inputNumberSol")), None)
+        return jsonify(prob89(limit, num_of_sol))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate91', methods=['POST'])
+def calculate91():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob91(limit))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate92', methods=['POST'])
+def calculate92():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        k = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob92(k))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate97', methods=['POST'])
+def calculate97():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        num_of_sol = next((int(value) for key, value in data.items() if key.startswith("inputNumberSol")), None)
+        return jsonify(prob97(limit, num_of_sol))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate98', methods=['POST'])
+def calculate98():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob98(limit))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate99', methods=['POST'])
+def calculate99():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob99(limit))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate105', methods=['POST'])
+def calculate105():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        num_of_sol = next((int(value) for key, value in data.items() if key.startswith("inputNumberSol")), None)
+        return jsonify(prob105(limit, num_of_sol))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate111', methods=['POST'])
+def calculate111():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob111(limit))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate116', methods=['POST'])
+def calculate116():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob116(limit))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate120', methods=['POST'])
+def calculate120():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        m = next((int(value) for key, value in data.items() if key.startswith("inputNumberM")), None)
+        n = next((int(value) for key, value in data.items() if key.startswith("inputNumberLimit")), None)
+        time = next((int(value) for key, value in data.items() if key.startswith("inputNumberTime")), None)
+
+        return jsonify(prob120(m, n, time))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate121', methods=['POST'])
+def calculate121():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        k = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumberLimit")), None)
+        return jsonify(prob121(k, limit))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate122', methods=['POST'])
+def calculate122():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob122(limit))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate123', methods=['POST'])
+def calculate123():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        n = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        time = next((int(value) for key, value in data.items() if key.startswith("inputNumberTime")), None)
+        return jsonify(prob123(n, time))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate124', methods=['POST'])
+def calculate124():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        n = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        time = next((int(value) for key, value in data.items() if key.startswith("inputNumberTime")), None)
+        return jsonify(prob124(n, time))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate125', methods=['POST'])
+def calculate125():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        a = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob125(a))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate131', methods=['POST'])
+def calculate131():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob131(limit))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate135', methods=['POST'])
+def calculate135():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob135(limit))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
 
 if __name__ == '__main__':
     app.run(debug=True)
