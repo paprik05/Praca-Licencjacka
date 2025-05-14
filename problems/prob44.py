@@ -8,8 +8,10 @@ def prob44(a, b, limit):
         return {"error": "zmienna limit musi być liczbą całkowitą dodatnią"}
 
     results = []
-    for n in range(1, limit + 1):
+    n = 1
+    while len(results) < limit:
         if gcd(a+n, b+n) == 1:
-            results.append(n)
+            results.append(f"n = {n},because a+n: {a} + {n} = {a+n}, b+n: {b} + {n} = {b+n}")
+        n += 1
 
     return {"result": results}

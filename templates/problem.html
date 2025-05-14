@@ -1,0 +1,66 @@
+<h2>{{ problem['description'] }}</h2>
+
+<h3>Kod z pliku:</h3>
+<pre class="language-python">{{ code_content }}</pre>
+
+<form id="form{{ prob_id }}" action="/calculate{{ prob_id }}" method="POST">
+    {% for field in problem['inputs'] %}
+        <label for="{{ field['id'] }}">{{ field['label'] }}</label>
+        <input type="{{ field['type'] }}" id="{{ field['id'] }}" name="{{ field['id'] }}"
+               min="{{ field['min'] }}" max="{{ field['max'] }}" required>
+        <small>{{ field['description'] }}</small><br><br>
+    {% endfor %}
+    <button type="button" onclick="sendNumber({{ prob_id }}, {% for field in problem['inputs'] %}'{{ field['id'] }}'{% if not loop.last %}, {% endif %}{% endfor %})">Oblicz</button>
+</form>
+
+<p id="result{{ prob_id }}"></p>
+
+<script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script>
+    window.onload = function() {
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    };
+</script>
+<script>
+    function sendNumber(probNumber, ...inputIds) {
+        let requestBody = { probNumber };
+
+        inputIds.forEach(id => {
+            let inputElement = document.getElementById(id);
+            if (inputElement) {
+                let value = inputElement.value.trim();
+                if (value !== "") {
+                    requestBody[id] = isNaN(value) ? value : Number(value);
+                }
+            }
+        });
+
+        console.log("Request Body:", requestBody);
+
+        fetch('http://127.0.0.1:5000/calculate' + probNumber, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(requestBody)
+        })
+        .then(response => response.json())
+        .then(data => {
+            let resultElement = document.getElementById("result" + probNumber);
+            if (data.result !== undefined) {
+                if (Array.isArray(data.result)) {
+                    resultElement.innerHTML = "Wynik:<br>" + data.result.map(r => `${r}`).join("<br>");
+                } else if (typeof data.result === 'object') {
+                    let resultText = Object.entries(data.result)
+                        .map(([key, value]) => `${key}: ${value}`)
+                        .join("<br>");
+                    resultElement.innerHTML = "Wynik:<br>" + resultText;
+                } else {
+                    resultElement.innerText = "Wynik: " + data.result;
+                }
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+

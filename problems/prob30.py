@@ -8,6 +8,6 @@ def prob30(a):
 
     while True:
         if sympy.isprime(n) == False and (a**n-a) % n == 0:
-            return {"result": n}
+            return {"result": f"{n}: {n}|{a**n-a} = {(a**n-a) / n}"}
         n += 1
 

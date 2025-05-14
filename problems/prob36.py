@@ -8,5 +8,5 @@ def prob36(s):
     i = s
     while True:
         if sum_of_digits(i) == s and i % s == 0:
-            return {"result": i}
+            return {"result":f"{s}: {i}"}
         i += 1

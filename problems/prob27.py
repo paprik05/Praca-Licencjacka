@@ -14,7 +14,7 @@ def prob27():
     n = 4
     while len(found) < 2:
         if is_composite(n) and satisfies_conditions(n):
-            found.append(n)
+            found.append(f"{n}: n|2^n-2 = {n}|{2**n-2} and n|3^n-3 = {n}|{3**n-3}")
         n += 1
 
     return {"result": found}

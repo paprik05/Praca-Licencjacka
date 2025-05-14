@@ -5,6 +5,6 @@ def prob20(r):
     results = []
     for n in range(2, r):
         if (2**n - 1) % n == 0:
-            results.append(n)
+            results.append(f"{n}: n|2^n-1 = {n}|{2**n-1}")
 
     return {"result": results}

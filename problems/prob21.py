@@ -5,6 +5,6 @@ def prob21(r):
     results = []
     for n in range(1,r + 1):
         if n % 2 == 1 and (3**n+1) % n == 0:
-            results.append(n)
+            results.append(f"{n}: n|3^n+1 = {n}|{3**n+1}")
 
     return {"result": results}

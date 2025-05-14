@@ -14,10 +14,13 @@ def prob45(a, b, c, n):
             if n <= 0:
                 return {"error": "n musi być liczbą całkowitą dodatnią"}
 
-            for n in range(1, n + 1):
-                nums = [a+n, b+n, c+n]
+            results = []
+            k = 1
+            while len(results) < n:
+                nums = [a+k, b+k, c+k]
                 if all(gcd(nums[i], nums[j]) == 1 for i in range(len(nums)) for j in range(i + 1, len(nums))):
-                    return {"result": n}
-            return {"result": None}
+                    results.append(f"n: {k}")
+                k += 1
+            return {"result": results}
     except ValueError as e:
         return {"error": e}

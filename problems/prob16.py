@@ -1,15 +1,18 @@
+import sympy
+
 def prob16(r):
     if r <= 0:
         return {"error": "r musi być liczbą całkowitą dodatnią"}
 
     results = []
-    for n in range(1, r + 1):
-        if (2**n + 1) % n == 0:
-            results.append(n)
+    prime_results = []
+    n = 1
 
-    return {"result": results}
+    while len(results) < r:
+        if (2 ** n + 1) % n == 0:
+            results.append(f"{n}: n|2^n+1 = {n}|{2**n+1}")
+            if sympy.isprime(n):
+                prime_results.append(n)
+        n += 1
 
-# prime_num = []
-# for p in numbers:
-#     if sympy.isprime(p):
-#         prime_num.append(p)
+    return {"result": f"{results}, All such prime numbers of results: {prime_results}"}

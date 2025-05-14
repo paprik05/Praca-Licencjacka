@@ -17,11 +17,11 @@ def prob26(r):
 
     for n in range(2, r):
         if is_divisible_by_5(n):
-            divisible_by_5.append(n)
+            divisible_by_5.append(f"n = {n}: 2^n-3 = {2**n-3}")
         if is_divisible_by_13(n):
-            divisible_by_13.append(n)
+            divisible_by_13.append(f"{n}: 2^n-3 = {2**n-3}")
         if is_divisible_by_65(n):
-            divisible_by_65.append(n)
+            divisible_by_65.append(f"{n}: 2^n-3 = {2**n-3}")
 
     results = {
         "divisible_by_5": divisible_by_5,

@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, render_template
+import os
 
 from problems.prob1 import prob1
 from problems.prob2 import prob2
@@ -89,12 +90,865 @@ from problems.prob125 import prob125
 from problems.prob131 import prob131
 from problems.prob135 import prob135
 
+problem_ids = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+               21, 22, 23, 25, 26, 27, 28, 29, 30, 31, 32, 34, 35, 36, 381, 382, 383, 39, 40,
+               41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 511, 52, 54, 55, 56, 57, 58,
+               60, 62, 66, 67, 68, 74, 75, 76, 78, 80, 82, 83, 86, 87, 88, 89, 91,
+               92, 97, 98, 99, 105, 111, 116, 120, 121, 122, 123, 124, 125, 131, 135]
+
+problem_data = {
+    1: {
+        "description": r"Find all positive integers \(n\) such that \( n^2 + 1 \) is divisible by \( n + 1 \)",
+        "inputs": [
+            {
+                "id": "inputNumber1",
+                "label": "Podaj liczbę n",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+    2: {
+        "description": r"Find all integers \( x \neq 3 \) such that \( x - 3 | x^3 - 3\)",
+        "inputs": [
+            {
+                "id": "inputMin",
+                "label": "Minimalna wartość",
+                "type": "number",
+            },
+            {
+                "id": "inputMax",
+                "label": "Maksymalna wartość",
+                "type": "number",
+            }
+        ]
+    },
+    3: {
+        "description": r"Prove that there exists infinitely many positive integers \(n\) such that \(4n^2+1\) is divisible both by \(5\) and \(13\)",
+        "inputs": [
+            {
+                "id": "inputNumber3",
+                "label": "Podaj liczbę n",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+    4: {
+        "description": r"Prove that for positive integer \(n\) we have \(169|3^{3n+3}-26n-27\)",
+        "inputs": [
+            {
+                "id": "inputNumber4",
+                "label": "Podaj liczbę n",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+    5: {
+        "description": r"Prove that \(19|2^{2^{6k+2}}+3\) for \(k = 0, 1, 2, ...\)",
+        "inputs": [
+            {
+                "id": "inputNumber5",
+                "label": "Podaj liczbę k",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+    6: {
+        "description": r"Prove the theorem, due to Kraitchik, asserting that \(13|2^70+3^70\)",
+        "inputs": []
+    },
+    7: {
+        "description": r"Prove that \(11*31*61|20^15-1\)",
+        "inputs": []
+    },
+    9: {
+        "description": r"Prove that for every positive integer \(n\) the number \(3(1^5+2^5+...+n^5)\) is divisible by \(1^3+2^3+...+n^3\).",
+        "inputs": [
+            {
+                "id": "inputNumber9",
+                "label": "Podaj liczbę n",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+    10: {
+        "description": r"Find all integers \(n>1\) such that \(1^n+2^n+...+(n-1)^n\) is divisible by \(n\).",
+        "inputs": [
+            {
+                "id": "inputNumber10",
+                "label": "Podaj liczbę n",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+    11: {
+        "description": r"For positive integer \(n\), find which of the two numbers \(a_n=2^{2n+1}-2^{n+1}+1\) and \(b_n=2^{2n+1}+2^{n+1}+1\) is divisible by \(5\) and which is not.",
+        "inputs": [
+            {
+                "id": "inputNumber11",
+                "label": "Podaj liczbę n",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+    12: {
+        "description": r"Prove that for every positive integer \(n\) there exists a positive integer \(x\) such that each of the terms of the infinite sequence \(x+1,x^x+1,x^{x^x}+1,...\) is divisible by \(n\)",
+        "inputs": [
+            {
+                "id": "inputNumber12",
+                "label": "Podaj liczbę x",
+                "min": 1,
+                "type": "number",
+            },
+            {
+                "id": "inputNumberMax12",
+                "label": "Podaj maksymalną wartość",
+                "min": 1,
+                "type": "number",
+            },
+            {
+                "id": "inputNumberIt12",
+                "label": "Podaj liczbę iteracji",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+    13: {
+        "description": r"Prove that there exists infinitely many positive integers \(n\) such that for every even \(x\) none of the terms of the sequence \(x^x+1,x^{x^x}+1,x^{x^{x^x}}+1,...\) is divisible by \(n\).",
+        "inputs": [
+            {
+                "id": "inputNumber13",
+                "label": "Podaj liczbę n",
+                "min": 2,
+                "type": "number",
+            },
+            {
+                "id": "inputNumberMax13",
+                "label": "Podaj maksymalną wartość",
+                "min": 1,
+                "type": "number",
+            },
+            {
+                "id": "inputNumberIt13",
+                "label": "Podaj liczbę iteracji",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+    14: {
+        "description": r"Prove that for positive integer \(n\) we have \(n^2|(n+1)^n-1.\)",
+        "inputs": [
+            {
+                "id": "inputNumber14",
+                "label": "Podaj liczbę n",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+    15: {
+        "description": r"Prove that for positive integer \(n\) we have \((2^n-1)^2|2^{(2^{n}-1)n}-1.\)",
+        "inputs": [
+            {
+                "id": "inputNumber15",
+                "label": "Podaj liczbę n",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+    16: {
+        "description": r"Prove that there exist infinitely many positive integers \(n\) such that \(n|2^n+1\); find all such prime numbers",
+        "inputs": [
+            {
+                "id": "inputNumber16",
+                "label": "Podaj liczbę n",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+    17: {
+        "description": r"Prove that for every positive integer \(a>1\) there exist infinitely many positive integers \(n\) such that \(n|a^n+1\).",
+        "inputs": [
+            {
+                "id": "inputNumberA17",
+                "label": "Podaj liczbę a",
+                "min": 1,
+                "type": "number",
+            },
+            {
+                "id": "inputNumberRange17",
+                "label": "Podaj zakres",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+    18: {
+        "description": r"Prove that there exist infinitely many positive integers \(n\) such that \(n|2^n+2\).",
+        "inputs": [
+            {
+                "id": "inputNumber18",
+                "label": "Podaj liczbę n",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+    19: {
+        "description": r"Find all positive integers \(a\) for which \(a^{10}+1\) is divisible by \(10\).",
+        "inputs": [
+            {
+                "id": "inputNumber19",
+                "label": "Podaj liczbę a",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+    20: {
+        "description": r"Prove that there are no integers \(n>1\) for which \(n|2^n-1\).",
+        "inputs": [
+            {
+                "id": "inputNumber20",
+                "label": "Podaj liczbę n",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+    21: {
+        "description": r"Find all odd \(n\) such that \(n|3^n+1\).",
+        "inputs": [
+            {
+                "id": "inputNumber21",
+                "label": "Podaj liczbę n",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+
+    22: {
+        "description": r"Find all positive integers \(n\) for which \(3|n2^n+1\).",
+        "inputs": [
+            {
+                "id": "inputNumber22",
+                "label": "Podaj liczbę n",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+
+    23: {
+        "description": r"Prove that for every odd prime \(p\) there exist infinitely many positive integers \(n\) such that \(p|n2^n+1\).",
+        "inputs": [
+            {
+                "id": "inputNumberPRange23",
+                "label": "Podaj p:",
+                "min": 1,
+                "type": "number",
+            },
+            {
+                "id": "inputNumberNRange23",
+                "label": "Ilość n spełniająych problem:",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+
+    25: {
+        "description": r"Prove that for odd \(n\) we have \(n|2^{2!}-1\).",
+        "inputs": [
+            {
+                "id": "inputNumber25",
+                "label": "Podaj liczbę n",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+
+    26: {
+        "description": r"Prove that the infinite sequence \(2^n-3 (n=2,3,4,...)\) contains infinitely many terms divisible by \(5\) and infinitely many terms divisible by 13, but contains no term divisible by \(5*13\).",
+        "inputs": [
+            {
+                "id": "inputNumber26",
+                "label": "Podaj liczbę n",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+
+    27: {
+        "description": r"Find two least composite numbers \(n\) such that \(n|2^n-2\) and \(n|3^n-3\).",
+        "inputs": []
+    },
+
+    28: {
+        "description": r"Find the least positive integer \(n\) such that \(n|2^n-2\) but \(n\not|\;3^n-3\).",
+        "inputs": []
+    },
+
+    29: {
+        "description": r"Find the least integer \(n\) such that \(n\not|\;2^n-2\) but \(n|3^n-3\).",
+        "inputs": []
+    },
+
+    30: {
+        "description": r"For every positive integer \(a\), find a composite number \(n\) such that \(n|a^n-a\).",
+        "inputs": [
+            {
+                "id": "inputNumber30",
+                "label": "Podaj liczbę a",
+                "min": 1,
+                "type": "number",
+            }
+        ]
+    },
+
+    31: {
+        "description": r"Prove that if for some integers \(a,b,c\) we have \(9|a^3+b^3+c^3\), then at least one of the numbers \(a,b,c\) is divisible by \(3\).",
+        "inputs": [
+            {
+                "id": "inputNumberA31",
+                "label": "Podaj liczbę a",
+                "type": "number",
+                "min": 1
+            },
+            {
+                "id": "inputNumberB31",
+                "label": "Podaj liczbę b",
+                "type": "number",
+                "min": 1
+            },
+            {
+                "id": "inputNumberC31",
+                "label": "Podaj liczbę c",
+                "type": "number",
+                "min": 1
+            }
+        ]
+    },
+    32: {
+        "description": r"Prove that if for positive integers \(a_k(k=1,2,3,4,5)\) we have \(9|a_1^3+a_2^3+a_3^3+a_4^3+a_5^3\), then \(3|a_1a_2a_3a_4a_5\).",
+        "inputs": [
+            {
+                "id": "inputNumber32",
+                "label": "Podaj liczbę",
+                "min": 1,
+                "type": "number"
+            }
+        ]
+    },
+    34: {
+        "description": r"Prove that if for integers \(a\) and \(b\) we have \(7|a^2+b^2\), then \(7|a\) and \(7|b\).",
+        "inputs": [
+            {
+                "id": "inputNumberA34",
+                "label": "Podaj liczbę a",
+                "type": "number",
+            },
+            {
+                "id": "inputNumberB34",
+                "label": "Podaj liczbę b",
+                "type": "number",
+            }
+        ]
+    },
+    35: {
+        "description": r"Prove that there exist infinitely many pairs of positive integers \(x,y\) such that \(x(x+1)|y(y+1)\), \(x\not|y\), \(x+1\not|y\), \(x\not|y+1\), \(x+1\not|y+1\), and find the least such pair.",
+        "inputs": [
+            {
+                "id": "inputNumber35",
+                "label": "Podaj liczbę",
+                "min": 1,
+                "type": "number"
+            }
+        ]
+    },
+    36: {
+        "description": r"For every positive integer \(s\leq25\) and for \(s = 100\), find the least positive integer \(n\) with the sum of digits (in decimal system) equal to \(s\), which is divisible by \(s\).",
+        "inputs": [
+            {
+                "id": "inputNumber36",
+                "label": "Podaj liczbę",
+                "min": 1,
+                "type": "number"
+            }
+        ]
+    },
+    381: {
+        "description": r"Prove that every positive integer has at least as many divisors of the form \(4k+1\) as divisors of the form \(4k+3\).",
+        "inputs": [
+            {
+                "id": "inputNumber381",
+                "label": "Podaj liczbę",
+                "min": 1,
+                "type": "number"
+            }
+        ]
+    },
+    382: {
+        "description": r"Prove that there exist infinitely many positive integers which have as many divisors of the form \(4k+1\) as divisors of the form \(4k+3\).",
+        "inputs": [
+            {
+                "id": "inputNumber382",
+                "label": "Podaj liczbę",
+                "min": 1,
+                "type": "number"
+            }
+        ]
+    },
+    383: {
+        "description": r"Prove that there exist infinitely many positive integers which have more divisors of the form \(4k+1\) than divisors of the form \(4k+3\).",
+        "inputs": [
+            {
+                "id": "inputNumber383",
+                "label": "Podaj liczbę",
+                "min": 1,
+                "type": "number"
+            }
+        ]
+    },
+    39: {
+        "description": r"Prove that if \(a,b,c\) are any integers, and \(n\) is an integer \(>3\), then there exists an integer \(k\) such that none of the numbers \(k+a,k+b,k+c\) is divisible by \(n\).",
+        "inputs": [
+            {
+                "id": "inputNumberA39",
+                "label": "Podaj liczbę a",
+                "type": "number",
+                "min": 1
+            },
+            {
+                "id": "inputNumberB39",
+                "label": "Podaj liczbę b",
+                "type": "number",
+                "min": 1
+            },
+            {
+                "id": "inputNumberC39",
+                "label": "Podaj liczbę c",
+                "type": "number",
+                "min": 1
+            },
+            {
+                "id": "inputNumberN39",
+                "label": "Podaj liczbę n",
+                "min": 3,
+                "type": "number"
+            }
+        ]
+    },
+    40: {
+        "description": r"Prove that for \(F_n = 2^{2^n}+1\) we have \(F_n|2^{F_n}-2 (n=1,2,...)\).",
+        "inputs": [
+            {
+                "id": "inputNumber40",
+                "label": "Podaj liczbę",
+                "min": 1,
+                "type": "number"
+            }
+        ]
+    },
+    41: {
+        "description": r"Prove that for every integer \(k\) the numbers \(2k+1\) and \(9k+4\) are relatively prime, and for numbers \(2k-1\) and \(9k+4\) find their greatest common divisor as a function of \(a\).",
+        "inputs": [
+            {
+                "id": "inputNumber41",
+                "label": "Podaj liczbę",
+                "min": 1,
+                "type": "number"
+            }
+        ]
+    },
+    42: {
+        "description": r"Prove that there exists an increasing infinite sequence of triangular numbers (i.e. numbers of the form \(t_n=\frac{1}{2}n(n + 1),\;n=1,2,...)\) such that every two of them are relatively prime.",
+        "inputs": [
+            {
+                "id": "inputNumber42",
+                "label": "Podaj liczbę",
+                "min": 1,
+                "type": "number"
+            }
+        ]
+    },
+    43: {
+        "description": r"Prove that there exists an increasing infinite sequence of tetrahedral numbers (i.e. numbers of the form \(T_n=\frac{1}{6}n(n + 1)(n + 2),\;n=1,2,...)\) such that every two of them are relatively prime.",
+        "inputs": [
+            {
+                "id": "inputNumber43",
+                "label": "Podaj liczbę",
+                "min": 1,
+                "type": "number"
+            }
+        ]
+    },
+    44: {
+        "description": r"Prove that if \(a\) and \(b\) are different integers, then there exist infinitely many positive integers \(n\) such that \(a+n\) and \(b+n\) are relatively prime.",
+        "inputs": [
+            {
+                "id": "inputNumberA44",
+                "label": "Podaj liczbę a",
+                "min": 1,
+                "type": "number"
+            },
+            {
+                "id": "inputNumberB44",
+                "label": "Podaj liczbę b",
+                "min": 1,
+                "type": "number"
+            },
+            {
+                "id": "inputNumberLimit44",
+                "label": "Podaj limit",
+                "min": 1,
+                "type": "number"
+            }
+        ]
+    },
+    45: {
+        "description": r"Prove that if \(a,b,c\) are three different integers, then there exist infinitely many positive integers \(n\) such that \(a+n,b+n,c+n\) are pairwise relatively prime.",
+        "inputs": [
+            {"id": "inputNumberA45", "label": "Podaj liczbę a", "type": "number", "min": 1},
+            {"id": "inputNumberB45", "label": "Podaj liczbę b", "type": "number", "min": 1},
+            {"id": "inputNumberC45", "label": "Podaj liczbę c", "type": "number", "min": 1},
+            {"id": "inputNumberN45", "label": "Podaj liczbę n", "type": "number", "min": 1}
+        ]
+    },
+    46: {
+        "description": r"Give an example of four different positive integers \(a,b,c,d\) such that there exists no positive integer \(n\) for which \(a+n,b+n,c+n,\) and \(d+n\) are pairwise relatively prime.",
+        "inputs": [
+            {"id": "inputNumberA46", "label": "Podaj liczbę a", "type": "number", "min": 1},
+            {"id": "inputNumberB46", "label": "Podaj liczbę b", "type": "number", "min": 1},
+            {"id": "inputNumberC46", "label": "Podaj liczbę c", "type": "number", "min": 1},
+            {"id": "inputNumberD46", "label": "Podaj liczbę d", "type": "number", "min": 1},
+            {"id": "inputNumberN46", "label": "Podaj liczbę n", "type": "number", "min": 1}
+        ]
+    },
+    47: {
+        "description": r"Prove that every integer \(>6\) can be represented as a sum of two integers \(>1\) which are relatively prime.",
+        "inputs": [
+            {"id": "inputNumber47", "label": "Podaj liczbę", "type": "number", "min": 1}
+        ]
+    },
+    48: {
+        "description": r"Prove that every integer \(>17\) can be represented as a sum of three integers \(>1\) which are pairwise relatively prime, and show that \(17\) does not have this property.",
+        "inputs": [
+            {"id": "inputNumber48", "label": "Podaj liczbę", "type": "number", "min": 1}
+        ]
+    },
+    49: {
+        "description": r"Prove that for every positive integer \(m\) every even number \(2k\) can be represented as a difference of two positive integers relatively prime to \(m\).",
+        "inputs": [
+            {"id": "inputNumberM49", "label": "Podaj liczbę m", "type": "number", "min": 1},
+            {"id": "inputNumberE49", "label": "Podaj liczbę parzystą", "type": "number", "min": 1}
+        ]
+    },
+    50: {
+        "description": r"Prove that Fibonacci's sequence (defined by conditions \(u_1 = u_2 = 1, u_{n+2} = u_n+u_{n+1}, n=1,2,...\)) contains an infinite increasing sequence such that every two terms of this sequence are relatively prime.",
+        "inputs": [
+            {"id": "inputNumber50", "label": "Podaj liczbę", "type": "number", "min": 1}
+        ]
+    },
+    51: {
+        "description": r"Prove that \((n,2^{2^n}+1) = 1\) for \(n = 1,2,...\).",
+        "inputs": [
+            {"id": "inputNumber51", "label": "Podaj liczbę n", "type": "number", "min": 1}
+        ]
+    },
+    511: {
+        "description": r"Prove that there exist infinitely many positive integers \(n\) such that \((n,2^n-1)>1\), and find the least of them.",
+        "inputs": [
+            {"id": "inputNumber511", "label": "Podaj liczbę n", "type": "number", "min": 1}
+        ]
+    },
+    52: {
+        "description": r"Prove that there exist arbitrarily long arithmetic progressions formed of different positive integers such that every two terms of these progressions are relatively prime.",
+        "inputs": [
+            {"id": "inputNumber52", "label": "Podaj długość ciągu", "type": "number", "min": 1}
+        ]
+    },
+    54: {
+        "description": r"Prove that there exist infinitely many triplets of positive integers \(x,y,z\) for which the numbers \(x(x+1),y(y+1),z(z+1)\) form an increasing arithmetic progression.",
+        "inputs": [
+            {"id": "inputNumber54", "label": "Podaj liczbę", "type": "number", "min": 1}
+        ]
+    },
+    55: {
+        "description": r"Find all rectangular triangles with integer sides forming an arithmetic progression.",
+        "inputs": [
+            {"id": "inputNumber55", "label": "Podaj liczbę", "type": "number", "min": 1}
+        ]
+    },
+    56: {
+        "description": r"Find an increasing arithmetic progression with the least possible difference, formed of positive integers and containing no triangular number.",
+        "inputs": [
+            {"id": "inputNumber56", "label": "Podaj liczbę", "type": "number", "min": 1}
+        ]
+    },
+    57: {
+        "description": r"Give a necessary and sufficient condition for an arithmetic progression \(ak+b(k=0,1,2,...)\) with positive integer \(a\) and \(b\) to contain infinitely many squares of integers.",
+        "inputs": [
+            {"id": "inputNumberA57", "label": "Podaj liczbę a", "type": "number", "min": 1},
+            {"id": "inputNumberB57", "label": "Podaj liczbę b", "type": "number", "min": 1}
+        ]
+    },
+    58: {
+        "description": r"Prove that there exist arbitrarily long arithmetic progressions formed of different positive integers, whose terms are powers of positive integers with integer exponents \(>1\).",
+        "inputs": [
+            {"id": "inputNumber58", "label": "Podaj długość ciągu", "type": "number", "min": 1}
+        ]
+    },
+    60: {
+        "description": r"Prove that there are no four consecutive positive integers such that each of them is a power of a positive integer with an integer exponent \(>1\).",
+        "inputs": [
+            {"id": "inputNumberStart60", "label": "Podaj początek zakresu", "type": "number", "min": 1},
+            {"id": "inputNumberEnd60", "label": "Podaj koniec zakresu", "type": "number", "min": 1}
+        ]
+    },
+    62: {
+        "description": r"Prove by elementary means that if \(a\) and \(b\) are relatively prime positive integers, then for every positive integer \(m\) the arithmetic progressions \(ak+b(k=0,1,2,...)\) contains infinitely many terms relatively prime to \(m\).",
+        "inputs": [
+            {"id": "inputNumberA62", "label": "Podaj liczbę a", "type": "number", "min": 1},
+            {"id": "inputNumberB62", "label": "Podaj liczbę b", "type": "number", "min": 1},
+            {"id": "inputNumberM62", "label": "Podaj liczbę m", "type": "number", "min": 1},
+            {"id": "inputNumberN62", "label": "Podaj liczbę n", "type": "number", "min": 1}
+        ]
+    },
+    66: {
+        "description": r"Find a progression \(ak+b(k=0,1,2,...)\), with positive integers \(a\) and \(b\) such that \((a,b)=1\), which does not contain any term of Fibonacci sequence.",
+        "inputs": [
+            {"id": "inputNumber66", "label": "Podaj długość ciągu", "type": "number", "min": 1}
+        ]
+    },
+    67: {
+        "description": r"Prove that the arithmetic progression \(ak+b(k=0,1,2,...)\) with positive integers \(a\) and \(b\) such that \((a,b)=1\) contains infinitely many terms pairwise relatively prime.",
+        "inputs": [
+            {"id": "inputNumberA67", "label": "Podaj liczbę a", "type": "number", "min": 1},
+            {"id": "inputNumberB67", "label": "Podaj liczbę b", "type": "number", "min": 1},
+            {"id": "inputNumberN67", "label": "Podaj liczbę n", "type": "number", "min": 1}
+        ]
+    },
+    68: {
+        "description": r"Prove that in each arithmetic progression \(ak+b(k=0,1,2,...)\) with positive integers \(a\) and \(b\) there exist infinitely many terms with the same prime divisors.",
+        "inputs": [
+            {"id": "inputNumberA68", "label": "Podaj liczbę a", "type": "number", "min": 1},
+            {"id": "inputNumberB68", "label": "Podaj liczbę b", "type": "number", "min": 1},
+            {"id": "inputNumberN68", "label": "Podaj liczbę n", "type": "number", "min": 1}
+        ]
+    },
+    74: {
+        "description": r"Prove that for every even \(n > 6\) there exist primes \(p\) and \(q\) such that \((n-p,n-q) = 1\).",
+        "inputs": [
+            {"id": "inputNumber74", "label": "Podaj liczbę n", "type": "number", "min": 8}
+        ]
+    },
+    75: {
+        "description": r"Find all primes which can be represented both as sums and as differences of two primes.",
+        "inputs": [
+            {"id": "inputNumber75", "label": "Podaj liczbę", "type": "number", "min": 2}
+        ]
+    },
+    76: {
+        "description": r"Find three least positive integers \(n\) such that there are no primes between \(n\) and \(n+10\), and three least positive integers \(m\) such that there are no primes between \(10m\) and \(10(m+1)\).",
+        "inputs": [
+            {"id": "inputNumber76", "label": "Podaj liczbę startową do sprawdzenia", "type": "number", "min": 10}
+        ]
+    },
+    78: {
+        "description": r"Find four solutions of the equation \(p^2+1=q^2+r^2\) with primes \(p,q,\) and \(r\).",
+        "inputs": [
+            {"id": "inputNumber78", "label": "Podaj dolną granicę dla p", "type": "number", "min": 10},
+            {"id": "inputNumberSol78", "label": "Ile rozwiązań znaleźć", "type": "number", "min": 1}
+        ]
+    },
+    80: {
+        "description": r"Find all prime solutions \(p,q,r\) of the equation \(p(p+1)+q(q+1)=r(r+1)\).",
+        "inputs": [
+            {"id": "inputNumber80", "label": "Podaj dolną granicę dla p i q", "type": "number", "min": 10}
+        ]
+    },
+    82: {
+        "description": r"Find all positive integers \(n\) such that each of the numbers \(n+1,n+3,n+7,n+9,n+13\) and \(n+15\) is a prime.",
+        "inputs": [
+            {"id": "inputNumber82", "label": "Podaj n", "type": "number", "min": 10}
+        ]
+    },
+    83: {
+        "description": r"Find five primes which are sums of two fourth powers of integers.",
+        "inputs": [
+            {"id": "inputNumber83", "label": "Podaj dolną granicę", "type": "number", "min": 10},
+            {"id": "inputNumberSol83", "label": "Podaj liczbę rozwiązań", "type": "number", "min": 1}
+        ]
+    },
+    86: {
+        "description": r"Find five least positive integers for which \(n^2-1\) is a product of three different primes",
+        "inputs": [
+            {"id": "inputNumber86", "label": "Podaj dolną granicę", "type": "number", "min": 10},
+            {"id": "inputNumberSol86", "label": "Podaj liczbę rozwiązań", "type": "number", "min": 1}
+        ]
+    },
+    87: {
+        "description": r"Find five least positive integers \(n\) for which \(n^2+1\) is a product of three different primes, and find a positive integer \(n\) for which \(n^2+1\) is a product of three different odd primes.",
+        "inputs": [
+            {"id": "inputNumber87", "label": "Podaj dolną granicę", "type": "number", "min": 10},
+            {"id": "inputNumberSol87", "label": "Podaj liczbę rozwiązań", "type": "number", "min": 1}
+        ]
+    },
+    88: {
+        "description": r"Prove that among each three consecutive integers \(>7\) at least one has at least two different prime divisors.",
+        "inputs": [
+            {"id": "inputNumber88", "label": "Podaj dolną granicę", "type": "number", "min": 8}
+        ]
+    },
+    89: {
+        "description": r"Find five least positive integers \(n\) such that each of the numbers \(n,n+1,n+2\) is a product of two different primes. Prove that there are no four consecutive positive integers with this property. Show by an example that there exist four positive integers such that each of them has exactly two different prime divisors.",
+        "inputs": [
+            {"id": "inputNumber89", "label": "Podaj dolną granicę", "type": "number", "min": 10},
+            {"id": "inputNumberSol89", "label": "Podaj liczbę rozwiązań", "type": "number", "min": 1}
+        ]
+    },
+    91: {
+        "description": r"Find all numbers of the form \(2^n-1\) with positive integer \(n\), not exceeding million, which are products of two primes, and prove that if \(n\) is even and \(>4\), then \(2^n-1\) is a product of at least three integers \(>1\).",
+        "inputs": [
+            {"id": "inputNumber91", "label": "Podaj n", "type": "number", "min": 10}
+        ]
+    },
+    92: {
+        "description": r"Using Problem 47, prove that if \(p_k\) denotes the \(kth\) prime, then for \(k \geq 3\) we have the inequality \(p_{k+1}+p_{k+2} \leq p_1p_2...p_k\).",
+        "inputs": [
+            {"id": "inputNumber92", "label": "Podaj k", "type": "number", "min": 4}
+        ]
+    },
+    97: {
+        "description": r"Find the least positive integer \(n\) for which \(n^4+(n+1)^4\) is composite.",
+        "inputs": [
+            {"id": "inputNumber97", "label": "Podaj dolną granicę", "type": "number", "min": 10},
+            {"id": "inputNumberSol97", "label": "Podaj liczbę rozwiązań", "type": "number", "min": 1}
+        ]
+    },
+    98: {
+        "description": r"Show that there are infinitely many composite numbers of the form \(10^n+3\) \((n=1,2,3,...)\).",
+        "inputs": [
+            {"id": "inputNumber98", "label": "Podaj n", "type": "number", "min": 1}
+        ]
+    },
+    99: {
+        "description": r"Show that for integers \(n>1\) the number \(1/5(2^{4n+2}+1)\) is composite.",
+        "inputs": [
+            {"id": "inputNumber99", "label": "Podaj n", "type": "number", "min": 2}
+        ]
+    },
+    105: {
+        "description": r"Find the least prime \(p\) for which each of the numbers \(p-1\) and \(p+1\) has at least three different prime divisors.",
+        "inputs": [
+            {"id": "inputNumber105", "label": "Podaj dolną granicę", "type": "number", "min": 10},
+            {"id": "inputNumberSol105", "label": "Podaj liczbę rozwiązań", "type": "number", "min": 1}
+        ]
+    },
+    111: {
+        "description": r"Find all primes \(p\) such that the sum of all positive integer divisors of \(p^4\) is equal to a square of an integer.",
+        "inputs": [
+            {"id": "inputNumber111", "label": "Podaj p", "type": "number", "min": 1}
+        ]
+    },
+    116: {
+        "description": r"Prove that there exist infinitely many odd numbers \(k>0\) such that all numbers \(2^{2^n}+k\) \((n=1,2,...)\) are composite.",
+        "inputs": [
+            {"id": "inputNumber116", "label": "Podaj k", "type": "number", "min": 10}
+        ]
+    },
+    120: {
+        "description": r"Prove that if \(k\) is a power of \(2\) with positive integer exponent, then for sufficiently large \(n\) all numbers \(k \cdot 2^{2^n}+1\) are composite.",
+        "inputs": [
+            {"id": "inputNumberM120", "label": "Podaj k", "type": "number", "min": 1},
+            {"id": "inputNumberLimit120", "label": "Podaj limit n", "type": "number", "min": 1},
+            {"id": "inputNumberTime120", "label": "Podaj czas obliczeń", "type": "number", "min": 5}
+        ]
+    },
+    121: {
+        "description": r"For every positive integer \(k \leq 10\), find the least positive integer \(n\) for which \(k \cdot 2^{2^n} + 1\) is composite.",
+        "inputs": [
+            {"id": "inputNumber121", "label": "Podaj k", "type": "number", "min": 1},
+            {"id": "inputNumberLimit121", "label": "Podaj limit n", "type": "number", "min": 1}
+        ]
+    },
+    122: {
+        "description": r"Find all positive integers \(k \leq 10\) such that every number \(k \cdot 2^{2^n} + 1\) \((n=1,2,...)\) is composite.",
+        "inputs": [
+            {"id": "inputNumber122", "label": "Podaj k", "type": "number", "min": 1}
+        ]
+    },
+    123: {
+        "description": r"Prove that for integer \(n>1\) the numbers \(1/3(2^{2^{n+1}}+2^{2^n}+1)\) are all composite.",
+        "inputs": [
+            {"id": "inputNumber123", "label": "Podaj n", "type": "number", "min": 1},
+            {"id": "inputNumberTime123", "label": "Podaj czas obliczeń", "type": "number", "min": 5}
+        ]
+    },
+    124: {
+        "description": r"Prove that there exist infinitely many composite numbers of the form \(2^{2n}+1)^2+2^2\).",
+        "inputs": [
+            {"id": "inputNumber124", "label": "Podaj n", "type": "number", "min": 1},
+            {"id": "inputNumberTime124", "label": "Podaj czas obliczeń", "type": "number", "min": 5}
+        ]
+    },
+    125: {
+        "description": r"Prove that for every \(a\) with \(1 < a \leq 100\) there exists at least positive integer \(n \leq 6\) such that \(a^{2^n}+1\) is composite.",
+        "inputs": [
+            {"id": "inputNumber125", "label": "Podaj a", "type": "number", "min": 1, "max": 100}
+        ]
+    },
+    131: {
+        "description": r"Find all integers \(k \geq 0\) for which the sequence \(k+1,k+2,...,k+10\) contains maximal numbers of primes.",
+        "inputs": [
+            {"id": "inputNumber131", "label": "Podaj k", "type": "number", "min": 1}
+        ]
+    },
+    135: {
+        "description": r"Find all numbers \(p\) such that all six numbers \(p,p+2,p+6,p+8,p+12\) and \(p+14\) are primes.",
+        "inputs": [
+            {"id": "inputNumber135", "label": "Podaj p", "type": "number", "min": 2}
+        ]
+    }
+};
 
 app = Flask(__name__)
 
+@app.route('/problem/<int:prob_id>')
+def problem_page(prob_id):
+    problem_file_path = os.path.join('problems', f'prob{prob_id}.py')
+
+    if os.path.exists(problem_file_path):
+        with open(problem_file_path, 'r') as file:
+            code_content = file.read()
+    else:
+        code_content = "Brak dostępnego kodu dla tego problemu."
+
+    problem = problem_data.get(prob_id)
+    if not problem:
+        return "Nieznany problem", 404
+
+    return render_template("problem.html", prob_id=prob_id, problem=problem, code_content=code_content)
+
+
+
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.html', problems=problem_ids)
 
 
 @app.route('/calculate1', methods=['POST'])
@@ -228,10 +1082,11 @@ def calculate12():
         max_x = next((int(value) for key, value in data.items() if key.startswith("inputNumberMax")), None)
         iterations = next((int(value) for key, value in data.items() if key.startswith("inputNumberIt")), None)
 
-        return jsonify(prob12(n, max_x,iterations))
+        return jsonify(prob12(n, max_x, iterations))
 
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
+
 
 @app.route('/calculate13', methods=['POST'])
 def calculate13():
@@ -248,6 +1103,7 @@ def calculate13():
 
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
+
 
 @app.route('/calculate14', methods=['POST'])
 def calculate14():
@@ -300,6 +1156,7 @@ def calculate17():
         return jsonify(prob17(a, r))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
+
 
 @app.route('/calculate18', methods=['POST'])
 def calculate18():
@@ -373,9 +1230,9 @@ def calculate23():
         return jsonify({"error": "No data received"}), 400
 
     try:
-        p_range = next((int(value) for key, value in data.items() if key.startswith("inputNumberPRange")), None)
+        p = next((int(value) for key, value in data.items() if key.startswith("inputNumberPRange")), None)
         n_range = next((int(value) for key, value in data.items() if key.startswith("inputNumberNRange")), None)
-        return jsonify(prob23(p_range,n_range))
+        return jsonify(prob23(p, n_range))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
@@ -445,10 +1302,9 @@ def calculate31():
         b = next((int(value) for key, value in data.items() if key.startswith("inputNumberB")), None)
         c = next((int(value) for key, value in data.items() if key.startswith("inputNumberC")), None)
 
-        return jsonify(prob31(a,b,c))
+        return jsonify(prob31(a, b, c))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
-
 
 
 @app.route('/calculate32', methods=['POST'])
@@ -466,7 +1322,18 @@ def calculate32():
 
 @app.route('/calculate34', methods=['POST'])
 def calculate34():
-    return jsonify(prob34())
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        a = next((int(value) for key, value in data.items() if key.startswith("inputNumberA")), None)
+        b = next((int(value) for key, value in data.items() if key.startswith("inputNumberB")), None)
+
+        return jsonify(prob34(a, b))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
 
 
 @app.route('/calculate35', methods=['POST'])
@@ -546,7 +1413,7 @@ def calculate39():
         c = next((int(value) for key, value in data.items() if key.startswith("inputNumberC")), None)
         n = next((int(value) for key, value in data.items() if key.startswith("inputNumberN")), None)
 
-        return jsonify(prob39(a,b,c,n))
+        return jsonify(prob39(a, b, c, n))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
@@ -602,6 +1469,7 @@ def calculate43():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate44', methods=['POST'])
 def calculate44():
     data = request.get_json()
@@ -613,7 +1481,7 @@ def calculate44():
         b = next((int(value) for key, value in data.items() if key.startswith("inputNumberB")), None)
         limit = next((int(value) for key, value in data.items() if key.startswith("inputNumberLimit")), None)
 
-        return jsonify(prob44(a,b,limit))
+        return jsonify(prob44(a, b, limit))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
@@ -630,7 +1498,7 @@ def calculate45():
         c = next((int(value) for key, value in data.items() if key.startswith("inputNumberC")), None)
         n = next((int(value) for key, value in data.items() if key.startswith("inputNumberN")), None)
 
-        return jsonify(prob45(a,b,c,n))
+        return jsonify(prob45(a, b, c, n))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
@@ -648,7 +1516,7 @@ def calculate46():
         d = next((int(value) for key, value in data.items() if key.startswith("inputNumberD")), None)
         n = next((int(value) for key, value in data.items() if key.startswith("inputNumberN")), None)
 
-        return jsonify(prob46(a,b,c,d,n))
+        return jsonify(prob46(a, b, c, d, n))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
@@ -688,7 +1556,7 @@ def calculate49():
     try:
         m = next((int(value) for key, value in data.items() if key.startswith("inputNumberM")), None)
         e = next((int(value) for key, value in data.items() if key.startswith("inputNumberE")), None)
-        return jsonify(prob49(m,e))
+        return jsonify(prob49(m, e))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
@@ -836,7 +1704,7 @@ def calculate62():
         b = next((int(value) for key, value in data.items() if key.startswith("inputNumberB")), None)
         m = next((int(value) for key, value in data.items() if key.startswith("inputNumberM")), None)
         n = next((int(value) for key, value in data.items() if key.startswith("inputNumberN")), None)
-        return jsonify(prob62(a,b,m,n))
+        return jsonify(prob62(a, b, m, n))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
@@ -853,6 +1721,7 @@ def calculate66():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate67', methods=['POST'])
 def calculate67():
     data = request.get_json()
@@ -863,7 +1732,7 @@ def calculate67():
         a = next((int(value) for key, value in data.items() if key.startswith("inputNumberA")), None)
         b = next((int(value) for key, value in data.items() if key.startswith("inputNumberB")), None)
         n = next((int(value) for key, value in data.items() if key.startswith("inputNumberN")), None)
-        return jsonify(prob67(a,b,n))
+        return jsonify(prob67(a, b, n))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
@@ -878,9 +1747,10 @@ def calculate68():
         a = next((int(value) for key, value in data.items() if key.startswith("inputNumberA")), None)
         b = next((int(value) for key, value in data.items() if key.startswith("inputNumberB")), None)
         n = next((int(value) for key, value in data.items() if key.startswith("inputNumberN")), None)
-        return jsonify(prob68(a,b,n))
+        return jsonify(prob68(a, b, n))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
+
 
 @app.route('/calculate74', methods=['POST'])
 def calculate74():
@@ -894,6 +1764,7 @@ def calculate74():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate75', methods=['POST'])
 def calculate75():
     data = request.get_json()
@@ -906,6 +1777,7 @@ def calculate75():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate76', methods=['POST'])
 def calculate76():
     data = request.get_json()
@@ -917,6 +1789,7 @@ def calculate76():
         return jsonify(prob76(limit))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
+
 
 @app.route('/calculate78', methods=['POST'])
 def calculate78():
@@ -931,6 +1804,7 @@ def calculate78():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate80', methods=['POST'])
 def calculate80():
     data = request.get_json()
@@ -942,6 +1816,7 @@ def calculate80():
         return jsonify(prob80(limit))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
+
 
 @app.route('/calculate82', methods=['POST'])
 def calculate82():
@@ -969,6 +1844,7 @@ def calculate83():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate86', methods=['POST'])
 def calculate86():
     data = request.get_json()
@@ -981,6 +1857,7 @@ def calculate86():
         return jsonify(prob86(limit, num_of_sol))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
+
 
 @app.route('/calculate87', methods=['POST'])
 def calculate87():
@@ -995,6 +1872,7 @@ def calculate87():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate88', methods=['POST'])
 def calculate88():
     data = request.get_json()
@@ -1006,6 +1884,7 @@ def calculate88():
         return jsonify(prob88(i))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
+
 
 @app.route('/calculate89', methods=['POST'])
 def calculate89():
@@ -1020,6 +1899,7 @@ def calculate89():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate91', methods=['POST'])
 def calculate91():
     data = request.get_json()
@@ -1032,6 +1912,7 @@ def calculate91():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate92', methods=['POST'])
 def calculate92():
     data = request.get_json()
@@ -1043,6 +1924,7 @@ def calculate92():
         return jsonify(prob92(k))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
+
 
 @app.route('/calculate97', methods=['POST'])
 def calculate97():
@@ -1057,6 +1939,7 @@ def calculate97():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate98', methods=['POST'])
 def calculate98():
     data = request.get_json()
@@ -1069,6 +1952,7 @@ def calculate98():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate99', methods=['POST'])
 def calculate99():
     data = request.get_json()
@@ -1080,6 +1964,7 @@ def calculate99():
         return jsonify(prob99(limit))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
+
 
 @app.route('/calculate105', methods=['POST'])
 def calculate105():
@@ -1094,6 +1979,7 @@ def calculate105():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate111', methods=['POST'])
 def calculate111():
     data = request.get_json()
@@ -1106,6 +1992,7 @@ def calculate111():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate116', methods=['POST'])
 def calculate116():
     data = request.get_json()
@@ -1117,6 +2004,7 @@ def calculate116():
         return jsonify(prob116(limit))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
+
 
 @app.route('/calculate120', methods=['POST'])
 def calculate120():
@@ -1133,6 +2021,7 @@ def calculate120():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate121', methods=['POST'])
 def calculate121():
     data = request.get_json()
@@ -1146,6 +2035,7 @@ def calculate121():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate122', methods=['POST'])
 def calculate122():
     data = request.get_json()
@@ -1157,6 +2047,7 @@ def calculate122():
         return jsonify(prob122(limit))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
+
 
 @app.route('/calculate123', methods=['POST'])
 def calculate123():
@@ -1171,6 +2062,7 @@ def calculate123():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate124', methods=['POST'])
 def calculate124():
     data = request.get_json()
@@ -1184,6 +2076,7 @@ def calculate124():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate125', methods=['POST'])
 def calculate125():
     data = request.get_json()
@@ -1196,6 +2089,7 @@ def calculate125():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
 @app.route('/calculate131', methods=['POST'])
 def calculate131():
     data = request.get_json()
@@ -1207,6 +2101,7 @@ def calculate131():
         return jsonify(prob131(limit))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
+
 
 @app.route('/calculate135', methods=['POST'])
 def calculate135():

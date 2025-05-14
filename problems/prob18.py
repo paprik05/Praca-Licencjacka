@@ -3,8 +3,10 @@ def prob18(r):
         return {"error": "r musi być liczbą całkowitą dodatnią"}
 
     results = []
-    for n in range(1, r + 1):
+    n = 1
+    while len(results) < r:
         if (2**n + 2) % n == 0:
-            results.append(n)
+            results.append(f"{n}: n|2^n+2 = {n}|{2**n+2}")
+        n += 1
 
     return {"result": results}

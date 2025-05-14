@@ -5,6 +5,6 @@ def prob22(r):
     results = []
     for n in range(1, r + 1):
         if (n*2**n+1) % 3 == 0:
-            results.append(n)
+            results.append(f"{n}: 3|n*2**n+1 = 3|{n*2**n+1}")
 
     return {"result": results}

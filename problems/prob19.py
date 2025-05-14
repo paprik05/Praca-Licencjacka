@@ -5,6 +5,6 @@ def prob19(r):
     results = []
     for a in range(1, r + 1):
         if (a**10 + 1) % 10 == 0:
-            results.append(a)
+            results.append(f"{a}: 10|a^10+1 = 10|{a**10+1}")
 
     return {"result": results}
