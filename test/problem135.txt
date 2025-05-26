@@ -1,0 +1,44 @@
+theorem :: Problem 135
+  for p being Prime st
+    p+2 is Prime & p+6 is Prime & p+8 is Prime & p+12 is Prime & p+14 is Prime
+      holds
+   p = 5
+  proof
+    let p be Prime;
+    assume
+A1: p+2 is Prime & p+6 is Prime & p+8 is Prime & p+12 is Prime & p+14 is Prime;
+    assume
+FF: p <> 5;
+    consider k being Nat such that
+ZZ: p = 5*k or p = 5*k+1 or p = 5*k+2 or p = 5*k+3 or p = 5*k+4
+      by NUMBER02:25;
+    per cases by ZZ;
+    suppose
+S1:   p = 5 * k;
+S2:   k <> 0 by S1;
+      k <> 1 by FF,S1; then
+      reconsider k as non trivial non zero Nat by S2,NAT_2:def 1;
+      5 * k is composite by XPRIMES1:5;
+      hence thesis by S1;
+    end;
+    suppose
+      p = 5 * k + 1; then
+      p + 14 = 5 * (k + 3);
+      hence thesis by A1,XPRIMES1:5;
+    end;
+    suppose
+      p = 5 * k + 2; then
+      p + 8 = 5 * (k + 2);
+      hence thesis by A1,XPRIMES1:5;
+    end;
+    suppose
+      p = 5 * k + 3; then
+      p + 12 = 5 * (k + 3);
+      hence thesis by A1,XPRIMES1:5;
+    end;
+    suppose
+S1:   p = 5 * k + 4;
+      p + 6 = 5 * (k + 2) by S1;
+      hence thesis by A1,XPRIMES1:5;
+    end;
+  end;

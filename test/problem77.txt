@@ -1,0 +1,19 @@
+theorem
+  for p being Prime st p = 4*k+1
+   ex a,b being positive Nat st p^2 = a^2+b^2
+  proof
+    let p be Prime;
+    assume p = 4*k+1;
+    then consider a,b being positive Nat such that
+A1: a > b and
+A2: p = a^2+b^2 by Th60;
+A3: a-b > b-b by A1,XREAL_1:9;
+    then reconsider c = a-b as Nat by INT_1:3;
+    c > 0 by A3;
+    then reconsider c as positive Nat;
+    a^2-b^2 = c*(a+b);
+    then reconsider x = a^2-b^2 as positive Nat;
+    reconsider y = 2*a*b as positive Nat;
+    take x,y;
+    thus thesis by A2;
+  end;

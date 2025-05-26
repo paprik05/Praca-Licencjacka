@@ -1,0 +1,20 @@
+theorem
+  for n being positive Integer holds n+1 divides n^2 + 1 iff n = 1
+proof
+    let n be positive Integer;
+    thus n+1 divides n^2 + 1 implies n = 1
+    proof
+      assume n+1 divides n^2 + 1;
+      then n: n+1 divides n*(n+1)-(n-1);
+      n+1 divides n*(n+1) by INT_1:def 3;
+      then n1: n+1 divides n-1 by n,INT_5:2;
+      assume o: n<>1;
+      n >= 0+1 by INT_1:7;
+      then n > 1 by o,XXREAL_0:1;
+      then n-1 > 1-1 by XREAL_1:9;
+      then n+1 <= n-1 by n1,INT_2:27;
+      then n+1-n <= n-1-n by XREAL_1:9;
+      hence contradiction;
+    end;
+    thus thesis;
+end;

@@ -1,0 +1,28 @@
+theorem
+  for n being non zero Nat holds
+  n > 1 implies 1/3 * (2|^(2|^(n+1)) + 2|^(2|^n) + 1) is composite
+  proof
+    let n be non zero Nat;
+    assume
+A1: n > 1;
+    set m = 2|^(2|^(n+1)) + 2|^(2|^n) + 1;
+    1/3*m >= 1/3*7 by Th39,XREAL_1:64;
+    hence 1/3*m >= 2 by XXREAL_0:2;
+A2: 7 divides m by Th45;
+    3 divides m by Th44;
+    then 7*3 divides m by A2,PEPIN:4,INT_2:30,XPRIMES1:3,7;
+    then consider k such that
+A3: m = 7*3*k;
+    now
+      assume k < 2;
+      then per cases by NAT_1:23;
+      suppose k = 0;
+        hence contradiction by A3;
+      end;
+      suppose k = 1;
+        hence contradiction by A1,A3,Th41;
+      end;
+    end;
+    then 7*k is composite by NUMBER10:3;
+    hence thesis by A3;
+  end;

@@ -1,0 +1,43 @@
+theorem
+  ex x,y being Nat st x > n & not x divides y & x|^x divides y|^y
+  proof
+    consider k such that
+A1: 1 < k and
+A2: n < 2|^k by Th35;
+    reconsider k as non zero Nat by A1;
+A4: 0+1 <= 2|^(k-1) by NAT_1:13;
+    1*2|^(k-1) <= (2|^(k-1))*k by A1,XREAL_1:68;
+    then consider p being prime Nat such that
+A5: (2|^(k-1))*k < p and
+    p <= 2*((2|^(k-1))*k) by A4,XXREAL_0:2,NAT_4:56;
+    take x = 2|^k;
+    take y = 2*p;
+    thus n < x by A2;
+    hereby
+      assume
+A6:   x divides y;
+      2|^(k-1+1) = 2*2|^(k-1) by NEWTON:6;
+      then 2|^(k-1) divides p by A6,INT_4:7;
+      then per cases by INT_2:def 4;
+      suppose
+A7:     2|^(k-1) = 1;
+        1 = 2|^0 by NEWTON:4;
+        then k-1 = 0 by A7;
+        hence contradiction by A1;
+      end;
+      suppose
+A8:     2|^(k-1) = p;
+        then k-1 = 1 by Th34;
+        hence contradiction by A5,A8;
+      end;
+    end;
+A9: 2*(2|^(k-1))*k = (2|^(k-1+1))*k by NEWTON:6;
+A10: 2*((2|^(k-1))*k) = 2*(2|^(k-1))*k;
+    (2|^k)*k < 2*p by A5,A9,A10,XREAL_1:68;
+    then
+A11: 2|^((2|^k)*k) divides 2|^(2*p) by NEWTON03:16;
+    2 divides 2*p;
+    then 2|^(2*p) divides (2*p)|^(2*p) by WSIERP_1:14;
+    then 2|^((2|^k)*k) divides (2*p)|^(2*p) by A11,INT_2:9;
+    hence x|^x divides y|^y by NEWTON:9;
+  end;

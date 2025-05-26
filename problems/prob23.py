@@ -2,9 +2,9 @@ import sympy
 
 def prob23(p, n_range):
     if p <= 0 or n_range <= 0:
-        return {"error": "argumenty muszą być liczbami całkowitymi dodatnimi"}
+        return {"error": "arguments must be a positive integers"}
     if not sympy.isprime(p):
-        return {"error": "p musi być liczbą pierwszą"}
+        return {"error": "p must be a prime number"}
 
     results = []
     n = 1

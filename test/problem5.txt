@@ -1,0 +1,62 @@
+theorem
+  for k being Nat holds 19 divides 2|^(2|^(6*k+2))+3
+  proof
+    let k be Nat;
+    2|^1 = 2 by NEWTON:5;
+    then d2: 2|^(1+1) = 2*2 by NEWTON:6;
+    then 2|^(2+1) = 2*4 by NEWTON:6;
+    then d4: 2|^(3+1) = 2*8 by NEWTON:6;
+    then 2|^(4+1) = 2*16 by NEWTON:6;
+    then d6: 2|^(5+1) = 2*32 by NEWTON:6;
+    64-1=9*7;
+    then 9 divides 2|^6 - 1 by d6,INT_1:def 3;
+    then 2|^6,1 are_congruent_mod 9 by INT_1:def 4;
+    then (2|^6)|^k,1|^k are_congruent_mod 9 by GR_CY_3:34;
+    then 2|^(6*k),1|^k are_congruent_mod 9 by NEWTON:9;
+    then a: 2|^(6*k),1 are_congruent_mod 9 by NEWTON:10;
+    2|^2,2|^2 are_congruent_mod 9 by INT_1:11;
+    then (2|^(6*k))*(2|^2),1*(2|^2) are_congruent_mod 9 by a,INT_1:18;
+    then c9: 2|^(6*k+2),2|^2 are_congruent_mod 9 by NEWTON:8;
+    2|^(6*k+1+1) = 2*2|^(6*k+1) & 2|^(1+1) = 2*2|^1 by NEWTON:6;
+    then 2|^(6*k+2),0 are_congruent_mod 2 & 2|^2,0 are_congruent_mod 2
+    by INT_1:60;
+    then 2|^(6*k+2),0 are_congruent_mod 2 & 0,2|^2 are_congruent_mod 2
+    by INT_1:14; then
+    c2: 2|^(6*k+2),2|^2 are_congruent_mod 2 by INT_1:15;
+    3 is odd by POLYFORM:6;
+    then 3*3 is odd;
+    then 2|^1,9 are_coprime by NAT_5:3;
+    then 2,9 are_coprime by NEWTON:5;
+    then
+    2|^(6*k+2),2|^2 are_congruent_mod 2*9 by c2,c9,INT_6:21;
+    then consider t being Integer such that
+    t: 2|^(6*k+2) - 2|^2 = 18*t by INT_1:def 5;
+    t1: 2|^(6*k+2) = 18*t + 2|^2 by t .= 18*t + 4 by d2;
+    6*k+2 >= 0+2 by XREAL_1:7;
+    then 2|^(6*k+2) >= 2|^2 by NAT_6:1;
+    then 18*t >= 0 & 18>0 by t,XREAL_1:48;
+    then t >= 0 by XREAL_1:132;
+    then t in NAT by INT_1:3;
+    then reconsider t as Nat;
+    dz: 19 is prime by NAT_4:29;
+    2 is prime by INT_2:28; then
+    2,19 are_coprime by dz,INT_2:30;
+    then (2 |^ Euler 19) mod 19 = 1 & 18=19-1 by EULER_2:18;
+    :: by Fermat's little theorem
+    then (2 |^ 18) mod 19 = 1 by EULER_1:20,dz;
+    then 2|^18,1 are_congruent_mod 19 by NAT_6:10;
+    then (2|^18)|^t,1|^t are_congruent_mod 19 by GR_CY_3:34;
+    then 2|^(18*t),1|^t are_congruent_mod 19 by NEWTON:9;
+    then 2|^(18*t),1 are_congruent_mod 19 & 2|^4,2|^4 are_congruent_mod 19
+    by NEWTON:10,INT_1:11;
+    then 2|^(18*t)*(2|^4),1*(2|^4) are_congruent_mod 19 by INT_1:18;
+    then 2|^(18*t+4),2|^4 are_congruent_mod 19 by NEWTON:8;
+    then 2|^(2|^(6*k+2)),2|^4 are_congruent_mod 19 & 3,3 are_congruent_mod 19
+    by t1,INT_1:11;
+    then 2|^(2|^(6*k+2))+3,2|^4+3 are_congruent_mod 19 by INT_1:16;
+    then 2|^(2|^(6*k+2))+3,19 are_congruent_mod 19 & 19,0 are_congruent_mod 19
+    by d4,INT_1:12;
+    then 2|^(2|^(6*k+2))+3,0 are_congruent_mod 19 by INT_1:15;
+    then 19 divides 2|^(2|^(6*k+2))+3-0 by INT_1:def 4;
+    hence thesis;
+  end;

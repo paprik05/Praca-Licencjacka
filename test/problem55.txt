@@ -1,0 +1,30 @@
+theorem
+  for a,b,c being Nat st
+    a ^2 + b ^2 = c ^2 &
+    a,b,c form_an_AP holds
+   ex i being Integer st
+    a = 3 * i & b = 4 * i & c = 5 * i
+  proof
+    let a,b,c be Nat;
+    assume
+A1: a ^2 + b ^2 = c ^2 &
+    a,b,c form_an_AP;
+    set r = b - a;
+    per cases;
+    suppose
+A2:   b <> 0;
+      (b - r) ^2 + b ^2 = (b + r) ^2 by A1; then
+      b = 4 * r * b / b by A2,XCMPLX_1:89; then
+A4:   b = 4 * r by A2,XCMPLX_1:89; then
+B1:   a = 3 * r;
+B2:   c = 5 * r by A4,A1;
+      reconsider rr = r as Integer;
+      take rr;
+      thus thesis by B1,B2;
+    end;
+    suppose
+C1:   b = 0;
+      take i = 0;
+      thus thesis by C1,A1;
+    end;
+  end;

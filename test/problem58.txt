@@ -1,0 +1,27 @@
+theorem :: Problem 58
+  for s being Nat
+   ex f being fAP-like increasing positive-yielding FinSequence of NAT
+  st len f = s & for i being Nat st 1 <= i <= len f holds f.i is perfect_power
+  proof
+    let s be Nat;
+    per cases;
+    suppose
+A1:   s = 0;
+      take <*>NAT;
+      thus thesis by A1;
+    end;
+    suppose s <> 0;
+      then reconsider s1 = s as non zero Nat;
+      take f = Problem58Solution(s1);
+      thus
+A2:   len f = s by CARD_1:def 7;
+      let k be Nat such that
+A3:   1 <= k and
+A4:   k <= len f;
+      reconsider k as non zero Nat by A3;
+      take sequenceQk(s).k;
+      take primenumber(k-1);
+      thus primenumber(k-1) > 1 by INT_2:def 4;
+      thus thesis by A2,A4,Th50;
+    end;
+  end;

@@ -12,7 +12,7 @@ def prob105(limit=1000,num_of_results=1):
         dif = div1.symmetric_difference(div2)
 
         if len(div1) >= 3 and len(div2) >= 3 and len(dif) >= 3:
-            results.append(p)
+            results.append(f"p = {p}, prime divisors of {p-1} (p-1) {div1} and prime divisord of {p+1} (p+1) {div2} ")
             counter += 1
 
         if counter >= num_of_results:

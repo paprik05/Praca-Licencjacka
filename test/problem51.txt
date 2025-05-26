@@ -1,0 +1,34 @@
+theorem T51: :: Problem 51
+  for n being non zero Nat holds
+    n gcd (Fermat n) = 1
+  proof
+    let n be non zero Nat;
+Z1: n gcd (Fermat n) >= 1 by NAT_1:14;
+    assume n gcd (Fermat n) <> 1; then
+    n gcd (Fermat n) > 1 by Z1,XXREAL_0:1; then
+    n gcd (Fermat n) >= 1 + 1 by NAT_1:13; then
+    consider p being Element of NAT such that
+J1: p is prime & p divides (n gcd (Fermat n)) by INT_2:31;
+    reconsider p as Prime by J1;
+a1: n gcd (Fermat n) divides n & n gcd (Fermat n) divides Fermat n
+      by NAT_D:def 5; then
+B1: p <= n by NAT_D:7,J1,NAT_D:4;
+    p > 1 by INT_2:def 4; then
+    p >= 1 + 1 by NAT_1:13; then
+    per cases by XXREAL_0:1;
+    suppose p = 2;
+      hence thesis by J1;
+    end;
+    suppose
+      p > 2; then
+      consider k being Element of NAT such that
+A2:   p = k * (2 |^ (n + 1)) + 1 by a1,PEPIN:56,J1,NAT_D:4;
+      k <> 0 by A2,INT_2:def 4; then
+      k * (2 |^ (n + 1)) >= 1 * (2 |^ (n + 1)) by XREAL_1:64,NAT_1:14; then
+G2:   k * (2 |^ (n + 1)) + 1 >= 2 |^ (n + 1) + 1 by XREAL_1:7;
+      2 |^ (n + 1) >= n + 1 by NEWTON:86; then
+      2 |^ (n + 1) > n by NAT_1:13; then
+      2 |^ (n + 1) + 1 > n by NAT_1:13;
+      hence thesis by B1,A2,G2,XXREAL_0:2;
+    end;
+  end;

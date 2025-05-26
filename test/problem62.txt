@@ -1,0 +1,100 @@
+theorem
+  for a,m being non zero Nat holds
+  a,b are_coprime implies rng ArProg(b,a) /\ Coprimes(m) is infinite
+  proof
+    let a,m be non zero Nat;
+    assume
+A1: a,b are_coprime;
+    set P1 = {p where p is Prime: p divides m & p divides a};
+    set Q1 = {q where q is Prime: q divides m & q divides b};
+    set R1 =
+    {r where r is Prime: r divides m & not r divides a & not r divides b};
+A2: P1 is with_non-empty_elements by Lm15;
+A3: P1 is finite by Lm17;
+A4: P1 is natural-membered by Lm19;
+A5: Q1 is with_non-empty_elements by Lm15;
+A6: Q1 is finite by Lm17;
+A7: Q1 is natural-membered by Lm19;
+A8: R1 is with_non-empty_elements by Lm16;
+A9: R1 is finite by Lm18;
+A10: R1 is natural-membered by Lm20;
+    set P = Product Sgm P1;
+    set Q = Product Sgm Q1;
+    set R = Product Sgm R1;
+A11: a*P*R+b,m are_coprime
+    proof
+      assume not thesis;
+      then consider p being Prime such that
+A12:  p divides a*P*R+b and
+A13:  p divides m by PYTHTRIP:def 2;
+A14:  not p divides P
+      proof
+        assume
+A15:    p divides P;
+        then p divides a*R*P by INT_2:2;
+        then p divides a*P*R+b-a*P*R by A12,INT_5:1;
+        then p in Q1 by A13;
+        then p divides Q by A5,A6,A7,Th16;
+        hence thesis by A1,A15,Th13,PYTHTRIP:def 2;
+      end;
+A16:  not p divides Q
+      proof
+        assume
+A17:    p divides Q;
+        Q1 c= SetPrimes by Lm23;
+        then p in Q1 by A5,A6,A17,Th12;
+        then
+A18:    ex q being Prime st p = q & q divides m & q divides b;
+        then p divides a*P*R+b-b by A12,INT_5:1;
+        then p divides a*P or p divides R by INT_5:7;
+        then p divides a or p divides P or p divides R by INT_5:7;
+        hence thesis by A1,A17,A18,Th13,Th15,PYTHTRIP:def 2;
+      end;
+A19:  not p divides R
+      proof
+        assume
+A20:    p divides R;
+        then p divides a*P*R by INT_2:2;
+        then p divides a*P*R+b-a*P*R by A12,INT_5:1;
+        then p in Q1 by A13;
+        then p divides Q by A5,A6,A7,Th16;
+        hence thesis by A1,A20,Th15,PYTHTRIP:def 2;
+      end;
+      (p divides a or not p divides a) & (p divides b or not p divides b);
+      then p in P1 or p in Q1 or p in R1 by A13;
+      hence thesis by A2,A3,A4,A5,A6,A7,A8,A9,A10,A14,A16,A19,Th16;
+    end;
+    set g = ArProg(b,a);
+    set X = rng g /\ Coprimes(m);
+A21: dom g = NAT by FUNCT_2:def 1;
+A22: g.(P*R) in rng g by A21,FUNCT_1:def 3;
+    g.(P*R) = a*(P*R)+b by NUMBER06:7;
+    then g.(P*R) in Coprimes(m) by A11;
+    then
+A23: X is non empty by A22,XBOOLE_0:def 4;
+    for x being Nat st x in X ex y being Nat st y > x & y in X
+    proof
+      let x be Nat;
+      assume
+A24:  x in X;
+      then x in rng g by XBOOLE_0:def 4;
+      then consider w being object such that
+A25:  w in dom g and
+A26:  g.w = x by FUNCT_1:def 3;
+      reconsider w as Element of NAT by A25,FUNCT_2:def 1;
+      take b+(m+w)*a;
+A27:  g.w = b + w*a by NUMBER06:7;
+      m+w > 0+w by XREAL_1:8;
+      then (m+w)*a > w*a by XREAL_1:68;
+      hence b+(m+w)*a > x by A26,A27,XREAL_1:8;
+      x in Coprimes(m) by A24,XBOOLE_0:def 4;
+      then ex j being Integer st x = j & j,m are_coprime;
+      then a*m+(b+w*a),m are_coprime by A26,A27,NUMBER04:64;
+      then
+A28:  b+(m+w)*a in Coprimes(m);
+      b+(m+w)*a = g.(m+w) by NUMBER06:7;
+      then b+(m+w)*a in rng g by A21,FUNCT_1:def 3;
+      hence thesis by A28,XBOOLE_0:def 4;
+    end;
+    hence thesis by A23,NUMBER04:1;
+  end;

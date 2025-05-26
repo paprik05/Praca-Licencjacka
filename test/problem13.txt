@@ -1,0 +1,48 @@
+theorem
+  for n being Nat st n in 4k+3_Primes
+  for x being even Nat
+  for i being Nat holds not n divides x|^|^(i+2) + 1
+  proof
+    let n be Nat;
+    assume A1: n in 4k+3_Primes;
+    then A2: n >= 3 by Th4;
+    let x be even Nat;
+    let i be Nat;
+    reconsider i2=i+2 as Nat;
+    consider m being Element of NAT such that
+    A3: i2 = 2*m or i2 = 2*m+1 by SCHEME1:1;
+    per cases;
+    suppose A4: x is zero;
+      per cases by A3;
+      suppose i+2=2*m;
+        then A5: x|^|^(i+2) = 1 by A4,ORDINAL5:20;
+        assume n divides x|^|^(i+2) + 1;
+        then n <= 2 by INT_2:27,A5;
+        hence contradiction by A2,XXREAL_0:2;
+      end;
+      suppose i+2=2*m+1;
+        then A6: x|^|^(i+2) = 0 by A4,ORDINAL5:20;
+        assume n divides x|^|^(i+2) + 1;
+        then n <= 1 by INT_2:27,A6;
+        hence contradiction by A2,XXREAL_0:2;
+      end;
+    end;
+    suppose x is non zero;
+      then consider m being Nat such that
+      A7: x|^|^(i+1) = 2*m by ABIAN:def 2;
+      A8: x|^|^((i+1)+1) = x|^|^(Segm((i+1)+1))
+      .= x|^|^(succ Segm(i+1)) by NAT_1:38
+      .= exp(x,x|^|^(i+1)) by ORDINAL5:14
+      .= x|^(m*2) by A7
+      .= (x|^m)|^2 by NEWTON:9;
+      assume n divides x|^|^(i+2) + 1;
+      then (x|^m)|^2 -  -1 mod n = 0 by A8,PEPIN:6,A2;
+      then A9: (x|^m)^2 -  -1 mod n = 0 by WSIERP_1:1;
+      consider k being Nat such that
+      A10: n=4*k+3 & n is prime by A1,Def1;
+      A11: n mod 4 = 3 mod 4 by A10,NAT_D:21
+      .= 3 by NAT_D:24;
+      n > 2 by A2,XXREAL_0:2;
+      hence contradiction by A11,A9,INT_5:def 2,A10,INT_5:38;
+    end;
+  end;

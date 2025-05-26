@@ -1,0 +1,477 @@
+theorem
+  1 < a <= 100 implies
+  ex n being positive Nat st n <= 6 & a|^(2|^n) + 1 is composite
+  proof
+    assume that
+A1: 1 < a and
+A2: a <= 100;
+    deffunc G(Nat) = a|^(2|^$1);
+    deffunc F(Nat) = G($1) + 1;
+    per cases by A1,A2,Lm28;
+    suppose
+A3:   a is odd;
+      take n = 1;
+      thus n <= 6;
+      0+1 <= G(n) by A1,NAT_1:13;
+      then 1+1 <= F(n) by XREAL_1:6;
+      hence 2 <= F(n);
+A4:   F(n) is even by A3;
+      a|^2 = a*a by WSIERP_1:1;
+      then F(n) <> 2 by A1,NAT_1:15;
+      hence F(n) is non prime by A4;
+    end;
+    suppose
+A5:   a = 2;
+      take n = 5;
+      thus n <= 6;
+      thus 2 <= F(n) by A5,Lm51,Lm50;
+      thus F(n) is non prime by A5,NAT_6:44;
+    end;
+    suppose
+A6:   a = 4;
+      take n = 4;
+      thus n <= 6;
+      thus 2 <= F(n) by A6,Lm46,Lm51,Lm50;
+      thus F(n) is non prime by A6,Lm46,NAT_6:44;
+    end;
+    suppose
+A7:   a = 6;
+      take n = 3;
+      thus n <= 6;
+A8:   17 < F(n) by A7,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*0+6)|^(2|^3)+1 by Th37;
+      hence thesis by A7,A8;
+    end;
+    suppose
+A9:   a = 8;
+      take n = 2;
+      thus n <= 6;
+A10:  17 < F(n) by A9,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*0+8)|^(2|^2)+1 by Th38;
+      hence thesis by A9,A10;
+    end;
+    suppose
+A11:  a = 10;
+      take n = 3;
+      thus n <= 6;
+A12:  17 < F(n) by A11,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*0+10)|^(2|^3)+1 by Th39;
+      hence thesis by A11,A12;
+    end;
+    suppose
+A13:  a = 12;
+      take n = 3;
+      thus n <= 6;
+A14:  17 < F(n) by A13,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*0+12)|^(2|^3)+1 by Th40;
+      hence thesis by A13,A14;
+    end;
+    suppose
+A15:  a = 14;
+      take n = 3;
+      thus n <= 6;
+A16:  17 < F(n) by A15,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*0+14)|^(2|^3)+1 by Th41;
+      hence thesis by A15,A16;
+    end;
+    suppose
+A17:  a = 16;
+      take n = 3;
+      thus n <= 6;
+      thus 2 <= F(n) by A17,Lm51,Lm50,Lm47;
+      thus F(n) is non prime by A17,Lm47,NAT_6:44;
+    end;
+    suppose
+A18:  a = 18;
+      take n = 1;
+      thus n <= 6;
+A19:  G(n) = 18*18 by A18,WSIERP_1:1;
+      hence 2 <= F(n);
+      325 = 5*65;
+      then 5 divides 325;
+      hence F(n) is non prime by A19;
+    end;
+    suppose
+A20:  a = 20;
+      take n = 3;
+      thus n <= 6;
+A21:  17 < F(n) by A20,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*0+20)|^(2|^3)+1 by Th42;
+      hence thesis by A20,A21;
+    end;
+    suppose
+A22:  a = 22;
+      take n = 3;
+      thus n <= 6;
+A23:  17 < F(n) by A22,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*0+22)|^(2|^3)+1 by Th43;
+      hence thesis by A22,A23;
+    end;
+    suppose
+A24:  a = 24;
+      take n = 3;
+      thus n <= 6;
+A25:  17 < F(n) by A24,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*0+24)|^(2|^3)+1 by Th44;
+      hence thesis by A24,A25;
+    end;
+    suppose
+A26:  a = 26;
+      take n = 2;
+      thus n <= 6;
+A27:  17 < F(n) by A26,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*0+26)|^(2|^2)+1 by Th45;
+      hence thesis by A26,A27;
+    end;
+    suppose
+A28:  a = 28;
+      take n = 3;
+      thus n <= 6;
+A29:  17 < F(n) by A28,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*0+28)|^(2|^3)+1 by Th46;
+      hence thesis by A28,A29;
+    end;
+    suppose
+A30:  a = 30;
+      take n = 1;
+      thus n <= 6;
+A31:  17 < F(n) by A30,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*0+30)|^(2|^1)+1 by Th47;
+      hence thesis by A30,A31;
+    end;
+    suppose
+A32:  a = 32;
+      take n = 2;
+      thus n <= 6;
+A33:  17 < F(n) by A32,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*0+32)|^(2|^2)+1 by Th48;
+      hence thesis by A32,A33;
+    end;
+    suppose
+A34:  a = 34;
+      take n = 1;
+      thus n <= 6;
+A35:  G(n) = 34*34 by A34,WSIERP_1:1;
+      hence 2 <= F(n);
+      1157 = 13*89;
+      then 13 divides 1157;
+      hence F(n) is non prime by A35;
+    end;
+    suppose
+A36:  a = 36;
+      take n = 2;
+      thus n <= 6;
+A37:  17 < F(n) by A36,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*1+2)|^(2|^2)+1 by Th35;
+      hence thesis by A36,A37;
+    end;
+    suppose
+A38:  a = 38;
+      take n = 1;
+      thus n <= 6;
+A39:  17 < F(n) by A38,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*1+4)|^(2|^1)+1 by Th36;
+      hence thesis by A38,A39;
+    end;
+    suppose
+A40:  a = 40;
+      take n = 3;
+      thus n <= 6;
+A41:  17 < F(n) by A40,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*1+6)|^(2|^3)+1 by Th37;
+      hence thesis by A40,A41;
+    end;
+    suppose
+A42:  a = 42;
+      take n = 2;
+      thus n <= 6;
+A43:  17 < F(n) by A42,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*1+8)|^(2|^2)+1 by Th38;
+      hence thesis by A42,A43;
+    end;
+    suppose
+A44:  a = 44;
+      take n = 3;
+      thus n <= 6;
+A45:  17 < F(n) by A44,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*1+10)|^(2|^3)+1 by Th39;
+      hence thesis by A44,A45;
+    end;
+    suppose
+A46:  a = 46;
+      take n = 3;
+      thus n <= 6;
+A47:  17 < F(n) by A46,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*1+12)|^(2|^3)+1 by Th40;
+      hence thesis by A46,A47;
+    end;
+    suppose
+A48:  a = 48;
+      take n = 3;
+      thus n <= 6;
+A49:  17 < F(n) by A48,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*1+14)|^(2|^3)+1 by Th41;
+      hence thesis by A48,A49;
+    end;
+    suppose
+A50:  a = 50;
+      take n = 1;
+      thus n <= 6;
+A51:  G(n) = 50*50 by A50,WSIERP_1:1;
+      hence 2 <= F(n);
+      2501 = 41*61;
+      then 41 divides 2501;
+      hence F(n) is non prime by A51;
+    end;
+    suppose
+A52:  a = 52;
+      take n = 1;
+      thus n <= 6;
+A53:  G(n) = 52*52 by A52,WSIERP_1:1;
+      hence 2 <= F(n);
+      2705 = 5*541;
+      then 5 divides 2705;
+      hence F(n) is non prime by A53;
+    end;
+    suppose
+A54:  a = 54;
+      take n = 3;
+      thus n <= 6;
+A55:  17 < F(n) by A54,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*1+20)|^(2|^3)+1 by Th42;
+      hence thesis by A54,A55;
+    end;
+    suppose
+A56:  a = 56;
+      take n = 3;
+      thus n <= 6;
+A57:  17 < F(n) by A56,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*1+22)|^(2|^3)+1 by Th43;
+      hence thesis by A56,A57;
+    end;
+    suppose
+A58:  a = 58;
+      take n = 3;
+      thus n <= 6;
+A59:  17 < F(n) by A58,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*1+24)|^(2|^3)+1 by Th44;
+      hence thesis by A58,A59;
+    end;
+    suppose
+A60:  a = 60;
+      take n = 2;
+      thus n <= 6;
+A61:  17 < F(n) by A60,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*1+26)|^(2|^2)+1 by Th45;
+      hence thesis by A60,A61;
+    end;
+    suppose
+A62:  a = 62;
+      take n = 3;
+      thus n <= 6;
+A63:  17 < F(n) by A62,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*1+28)|^(2|^3)+1 by Th46;
+      hence thesis by A62,A63;
+    end;
+    suppose
+A64:  a = 64;
+      take n = 1;
+      thus n <= 6;
+A65:  17 < F(n) by A64,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*1+30)|^(2|^1)+1 by Th47;
+      hence thesis by A64,A65;
+    end;
+    suppose
+A66:  a = 66;
+      take n = 2;
+      thus n <= 6;
+A67:  17 < F(n) by A66,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*1+32)|^(2|^2)+1 by Th48;
+      hence thesis by A66,A67;
+    end;
+    suppose
+A68:  a = 68;
+      take n = 1;
+      thus n <= 6;
+A69:  G(n) = 68*68 by A68,WSIERP_1:1;
+      hence 2 <= F(n);
+      4625 = 5*925;
+      then 5 divides 4625;
+      hence F(n) is non prime by A69;
+    end;
+    suppose
+A70:  a = 70;
+      take n = 2;
+      thus n <= 6;
+A71:  17 < F(n) by A70,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*2+2)|^(2|^2)+1 by Th35;
+      hence thesis by A70,A71;
+    end;
+    suppose
+A72:  a = 72;
+      take n = 1;
+      thus n <= 6;
+A73:  17 < F(n) by A72,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*2+4)|^(2|^1)+1 by Th36;
+      hence thesis by A72,A73;
+    end;
+    suppose
+A74:  a = 74;
+      take n = 3;
+      thus n <= 6;
+A75:  17 < F(n) by A74,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*2+6)|^(2|^3)+1 by Th37;
+      hence thesis by A74,A75;
+    end;
+    suppose
+A76:  a = 76;
+      take n = 2;
+      thus n <= 6;
+A77:  17 < F(n) by A76,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*2+8)|^(2|^2)+1 by Th38;
+      hence thesis by A76,A77;
+    end;
+    suppose
+A78:  a = 78;
+      take n = 3;
+      thus n <= 6;
+A79:  17 < F(n) by A78,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*2+10)|^(2|^3)+1 by Th39;
+      hence thesis by A78,A79;
+    end;
+    suppose
+A80:  a = 80;
+      take n = 3;
+      thus n <= 6;
+A81:  17 < F(n) by A80,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*2+12)|^(2|^3)+1 by Th40;
+      hence thesis by A80,A81;
+    end;
+    suppose
+A82:  a = 82;
+      take n = 3;
+      thus n <= 6;
+A83:  17 < F(n) by A82,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*2+14)|^(2|^3)+1 by Th41;
+      hence thesis by A82,A83;
+    end;
+    suppose
+A84:  a = 84;
+      take n = 6;
+      thus n <= 6;
+A85:  84|^(2|^6) = 84|^2|^32 by Lm6,NEWTON:9;
+A86:  84|^2 = 84*84 by WSIERP_1:1;
+      then 84|^2|^1 < 84|^2|^32 by PEPIN:66;
+      then 256 < 84|^(2|^6) by A85,A86,XXREAL_0:2;
+      then
+A87:  256+1 < F(n) by A84,XREAL_1:8;
+      hence 2 <= F(n) by XXREAL_0:2;
+      thus thesis by A87,A84,Lm45;
+    end;
+    suppose
+A88:  a = 86;
+      take n = 1;
+      thus n <= 6;
+A89:  G(n) = 86*86 by A88,WSIERP_1:1;
+      hence 2 <= F(n);
+      7397 = 13*569;
+      then 13 divides 7397;
+      hence F(n) is non prime by A89;
+    end;
+    suppose
+A90:  a = 88;
+      take n = 3;
+      thus n <= 6;
+A91:  17 < F(n) by A90,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*2+20)|^(2|^3)+1 by Th42;
+      hence thesis by A90,A91;
+    end;
+    suppose
+A92:  a = 90;
+      take n = 3;
+      thus n <= 6;
+A93:  17 < F(n) by A92,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*2+22)|^(2|^3)+1 by Th43;
+      hence thesis by A92,A93;
+    end;
+    suppose
+A94:  a = 92;
+      take n = 3;
+      thus n <= 6;
+A95:  17 < F(n) by A94,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*2+24)|^(2|^3)+1 by Th44;
+      hence thesis by A94,A95;
+    end;
+    suppose
+A96:  a = 94;
+      take n = 2;
+      thus n <= 6;
+A97:  17 < F(n) by A96,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*2+26)|^(2|^2)+1 by Th45;
+      hence thesis by A96,A97;
+    end;
+    suppose
+A98:  a = 96;
+      take n = 3;
+      thus n <= 6;
+A99:  17 < F(n) by A98,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*2+28)|^(2|^3)+1 by Th46;
+      hence thesis by A98,A99;
+    end;
+    suppose
+A100: a = 98;
+      take n = 1;
+      thus n <= 6;
+A101: 17 < F(n) by A100,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*2+30)|^(2|^1)+1 by Th47;
+      hence thesis by A100,A101;
+    end;
+    suppose
+A102: a = 100;
+      take n = 2;
+      thus n <= 6;
+A103: 17 < F(n) by A102,Lm49;
+      hence 2 <= F(n) by XXREAL_0:2;
+      17 divides (34*2+32)|^(2|^2)+1 by Th48;
+      hence thesis by A102,A103;
+    end;
+  end;

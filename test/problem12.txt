@@ -1,0 +1,22 @@
+theorem
+  for n being non zero Nat ex x being non zero Nat st
+  for i being Nat holds n divides x|^|^(i+1) + 1
+  proof
+    let n be non zero Nat;
+    A1: n divides 2*n & 2 divides 2*n;
+    set x=2*n-1;
+    reconsider x as non zero odd Nat;
+    take x;
+    let i be Nat;
+
+    A3: x|^|^((i)+1) = x|^|^(Segm((i)+1))
+    .= x|^|^(succ Segm(i)) by NAT_1:38
+    .= exp(x,x|^|^(i)) by ORDINAL5:14
+    .= x|^(x|^|^(i));
+
+    2*n divides x - -1; then
+    x|^(x|^|^(i)), (-1)|^(x|^|^(i)) are_congruent_mod 2*n
+    by GR_CY_3:34,INT_1:def 4;
+    then x|^|^(i+1),-1 are_congruent_mod 2*n by A3;
+    hence thesis by A1,INT_2:9;
+  end;

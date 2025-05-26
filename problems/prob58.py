@@ -2,7 +2,6 @@ from sympy import isprime, primerange
 from math import prod
 
 
-#?
 def prob58(s):
     primes = list(primerange(1, 100))[:s]  # Get first s primes
     P = prod(primes)  # Compute P = P1 * P2 * ... * Ps

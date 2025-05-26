@@ -3,14 +3,14 @@ from math import gcd
 def unique(a, b, c, d):
     numbers = [a, b, c, d]
     if len(numbers) != len(set(numbers)):
-        raise ValueError("Wszystkie liczby muszą być inne")
+        return {"error": "n must be a positive integer"}
     return True
 
 def prob46(a, b, c, d, max_n):
     try:
         if unique(a, b, c, d):
             if max_n <= 0:
-                return {"error": "n musi być liczbą całkowitą dodatnią"}
+                return {"error": "n must be a positive integer"}
 
             results = []
             for n in range(1, max_n + 1):

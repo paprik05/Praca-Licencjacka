@@ -1,0 +1,318 @@
+theorem
+  for a1,a2,a3,a4,a5 being Integer st 9 divides a1|^3+a2|^3+a3|^3+a4|^3+a5|^3
+  holds 3 divides a1*a2*a3*a4*a5
+  proof
+    let a,b,c,d,e be Integer;
+    assume 9 divides a|^3+b|^3+c|^3+d|^3+e|^3;
+    then A1: a|^3+b|^3+c|^3+d|^3+e|^3 mod 9 = 0 by INT_1:62;
+    assume A2: not 3 divides a*b*c*d*e;
+    then A3: not 3 divides a*(b*c*d*e);
+    A4: not 3 divides b*(a*c*d*e) by A2;
+    A5: not 3 divides c*(a*b*d*e) by A2;
+    not 3 divides d*(a*b*c*e) by A2;
+    then per cases by Th6,A3,A4,A5,A2,INT_2:2;
+
+    suppose A6: a|^3 mod 9 = 1 & b|^3 mod 9 = 1 & c|^3 mod 9 = 1
+      & d|^3 mod 9 = 1 & e|^3 mod 9 = 1;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (1+1+1+1+1) mod 9 by A6,Th10;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A7: a|^3 mod 9 = 1 & b|^3 mod 9 = 1 & c|^3 mod 9 = 1
+      & d|^3 mod 9 = 1 & e|^3 mod 9 = 8;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (1+1+1+1+8) mod 9 by A7,Th10
+      .= (9*1 + 3) mod 9
+      .= ((9*1) mod 9 + (3 mod 9)) mod 9 by NAT_D:66
+      .= ((9*1) mod 9 + 3) mod 9 by NAT_D:63
+      .= (0 + 3) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A8: a|^3 mod 9 = 1 & b|^3 mod 9 = 1 & c|^3 mod 9 = 1
+      & d|^3 mod 9 = 8 & e|^3 mod 9 = 1;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (1+1+1+8+1) mod 9 by A8,Th10
+      .= (9*1 + 3) mod 9
+      .= ((9*1) mod 9 + (3 mod 9)) mod 9 by NAT_D:66
+      .= ((9*1) mod 9 + 3) mod 9 by NAT_D:63
+      .= (0 + 3) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A9: a|^3 mod 9 = 1 & b|^3 mod 9 = 1 & c|^3 mod 9 = 1
+      & d|^3 mod 9 = 8 & e|^3 mod 9 = 8;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (1+1+1+8+8) mod 9 by A9,Th10
+      .= (9*2 + 1) mod 9
+      .= ((9*2) mod 9 + (1 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 1) mod 9 by NAT_D:63
+      .= (0 + 1) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A10: a|^3 mod 9 = 1 & b|^3 mod 9 = 1 & c|^3 mod 9 = 8
+      & d|^3 mod 9 = 1 & e|^3 mod 9 = 1;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (1+1+8+1+1) mod 9 by A10,Th10
+      .= (9*1 + 3) mod 9
+      .= ((9*1) mod 9 + (3 mod 9)) mod 9 by NAT_D:66
+      .= ((9*1) mod 9 + 3) mod 9 by NAT_D:63
+      .= (0 + 3) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A11: a|^3 mod 9 = 1 & b|^3 mod 9 = 1 & c|^3 mod 9 = 8
+      & d|^3 mod 9 = 1 & e|^3 mod 9 = 8;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (1+1+8+1+8) mod 9 by A11,Th10
+      .= (9*2 + 1) mod 9
+      .= ((9*2) mod 9 + (1 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 1) mod 9 by NAT_D:63
+      .= (0 + 1) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A12: a|^3 mod 9 = 1 & b|^3 mod 9 = 1 & c|^3 mod 9 = 8
+      & d|^3 mod 9 = 8 & e|^3 mod 9 = 1;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (1+1+8+8+1) mod 9 by A12,Th10
+      .= ((9*2) mod 9 + (1 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 1) mod 9 by NAT_D:63
+      .= (0 + 1) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A13: a|^3 mod 9 = 1 & b|^3 mod 9 = 1 & c|^3 mod 9 = 8
+      & d|^3 mod 9 = 8 & e|^3 mod 9 = 8;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (1+1+8+8+8) mod 9 by A13,Th10
+      .= ((9*2) mod 9 + (8 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 8) mod 9 by NAT_D:63
+      .= (0 + 8) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A14: a|^3 mod 9 = 1 & b|^3 mod 9 = 8 & c|^3 mod 9 = 1
+      & d|^3 mod 9 = 1 & e|^3 mod 9 = 1;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (1+8+1+1+1) mod 9 by A14,Th10
+      .= (9*1 + 3) mod 9
+      .= ((9*1) mod 9 + (3 mod 9)) mod 9 by NAT_D:66
+      .= ((9*1) mod 9 + 3) mod 9 by NAT_D:63
+      .= (0 + 3) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A15: a|^3 mod 9 = 1 & b|^3 mod 9 = 8 & c|^3 mod 9 = 1
+      & d|^3 mod 9 = 1 & e|^3 mod 9 = 8;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (1+8+1+1+8) mod 9 by A15,Th10
+      .= (9*2 + 1) mod 9
+      .= ((9*2) mod 9 + (1 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 1) mod 9 by NAT_D:63
+      .= (0 + 1) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A16: a|^3 mod 9 = 1 & b|^3 mod 9 = 8 & c|^3 mod 9 = 1
+      & d|^3 mod 9 = 8 & e|^3 mod 9 = 1;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (1+8+1+8+1) mod 9 by A16,Th10
+      .= ((9*2) mod 9 + (1 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 1) mod 9 by NAT_D:63
+      .= (0 + 1) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A17: a|^3 mod 9 = 1 & b|^3 mod 9 = 8 & c|^3 mod 9 = 1
+      & d|^3 mod 9 = 8 & e|^3 mod 9 = 8;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (1+8+1+8+8) mod 9 by A17,Th10
+      .= ((9*2) mod 9 + (8 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 8) mod 9 by NAT_D:63
+      .= (0 + 8) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A18: a|^3 mod 9 = 1 & b|^3 mod 9 = 8 & c|^3 mod 9 = 8
+      & d|^3 mod 9 = 1 & e|^3 mod 9 = 1;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (1+8+8+1+1) mod 9 by A18,Th10
+      .= ((9*2) mod 9 + (1 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 1) mod 9 by NAT_D:63
+      .= (0 + 1) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A19: a|^3 mod 9 = 1 & b|^3 mod 9 = 8 & c|^3 mod 9 = 8
+      & d|^3 mod 9 = 1 & e|^3 mod 9 = 8;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (1+8+8+1+8) mod 9 by A19,Th10
+      .= ((9*2) mod 9 + (8 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 8) mod 9 by NAT_D:63
+      .= (0 + 8) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A20: a|^3 mod 9 = 1 & b|^3 mod 9 = 8 & c|^3 mod 9 = 8
+      & d|^3 mod 9 = 8 & e|^3 mod 9 = 1;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (1+8+8+8+1) mod 9 by A20,Th10
+      .= (9*2 + 8) mod 9
+      .= ((9*2) mod 9 + (8 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 8) mod 9 by NAT_D:63
+      .= (0 + 8) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A21: a|^3 mod 9 = 1 & b|^3 mod 9 = 8 & c|^3 mod 9 = 8
+      & d|^3 mod 9 = 8 & e|^3 mod 9 = 8;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (1+8+8+8+8) mod 9 by A21,Th10
+      .= (9*3 + 6) mod 9
+      .= ((9*3) mod 9 + (6 mod 9)) mod 9 by NAT_D:66
+      .= ((9*3) mod 9 + 6) mod 9 by NAT_D:63
+      .= (0 + 6) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A22: a|^3 mod 9 = 8 & b|^3 mod 9 = 1 & c|^3 mod 9 = 1
+      & d|^3 mod 9 = 1 & e|^3 mod 9 = 1;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (8+1+1+1+1) mod 9 by A22,Th10
+      .= (9*1 + 3) mod 9
+      .= ((9*1) mod 9 + (3 mod 9)) mod 9 by NAT_D:66
+      .= ((9*1) mod 9 + 3) mod 9 by NAT_D:63
+      .= (0 + 3) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A23: a|^3 mod 9 = 8 & b|^3 mod 9 = 1 & c|^3 mod 9 = 1
+      & d|^3 mod 9 = 1 & e|^3 mod 9 = 8;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (8+1+1+1+8) mod 9 by A23,Th10
+      .= (9*2 + 1) mod 9
+      .= ((9*2) mod 9 + (1 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 1) mod 9 by NAT_D:63
+      .= (0 + 1) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A24: a|^3 mod 9 = 8 & b|^3 mod 9 = 1 & c|^3 mod 9 = 1
+      & d|^3 mod 9 = 8 & e|^3 mod 9 = 1;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (8+1+1+8+1) mod 9 by A24,Th10
+      .= ((9*2) mod 9 + (1 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 1) mod 9 by NAT_D:63
+      .= (0 + 1) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A25: a|^3 mod 9 = 8 & b|^3 mod 9 = 1 & c|^3 mod 9 = 1
+      & d|^3 mod 9 = 8 & e|^3 mod 9 = 8;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (8+1+1+8+8) mod 9 by A25,Th10
+      .= ((9*2) mod 9 + (8 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 8) mod 9 by NAT_D:63
+      .= (0 + 8) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A26: a|^3 mod 9 = 8 & b|^3 mod 9 = 1 & c|^3 mod 9 = 8
+      & d|^3 mod 9 = 1 & e|^3 mod 9 = 1;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (8+1+8+1+1) mod 9 by A26,Th10
+      .= ((9*2) mod 9 + (1 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 1) mod 9 by NAT_D:63
+      .= (0 + 1) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A27: a|^3 mod 9 = 8 & b|^3 mod 9 = 1 & c|^3 mod 9 = 8
+      & d|^3 mod 9 = 1 & e|^3 mod 9 = 8;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (8+1+8+1+8) mod 9 by A27,Th10
+      .= ((9*2) mod 9 + (8 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 8) mod 9 by NAT_D:63
+      .= (0 + 8) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A28: a|^3 mod 9 = 8 & b|^3 mod 9 = 1 & c|^3 mod 9 = 8
+      & d|^3 mod 9 = 8 & e|^3 mod 9 = 1;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (8+1+8+8+1) mod 9 by A28,Th10
+      .= (9*2 + 8) mod 9
+      .= ((9*2) mod 9 + (8 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 8) mod 9 by NAT_D:63
+      .= (0 + 8) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A29: a|^3 mod 9 = 8 & b|^3 mod 9 = 1 & c|^3 mod 9 = 8
+      & d|^3 mod 9 = 8 & e|^3 mod 9 = 8;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (8+1+8+8+8) mod 9 by A29,Th10
+      .= (9*3 + 6) mod 9
+      .= ((9*3) mod 9 + (6 mod 9)) mod 9 by NAT_D:66
+      .= ((9*3) mod 9 + 6) mod 9 by NAT_D:63
+      .= (0 + 6) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A30: a|^3 mod 9 = 8 & b|^3 mod 9 = 8 & c|^3 mod 9 = 1
+      & d|^3 mod 9 = 1 & e|^3 mod 9 = 1;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (8+8+1+1+1) mod 9 by A30,Th10
+      .= ((9*2) mod 9 + (1 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 1) mod 9 by NAT_D:63
+      .= (0 + 1) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A31: a|^3 mod 9 = 8 & b|^3 mod 9 = 8 & c|^3 mod 9 = 1
+      & d|^3 mod 9 = 1 & e|^3 mod 9 = 8;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (8+8+1+1+8) mod 9 by A31,Th10
+      .= ((9*2) mod 9 + (8 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 8) mod 9 by NAT_D:63
+      .= (0 + 8) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A32: a|^3 mod 9 = 8 & b|^3 mod 9 = 8 & c|^3 mod 9 = 1
+      & d|^3 mod 9 = 8 & e|^3 mod 9 = 1;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (8+8+1+8+1) mod 9 by A32,Th10
+      .= (9*2 + 8) mod 9
+      .= ((9*2) mod 9 + (8 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 8) mod 9 by NAT_D:63
+      .= (0 + 8) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A33: a|^3 mod 9 = 8 & b|^3 mod 9 = 8 & c|^3 mod 9 = 1
+      & d|^3 mod 9 = 8 & e|^3 mod 9 = 8;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (8+8+1+8+8) mod 9 by A33,Th10
+      .= (9*3 + 6) mod 9
+      .= ((9*3) mod 9 + (6 mod 9)) mod 9 by NAT_D:66
+      .= ((9*3) mod 9 + 6) mod 9 by NAT_D:63
+      .= (0 + 6) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A34: a|^3 mod 9 = 8 & b|^3 mod 9 = 8 & c|^3 mod 9 = 8
+      & d|^3 mod 9 = 1 & e|^3 mod 9 = 1;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (8+8+8+1+1) mod 9 by A34,Th10
+      .= (9*2 + 8) mod 9
+      .= ((9*2) mod 9 + (8 mod 9)) mod 9 by NAT_D:66
+      .= ((9*2) mod 9 + 8) mod 9 by NAT_D:63
+      .= (0 + 8) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A35: a|^3 mod 9 = 8 & b|^3 mod 9 = 8 & c|^3 mod 9 = 8
+      & d|^3 mod 9 = 1 & e|^3 mod 9 = 8;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (8+8+8+1+8) mod 9 by A35,Th10
+      .= (9*3 + 6) mod 9
+      .= ((9*3) mod 9 + (6 mod 9)) mod 9 by NAT_D:66
+      .= ((9*3) mod 9 + 6) mod 9 by NAT_D:63
+      .= (0 + 6) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A36: a|^3 mod 9 = 8 & b|^3 mod 9 = 8 & c|^3 mod 9 = 8
+      & d|^3 mod 9 = 8 & e|^3 mod 9 = 1;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (8+8+8+8+1) mod 9 by A36,Th10
+      .= (9*3 + 6) mod 9
+      .= ((9*3) mod 9 + (6 mod 9)) mod 9 by NAT_D:66
+      .= ((9*3) mod 9 + 6) mod 9 by NAT_D:63
+      .= (0 + 6) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+
+    suppose A37: a|^3 mod 9 = 8 & b|^3 mod 9 = 8 & c|^3 mod 9 = 8
+      & d|^3 mod 9 = 8 & e|^3 mod 9 = 8;
+      ((a|^3+b|^3)+c|^3+d|^3+e|^3) mod 9 = (8+8+8+8+8) mod 9 by A37,Th10
+      .= (9*4 + 4) mod 9
+      .= ((9*4) mod 9 + (4 mod 9)) mod 9 by NAT_D:66
+      .= ((9*4) mod 9 + 4) mod 9 by NAT_D:63
+      .= (0 + 4) mod 9 by NAT_D:13;
+      hence contradiction by A1,NAT_D:63;
+    end;
+  end;

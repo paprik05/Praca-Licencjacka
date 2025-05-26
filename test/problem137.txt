@@ -1,0 +1,52 @@
+theorem
+  { [x,y] where x,y is positive Nat: 3*x^2-7*y^2+1 = 0 } is infinite
+  proof
+    deffunc R(Complex,Complex) = 3*$1^2-7*$2^2+1;
+    set A = {[x,y] where x,y is positive Nat: R(x,y) = 0};
+A1: R(3,2) = 0;
+    then [3,2] in A;
+    then reconsider A as non empty set;
+    deffunc p1(Real,Real) = 55*$1+84*$2+0;
+    deffunc p2(Real,Real) = 36*$1+55*$2+0;
+    defpred P[object,Element of [:NAT,NAT:],Element of [:NAT,NAT:]] means
+    $3 = [p1($2`1,$2`2),p2($2`1,$2`2)];
+    set f = recSeqCart(3,2,55,84,0,36,55,0);
+A2: dom f = NAT by PARTFUN1:def 2;
+    defpred N[Nat] means f.$1 in A;
+    f.0 = [3,2] by Def10;
+    then
+A3: N[0] by A1;
+A4: N[a] implies N[a+1]
+    proof
+      assume N[a];
+      then consider x,y being positive Nat such that
+A5:   f.a = [x,y] & R(x,y) = 0;
+      set m = (f.a)`1;
+      set n = (f.a)`2;
+A6:   f.(a+1) = [p1(m,n),p2(m,n)] by Def10;
+A7:   m > 0 & n > 0 by Th89;
+      R(p1(m,n),p2(m,n)) = 0 by A5;
+      hence thesis by A6,A7;
+    end;
+A8: N[a] from NAT_1:sch 2(A3,A4);
+A9: rng f c= A
+    proof
+      let y be object;
+      assume y in rng f;
+      then ex k being object st k in dom f & f.k = y by FUNCT_1:def 3;
+      hence thesis by A8;
+    end;
+    f is one-to-one by Th92;
+    hence thesis by A2,A9,CARD_1:59;
+  end;
+
+begin :: Problem 138
+
+registration
+  cluster infinite natural-membered for set;
+  existence
+  proof
+    take NAT;
+    thus thesis;
+  end;
+end;

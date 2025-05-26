@@ -1,0 +1,48 @@
+theorem
+  for m being positive Integer, a being Nat st a > 1
+  holds ((a|^m - 1) div (a-1)) gcd (a-1) = (a-1) gcd m
+  proof
+    let m be positive Integer, a be Nat such that
+    a: a > 1;
+    set d=((a|^m - 1) div (a-1)) gcd (a-1);
+    set d1=(a-1) gcd m;
+
+    m>=0+1 by INT_1:7;
+    then reconsider m0=m as Nat by POLYFORM:3;
+    reconsider m1=m0-1 as Nat by INT_1:74;
+    deffunc F(Nat) = a|^($1+1)-1;
+    consider f being XFinSequence such that
+    f: len f = m1 & for i being Nat st i in m1 holds f.i=F(i)
+    from AFINSQ_1:sch 2;
+    rng f c= INT
+    proof
+      let o be object;
+      assume o in rng f;
+      then consider x being object such that
+      x: x in dom f & o=f.x by FUNCT_1:def 3;
+      reconsider x as Nat by x;
+      o=a|^(x+1)-1 by f,x;
+      hence o in INT by INT_1:def 2;
+    end;
+    then reconsider f as XFinSequence of INT by RELAT_1:def 19;
+    d2: d divides a-1 & d divides (a|^m - 1) div (a-1) by INT_2:def 2;
+    now
+      let i be Nat;
+      assume i in dom f;
+      then f.i=a|^(i+1)-1 by f;
+      hence a-1 divides f.i by lemdiv;
+    end;
+    then ad: a-1 divides Sum f by NUMERAL2:16;
+    then ds: d divides Sum f by d2,INT_2:9;
+    ss: (a|^m - 1) div (a-1) = Sum f + m by a,f,lempowers;
+    then d divides Sum f + m by d2;
+    then d1: d divides m by ds,INT_2:1;
+    now
+      let q be Integer;
+      assume q: q divides a-1 & q divides m;
+      then q divides Sum f by ad,INT_2:9;
+      then q divides (a|^m - 1) div (a-1) by ss,q,WSIERP_1:4;
+      hence q divides d by q,INT_2:def 2;
+    end;
+    hence d = d1 by d1,d2,INT_2:def 2;
+  end;

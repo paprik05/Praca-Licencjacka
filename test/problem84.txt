@@ -1,0 +1,89 @@
+theorem
+  { [p,q] where p,q is Prime: p,q are_not_twin } is infinite
+  proof
+    set A = {[p,q] where p,q is Prime: p,q are_not_twin};
+    deffunc pk(non zero Nat) = LP<=6n+1($1);
+    deffunc F(non zero Nat) = [ pk($1) , primenumber(1+primeindex pk($1)) ];
+    defpred P[Nat,object] means ex n being non zero Nat st n = $1 & $2 = F(n);
+    set P = 6n+1_Primes;
+    deffunc C(Element of P) = In(($1-1) div 6,NAT);
+    consider C being Function of P,NAT such that
+A1: for p being Element of P holds C.p = C(p) from FUNCT_2:sch 4;
+A2: dom C = P by FUNCT_2:def 1;
+A3: now
+      let p be Element of P;
+      p in P;
+      then ex n st p = 6*n+1 & 6*n+1 is prime;
+      hence 6*((p-1) div 6) = p-1 by NAT_D:18;
+    end;
+    C is one-to-one
+    proof
+      let x1,x2 be object such that
+A4:   x1 in dom C and
+A5:   x2 in dom C and
+A6:   C.x1 = C.x2;
+      reconsider x1,x2 as Element of P by A4,A5;
+      C.x1 = C(x1) & C.x2 = C(x2) by A1;
+      then
+A7:   6*((x1-1) div 6) = 6*((x2-1) div 6) by A6;
+      6*((x1-1) div 6) = x1-1 & 6*((x2-1) div 6) = x2-1 by A3;
+      hence thesis by A7;
+    end;
+    then reconsider D = rng C as infinite Subset of NAT
+    by A2,CARD_1:59,RELAT_1:def 19;
+A8: for d being Element of D holds 6*d+1 is prime
+    proof
+      let d be Element of D;
+      consider p being Element of P such that
+A9:   d = C.p by FUNCT_2:113;
+A10:  C(p) = (p-1) div 6;
+      p in P;
+      then
+A11:  ex n st p = 6*n+1 & 6*n+1 is prime;
+      6*((p-1) div 6) = p-1 by A3;
+      hence thesis by A1,A9,A10,A11;
+    end;
+A12: now
+      let d be Element of D;
+      assume d = 0;
+      then 6*0+1 is prime by A8;
+      hence contradiction;
+    end;
+A13: for i being Element of D ex j being object st P[i,j]
+    proof
+      let i be Element of D;
+      reconsider a = i as non zero Nat by A12;
+      take F(a);
+      thus thesis;
+    end;
+    consider f being ManySortedSet of D such that
+A14: for d being Element of D holds P[d,f.d] from PBOOLE:sch 6(A13);
+A15: dom f = D by PARTFUN1:def 2;
+A16: rng f c= A
+    proof
+      let y be object;
+      assume y in rng f;
+      then consider k being object such that
+A17:  k in dom f and
+A18:  f.k = y by FUNCT_1:def 3;
+      reconsider k as non zero Element of NAT by A12,A15,A17;
+A19:  P[k,f.k] by A14,A17;
+      pk(k), primenumber(1+primeindex pk(k)) are_not_twin by Th31;
+      hence thesis by A18,A19;
+    end;
+    f is one-to-one
+    proof
+      let x1,x2 be object such that
+A20:  x1 in dom f and
+A21:  x2 in dom f and
+A22:  f.x1 = f.x2;
+      reconsider x1 as non zero Nat by A12,A20;
+      reconsider x2 as non zero Nat by A12,A21;
+      P[x1,f.x1] & P[x2,f.x2] by A14,A20,A21;
+      then
+A23:  pk(x1) = pk(x2) by A22,XTUPLE_0:1;
+      6*x1+1 is prime & 6*x2+1 is prime by A8,A20,A21;
+      hence thesis by A23,Th34;
+    end;
+    hence thesis by A15,A16,CARD_1:59;
+  end;

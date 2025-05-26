@@ -1,0 +1,22 @@
+theorem
+  2|^(2|^n)+1 divides 2|^(2|^(2|^n)+1)-2
+  proof
+    set A = 2|^(2|^n);
+    set F = A+1;
+    set G = 2|^(2|^(n+1))-1;
+    set H = 2|^A-1;
+    set I = 2|^(A+1);
+    n+1 <= 2|^n by NEWTON:85;
+    then
+A1: G divides H by Th19,NEWTON:89;
+    (A+1)*(A-1) = A|^2-1|^2 by NEWTON01:1
+    .= 2|^(2|^n*2|^1)-1 by NEWTON:9
+    .= 2|^(2|^(n+1))-1 by NEWTON:8;
+    then F divides G;
+    then
+A2: F divides H by A1,INT_2:9;
+    2|^1*2|^A = I by NEWTON:8;
+    then 2*H = I-2;
+    then H divides I-2;
+    hence F divides 2|^F-2 by A2,INT_2:9;
+  end;

@@ -1,0 +1,58 @@
+theorem
+  7 divides a^2+b^2 implies 7 divides a & 7 divides b
+  proof
+    assume
+A1: 7 divides a^2+b^2;
+A2: a^2-a^2 = 0;
+A3: b^2-b^2 = 0;
+A4: 1 mod 7 = 1 by NAT_D:24;
+A5: 2 mod 7 = 2 by NAT_D:24;
+A6: 4 mod 7 = 4 by NAT_D:24;
+A7: 0,7 are_congruent_mod 7 by INT_1:12;
+A8: a^2,-b^2 are_congruent_mod 7 by A1;
+A9: b^2,-a^2 are_congruent_mod 7 by A1;
+    assume not thesis;
+    then per cases;
+    suppose not 7 divides a;
+      then a^2 mod 7 = 1 or a^2 mod 7 = 2 or a^2 mod 7 = 4 by Th48;
+      then
+      a^2,1 are_congruent_mod 7 or
+      a^2,2 are_congruent_mod 7 or
+      a^2,4 are_congruent_mod 7 by A4,A5,A6,NAT_D:64;
+      then
+      0,-b^2-1 are_congruent_mod 7 or
+      0,-b^2-2 are_congruent_mod 7 or
+      0,-b^2-4 are_congruent_mod 7 by A2,A8,INT_1:17;
+      then
+      (-1)*(-b^2),(-1)*1 are_congruent_mod 7 or
+      (-1)*(-b^2),(-1)*2 are_congruent_mod 7 or
+      (-1)*(-b^2),(-1)*4 are_congruent_mod 7;
+      then
+      b^2+0,-1+7 are_congruent_mod 7 or
+      b^2+0,-2+7 are_congruent_mod 7 or
+      b^2+0,-4+7 are_congruent_mod 7 by A7,INT_1:16;
+      then b^2 mod 7 = 6 or b^2 mod 7 = 5 or b^2 mod 7 = 3 by NAT_6:12;
+      hence thesis by Th49;
+    end;
+    suppose not 7 divides b;
+      then b^2 mod 7 = 1 or b^2 mod 7 = 2 or b^2 mod 7 = 4 by Th48;
+      then
+      b^2,1 are_congruent_mod 7 or
+      b^2,2 are_congruent_mod 7 or
+      b^2,4 are_congruent_mod 7 by A4,A5,A6,NAT_D:64;
+      then
+      0,-a^2-1 are_congruent_mod 7 or
+      0,-a^2-2 are_congruent_mod 7 or
+      0,-a^2-4 are_congruent_mod 7 by A3,A9,INT_1:17;
+      then
+      (-1)*(-a^2),(-1)*1 are_congruent_mod 7 or
+      (-1)*(-a^2),(-1)*2 are_congruent_mod 7 or
+      (-1)*(-a^2),(-1)*4 are_congruent_mod 7;
+      then
+      a^2+0,-1+7 are_congruent_mod 7 or
+      a^2+0,-2+7 are_congruent_mod 7 or
+      a^2+0,-4+7 are_congruent_mod 7 by A7,INT_1:16;
+      then a^2 mod 7 = 6 or a^2 mod 7 = 5 or a^2 mod 7 = 3 by NAT_6:12;
+      hence thesis by Th49;
+     end;
+  end;

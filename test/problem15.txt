@@ -1,0 +1,7 @@
+theorem
+  (2|^n-1)^2 divides 2|^((2|^n-1)*n) - 1
+  proof
+    set m = 2|^n-1;
+    (m+1)|^m = 2|^(m*n) by NEWTON:9;
+    hence thesis by Th42;
+  end;

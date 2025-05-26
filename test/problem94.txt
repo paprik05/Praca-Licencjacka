@@ -1,0 +1,101 @@
+theorem
+  n > 4 implies
+  ex m being Nat st n < m < 2*n & m is_a_product_of_two_different_primes
+  proof
+    assume n > 4;
+    then consider k being Nat such that
+A1: n = 2*k & k > 2 or n = 2*k+1 & k > 1 by Th37;
+    reconsider k as Element of NAT by ORDINAL1:def 12;
+    reconsider p2 = 2 as Prime by XPRIMES1:2;
+    per cases by A1;
+    suppose that
+A2:   n = 2*k and
+A3:   k > 2;
+      consider P being Prime such that
+A4:   k < P and
+A5:   P <= 2*k by A3,XXREAL_0:2,NAT_4:56;
+      take m = p2*P;
+      thus n < m by A2,A4,XREAL_1:68;
+      2*k is composite by A3,Th3;
+      then P < n by A2,A5,XXREAL_0:1;
+      hence m < 2*n by XREAL_1:68;
+      take p2,P;
+      thus p2 <> P by A3,A4;
+      thus m = p2*P;
+    end;
+    suppose that
+A6:   n = 2*k+1 and
+A7:   k > 1;
+      consider P being Prime such that
+A8:   k < P and
+A9:   P <= 2*k by A7,NAT_4:56;
+      take m = p2*P;
+      k+1 <= P by A8,NAT_1:13;
+      then
+A10:  2*(k+1) <= 2*P by XREAL_1:64;
+      2*k+1 < 2*k+2 by XREAL_1:6;
+      hence n < m by A6,A10,XXREAL_0:2;
+A11:  2*P <= 2*(2*k) by A9,XREAL_1:64;
+      4*k+0 < 4*k+2 by XREAL_1:6;
+      hence m < 2*n by A6,A11,XXREAL_0:2;
+      take p2,P;
+      k >= 1+1 by A7,NAT_1:13;
+      hence p2 <> P by A8;
+      thus m = p2*P;
+      thus thesis;
+    end;
+  end;
+
+:: Problem 94 b
+theorem
+  n > 15 implies
+  ex m being Nat st n < m < 2*n & m is a_product_of_three_different_primes
+  proof
+    assume
+A1: n > 15;
+    per cases;
+    suppose n <= 29;
+      then
+A2:   n = 0 or ... or n = 29;
+      take p2*p3*p5;
+      thus n < p2*p3*p5 < 2*n by A1,A2;
+      take p2,p3,p5;
+      thus thesis;
+    end;
+    suppose
+A3:   n > 29;
+      consider k such that
+A4:   n = 6*k or n = 6*k+1 or n = 6*k+2 or n = 6*k+3 or n = 6*k+4 or n = 6*k+5
+      by NUMBER02:26;
+      reconsider k as Element of NAT by ORDINAL1:def 12;
+A5:   now
+        assume k < 4+1;
+        then k <= 4 by NAT_1:13;
+        then
+A6:     6*k <= 6*4 by XREAL_1:64;
+        then 6*k+1 <= 6*4+1 & 6*k+2 <= 6*4+2 & 6*k+3 <= 6*4+3
+        & 6*k+4 <= 6*4+4 & 6*k+5 <= 6*4+5 by XREAL_1:6;
+        hence contradiction by A3,A4,A6,XXREAL_0:2;
+      end;
+      then consider P being Prime such that
+A7:   k < P and
+A8:   P <= 2*k by NAT_4:56,XXREAL_0:2;
+      take p2*p3*P;
+      2 <= k by A5,XXREAL_0:2;
+      then 2*k is composite by Th3;
+      then
+A9:   P < 2*k by A8,XXREAL_0:1;
+A10:  6*k+0 < 6*k+6 & 6*k+1 < 6*k+6 & 6*k+2 < 6*k+6
+      & 6*k+3 < 6*k+6 & 6*k+4 < 6*k+6 & 6*k+5 < 6*k+6 by XREAL_1:6;
+      k+1 <= P by A7,NAT_1:13;
+      then 6*(k+1) <= 6*P & 6*(k+1) <= 6*P & 6*(k+1) <= 6*P
+      & 6*(k+1) <= 6*P & 6*(k+1) <= 6*P & 6*(k+1) <= 6*P by XREAL_1:64;
+      hence n < p2*p3*P by A4,A10,XXREAL_0:2;
+A11:  6*P < 6*(2*k) by A9,XREAL_1:68;
+      12*k+0 <= 12*k+2 & 12*k+0 <= 12*k+4 & 12*k+0 <= 12*k+6
+      & 12*k+0 <= 12*k+8 & 12*k+0 <= 12*k+10 by XREAL_1:6;
+      hence p2*p3*P < 2*n by A4,A11,XXREAL_0:2;
+      take p2,p3,P;
+      thus thesis by A5,A7,XXREAL_0:2;
+    end;
+  end;

@@ -1,0 +1,69 @@
+theorem
+  for k being positive Nat holds
+  k <= 10 & (for n being positive Nat holds k * 2|^(2|^n) + 1 is composite)
+  iff k in { 2,5,8 }
+  proof
+    let k be positive Nat;
+    thus k <= 10 &
+    (for n being positive Nat holds k * 2|^(2|^n) + 1 is composite)
+    implies k in {2,5,8}
+    proof
+      assume that
+A1:   k <= 10 and
+A2:   for n being positive Nat holds F(k,n) is composite;
+      k = 0 or ... or k = 10 by A1;
+      then per cases;
+      suppose k = 0;
+        hence thesis;
+      end;
+      suppose
+A3:     k = 1;
+        F(1,1) = 2|^(2|^1) + 1;
+        hence thesis by A2,A3,Th24;
+      end;
+      suppose k = 2 or k = 5 or k = 8;
+        hence thesis by ENUMSET1:def 1;
+      end;
+      suppose
+A4:     k = 3;
+        F(3,1) = 3 * 2|^(2|^1) + 1;
+        hence thesis by A2,A4,Th26;
+      end;
+      suppose
+A5:     k = 4;
+        F(4,1) = 4 * 2|^(2|^1) + 1;
+        hence thesis by A2,A5,Th27;
+      end;
+      suppose
+A6:     k = 6;
+        F(6,2) = 97 by Lm2,Lm4;
+        hence thesis by A2,A6,XPRIMES1:97;
+      end;
+      suppose
+A7:     k = 7;
+        F(7,1) = 7 * 2|^(2|^1) + 1;
+        hence thesis by A2,A7,Th30;
+      end;
+      suppose
+A8:     k = 9;
+        F(9,1) = 9 * 2|^(2|^1) + 1;
+        hence thesis by A2,A8,Th32;
+      end;
+      suppose
+A9:     k = 10;
+        F(10,1) = 10 * 2|^(2|^1) + 1;
+        hence thesis by A2,A9,Th33;
+      end;
+    end;
+    assume k in {2,5,8};
+    then per cases by ENUMSET1:def 1;
+    suppose k = 2;
+      hence thesis by Th35;
+    end;
+    suppose k = 5;
+      hence thesis by Th36;
+    end;
+    suppose k = 8;
+      hence thesis by Th37;
+    end;
+  end;

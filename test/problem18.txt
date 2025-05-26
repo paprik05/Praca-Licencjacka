@@ -1,0 +1,16 @@
+theorem
+  {n where n is Nat: n divides 2|^n+2} is infinite
+  proof
+    set S = {n where n is Nat: n divides 2|^n+2};
+    set X =
+    {n where n is non zero even Nat: n divides 2|^n+2 & n-1 divides 2|^n+1};
+    X c= S
+    proof
+      let x be object;
+      assume x in X;
+      then ex n being non zero even Nat st x = n &
+      n divides 2|^n+2 & n-1 divides 2|^n+1;
+      hence thesis;
+    end;
+    hence thesis by Th16;
+  end;

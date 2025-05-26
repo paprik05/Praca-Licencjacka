@@ -1,0 +1,41 @@
+theorem Th39:
+  5 divides 2|^(2*n+1) - 2|^(n+1) + 1 iff n mod 4 = 1 or n mod 4 = 2
+  proof
+    consider k such that
+A1: n = 4*k or n = 4*k+1 or n = 4*k+2 or n = 4*k+3 by NUMBER02:24;
+    thus 5 divides an(n) implies n mod 4 = 1 or n mod 4 = 2
+    proof
+      assume 5 divides an(n);
+      then an(n) mod 5 = 0 by INT_1:62;
+      hence thesis by A1,Lm6,Lm7,Lm34,Lm37,NAT_D:21;
+    end;
+A2: an(4*k+1) mod 5 = 0 by Lm35;
+A3: an(4*k+2) mod 5 = 0 by Lm36;
+    4*k+0 = 4*k;
+    hence thesis by A1,A2,A3,Lm8,NAT_D:21,INT_1:62;
+  end;
+
+theorem Th40:
+  5 divides 2|^(2*n+1) + 2|^(n+1) + 1 iff n mod 4 = 0 or n mod 4 = 3
+  proof
+    consider k such that
+A1: n = 4*k or n = 4*k+1 or n = 4*k+2 or n = 4*k+3 by NUMBER02:24;
+A2: 4*k+0 = 4*k;
+    thus 5 divides bn(n) implies n mod 4 = 0 or n mod 4 = 3
+    proof
+      assume 5 divides bn(n);
+      then bn(n) mod 5 = 0 by INT_1:62;
+      hence thesis by A1,A2,Lm8,Lm35,Lm36,NAT_D:21;
+    end;
+A3: bn(4*k) mod 5 = 0 by Lm34;
+    bn(4*k+3) mod 5 = 0 by Lm37;
+    hence thesis by A1,A3,Lm6,Lm7,NAT_D:21,INT_1:62;
+  end;
+
+theorem
+  5 divides 2|^(2*n+1) - 2|^(n+1) + 1 iff
+  not 5 divides 2|^(2*n+1) + 2|^(n+1) + 1
+  proof
+    n mod (3+1) = 0 or ... or n mod (3+1) = 3 by Th11;
+    hence thesis by Th39,Th40;
+  end;

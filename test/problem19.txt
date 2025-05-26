@@ -1,0 +1,57 @@
+theorem
+  10 divides a|^10 + 1 iff ex k st a = 10*k+3 or a = 10*k+7
+  proof
+    thus 10 divides a|^10 + 1 implies ex k st a = 10*k+3 or a = 10*k+7
+    proof
+      assume 10 divides a|^10 + 1;
+      then consider r,k being Nat such that
+A1:   a = 10*k+r and
+A2:   10 divides r|^10+1 and
+A3:   r = 0 or ... or r = 9 by Th30;
+      take k;
+      per cases by A3;
+      suppose r = 0;
+        hence a = 10*k+3 or a = 10*k+7 by A2,INT_2:27;
+      end;
+      suppose r = 1;
+        hence a = 10*k+3 or a = 10*k+7 by A2,INT_2:27;
+      end;
+      suppose r = 2;
+        hence a = 10*k+3 or a = 10*k+7 by A2,Lm25;
+      end;
+      suppose r = 3;
+        hence a = 10*k+3 or a = 10*k+7 by A1;
+      end;
+      suppose r = 4;
+        hence a = 10*k+3 or a = 10*k+7 by A2,Lm26,Th5;
+      end;
+      suppose r = 5;
+        hence a = 10*k+3 or a = 10*k+7 by A2,Lm27,Th6;
+      end;
+      suppose r = 6;
+        hence a = 10*k+3 or a = 10*k+7 by A2,Lm28,Th7;
+      end;
+      suppose r = 7;
+        hence a = 10*k+3 or a = 10*k+7 by A1;
+      end;
+      suppose r = 8;
+        hence a = 10*k+3 or a = 10*k+7 by A2,Lm29,Th9;
+      end;
+      suppose r = 9;
+        hence a = 10*k+3 or a = 10*k+7 by A2,Lm30,Th10;
+      end;
+    end;
+    given k such that
+A4: a = 10*k+3 or a = 10*k+7;
+    per cases by A4;
+    suppose
+A5:   a = 10*k+3;
+      3 = 0 or ... or 3 = 9;
+      hence 10 divides a|^10 + 1 by A5,Th4,INT_1:def 3,Th30;
+    end;
+    suppose
+A6:   a = 10*k+7;
+      7 = 0 or ... or 7 = 9;
+      hence 10 divides a|^10 + 1 by A6,Th8,INT_1:def 3,Th30;
+    end;
+  end;

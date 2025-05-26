@@ -1,0 +1,89 @@
+theorem Th54:
+  for m being positive Nat, k being Nat
+  for S being Sierp49FS of m,k
+  for q being CR_Sequence st q = PrimeDivisorsFS(m)
+  ex a,b being positive Nat st 2*k = a-b & a,m are_coprime & b,m are_coprime &
+     a = CRT(S,q) + Product(q) + 2*k & b = CRT(S,q) + Product(q)
+  proof
+    let m be positive Nat;
+    let k be Nat;
+    let S be Sierp49FS of m,k;
+    let q be CR_Sequence such that
+A1: q = PrimeDivisorsFS(m);
+    deffunc F(Integer) = In($1*($1+2*k),INT);
+    consider f being Function of INT,INT such that
+A2: for x being Element of INT holds f.x = F(x) from FUNCT_2:sch 4;
+    set X = PrimeDivisors(m);
+    set x0 = CRT(S,q) + 1*Product(q);
+    take a = x0 + 2*k;
+    take b = x0;
+    thus 2*k = a-b;
+    len S = len q by A1,Def14;
+    then
+A3: dom S = dom q by FINSEQ_3:29;
+    x0 in INT by INT_1:def 2;
+    then
+A4: f.x0 = F(x0) by A2;
+A5: for i being Nat st i in dom q holds f.x0,f.(S.i) are_congruent_mod q.i
+    proof
+      let i be Nat such that
+A6:   i in dom q;
+      S.i in INT by INT_1:def 2;
+      then
+A7:   f.(S.i) = F(S.i) by A2;
+      CRT(S,q) solves_CRT S,q by A3,Def4;
+      then x0 solves_CRT S,q by A3,Th30;
+      then
+A8:   x0,S.i are_congruent_mod q.i by A3,A6;
+      then x0+2*k,S.i+2*k are_congruent_mod q.i;
+      hence thesis by A4,A7,A8,INT_1:18;
+    end;
+A9: for i being Nat st i in dom q holds not f.(S.i),0 are_congruent_mod q.i
+    proof
+      let i be Nat;
+      S.i in INT by INT_1:def 2;
+      then f.(S.i) = F(S.i) by A2;
+      hence thesis by A1,A3,Def14;
+    end;
+    for i being Nat st i in dom q holds f.x0,q.i are_coprime
+    proof
+      let i be Nat such that
+A10:  i in dom q;
+A11:  q.i is prime by A1,A10,Th47;
+A12:  |.q.i.| = q.i;
+A13:  f.x0,f.(S.i) are_congruent_mod q.i by A5,A10;
+      not 0,f.(S.i) are_congruent_mod q.i by A9,A10,INT_1:14;
+      then not 0,f.x0 are_congruent_mod q.i by A13,INT_1:15;
+      then not f.x0,0 are_congruent_mod q.i by INT_1:14;
+      then |.f.x0.|,q.i are_coprime by A11,Th4,NUMBER10:4;
+      hence f.x0,q.i are_coprime by A12,INT_2:34;
+    end;
+    then f.x0, m*1 are_coprime by A1,A4,Th53;
+    hence thesis by A4,NEWTON01:41;
+  end;
+
+theorem
+  for m being positive Nat, k being Nat
+  ex a,b being positive Nat st 2*k = a-b & a,m are_coprime & b,m are_coprime
+  proof
+    let m be positive Nat;
+    let k be Nat;
+    set S = the Sierp49FS of m,k;
+    set q = PrimeDivisorsFS(m);
+    per cases;
+    suppose q is non empty;
+      then reconsider q as CR_Sequence;
+      ex a,b being positive Nat st
+      2*k = a-b & a,m are_coprime & b,m are_coprime &
+      a = CRT(S,q) + Product(q) + 2*k & b = CRT(S,q) + Product(q) by Th54;
+      hence thesis;
+    end;
+    suppose q is empty;
+      then
+A1:   m = 1 by Th50;
+      take a = 2*k+2;
+      take b = 2;
+      thus 2*k = a-b;
+      thus thesis by A1;
+    end;
+  end;

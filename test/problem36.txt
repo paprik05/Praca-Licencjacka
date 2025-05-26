@@ -1,0 +1,25 @@
+theorem
+for n being Nat st n < 10 holds Sierp36 n,n
+proof
+  let n be Nat;
+  assume n < 10;
+  then digits(n,10)=<%n%> by Th3;
+  hence Sum digits(n,10) = n by AFINSQ_2:53;
+  thus n divides n;
+  per cases;
+  suppose n=0;
+    hence thesis;
+  end;
+  suppose A1: n>0;
+    hereby
+      let m be Nat;
+      assume A2: Sum digits(m,10) = n & n divides m;
+      now
+        assume m=0;
+        then digits(m,10) = <%0%> by Th3;
+        hence contradiction by A2,A1,AFINSQ_2:53;
+      end;
+      hence n <= m by A2,INT_2:27;
+    end;
+  end;
+end;

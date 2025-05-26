@@ -1,0 +1,46 @@
+theorem Th42:
+  n^2 divides (n+1)|^n - 1
+  proof
+    set P = (n,1) In_Power n;
+A1: (n+1)|^n = Sum P by NEWTON:30;
+    set c = len P;
+    set F = Del(P,c);
+A2: len P = n+1 by NEWTON:def 4;
+    then
+A3: P.c = 1|^n by NEWTON:29;
+    1 <= c by A2,NAT_1:11;
+    then
+A4: c in dom P by FINSEQ_3:25;
+    then
+A5: Sum F + (P.c) = Sum(P) by WSIERP_1:20;
+A6: len F + 1 = len P by A4,WSIERP_1:def 1;
+    for b being Nat st b in dom F holds n^2 divides F.b
+    proof
+      let b be Nat;
+      assume
+A7:   b in dom F;
+      then
+A8:   b <= len F by FINSEQ_3:25;
+A9:   1 <= b by A7,FINSEQ_3:25;
+A10:  n < n+1 by XREAL_1:29;
+      then b < c by A2,A6,A8,XXREAL_0:2;
+      then
+A11:  F.b = P.b by FINSEQ_3:110;
+      per cases by A6,A8,XXREAL_0:1;
+      suppose b < c-1;
+        then b <= c-1-1 by INT_1:52;
+        then b <= c-2;
+        then n|^2 divides P.b by A9,Th41;
+        hence n^2 divides F.b by A11,WSIERP_1:1;
+      end;
+      suppose
+A12:    b = c-1;
+        reconsider M = b-1 as Element of NAT by A9,INT_1:5;
+        reconsider L = n-M as Element of NAT by A2,A12;
+        n in dom P by A2,A9,A10,A12,FINSEQ_3:25;
+        then P.b = (n choose M) * n|^L * 1|^M by A2,A12,NEWTON:def 4;
+        hence n^2 divides F.b by A2,A9,A11,A12,NEWTON:24;
+      end;
+    end;
+    hence n^2 divides (n+1)|^n - 1 by A1,A3,A5,INT_4:36;
+  end;

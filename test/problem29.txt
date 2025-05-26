@@ -1,0 +1,27 @@
+theorem
+  not 6 divides 2|^6-2 & 6 divides 3|^6-3 &
+  not ex n being Nat st n < 6 & not n divides 2|^n-2 & n divides 3|^n-3
+  proof
+    2|^6-2 = 2*2*2*2*2*2-2 by Th2
+    .= 6*10+2;
+    hence not 6 divides 2|^6-2 by Th34;
+    3|^6-3 = 3*3*3*3*3*3-3 by Th2
+    .= 6*121;
+    hence 6 divides 3|^6-3;
+    let n be Nat such that
+A1: n < 6 and
+A2: not n divides 2|^n-2;
+    n = 0 or ... or n = 6-1 by A1,Th7;
+    then
+A3: n = 0 or ... or n = 5;
+    per cases by A2,A3,INT_2:28,PEPIN:41,59,INT_2:12,NEWTON02:138;
+    suppose n = 0;
+      hence not n divides 3|^n-3 by NEWTON:4;
+    end;
+    suppose
+A4:   n = 4;
+      3|^4-3 = 3*3*3*3-3 by POLYEQ_5:3
+      .= 4*19+2;
+      hence not n divides 3|^n-3 by A4,Th32;
+    end;
+  end;

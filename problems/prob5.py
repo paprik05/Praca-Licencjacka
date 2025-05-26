@@ -1,7 +1,7 @@
 # zabezpieczyc bo za dlugo oblicza powyzej 5
 def prob5(r):
     if r <= 0:
-        return {"error": "r musi być liczbą całkowitą dodatnią"}
+        return {"error": "r must be a positive integer"}
 
     results = []
     for k in range(0, r + 1):

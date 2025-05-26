@@ -4,7 +4,7 @@ def tetrahedral_number(n):
 
 def prob43(limit):
     if limit <= 0:
-        return {"error": "n musi być liczbą całkowitą dodatnią"}
+        return {"error": "n must be a positive integer"}
 
     sequence = []
     n = 1

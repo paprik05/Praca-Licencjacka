@@ -1,0 +1,228 @@
+theorem :: Problem 38 a
+  for n being non zero Nat holds card divisors(n,4,3) <= card divisors(n,4,1)
+proof
+  defpred P[Nat] means
+  for n being non zero Nat st
+     for p be Prime st p divides n holds p <= $1 holds
+       card divisors(n,4,3) <= card divisors(n,4,1);
+A1:for k being Nat st
+    (for n being Nat st n<k holds P[n]) holds P[k]
+  proof
+    let i be Nat such that
+A2: for n being Nat st n<i holds P[n];
+    let n be non zero Nat such that
+A3: for p be Prime st p divides n holds p <= i;
+    per cases;
+    suppose
+A4:   n = 1;
+      2 is prime & 2|^0 =1 by NEWTON:4,INT_2:28;
+      hence thesis by A4,Lm6;
+    end;
+    suppose
+A5:   n <> 1;
+      n >=1+0 by NAT_1:9;
+      then n > 1 by A5,XXREAL_0:1;
+      then consider p be Prime such that
+A6:   p divides n and
+A7:   for q be Prime st q divides n holds q <= p by Th20;
+      consider k,m be positive Nat such that
+A8:   0 < k & n = m * p|^k & m,p are_coprime by A6,Th21;
+      m>=1 by NAT_1:14;
+      then per cases by XXREAL_0:1;
+      suppose m=1;
+        hence thesis by A8,Lm6;
+      end;
+      suppose m>1;
+        then consider q be Prime such that
+A9:     q divides m and
+A10:    for r be Prime st r divides m holds r <= q by Th20;
+A11:    p <= i by A3,A6;
+        q < p
+        proof
+A12:      q <= p by A7,A9,A8,INT_2:2;
+          assume q >= p;
+          then p divides 1*m by A9,A12,XXREAL_0:1;
+          then p divides 1 by A8,INT_2:25;
+          then p =1 or p=-1 by INT_2:13;
+          hence thesis by INT_2:def 4;
+        end;
+        then
+A13:    q < i by A11,XXREAL_0:2;
+        set  B1 = divisors(m,4,1), B3 = divisors(m,4,3);
+        set  C1 = divisors(p|^k,4,1), C3 = divisors(p|^k,4,3);
+        set  X1 = divisors(n,4,1), X3 = divisors(n,4,3);
+A14:    card B3 <= card B1 by A10,A13,A2;
+        defpred F[object,object] means
+        for x,y be Nat st $1 = [x,y] holds $2=x*y;
+A15:    for x being object st x in [:B1\/B3,C1\/C3:]
+        ex y being object st y in X1\/X3 & F[x,y]
+        proof
+          let x be object such that
+A16:      x in [:B1\/B3,C1\/C3:];
+          consider b,c be object such that
+A17:      b in B1\/B3 & c in C1\/C3 & x = [b,c] by A16,ZFMISC_1:def 2;
+          reconsider b,c as Nat by A17;
+          take bc = b*c;
+A18:      (b mod 4 = 1 or b mod 4 = 3) & b divides m by A17,Th13;
+          (c mod 4 = 1 or c mod 4 = 3) & c divides p|^k by A17,Th13;
+          then (b*c mod 4 = 1 or b*c mod 4 = 3) & b*c divides n
+          by A8,A18,NAT_3:1,Th8,Th9;
+          hence bc in X1\/X3 by Th13;
+          let i,j be Nat;
+          assume x = [i,j];
+          then i=b & j = c by A17,XTUPLE_0:1;
+          hence thesis;
+        end;
+        consider f be Function such that
+A19:    dom f = [:B1\/B3,C1\/C3:] & rng f c= X1\/X3 and
+A20:    for x being object st x in [:B1\/B3,C1\/C3:] holds F[x,f.x]
+        from FUNCT_1:sch 6(A15);
+A21:    X1\/X3 c= rng f
+        proof
+          let x be object;
+          assume
+A22:      x in X1\/X3;
+          then reconsider x as Nat;
+A23:      (x mod 4 = 1 or x mod 4 = 3) & x divides m*p|^k by A8,A22,Th13;
+          consider a,b be Nat such that
+A24:      a divides m & b divides p|^k & x = a*b
+          by A8,A22,Th13,NUMBER12:14;
+          (a mod 4 = 1 or a mod 4 = 3) & (b mod 4 = 1 or b mod 4 = 3)
+          by A23,A24,Th7,Th6;
+          then a in B1\/B3 & b in C1\/C3 by A24,Th13;
+          then A25:[a,b] in [:B1\/B3,C1\/C3:] by ZFMISC_1:def 2;
+          then f.[a,b] = x by A24,A20;
+          hence thesis by A25,A19,FUNCT_1:def 3;
+        end;
+        then
+A26:    rng f = X1\/X3 by A19,XBOOLE_0:def 10;
+A27:    f is one-to-one
+        proof
+          let x1,x2 be object such that
+A28:      x1 in dom f & x2 in dom f & f.x1 = f.x2;
+          consider b1,c1 be object such that
+A29:      b1 in B1\/B3 & c1 in C1\/C3 & x1 = [b1,c1]
+          by A19,A28,ZFMISC_1:def 2;
+          consider b2,c2 be object such that
+A30:      b2 in B1\/B3 & c2 in C1\/C3 & x2 = [b2,c2]
+          by A19,A28,ZFMISC_1:def 2;
+          reconsider b1,c1,b2,c2 as Nat by A29,A30;
+          consider t1 be Element of NAT such that
+A31:      c1 = p |^ t1 & t1 <= k by PEPIN:34,A29,Th13;
+          consider t2 be Element of NAT such that
+A32:      c2 = p |^ t2 & t2 <= k by A30,Th13,PEPIN:34;
+A33:      c1 in NatDivisors p|^k & c2 in NatDivisors p|^k
+          by A31,A32,A29,A30,Th13,MOEBIUS1:39;
+          (b1 mod 4 = 1 or b1 mod 4 = 3) & (b2 mod 4 = 1 or b2 mod 4 = 3)
+          by A29,A30,Th13;
+          then b1 <>0 & b2 <>0;
+          then
+A34:      b1 in NatDivisors m & b2 in NatDivisors m
+          by A29,A30,Th13,MOEBIUS1:39;
+A35:      m,p|^k are_coprime  by A8,WSIERP_1:10;
+          f.x1 = b1*c1 & f.x1 = b2*c2 by A28,A29,A30,A19,A20;
+          then b1 = b2 & c1 = c2 by A33,A34,A35,NAT_5:15;
+          hence thesis by A29,A30;
+        end;
+A36:    card ([:B1\/B3,C1\/C3:]) = card (B1\/B3) * card (C1\/C3)
+        by CARD_2:46;
+A37:    B1 misses B3 & C1 misses C3 & X1 misses X3 by Th14;
+A38:    card (B1\/B3) = card B1 + card B3 &
+        card (C1\/C3) = card C1 + card C3 &
+        card (X1\/X3) = card X1 + card X3 by Th14,CARD_2:40;
+A39:    f.:[:B1,C3:] c= X3
+        proof
+          let y be object;
+          assume y in f.:[:B1,C3:];
+          then consider x be object such that
+A40:      x in dom f & x in [:B1,C3:] & y = f.x by FUNCT_1:def 6;
+          consider b,c be object such that
+A41:      b in B1 & c in C3 & x =[b,c] by A40,ZFMISC_1:def 2;
+          reconsider b,c as Nat by A41;
+A42:      f.x = b*c by A19,A20,A40,A41;
+          b mod 4 = 1 & b divides m & c mod 4 = 3 & c divides p|^k by A41,Th12;
+          then b*c mod 4 = 3 & b*c divides n by A8,Th9,NAT_3:1;
+          hence thesis by A42,A40;
+        end;
+        f.:[:B3,C1:] c= X3
+        proof
+          let y be object;
+          assume y in f.:[:B3,C1:];
+          then consider x be object such that
+A43:      x in dom f & x in [:B3,C1:] & y = f.x by FUNCT_1:def 6;
+          consider b,c be object such that
+A44:      b in B3 & c in C1 & x =[b,c] by A43,ZFMISC_1:def 2;
+          reconsider b,c as Nat by A44;
+A45:      f.x = b*c by A19,A20,A43,A44;
+          b mod 4 = 3 & b divides m & c mod 4 = 1 & c divides p|^k by A44,Th12;
+          then b*c mod 4 = 3 & b*c divides n by A8,Th9,NAT_3:1;
+          hence thesis by A45,A43;
+        end;
+        then (f.:[:B1,C3:])\/f.:[:B3,C1:] c= X3 by A39,XBOOLE_1:8;
+        then
+A46:    f.:([:B1,C3:]\/[:B3,C1:]) c= X3 by  RELAT_1:120;
+        dom f = [:B1,C1:] \/ [:B1,C3:] \/ [:B3,C1:] \/ [:B3, C3:]
+        by A19,ZFMISC_1:98
+        .= [:B1,C1:] \/ ([:B1,C3:] \/ [:B3,C1:]) \/ [:B3, C3:] by XBOOLE_1:4
+        .= ([:B1,C1:] \/ [:B3, C3:]) \/ ([:B1,C3:] \/ [:B3,C1:]) by XBOOLE_1:4;
+        then
+A47:    [:B1,C3:]\/[:B3,C1:] c= dom f by XBOOLE_1:7;
+        X3 c= f.:([:B1,C3:]\/[:B3,C1:])
+        proof
+          let y be object;
+          assume
+A48:      y in X3;
+          then y in X1\/X3 by XBOOLE_0:def 3;
+          then consider x be object such that
+A49:      x in dom f & f.x = y by A21,FUNCT_1:def 3;
+          consider b,c be object such that
+A50:      b in B1\/B3 & c in C1\/C3 & x = [b,c] by A19,A49,ZFMISC_1:def 2;
+          reconsider b,c as Nat by A50;
+A51:      b divides m & c divides p|^k by A50,Th13;
+          b*c = y by A49,A50,A20,A19;
+          then b*c mod 4 = 3 by A48,Th12;
+          then (b mod 4 = 1 &  c mod 4 = 3) or (b mod 4 = 3 &  c mod 4 = 1)
+          by Th7;
+          then (b in B1 &  c in C3) or (b in B3 &  c in C1) by A51;
+          then [b,c] in [:B1,C3:] or [b,c] in [:B3,C1:] by ZFMISC_1:def 2;
+          then [b,c] in [:B1,C3:] \/ [:B3,C1:] by XBOOLE_0:def 3;
+          hence thesis by A49,A50,FUNCT_1:def 6;
+        end;
+        then X3 = f.:([:B1,C3:]\/[:B3,C1:]) by A46,XBOOLE_0:def 10;
+        then
+A52:    card X3 = card ([:B1,C3:]\/[:B3,C1:])
+        by A47,A27,CARD_1:33,CARD_1:5;
+        [:B1,C3:] misses [:B3,C1:] by A37,ZFMISC_1:104;
+        then
+A53:    card ([:B1,C3:]\/[:B3,C1:])=card [:B1,C3:]+card [:B3,C1:]
+        by CARD_2:40
+        .= (card B1 * card C3) + card [:B3,C1:] by CARD_2:46
+        .= (card B1 * card C3) + (card B3 * card C1) by CARD_2:46;
+A54:    card X1 + card X3 = (card B1 + card B3) * (card C1 + card C3)
+        by A19,A26,CARD_1:70,A27,A36,A38;
+        0 <= card B1 - card B3 & 0 <= card C1 - card C3
+        by A14,Lm6,XREAL_1:48;
+        then 0 <= (card B1 - card B3)*(card C1 - card C3);
+        then 0 <= (card B1 * card C1) + (card B3 * card C3) -
+        ((card B1 * card C3) + (card B3 * card C1));
+        hence thesis by A54,A52,A53,XREAL_1:49;
+      end;
+    end;
+  end;
+A55: for k being Nat holds P[k] from NAT_1:sch 4(A1);
+   let n be non zero Nat;
+   per cases;
+   suppose
+A56: n = 1;
+     2 is prime & 2|^0 = 1 by NEWTON:4,INT_2:28;
+     hence thesis by A56,Lm6;
+   end;
+   suppose
+A57: n<>1;
+     n >=1+0 by NAT_1:9;
+     then n > 1 by A57,XXREAL_0:1;
+     then ex p be Prime st p divides n &
+     for q be Prime st q divides n holds q <= p by Th20;
+     hence thesis by A55;
+   end;
+ end;

@@ -1,0 +1,40 @@
+theorem
+  for z being non zero Nat holds
+  {k where k is Nat: k is odd & 2|^(2|^z)+k is composite} is infinite
+  proof
+    let z;
+    set S = {k where k is Nat: k is odd & 2|^(2|^z)+k is composite};
+    deffunc F(Nat) = 6*$1-1;
+    consider f being ManySortedSet of NATPLUS such that
+A1: for n being Element of NATPLUS holds f.n = F(n) from PBOOLE:sch 5;
+    set R = rng f;
+A2: dom f = NATPLUS by PARTFUN1:def 2;
+A3: R c= S
+    proof
+      let a be object;
+      assume a in R;
+      then consider t being object such that
+A4:   t in dom f and
+A5:   a = f.t by FUNCT_1:def 3;
+      reconsider t as Element of NATPLUS by A4,PARTFUN1:def 2;
+A6:   a = 6*t-1 by A1,A5;
+A7:   2*(3*t)-1 is odd;
+      0+1 <= t by NAT_1:13;
+      then 2|^(2|^z)+(6*t-1) is composite by Th64;
+      hence a in S by A6,A7;
+    end;
+    for m being Nat ex n being Nat st n >= m & n in R
+    proof
+      let m be Nat;
+      1*m <= 6*m by XREAL_1:64;
+      then
+A8:   m+0 <= 6*m+5 by XREAL_1:7;
+      reconsider n = F(m+1) as Element of NAT by INT_1:3;
+      take n;
+      thus n >= m by A8;
+A9:   m+1 in NATPLUS by NAT_LAT:def 6;
+      then f.(m+1) = n by A1;
+      hence n in R by A2,A9,FUNCT_1:def 3;
+    end;
+    hence thesis by A3,PYTHTRIP:9;
+  end;

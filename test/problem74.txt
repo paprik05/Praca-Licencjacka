@@ -1,0 +1,15 @@
+theorem
+  for n being even Nat st n > 6
+  ex p,q being Prime st n-p,n-q are_coprime & p = 3 & q = 5
+  proof
+    let n be even Nat such that
+A1: n > 6;
+    3 = 2*1+1;
+    then reconsider p = 3 as odd Prime by PEPIN:41;
+    5 = 2*2+1;
+    then reconsider q = 5 as odd Prime by PEPIN:59;
+    take p,q;
+A2: n-p-(n-q) = 2;
+    6-3 < n-3 & 6-5 < n-5 by A1,XREAL_1:14;
+    hence thesis by A2,Th31;
+  end;

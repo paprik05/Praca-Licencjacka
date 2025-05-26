@@ -1,0 +1,125 @@
+theorem
+  not ex p,q,r,s,t being Prime st p^2 + q^2 = r^2 + s^2 + t^2
+  proof
+    given p,q,r,s,t being Prime such that
+A1: p^2 + q^2 = r^2 + s^2 + t^2;
+A2: now
+      assume p = r;
+      then p^2 + q^2 = p^2 + (s^2 + t^2) by A1;
+      hence contradiction by Th39;
+    end;
+A3: now
+      assume p = s;
+      then p^2 + q^2 = p^2 + (r^2 + t^2) by A1;
+      hence contradiction by Th39;
+    end;
+A4: p <> t by A1,Th39;
+A5: now
+      assume q = r;
+      then p^2 + q^2 = q^2 + (s^2 + t^2) by A1;
+      hence contradiction by Th39;
+    end;
+A6: now
+      assume q = s;
+      then p^2 + q^2 = q^2 + (r^2 + t^2) by A1;
+      hence contradiction by Th39;
+    end;
+A7: q <> t by A1,Th39;
+A8: (p^2 + q^2) mod 8 = ((p^2 mod 8) + (q^2 mod 8)) mod 8 by NAT_D:66;
+A9: (r^2 + s^2) mod 8 = ((r^2 mod 8) + (s^2 mod 8)) mod 8 by NAT_D:66;
+A10: (r^2 + s^2 + t^2) mod 8 = ((r^2 + s^2) mod 8 + (t^2 mod 8)) mod 8
+    by NAT_D:66;
+A11: 2^2 mod 8 = 4 by NAT_D:24;
+    per cases;
+    suppose p is even or q is even;
+      then
+A12:   p = 2 or q = 2 by LAGRA4SQ:13;
+      then
+A13:   r is odd by A2,A5,LAGRA4SQ:13;
+      then
+A14:  r^2 mod 8 = 1 by Th37;
+A15:  s is odd by A3,A6,A12,LAGRA4SQ:13;
+      then
+A16:  s^2 mod 8 = 1 by Th37;
+A17:  t is odd by A4,A7,A12,LAGRA4SQ:13;
+      then
+A18:  t^2 mod 8 = 1 by Th37;
+A19:  p is even implies q is odd by A1,A13,A15,A17;
+A20:  (p^2 + q^2) mod 8 = (1 + 4) mod 8 by A8,A12,A11,A19,Th37
+      .= 5 by NAT_D:24;
+      (r^2 + s^2 + t^2) mod 8 = (2+1) mod 8 by A9,A10,A16,A18,A14,NAT_D:24
+      .= 3 by NAT_D:24;
+      hence contradiction by A1,A20;
+    end;
+    suppose
+A21:  p is odd & q is odd;
+      then p^2 mod 8 = 1 & q^2 mod 8 = 1 by Th37;
+      then
+A22:  (p^2 + q^2) mod 8 = 2 by A8,NAT_D:24;
+      per cases by A1,A21;
+      suppose that
+A23:    r is even and
+A24:    s is odd;
+        t is odd by A1,A21,A23,A24;
+        then
+A25:    t^2 mod 8 = 1 by Th37;
+A26:    s^2 mod 8 = 1 by A24,Th37;
+        r = 2 by A23,LAGRA4SQ:13;
+        then (r^2 + s^2) mod 8 = 5 by A9,A11,A26,NAT_D:24;
+        hence thesis by A1,A22,A10,A25,NAT_D:24;
+      end;
+      suppose that
+A27:    r is even and
+A28:    t is even;
+        s is even by A1,A21,A27,A28;
+        then
+A29:    s = 2 by LAGRA4SQ:13;
+A30:    t = 2 by A28,LAGRA4SQ:13;
+        r = 2 by A27,LAGRA4SQ:13;
+        then (r^2 + s^2) mod 8 = 0 by A29,NAT_D:25;
+        hence thesis by A1,A22,A10,A30,NAT_D:24;
+      end;
+      suppose that
+A31:    s is even and
+A32:    t is odd;
+        r is odd by A1,A21,A31,A32;
+        then
+A33:    r^2 mod 8 = 1 by Th37;
+A34:    t^2 mod 8 = 1 by A32,Th37;
+        s = 2 by A31,LAGRA4SQ:13;
+        then (r^2 + s^2) mod 8 = 5 by A9,A11,A33,NAT_D:24;
+        hence thesis by A1,A22,A10,A34,NAT_D:24;
+      end;
+      suppose that
+A35:    s is even and
+A36:    r is even;
+        t is even by A1,A21,A35,A36;
+        then
+A37:    t = 2 by LAGRA4SQ:13;
+A38:    s = 2 by A35,LAGRA4SQ:13;
+        r = 2 by A36,LAGRA4SQ:13;
+        then (r^2 + s^2) mod 8 = 0 by A38,NAT_D:25;
+        hence thesis by A1,A22,A10,A37,NAT_D:24;
+      end;
+      suppose that
+A39:    t is even and
+A40:    r is odd;
+        s is odd by A1,A21,A39,A40;
+        then
+A41:    s^2 mod 8 = 1 by Th37;
+A42:    t = 2 by A39,LAGRA4SQ:13;
+        r^2 mod 8 = 1 by A40,Th37;
+        hence thesis by A1,A11,A22,A9,A10,A42,A41,NAT_D:24;
+      end;
+      suppose that
+A43:    t is even and
+A44:    s is even;
+A45:    t = 2 by A43,LAGRA4SQ:13;
+A46:    s = 2 by A44,LAGRA4SQ:13;
+        r is even by A1,A21,A43,A44;
+        then r = 2 by LAGRA4SQ:13;
+        then (r^2 + s^2) mod 8 = 0 by A46,NAT_D:25;
+        hence thesis by A1,A22,A10,A45,NAT_D:24;
+      end;
+    end;
+  end;

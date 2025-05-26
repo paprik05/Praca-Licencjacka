@@ -13,7 +13,7 @@ def prob80(limit):
                     continue
                 left = p*(p+1) + q*(q+1)
                 if left == right:
-                    solutions.append(f"{p}({p} + 1) + {q}({q} + 1)= {r}({r} + 1)")
+                    solutions.append(f"p,q,r = {p,q,r}: {p}({p} + 1) + {q}({q} + 1)= {r}({r} + 1)")
                     break
 
     return {"result": solutions}

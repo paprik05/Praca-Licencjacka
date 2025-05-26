@@ -1,0 +1,25 @@
+theorem
+  n satisfies_Sierpinski_problem_87a & n <= 27 implies n in {13,17,21,23,27}
+  proof
+    assume
+A1: n satisfies_Sierpinski_problem_87a;
+    assume n <= 27;
+    then n = 0 or ... or n = 27;
+    hence thesis by A1,Lm5,Lm6,
+    Lm7,Lm8,Lm9,Lm10,Lm11,Lm12,Lm13,Lm14,Lm15,Lm16,
+    Lm17,Lm18,Lm19,Lm20,Lm21,Lm22,Lm23,Lm24,Lm25,
+    Lm26,Lm27,ENUMSET1:def 3;
+  end;
+
+theorem
+  112 satisfies_Sierpinski_problem_87b
+  proof
+    5 = 2*2+1;
+    then reconsider a = 5 as odd Prime by XPRIMES1:5;
+    13 = 2*6+1;
+    then reconsider b = 13 as odd Prime by XPRIMES1:13;
+    193 = 2*96+1;
+    then reconsider c = 193 as odd Prime by XPRIMES1:193;
+    take a,b,c;
+    thus thesis by Th57;
+  end;

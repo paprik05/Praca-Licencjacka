@@ -1,0 +1,9 @@
+theorem
+  for a,b being Integer st a <> b holds
+  {n where n is Nat: a+n,b+n are_coprime} is infinite
+  proof
+    let a,b be Integer;
+    assume a <> b;
+    then a < b or b < a by XXREAL_0:1;
+    hence thesis by Lm39;
+  end;

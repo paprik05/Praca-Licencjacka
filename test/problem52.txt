@@ -1,0 +1,45 @@
+theorem :: Problem 52
+  for n being Nat holds
+   ex f being AP-like integer-valued XFinSequence st
+     dom f >= n &
+     f is with_all_coprime_terms
+  proof
+    let n be Nat;
+    set f = ArProg (n! + 1, n!);
+    reconsider ff = f | n as integer-valued XFinSequence by RestrictedXFin;
+SS: for k being Nat holds
+      f.k = n! * (k+1) + 1
+    proof
+      let k be Nat;
+      f.k = n! + 1 + n! * k by ArDefNth
+         .= n! * (k + 1) + 1;
+      hence thesis;
+    end;
+S0: for k being Nat st k + 1 <= n holds
+      ff.k = n! * (k+1) + 1
+    proof
+      let k be Nat;
+      assume k + 1 <= n; then
+      k < n by NAT_1:13; then
+      k in Segm n by NAT_1:44; then
+      ff.k = f.k by FUNCT_1:49;
+      hence thesis by SS;
+    end;
+    dom f = NAT by FUNCT_2:def 1; then
+t2: dom (f|Segm n) = Segm n;
+    for i,j being Nat st i in dom ff & j in dom ff & i <> j holds
+      ff.i, ff.j are_coprime
+    proof
+      let i,j be Nat;
+      assume
+S1:   i in dom ff & j in dom ff & i <> j; then
+S2:   i + 1 <> j + 1;
+S6:   1 <= i + 1 & 1 <= j + 1 by NAT_1:12;
+      i < n & j < n by NAT_1:44,S1,t2; then
+S4:   i + 1 <= n & j + 1 <= n by NAT_1:13; then
+      ff.i = n! * (i + 1) + 1 & ff.j = n! * (j + 1) + 1 by S0;
+      hence thesis by S4,S6,S2,LemmaFor52;
+    end; then
+    ff is with_all_coprime_terms;
+    hence thesis by t2;
+  end;

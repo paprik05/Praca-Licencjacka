@@ -1,0 +1,36 @@
+theorem :: Problem 38 c
+  { n where n is positive Nat: card divisors(n,4,1) > card divisors(n,4,3) }
+  is infinite
+  proof
+    deffunc A(positive Nat) = divisors($1,4,1);
+    deffunc B(positive Nat) = divisors($1,4,3);
+    set X = { n where n is positive Nat: card A(n) > card B(n) };
+    set n = 5|^0;
+    {k where k is Nat: k divides n} = A(n) by Th36;
+    then
+A1: card A(n) = 0+1 by Th37;
+    card B(n) = 0 by Th38,CARD_1:27;
+    then
+A2: n in X by A1;
+A3: X is natural-membered
+    proof
+      let x be object;
+      assume x in X;
+      then ex n being positive Nat st x = n & card A(n) > card B(n);
+      hence thesis;
+    end;
+    for a st a in X ex b being Nat st b > a & b in X
+    proof
+      let a;
+      assume a in X;
+      then consider n being positive Nat such that
+A4:   a = n and card A(n) > card B(n);
+      take b = 5|^n;
+      thus b > a by A4,NEWTON:86;
+A5:   card B(b) = 0 by Th38,CARD_1:27;
+      {k where k is Nat: k divides b} = A(b) by Th36;
+      then card A(b) = n+1 by Th37;
+      hence b in X by A5;
+    end;
+    hence thesis by A2,A3,NUMBER04:1;
+  end;

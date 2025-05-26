@@ -1,0 +1,71 @@
+theorem
+  a,b,c are_mutually_distinct implies
+  { n where n is positive Nat: a+n,b+n,c+n are_mutually_coprime } is infinite
+  proof
+    set A = { n where n is positive Nat: a+n,b+n,c+n are_mutually_coprime };
+    assume
+A1: a,b,c are_mutually_distinct;
+    set S = the Sierp45FS of a,b,c;
+    set r = numberR(a,b,c);
+    set r0 = numberR0(a,b,c);
+    consider h being Integer, F being FinSequence of NAT such that
+A2: h = (a-b)*(a-c)*(b-c) and
+A3: F = Sgm PrimeDivisors>3(h) and
+A4: len S = len F and
+    for i being object st i in dom S holds
+    not F.i divides a+S.i & not F.i divides b+S.i & not F.i divides c+S.i
+    by A1,Def12;
+    set X = PrimeDivisors>3(h);
+    set m = <*2,3*>^F;
+    set u = <*r,r0*>^S;
+    reconsider u as integer-valued FinSequence;
+    len <*r,r0*> = 2 by FINSEQ_1:44;
+    then
+A5: dom u = Seg (2 + len S) by FINSEQ_1:def 7;
+    len <*2,3*> = 2 by FINSEQ_1:44;
+    then
+A6: dom m = Seg (2 + len F) by FINSEQ_1:def 7;
+A7: m.1 = 2 by Th21;
+A8: m.2 = 3 by Th21;
+A9: a-b <> 0 & a-c <> 0 & b-c <> 0 by A1;
+    m is positive-yielding
+    proof
+      let n be Nat;
+      assume n in dom m;
+      then
+A10:  m.n in rng m by FUNCT_1:def 3;
+      rng m c= SetPrimes by A2,A3,A9,Th44;
+      then m.n is prime by A10,NEWTON:def 6;
+      hence thesis;
+    end;
+    then reconsider m as CR_Sequence by A2,A3,A9,Th45;
+    set Z = { z where z is positive Nat: z solves_CRT u,m };
+    Z c= A
+    proof
+      let s be object;
+      assume s in Z;
+      then consider z being positive Nat such that
+A11:  s = z and
+A12:  z solves_CRT u,m;
+      u.1 = r by Th21;
+      then
+A13:  z,r are_congruent_mod 2 by A7,A12,Th20;
+      u.2 = r0 by Th21;
+      then
+A14:  z,r0 are_congruent_mod 3 by A8,A12,Th20;
+      for i being Nat st i in dom S holds z, S.i are_congruent_mod F.i
+      proof
+        let i be Nat;
+        assume
+A15:    i in dom S;
+        then
+A16:    z,u.(i+2) are_congruent_mod m.(i+2) by A12,Th22;
+        dom F = dom S by A4,FINSEQ_3:29;
+        then m.(i+2) = F.i by A15,Th23;
+        hence z, S.i are_congruent_mod F.i by A15,A16,Th23;
+      end;
+      then a+z,b+z,c+z are_mutually_coprime by A1,A2,A3,A13,A14,Th43;
+      hence thesis by A11;
+    end;
+    hence A is infinite by A4,A5,A6,Th31;
+  end;

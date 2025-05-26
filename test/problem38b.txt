@@ -1,0 +1,35 @@
+theorem :: Problem 38 b
+  { n where n is Nat: card divisors(n,4,1) = card divisors(n,4,3) } is infinite
+  proof
+    deffunc A(Nat) = divisors($1,4,1);
+    deffunc B(Nat) = divisors($1,4,3);
+    set A = {n where n is Nat: card A(3|^(2*n+1)) = card B(3|^(2*n+1))};
+    set X = {n where n is Nat: card A(n) = card B(n)};
+    set n = 3|^(2*0+1);
+A1: card A(n) = 1 by Th29;
+    card B(n) = 1 by Th30;
+    then
+A2: n in X by A1;
+A3: X is natural-membered
+    proof
+      let x be object;
+      assume x in X;
+      then ex n st x = n & card A(n) = card B(n);
+      hence thesis;
+    end;
+    for a st a in X ex b being Nat st b > a & b in X
+    proof
+      let a;
+      assume a in X;
+      take b = 3|^(2*a+1);
+      1*a <= 2*a by XREAL_1:64;
+      then
+A4:   a+0 < 2*a+1 by XREAL_1:8;
+      b > 2*a+1 by NEWTON:86;
+      hence b > a by A4,XXREAL_0:2;
+A5:   card A(b) = a+1 by Th29;
+      card B(b) = a+1 by Th30;
+      hence thesis by A5;
+    end;
+    hence thesis by A2,A3,NUMBER04:1;
+  end;

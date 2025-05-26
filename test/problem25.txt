@@ -1,0 +1,18 @@
+theorem
+  for n being odd Nat holds n divides 2|^(n!) - 1
+  proof
+    let n be odd Nat;
+    set E = Euler n;
+    per cases;
+    suppose n <= 1;
+      then n = 1 by NAT_1:25;
+      hence thesis by NAT_D:6;
+    end;
+    suppose n > 1;
+      then (2|^E) mod n = 1 by Lm2,NAT_5:3,EULER_2:18;
+      then
+A1:   n divides 2|^E-1 by PEPIN:8;
+      2|^E-1 divides 2|^(n!)-1 by Th47,NUMBER05:19;
+      hence n divides 2|^(n!)-1 by A1,INT_2:9;
+    end;
+  end;

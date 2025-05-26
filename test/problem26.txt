@@ -1,0 +1,177 @@
+theorem
+  {n where n is Nat: 5 divides 2|^n-3} is infinite
+  proof
+    set A = {n where n is Nat: 5 divides 2|^n-3};
+    deffunc F(Nat) = 4*$1+3;
+    consider f being ManySortedSet of NAT such that
+A1: for d being Element of NAT holds f.d = F(d) from PBOOLE:sch 5;
+A2: dom f = NAT by PARTFUN1:def 2;
+A3: rng f c= A
+    proof
+      let y be object;
+      assume y in rng f;
+      then consider k being object such that
+A4:   k in dom f and
+A5:   f.k = y by FUNCT_1:def 3;
+      reconsider k as Element of NAT by A4,PARTFUN1:def 2;
+A6:   2|^(4*k),1 are_congruent_mod 5 by Th7;
+A7:   2|^(4*k)*2|^3 = 2|^(4*k+3) by NEWTON:8;
+      8,3 are_congruent_mod 5;
+      then 2|^(4*k)*2|^3,1*3 are_congruent_mod 5 by A6,Lm3,INT_1:18;
+      then F(k) in A by A7;
+      hence thesis by A1,A5;
+    end;
+    f is one-to-one
+    proof
+      let x1,x2 be object such that
+A8:   x1 in dom f & x2 in dom f and
+A9:   f.x1 = f.x2;
+      reconsider x1,x2 as Element of NAT by A8,PARTFUN1:def 2;
+      f.x1 = F(x1) & f.x2 = F(x2) by A1;
+      then 4*x1+3 = 4*x2+3 by A9;
+      hence thesis;
+    end;
+    hence thesis by A2,A3,CARD_1:59;
+  end;
+
+theorem
+  {n where n is Nat: 13 divides 2|^n-3} is infinite
+  proof
+    set A = {n where n is Nat: 13 divides 2|^n-3};
+    deffunc F(Nat) = 12*$1+4;
+    consider f being ManySortedSet of NAT such that
+A1: for d being Element of NAT holds f.d = F(d) from PBOOLE:sch 5;
+A2: dom f = NAT by PARTFUN1:def 2;
+A3: rng f c= A
+    proof
+      let y be object;
+      assume y in rng f;
+      then consider k being object such that
+A4:   k in dom f and
+A5:   f.k = y by FUNCT_1:def 3;
+      reconsider k as Element of NAT by A4,PARTFUN1:def 2;
+A6:   2|^(12*k),1 are_congruent_mod 13 by Th8;
+A7:   2|^(12*k)*2|^4 = 2|^(12*k+4) by NEWTON:8;
+      16,3 are_congruent_mod 13;
+      then 2|^(12*k)*2|^4,1*3 are_congruent_mod 13 by A6,Lm4,INT_1:18;
+      then F(k) in A by A7;
+      hence thesis by A1,A5;
+    end;
+    f is one-to-one
+    proof
+      let x1,x2 be object such that
+A8:   x1 in dom f & x2 in dom f and
+A9:   f.x1 = f.x2;
+      reconsider x1,x2 as Element of NAT by A8,PARTFUN1:def 2;
+      f.x1 = F(x1) & f.x2 = F(x2) by A1;
+      then 12*x1+4 = 12*x2+4 by A9;
+      hence thesis;
+    end;
+    hence thesis by A2,A3,CARD_1:59;
+  end;
+
+64,-1 are_congruent_mod 65;
+  then
+Lm1118: 2|^6*2|^6,(-1)*(-1) are_congruent_mod 65 by Lm6,INT_1:18;
+
+theorem
+  2|^(n+12),2|^n are_congruent_mod 65
+  proof
+    2|^n,2|^n are_congruent_mod 65 by INT_1:11;
+    then 2|^n*2|^12,2|^n*1 are_congruent_mod 65 by Lm1107,Lm1118,INT_1:18;
+    hence thesis by NEWTON:8;
+  end;
+
+theorem Th30:
+  2|^n,2|^(n mod 12) are_congruent_mod 65
+  proof
+    defpred P[Nat] means 2|^$1,2|^($1 mod 12) are_congruent_mod 65;
+A1: P[0] by INT_1:11;
+A2: P[k] implies P[k+1]
+    proof
+      assume P[k];
+      then
+A3:   2*2|^k,2*2|^(k mod 12) are_congruent_mod 65 by INT_4:11;
+A4:   2|^((k mod 12)+1) = 2*2|^(k mod 12) by NEWTON:6;
+      per cases by RADIX_1:4;
+      suppose
+A5:     (k+1) mod 12 = 0;
+        set d = (k+1) div 12;
+A6:     k+1 = 12*d + ((k+1) mod 12) by INT_1:59;
+        2|^12|^d,1|^d are_congruent_mod 65 by Lm1107,Lm1118,GR_CY_3:34;
+        then 2|^(12*d),1 are_congruent_mod 65 by NEWTON:9;
+        hence thesis by A5,A6,NEWTON:4;
+      end;
+      suppose (k+1) mod 12 = (k mod 12) + 1;
+        hence thesis by A3,A4,NEWTON:6;
+      end;
+    end;
+    P[k] from NAT_1:sch 2(A1,A2);
+    hence thesis;
+  end;
+
+theorem
+  not 65 divides 2|^n-3
+  proof
+    assume 65 divides 2|^n-3;
+    then
+A1: 2|^n,3 are_congruent_mod 65;
+A2: 2|^7,63 are_congruent_mod 65 by Lm7;
+    65*3 = 2|^8-3-58 by Lm8;
+    then
+A3: 2|^8,61 are_congruent_mod 65;
+    65*7 = 2|^9-3-54 by Lm9;
+    then
+A4: 2|^9,57 are_congruent_mod 65;
+    65*15 = 2|^10-3-46 by Lm10;
+    then
+A5: 2|^10,49 are_congruent_mod 65;
+    65*31 = 2|^11-3-30 by Lm11;
+    then
+A6: 2|^11,33 are_congruent_mod 65;
+A7: 2|^n,2|^(n mod 12) are_congruent_mod 65 by Th30;
+    n mod (11+1) = 0 or ... or n mod (11+1) = 11 by NUMBER03:11;
+    then per cases;
+    suppose n mod 12 = 0;
+      then 2|^n,1 are_congruent_mod 65 by A7,NEWTON:4;
+      hence contradiction by A1,NAT_6:14;
+    end;
+    suppose n mod 12 = 1;
+      hence contradiction by A1,A7,NAT_6:14;
+    end;
+    suppose n mod 12 = 2;
+      hence contradiction by A1,A7,Lm2,NAT_6:14;
+    end;
+    suppose n mod 12 = 3;
+      hence contradiction by A1,A7,Lm3,NAT_6:14;
+    end;
+    suppose n mod 12 = 4;
+      hence contradiction by A1,A7,Lm4,NAT_6:14;
+    end;
+    suppose n mod 12 = 5;
+      hence contradiction by A1,A7,Lm5,NAT_6:14;
+    end;
+    suppose n mod 12 = 6;
+      hence contradiction by A1,A7,Lm6,NAT_6:14;
+    end;
+    suppose n mod 12 = 7;
+      then 2|^n,63 are_congruent_mod 65 by A2,A7,INT_1:15;
+      hence contradiction by A1,NAT_6:14;
+    end;
+    suppose n mod 12 = 8;
+      then 2|^n,61 are_congruent_mod 65 by A3,A7,INT_1:15;
+      hence contradiction by A1,NAT_6:14;
+    end;
+    suppose n mod 12 = 9;
+      then 2|^n,57 are_congruent_mod 65 by A4,A7,INT_1:15;
+      hence contradiction by A1,NAT_6:14;
+    end;
+    suppose n mod 12 = 10;
+      then 2|^n,49 are_congruent_mod 65 by A5,A7,INT_1:15;
+      hence contradiction by A1,NAT_6:14;
+    end;
+    suppose n mod 12 = 11;
+      then 2|^n,33 are_congruent_mod 65 by A6,A7,INT_1:15;
+      hence contradiction by A1,NAT_6:14;
+    end;
+  end;

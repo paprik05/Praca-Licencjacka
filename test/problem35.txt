@@ -1,0 +1,1991 @@
+theorem
+  {[x,y] where x,y is Nat: x,y satisfy_Sierpinski_problem_35} is infinite
+  proof
+    set A = {[x,y] where x,y is Nat: x,y satisfy_Sierpinski_problem_35};
+    deffunc F(Nat) = [36*$1+14,(12*$1+5)*(18*$1+7)];
+    consider f being ManySortedSet of NAT such that
+A1: for d being Element of NAT holds f.d = F(d) from PBOOLE:sch 5;
+A2: dom f = NAT by PARTFUN1:def 2;
+A3: rng f c= A
+    proof
+      let y be object;
+      assume y in rng f;
+      then consider k being object such that
+A4:   k in dom f and
+A5:   f.k = y by FUNCT_1:def 3;
+      reconsider k as Element of NAT by A4,PARTFUN1:def 2;
+      36*k+14,(12*k+5)*(18*k+7) satisfy_Sierpinski_problem_35 by Th15;
+      then F(k) in A;
+      hence thesis by A1,A5;
+    end;
+    f is one-to-one
+    proof
+      let x1,x2 be object such that
+A6:   x1 in dom f & x2 in dom f and
+A7:   f.x1 = f.x2;
+      reconsider x1,x2 as Element of NAT by A6,PARTFUN1:def 2;
+      f.x1 = F(x1) & f.x2 = F(x2) by A1;
+      then 36*x1+14 = 36*x2+14 by A7,XTUPLE_0:1;
+      hence thesis;
+    end;
+    hence thesis by A2,A3,CARD_1:59;
+  end;
+
+theorem
+  14,35 satisfy_Sierpinski_problem_35
+  proof
+    1260 = 6*210;
+    hence 14*(14+1) divides 35*(35+1);
+    35 = 2*14+7;
+    hence not 14 divides 35 by NAT_4:9;
+    35 = 2*15+5;
+    hence not 14+1 divides 35 by NAT_4:9;
+    36 = 2*14+8;
+    hence not 14 divides 35+1 by NAT_4:9;
+    36 = 2*15+6;
+    hence not 14+1 divides 35+1 by NAT_4:9;
+  end;
+
+theorem
+  not ex x,y being Nat st x < 14 & y < 35 & x,y satisfy_Sierpinski_problem_35
+  proof
+    given x,y being Nat such that
+A1: x < 14 and
+A2: y < 35 and
+A3: x,y satisfy_Sierpinski_problem_35;
+    14 = 13+1;
+    then x <= 13 by A1,NAT_1:13;
+    then
+A4: x = 0 or ... or x = 13;
+    35 = 34+1;
+    then y <= 34 by A2,NAT_1:13;
+    then
+A5: y = 0 or ... or y = 34;
+    per cases by A4;
+    suppose x = 0;
+      hence contradiction by A3,NAT_D:6;
+    end;
+    suppose x = 1;
+      hence contradiction by A3,NAT_D:6;
+    end;
+    suppose
+A6:   x = 2;
+      per cases by A5;
+      suppose y = 0;
+        hence contradiction by A3,NAT_D:6;
+      end;
+      suppose y = 1;
+        hence contradiction by A3,A6;
+      end;
+      suppose y = 2;
+        hence contradiction by A3,A6;
+      end;
+      suppose y = 3;
+        hence contradiction by A3,A6;
+      end;
+      suppose
+A7:     y = 4;
+        2 divides 2*2;
+        hence contradiction by A3,A6,A7;
+      end;
+      suppose
+A8:     y = 5;
+        2 divides 2*3;
+        hence contradiction by A3,A6,A8;
+      end;
+      suppose
+A9:     y = 6;
+        2 divides 2*3;
+        hence contradiction by A3,A6,A9;
+      end;
+      suppose
+A10:    y = 7;
+        2 divides 2*4;
+        hence contradiction by A3,A6,A10;
+      end;
+      suppose
+A11:    y = 8;
+        2 divides 2*4;
+        hence contradiction by A3,A6,A11;
+      end;
+      suppose
+A12:    y = 9;
+        2 divides 2*5;
+        hence contradiction by A3,A6,A12;
+      end;
+      suppose
+A13:    y = 10;
+        2 divides 2*5;
+        hence contradiction by A3,A6,A13;
+      end;
+      suppose
+A14:    y = 11;
+        2 divides 2*6;
+        hence contradiction by A3,A6,A14;
+      end;
+      suppose
+A15:    y = 12;
+        2 divides 2*6;
+        hence contradiction by A3,A6,A15;
+      end;
+      suppose
+A16:    y = 13;
+        2 divides 2*7;
+        hence contradiction by A3,A6,A16;
+      end;
+      suppose
+A17:    y = 14;
+        2 divides 2*7;
+        hence contradiction by A3,A6,A17;
+      end;
+      suppose
+A18:    y = 15;
+        2 divides 2*8;
+        hence contradiction by A3,A6,A18;
+      end;
+      suppose
+A19:    y = 16;
+        2 divides 2*8;
+        hence contradiction by A3,A6,A19;
+      end;
+      suppose
+A20:    y = 17;
+        2 divides 2*9;
+        hence contradiction by A3,A6,A20;
+      end;
+      suppose
+A21:    y = 18;
+        2 divides 2*9;
+        hence contradiction by A3,A6,A21;
+      end;
+      suppose
+A22:    y = 19;
+        2 divides 2*10;
+        hence contradiction by A3,A6,A22;
+      end;
+      suppose
+A23:    y = 20;
+        2 divides 2*10;
+        hence contradiction by A3,A6,A23;
+      end;
+      suppose
+A24:    y = 21;
+        2 divides 2*11;
+        hence contradiction by A3,A6,A24;
+      end;
+      suppose
+A25:    y = 22;
+        2 divides 2*11;
+        hence contradiction by A3,A6,A25;
+      end;
+      suppose
+A26:    y = 23;
+        2 divides 2*12;
+        hence contradiction by A3,A6,A26;
+      end;
+      suppose
+A27:    y = 24;
+        2 divides 2*12;
+        hence contradiction by A3,A6,A27;
+      end;
+      suppose
+A28:    y = 25;
+        2 divides 2*13;
+        hence contradiction by A3,A6,A28;
+      end;
+      suppose
+A29:    y = 26;
+        2 divides 2*13;
+        hence contradiction by A3,A6,A29;
+      end;
+      suppose
+A30:    y = 27;
+        2 divides 2*14;
+        hence contradiction by A3,A6,A30;
+      end;
+      suppose
+A31:    y = 28;
+        2 divides 2*14;
+        hence contradiction by A3,A6,A31;
+      end;
+      suppose
+A32:    y = 29;
+        2 divides 2*15;
+        hence contradiction by A3,A6,A32;
+      end;
+      suppose
+A33:    y = 30;
+        2 divides 2*15;
+        hence contradiction by A3,A6,A33;
+      end;
+      suppose
+A34:    y = 31;
+        2 divides 2*16;
+        hence contradiction by A3,A6,A34;
+      end;
+      suppose
+A35:    y = 32;
+        2 divides 2*16;
+        hence contradiction by A3,A6,A35;
+      end;
+      suppose
+A36:    y = 33;
+        2 divides 2*17;
+        hence contradiction by A3,A6,A36;
+      end;
+      suppose
+A37:    y = 34;
+        2 divides 2*17;
+        hence contradiction by A3,A6,A37;
+      end;
+    end;
+    suppose
+A38:  x = 3;
+      per cases by A5;
+      suppose y = 0;
+        hence contradiction by A3,NAT_D:6;
+      end;
+      suppose y = 1;
+        hence contradiction by A3,A38,NAT_D:7;
+      end;
+      suppose y = 2;
+        hence contradiction by A3,A38;
+      end;
+      suppose y = 3;
+        hence contradiction by A3,A38;
+      end;
+      suppose y = 4;
+        hence contradiction by A3,A38;
+      end;
+      suppose
+A39:    y = 5;
+        3 divides 3*2;
+        hence contradiction by A3,A38,A39;
+      end;
+      suppose
+A40:    y = 6;
+        3 divides 3*2;
+        hence contradiction by A3,A38,A40;
+      end;
+      suppose
+A41:    y = 7;
+        4 divides 4*2;
+        hence contradiction by A3,A38,A41;
+      end;
+      suppose
+A42:    y = 8;
+        4 divides 4*2;
+        hence contradiction by A3,A38,A42;
+      end;
+      suppose
+A43:    y = 9;
+        3 divides 3*3;
+        hence contradiction by A3,A38,A43;
+      end;
+      suppose
+A44:    y = 10;
+        110 = 12*9+2;
+        hence contradiction by A3,A38,A44,NAT_4:9;
+      end;
+      suppose
+A45:    y = 11;
+        3 divides 3*4;
+        hence contradiction by A3,A38,A45;
+      end;
+      suppose
+A46:    y = 12;
+        3 divides 3*4;
+        hence contradiction by A3,A38,A46;
+      end;
+      suppose
+A47:    y = 13;
+        182 = 12*15+2;
+        hence contradiction by A3,A38,A47,NAT_4:9;
+      end;
+      suppose
+A48:    y = 14;
+        3 divides 3*5;
+        hence contradiction by A3,A38,A48;
+      end;
+      suppose
+A49:    y = 15;
+        3 divides 3*5;
+        hence contradiction by A3,A38,A49;
+      end;
+      suppose
+A50:    y = 16;
+        4 divides 4*4;
+        hence contradiction by A3,A38,A50;
+      end;
+      suppose
+A51:    y = 17;
+        3 divides 3*6;
+        hence contradiction by A3,A38,A51;
+      end;
+      suppose
+A52:    y = 18;
+        3 divides 3*6;
+        hence contradiction by A3,A38,A52;
+      end;
+      suppose
+A53:    y = 19;
+        380 = 12*31+8;
+        hence contradiction by A3,A38,A53,NAT_4:9;
+      end;
+      suppose
+A54:    y = 20;
+        4 divides 4*5;
+        hence contradiction by A3,A38,A54;
+      end;
+      suppose
+A55:    y = 21;
+        3 divides 3*7;
+        hence contradiction by A3,A38,A55;
+      end;
+      suppose
+A56:    y = 22;
+        506 = 12*42+2;
+        hence contradiction by A3,A38,A56,NAT_4:9;
+      end;
+      suppose
+A57:    y = 23;
+        3 divides 3*8;
+        hence contradiction by A3,A38,A57;
+      end;
+      suppose
+A58:    y = 24;
+        3 divides 3*8;
+        hence contradiction by A3,A38,A58;
+      end;
+      suppose
+A59:    y = 25;
+        650 = 12*54+2;
+        hence contradiction by A3,A38,A59,NAT_4:9;
+      end;
+      suppose
+A60:    y = 26;
+        3 divides 3*9;
+        hence contradiction by A3,A38,A60;
+      end;
+      suppose
+A61:    y = 27;
+        3 divides 3*9;
+        hence contradiction by A3,A38,A61;
+      end;
+      suppose
+A62:    y = 28;
+        4 divides 4*7;
+        hence contradiction by A3,A38,A62;
+      end;
+      suppose
+A63:    y = 29;
+        870 = 12*72+6;
+        hence contradiction by A3,A38,A63,NAT_4:9;
+      end;
+      suppose
+A64:    y = 30;
+        3 divides 3*10;
+        hence contradiction by A3,A38,A64;
+      end;
+      suppose
+A65:    y = 31;
+        992 = 12*82+8;
+        hence contradiction by A3,A38,A65,NAT_4:9;
+      end;
+      suppose
+A66:    y = 32;
+        4 divides 4*8;
+        hence contradiction by A3,A38,A66;
+      end;
+      suppose
+A67:    y = 33;
+        3 divides 3*11;
+        hence contradiction by A3,A38,A67;
+      end;
+      suppose
+A68:    y = 34;
+        1190 = 12*99+2;
+        hence contradiction by A3,A38,A68,NAT_4:9;
+      end;
+    end;
+    suppose
+A69:  x = 4;
+      per cases by A5;
+      suppose y = 0;
+        hence contradiction by A3,NAT_D:6;
+      end;
+      suppose y = 1;
+        hence contradiction by A3,A69,NAT_D:7;
+      end;
+      suppose y = 2;
+        hence contradiction by A3,A69,NAT_D:7;
+      end;
+      suppose y = 3;
+        hence contradiction by A3,A69;
+      end;
+      suppose y = 4;
+        hence contradiction by A3,A69;
+      end;
+      suppose y = 5;
+        hence contradiction by A3,A69;
+      end;
+      suppose
+A70:    y = 6;
+        42 = 20*2+2;
+        hence contradiction by A3,A69,A70,NAT_4:9;
+      end;
+      suppose
+A71:    y = 7;
+        56 = 20*2+16;
+        hence contradiction by A3,A69,A71,NAT_4:9;
+      end;
+      suppose
+A72:    y = 8;
+        4 divides 4*2;
+        hence contradiction by A3,A69,A72;
+      end;
+      suppose
+A73:    y = 9;
+        90 = 20*4+10;
+        hence contradiction by A3,A69,A73,NAT_4:9;
+      end;
+      suppose
+A74:    y = 10;
+        110 = 20*5+10;
+        hence contradiction by A3,A69,A74,NAT_4:9;
+      end;
+      suppose
+A75:    y = 11;
+        132 = 20*6+12;
+        hence contradiction by A3,A69,A75,NAT_4:9;
+      end;
+      suppose
+A76:    y = 12;
+        4 divides 4*3;
+        hence contradiction by A3,A69,A76;
+      end;
+      suppose
+A77:    y = 13;
+        182 = 20*9+2;
+        hence contradiction by A3,A69,A77,NAT_4:9;
+      end;
+      suppose
+A78:    y = 14;
+        210 = 20*10+10;
+        hence contradiction by A3,A69,A78,NAT_4:9;
+      end;
+      suppose
+A79:    y = 15;
+        4 divides 4*4;
+        hence contradiction by A3,A69,A79;
+      end;
+      suppose
+A80:    y = 16;
+        4 divides 4*4;
+        hence contradiction by A3,A69,A80;
+      end;
+      suppose
+A81:    y = 17;
+        306 = 20*15+6;
+        hence contradiction by A3,A69,A81,NAT_4:9;
+      end;
+      suppose
+A82:    y = 18;
+        342 = 20*17+2;
+        hence contradiction by A3,A69,A82,NAT_4:9;
+      end;
+      suppose
+A83:    y = 19;
+        4 divides 4*5;
+        hence contradiction by A3,A69,A83;
+      end;
+      suppose
+A84:    y = 20;
+        4 divides 4*5;
+        hence contradiction by A3,A69,A84;
+      end;
+      suppose
+A85:    y = 21;
+        462 = 20*23+2;
+        hence contradiction by A3,A69,A85,NAT_4:9;
+      end;
+      suppose
+A86:    y = 22;
+        506 = 20*25+6;
+        hence contradiction by A3,A69,A86,NAT_4:9;
+      end;
+      suppose
+A87:    y = 23;
+        4 divides 4*6;
+        hence contradiction by A3,A69,A87;
+      end;
+      suppose
+A88:    y = 24;
+        4 divides 4*6;
+        hence contradiction by A3,A69,A88;
+      end;
+      suppose
+A89:    y = 25;
+        650 = 20*32+10;
+        hence contradiction by A3,A69,A89,NAT_4:9;
+      end;
+      suppose
+A90:    y = 26;
+        702 = 20*35+2;
+        hence contradiction by A3,A69,A90,NAT_4:9;
+      end;
+      suppose
+A91:    y = 27;
+        4 divides 4*7;
+        hence contradiction by A3,A69,A91;
+      end;
+      suppose
+A92:    y = 28;
+        4 divides 4*7;
+        hence contradiction by A3,A69,A92;
+      end;
+      suppose
+A93:    y = 29;
+        870 = 20*43+10;
+        hence contradiction by A3,A69,A93,NAT_4:9;
+      end;
+      suppose
+A94:    y = 30;
+        930 = 20*46+10;
+        hence contradiction by A3,A69,A94,NAT_4:9;
+      end;
+      suppose
+A95:    y = 31;
+        4 divides 4*8;
+        hence contradiction by A3,A69,A95;
+      end;
+      suppose
+A96:    y = 32;
+        4 divides 4*8;
+        hence contradiction by A3,A69,A96;
+      end;
+      suppose
+A97:    y = 33;
+        1122 = 20*56+2;
+        hence contradiction by A3,A69,A97,NAT_4:9;
+      end;
+      suppose
+A98:    y = 34;
+        1190 = 20*59+10;
+        hence contradiction by A3,A69,A98,NAT_4:9;
+      end;
+    end;
+    suppose
+A99:  x = 5;
+      per cases by A5;
+      suppose y = 0;
+        hence contradiction by A3,NAT_D:6;
+      end;
+      suppose y = 1;
+        hence contradiction by A3,A99,NAT_D:7;
+      end;
+      suppose y = 2;
+        hence contradiction by A3,A99,NAT_D:7;
+      end;
+      suppose y = 3;
+        hence contradiction by A3,A99,NAT_D:7;
+      end;
+      suppose y = 4;
+        hence contradiction by A3,A99;
+      end;
+      suppose y = 5;
+        hence contradiction by A3,A99;
+      end;
+      suppose y = 6;
+        hence contradiction by A3,A99;
+      end;
+      suppose
+A100:    y = 7;
+        56 = 30*1+26;
+        hence contradiction by A3,A99,A100,NAT_4:9;
+      end;
+      suppose
+A101:    y = 8;
+        72 = 30*2+12;
+        hence contradiction by A3,A99,A101,NAT_4:9;
+      end;
+      suppose
+A102:    y = 9;
+        5 divides 5*2;
+        hence contradiction by A3,A99,A102;
+      end;
+      suppose
+A103:    y = 10;
+        5 divides 5*2;
+        hence contradiction by A3,A99,A103;
+      end;
+      suppose
+A104:    y = 11;
+        132 = 30*4+12;
+        hence contradiction by A3,A99,A104,NAT_4:9;
+      end;
+      suppose
+A105:    y = 12;
+        6 divides 6*2;
+        hence contradiction by A3,A99,A105;
+      end;
+      suppose
+A106:    y = 13;
+        182 = 30*6+2;
+        hence contradiction by A3,A99,A106,NAT_4:9;
+      end;
+      suppose
+A107:    y = 14;
+        5 divides 5*3;
+        hence contradiction by A3,A99,A107;
+      end;
+      suppose
+A108:    y = 15;
+        5 divides 5*3;
+        hence contradiction by A3,A99,A108;
+      end;
+      suppose
+A109:    y = 16;
+        272 = 30*9+2;
+        hence contradiction by A3,A99,A109,NAT_4:9;
+      end;
+      suppose
+A110:    y = 17;
+        306 = 30*10+6;
+        hence contradiction by A3,A99,A110,NAT_4:9;
+      end;
+      suppose
+A111:    y = 18;
+        6 divides 6*3;
+        hence contradiction by A3,A99,A111;
+      end;
+      suppose
+A112:    y = 19;
+        5 divides 5*4;
+        hence contradiction by A3,A99,A112;
+      end;
+      suppose
+A113:    y = 20;
+        5 divides 5*4;
+        hence contradiction by A3,A99,A113;
+      end;
+      suppose
+A114:    y = 21;
+        462 = 30*15+12;
+        hence contradiction by A3,A99,A114,NAT_4:9;
+      end;
+      suppose
+A115:    y = 22;
+        506 = 30*16+26;
+        hence contradiction by A3,A99,A115,NAT_4:9;
+      end;
+      suppose
+A116:    y = 23;
+        6 divides 6*4;
+        hence contradiction by A3,A99,A116;
+      end;
+      suppose
+A117:    y = 24;
+        6 divides 6*4;
+        hence contradiction by A3,A99,A117;
+      end;
+      suppose
+A118:    y = 25;
+        5 divides 5*5;
+        hence contradiction by A3,A99,A118;
+      end;
+      suppose
+A119:    y = 26;
+        702 = 30*23+12;
+        hence contradiction by A3,A99,A119,NAT_4:9;
+      end;
+      suppose
+A120:    y = 27;
+        756 = 30*25+6;
+        hence contradiction by A3,A99,A120,NAT_4:9;
+      end;
+      suppose
+A121:    y = 28;
+        812 = 30*27+2;
+        hence contradiction by A3,A99,A121,NAT_4:9;
+      end;
+      suppose
+A122:    y = 29;
+        5 divides 5*6;
+        hence contradiction by A3,A99,A122;
+      end;
+      suppose
+A123:    y = 30;
+        5 divides 5*6;
+        hence contradiction by A3,A99,A123;
+      end;
+      suppose
+A124:    y = 31;
+        992 = 30*33+2;
+        hence contradiction by A3,A99,A124,NAT_4:9;
+      end;
+      suppose
+A125:    y = 32;
+        1056 = 30*35+6;
+        hence contradiction by A3,A99,A125,NAT_4:9;
+      end;
+      suppose
+A126:    y = 33;
+        1122 = 30*37+12;
+        hence contradiction by A3,A99,A126,NAT_4:9;
+      end;
+      suppose
+A127:    y = 34;
+        5 divides 5*7;
+        hence contradiction by A3,A99,A127;
+      end;
+    end;
+    suppose
+A128:  x = 6;
+      per cases by A5;
+      suppose y = 0;
+        hence contradiction by A3,NAT_D:6;
+      end;
+      suppose y = 1;
+        hence contradiction by A3,A128,NAT_D:7;
+      end;
+      suppose y = 2;
+        hence contradiction by A3,A128,NAT_D:7;
+      end;
+      suppose y = 3;
+        hence contradiction by A3,A128,NAT_D:7;
+      end;
+      suppose y = 4;
+        hence contradiction by A3,A128,NAT_D:7;
+      end;
+      suppose y = 5;
+        hence contradiction by A3,A128;
+      end;
+      suppose y = 6;
+        hence contradiction by A3,A128;
+      end;
+      suppose y = 7;
+        hence contradiction by A3,A128;
+      end;
+      suppose
+A129:    y = 8;
+        72 = 42*1+30;
+        hence contradiction by A3,A128,A129,NAT_4:9;
+      end;
+      suppose
+A130:    y = 9;
+        90 = 42*2+6;
+        hence contradiction by A3,A128,A130,NAT_4:9;
+      end;
+      suppose
+A131:    y = 10;
+        110 = 42*2+26;
+        hence contradiction by A3,A128,A131,NAT_4:9;
+      end;
+      suppose
+A132:    y = 11;
+        6 divides 6*2;
+        hence contradiction by A3,A128,A132;
+      end;
+      suppose
+A133:    y = 12;
+        6 divides 6*2;
+        hence contradiction by A3,A128,A133;
+      end;
+      suppose
+A134:    y = 13;
+        7 divides 7*2;
+        hence contradiction by A3,A128,A134;
+      end;
+      suppose
+A135:    y = 14;
+        7 divides 7*2;
+        hence contradiction by A3,A128,A135;
+      end;
+      suppose
+A136:    y = 15;
+        240 = 42*5+30;
+        hence contradiction by A3,A128,A136,NAT_4:9;
+      end;
+      suppose
+A137:    y = 16;
+        272 = 42*6+20;
+        hence contradiction by A3,A128,A137,NAT_4:9;
+      end;
+      suppose
+A138:    y = 17;
+        6 divides 6*3;
+        hence contradiction by A3,A128,A138;
+      end;
+      suppose
+A139:    y = 18;
+        6 divides 6*3;
+        hence contradiction by A3,A128,A139;
+      end;
+      suppose
+A140:    y = 19;
+        380 = 42*9+2;
+        hence contradiction by A3,A128,A140,NAT_4:9;
+      end;
+      suppose
+A141:    y = 20;
+        7 divides 7*3;
+        hence contradiction by A3,A128,A141;
+      end;
+      suppose
+A142:    y = 21;
+        7 divides 7*3;
+        hence contradiction by A3,A128,A142;
+      end;
+      suppose
+A143:    y = 22;
+        506 = 42*12+2;
+        hence contradiction by A3,A128,A143,NAT_4:9;
+      end;
+      suppose
+A144:    y = 23;
+        6 divides 6*4;
+        hence contradiction by A3,A128,A144;
+      end;
+      suppose
+A145:    y = 24;
+        6 divides 6*4;
+        hence contradiction by A3,A128,A145;
+      end;
+      suppose
+A146:    y = 25;
+        650 = 42*15+20;
+        hence contradiction by A3,A128,A146,NAT_4:9;
+      end;
+      suppose
+A147:    y = 26;
+        702 = 42*16+30;
+        hence contradiction by A3,A128,A147,NAT_4:9;
+      end;
+      suppose
+A148:    y = 27;
+        7 divides 7*4;
+        hence contradiction by A3,A128,A148;
+      end;
+      suppose
+A149:    y = 28;
+        7 divides 7*4;
+        hence contradiction by A3,A128,A149;
+      end;
+      suppose
+A150:    y = 29;
+        6 divides 6*5;
+        hence contradiction by A3,A128,A150;
+      end;
+      suppose
+A151:    y = 30;
+        6 divides 6*5;
+        hence contradiction by A3,A128,A151;
+      end;
+      suppose
+A152:    y = 31;
+        992 = 42*23+26;
+        hence contradiction by A3,A128,A152,NAT_4:9;
+      end;
+      suppose
+A153:    y = 32;
+        1056 = 42*25+6;
+        hence contradiction by A3,A128,A153,NAT_4:9;
+      end;
+      suppose
+A154:    y = 33;
+        1122 = 42*26+30;
+        hence contradiction by A3,A128,A154,NAT_4:9;
+      end;
+      suppose
+A155:    y = 34;
+        7 divides 7*5;
+        hence contradiction by A3,A128,A155;
+      end;
+    end;
+    suppose
+A156:  x = 7;
+      per cases by A5;
+      suppose y = 0;
+        hence contradiction by A3,NAT_D:6;
+      end;
+      suppose y = 1;
+        hence contradiction by A3,A156,NAT_D:7;
+      end;
+      suppose y = 2;
+        hence contradiction by A3,A156,NAT_D:7;
+      end;
+      suppose y = 3;
+        hence contradiction by A3,A156,NAT_D:7;
+      end;
+      suppose y = 4;
+        hence contradiction by A3,A156,NAT_D:7;
+      end;
+      suppose y = 5;
+        hence contradiction by A3,A156,NAT_D:7;
+      end;
+      suppose y = 6;
+        hence contradiction by A3,A156;
+      end;
+      suppose y = 7;
+        hence contradiction by A3,A156;
+      end;
+      suppose y = 8;
+        hence contradiction by A3,A156;
+      end;
+      suppose
+A157:    y = 9;
+        90 = 56*1+34;
+        hence contradiction by A3,A156,A157,NAT_4:9;
+      end;
+      suppose
+A158:    y = 10;
+        110 = 56*1+54;
+        hence contradiction by A3,A156,A158,NAT_4:9;
+      end;
+      suppose
+A159:    y = 11;
+        132 = 56*2+20;
+        hence contradiction by A3,A156,A159,NAT_4:9;
+      end;
+      suppose
+A160:    y = 12;
+        156 = 56*2+44;
+        hence contradiction by A3,A156,A160,NAT_4:9;
+      end;
+      suppose
+A161:    y = 13;
+        7 divides 7*2;
+        hence contradiction by A3,A156,A161;
+      end;
+      suppose
+A162:    y = 14;
+        7 divides 7*2;
+        hence contradiction by A3,A156,A162;
+      end;
+      suppose
+A163:    y = 15;
+        8 divides 8*2;
+        hence contradiction by A3,A156,A163;
+      end;
+      suppose
+A164:    y = 16;
+        8 divides 8*2;
+        hence contradiction by A3,A156,A164;
+      end;
+      suppose
+A165:    y = 17;
+        306 = 56*5+26;
+        hence contradiction by A3,A156,A165,NAT_4:9;
+      end;
+      suppose
+A166:    y = 18;
+        342 = 56*6+6;
+        hence contradiction by A3,A156,A166,NAT_4:9;
+      end;
+      suppose
+A167:    y = 19;
+        380 = 56*6+44;
+        hence contradiction by A3,A156,A167,NAT_4:9;
+      end;
+      suppose
+A168:    y = 20;
+        7 divides 7*3;
+        hence contradiction by A3,A156,A168;
+      end;
+      suppose
+A169:    y = 21;
+        7 divides 7*3;
+        hence contradiction by A3,A156,A169;
+      end;
+      suppose
+A170:    y = 22;
+        506 = 56*9+2;
+        hence contradiction by A3,A156,A170,NAT_4:9;
+      end;
+      suppose
+A171:    y = 23;
+        8 divides 8*3;
+        hence contradiction by A3,A156,A171;
+      end;
+      suppose
+A172:    y = 24;
+        8 divides 8*3;
+        hence contradiction by A3,A156,A172;
+      end;
+      suppose
+A173:    y = 25;
+        650 = 56*11+34;
+        hence contradiction by A3,A156,A173,NAT_4:9;
+      end;
+      suppose
+A174:    y = 26;
+        702 = 56*12+30;
+        hence contradiction by A3,A156,A174,NAT_4:9;
+      end;
+      suppose
+A175:    y = 27;
+        7 divides 7*4;
+        hence contradiction by A3,A156,A175;
+      end;
+      suppose
+A176:    y = 28;
+        7 divides 7*4;
+        hence contradiction by A3,A156,A176;
+      end;
+      suppose
+A177:    y = 29;
+        870 = 56*15+30;
+        hence contradiction by A3,A156,A177,NAT_4:9;
+      end;
+      suppose
+A178:    y = 30;
+        930 = 56*16+34;
+        hence contradiction by A3,A156,A178,NAT_4:9;
+      end;
+      suppose
+A179:    y = 31;
+        8 divides 8*4;
+        hence contradiction by A3,A156,A179;
+      end;
+      suppose
+A180:    y = 32;
+        8 divides 8*4;
+        hence contradiction by A3,A156,A180;
+      end;
+      suppose
+A181:    y = 33;
+        1122 = 56*20+2;
+        hence contradiction by A3,A156,A181,NAT_4:9;
+      end;
+      suppose
+A182:    y = 34;
+        7 divides 7*5;
+        hence contradiction by A3,A156,A182;
+      end;
+    end;
+    suppose
+A183:  x = 8;
+      per cases by A5;
+      suppose y = 0;
+        hence contradiction by A3,NAT_D:6;
+      end;
+      suppose y = 1;
+        hence contradiction by A3,A183,NAT_D:7;
+      end;
+      suppose y = 2;
+        hence contradiction by A3,A183,NAT_D:7;
+      end;
+      suppose y = 3;
+        hence contradiction by A3,A183,NAT_D:7;
+      end;
+      suppose y = 4;
+        hence contradiction by A3,A183,NAT_D:7;
+      end;
+      suppose y = 5;
+        hence contradiction by A3,A183,NAT_D:7;
+      end;
+      suppose y = 6;
+        hence contradiction by A3,A183,NAT_D:7;
+      end;
+      suppose y = 7;
+        hence contradiction by A3,A183;
+      end;
+      suppose y = 8;
+        hence contradiction by A3,A183;
+      end;
+      suppose y = 9;
+        hence contradiction by A3,A183;
+      end;
+      suppose
+A184:    y = 10;
+        110 = 72*1+38;
+        hence contradiction by A3,A183,A184,NAT_4:9;
+      end;
+      suppose
+A185:    y = 11;
+        132 = 72*1+60;
+        hence contradiction by A3,A183,A185,NAT_4:9;
+      end;
+      suppose
+A186:    y = 12;
+        156 = 72*2+12;
+        hence contradiction by A3,A183,A186,NAT_4:9;
+      end;
+      suppose
+A187:    y = 13;
+        182 = 72*2+38;
+        hence contradiction by A3,A183,A187,NAT_4:9;
+      end;
+      suppose
+A188:    y = 14;
+        210 = 72*2+66;
+        hence contradiction by A3,A183,A188,NAT_4:9;
+      end;
+      suppose
+A189:    y = 15;
+        8 divides 8*2;
+        hence contradiction by A3,A183,A189;
+      end;
+      suppose
+A190:    y = 16;
+        8 divides 8*2;
+        hence contradiction by A3,A183,A190;
+      end;
+      suppose
+A191:    y = 17;
+        9 divides 9*2;
+        hence contradiction by A3,A183,A191;
+      end;
+      suppose
+A192:    y = 18;
+        9 divides 9*2;
+        hence contradiction by A3,A183,A192;
+      end;
+      suppose
+A193:    y = 19;
+        380 = 72*5+20;
+        hence contradiction by A3,A183,A193,NAT_4:9;
+      end;
+      suppose
+A194:    y = 20;
+        420 = 72*5+60;
+        hence contradiction by A3,A183,A194,NAT_4:9;
+      end;
+      suppose
+A195:    y = 21;
+        462 = 72*6+30;
+        hence contradiction by A3,A183,A195,NAT_4:9;
+      end;
+      suppose
+A196:    y = 22;
+        506 = 72*7+2;
+        hence contradiction by A3,A183,A196,NAT_4:9;
+      end;
+      suppose
+A197:    y = 23;
+        8 divides 8*3;
+        hence contradiction by A3,A183,A197;
+      end;
+      suppose
+A198:    y = 24;
+        8 divides 8*3;
+        hence contradiction by A3,A183,A198;
+      end;
+      suppose
+A199:    y = 25;
+        650 = 72*9+2;
+        hence contradiction by A3,A183,A199,NAT_4:9;
+      end;
+      suppose
+A200:    y = 26;
+        9 divides 9*3;
+        hence contradiction by A3,A183,A200;
+      end;
+      suppose
+A201:    y = 27;
+        9 divides 9*3;
+        hence contradiction by A3,A183,A201;
+      end;
+      suppose
+A202:    y = 28;
+        812 = 72*11+20;
+        hence contradiction by A3,A183,A202,NAT_4:9;
+      end;
+      suppose
+A203:    y = 29;
+        870 = 72*12+6;
+        hence contradiction by A3,A183,A203,NAT_4:9;
+      end;
+      suppose
+A204:    y = 30;
+        930 = 72*12+66;
+        hence contradiction by A3,A183,A204,NAT_4:9;
+      end;
+      suppose
+A205:    y = 31;
+        8 divides 8*4;
+        hence contradiction by A3,A183,A205;
+      end;
+      suppose
+A206:    y = 32;
+        8 divides 8*4;
+        hence contradiction by A3,A183,A206;
+      end;
+      suppose
+A207:    y = 33;
+        1122 = 72*15+42;
+        hence contradiction by A3,A183,A207,NAT_4:9;
+      end;
+      suppose
+A208:    y = 34;
+        1190 = 72*16+38;
+        hence contradiction by A3,A183,A208,NAT_4:9;
+      end;
+    end;
+    suppose
+A209:  x = 9;
+      per cases by A5;
+      suppose y = 0;
+        hence contradiction by A3,NAT_D:6;
+      end;
+      suppose y = 1;
+        hence contradiction by A3,A209,NAT_D:7;
+      end;
+      suppose y = 2;
+        hence contradiction by A3,A209,NAT_D:7;
+      end;
+      suppose y = 3;
+        hence contradiction by A3,A209,NAT_D:7;
+      end;
+      suppose y = 4;
+        hence contradiction by A3,A209,NAT_D:7;
+      end;
+      suppose y = 5;
+        hence contradiction by A3,A209,NAT_D:7;
+      end;
+      suppose y = 6;
+        hence contradiction by A3,A209,NAT_D:7;
+      end;
+      suppose y = 7;
+        hence contradiction by A3,A209,NAT_D:7;
+      end;
+      suppose y = 8;
+        hence contradiction by A3,A209;
+      end;
+      suppose y = 9;
+        hence contradiction by A3,A209;
+      end;
+      suppose y = 10;
+        hence contradiction by A3,A209;
+      end;
+      suppose
+A210:    y = 11;
+        132 = 90*1+42;
+        hence contradiction by A3,A209,A210,NAT_4:9;
+      end;
+      suppose
+A211:    y = 12;
+        156 = 90*1+66;
+        hence contradiction by A3,A209,A211,NAT_4:9;
+      end;
+      suppose
+A212:    y = 13;
+        182 = 90*2+2;
+        hence contradiction by A3,A209,A212,NAT_4:9;
+      end;
+      suppose
+A213:    y = 14;
+        210 = 90*2+30;
+        hence contradiction by A3,A209,A213,NAT_4:9;
+      end;
+      suppose
+A214:    y = 15;
+        240 = 90*2+60;
+        hence contradiction by A3,A209,A214,NAT_4:9;
+      end;
+      suppose
+A215:    y = 16;
+        272 = 90*3+2;
+        hence contradiction by A3,A209,A215,NAT_4:9;
+      end;
+      suppose
+A216:    y = 17;
+        9 divides 9*2;
+        hence contradiction by A3,A209,A216;
+      end;
+      suppose
+A217:    y = 18;
+        9 divides 9*2;
+        hence contradiction by A3,A209,A217;
+      end;
+      suppose
+A218:    y = 19;
+        10 divides 10*2;
+        hence contradiction by A3,A209,A218;
+      end;
+      suppose
+A219:    y = 20;
+        10 divides 10*2;
+        hence contradiction by A3,A209,A219;
+      end;
+      suppose
+A220:    y = 21;
+        462 = 90*5+12;
+        hence contradiction by A3,A209,A220,NAT_4:9;
+      end;
+      suppose
+A221:    y = 22;
+        506 = 90*5+56;
+        hence contradiction by A3,A209,A221,NAT_4:9;
+      end;
+      suppose
+A222:    y = 23;
+        552 = 90*6+12;
+        hence contradiction by A3,A209,A222,NAT_4:9;
+      end;
+      suppose
+A223:    y = 24;
+        600 = 90*6+60;
+        hence contradiction by A3,A209,A223,NAT_4:9;
+      end;
+      suppose
+A224:    y = 25;
+        650 = 90*7+20;
+        hence contradiction by A3,A209,A224,NAT_4:9;
+      end;
+      suppose
+A225:    y = 26;
+        9 divides 9*3;
+        hence contradiction by A3,A209,A225;
+      end;
+      suppose
+A226:    y = 27;
+        9 divides 9*3;
+        hence contradiction by A3,A209,A226;
+      end;
+      suppose
+A227:    y = 28;
+        812 = 90*9+2;
+        hence contradiction by A3,A209,A227,NAT_4:9;
+      end;
+      suppose
+A228:    y = 29;
+        10 divides 10*3;
+        hence contradiction by A3,A209,A228;
+      end;
+      suppose
+A229:    y = 30;
+        10 divides 10*3;
+        hence contradiction by A3,A209,A229;
+      end;
+      suppose
+A230:    y = 31;
+        992 = 90*11+2;
+        hence contradiction by A3,A209,A230,NAT_4:9;
+      end;
+      suppose
+A231:    y = 32;
+        1056 = 90*11+66;
+        hence contradiction by A3,A209,A231,NAT_4:9;
+      end;
+      suppose
+A232:    y = 33;
+        1122 = 90*12+42;
+        hence contradiction by A3,A209,A232,NAT_4:9;
+      end;
+      suppose
+A233:    y = 34;
+        1190 = 90*13+20;
+        hence contradiction by A3,A209,A233,NAT_4:9;
+      end;
+    end;
+    suppose
+A234:  x = 10;
+      per cases by A5;
+      suppose y = 0;
+        hence contradiction by A3,NAT_D:6;
+      end;
+      suppose y = 1;
+        hence contradiction by A3,A234,NAT_D:7;
+      end;
+      suppose y = 2;
+        hence contradiction by A3,A234,NAT_D:7;
+      end;
+      suppose y = 3;
+        hence contradiction by A3,A234,NAT_D:7;
+      end;
+      suppose y = 4;
+        hence contradiction by A3,A234,NAT_D:7;
+      end;
+      suppose y = 5;
+        hence contradiction by A3,A234,NAT_D:7;
+      end;
+      suppose y = 6;
+        hence contradiction by A3,A234,NAT_D:7;
+      end;
+      suppose y = 7;
+        hence contradiction by A3,A234,NAT_D:7;
+      end;
+      suppose y = 8;
+        hence contradiction by A3,A234,NAT_D:7;
+      end;
+      suppose y = 9;
+        hence contradiction by A3,A234;
+      end;
+      suppose y = 10;
+        hence contradiction by A3,A234;
+      end;
+      suppose y = 11;
+        hence contradiction by A3,A234;
+      end;
+      suppose
+A235:    y = 12;
+        156 = 110*1+46;
+        hence contradiction by A3,A234,A235,NAT_4:9;
+      end;
+      suppose
+A236:    y = 13;
+        182 = 110*1+72;
+        hence contradiction by A3,A234,A236,NAT_4:9;
+      end;
+      suppose
+A237:    y = 14;
+        210 = 110*1+100;
+        hence contradiction by A3,A234,A237,NAT_4:9;
+      end;
+      suppose
+A238:    y = 15;
+        240 = 110*2+20;
+        hence contradiction by A3,A234,A238,NAT_4:9;
+      end;
+      suppose
+A239:    y = 16;
+        272 = 110*2+52;
+        hence contradiction by A3,A234,A239,NAT_4:9;
+      end;
+      suppose
+A240:    y = 17;
+        306 = 110*2+86;
+        hence contradiction by A3,A234,A240,NAT_4:9;
+      end;
+      suppose
+A241:    y = 18;
+        342 = 110*3+12;
+        hence contradiction by A3,A234,A241,NAT_4:9;
+      end;
+      suppose
+A242:    y = 19;
+        10 divides 10*2;
+        hence contradiction by A3,A234,A242;
+      end;
+      suppose
+A243:    y = 20;
+        10 divides 10*2;
+        hence contradiction by A3,A234,A243;
+      end;
+      suppose
+A244:    y = 21;
+        11 divides 11*2;
+        hence contradiction by A3,A234,A244;
+      end;
+      suppose
+A245:    y = 22;
+        11 divides 11*2;
+        hence contradiction by A3,A234,A245;
+      end;
+      suppose
+A246:    y = 23;
+        552 = 110*5+2;
+        hence contradiction by A3,A234,A246,NAT_4:9;
+      end;
+      suppose
+A247:    y = 24;
+        600 = 110*5+50;
+        hence contradiction by A3,A234,A247,NAT_4:9;
+      end;
+      suppose
+A248:    y = 25;
+        650 = 110*5+100;
+        hence contradiction by A3,A234,A248,NAT_4:9;
+      end;
+      suppose
+A249:    y = 26;
+        702 = 110*6+42;
+        hence contradiction by A3,A234,A249,NAT_4:9;
+      end;
+      suppose
+A250:    y = 27;
+        756 = 110*6+96;
+        hence contradiction by A3,A234,A250,NAT_4:9;
+      end;
+      suppose
+A251:    y = 28;
+        812 = 110*7+42;
+        hence contradiction by A3,A234,A251,NAT_4:9;
+      end;
+      suppose
+A252:    y = 29;
+        10 divides 10*3;
+        hence contradiction by A3,A234,A252;
+      end;
+      suppose
+A253:    y = 30;
+        10 divides 10*3;
+        hence contradiction by A3,A234,A253;
+      end;
+      suppose
+A254:    y = 31;
+        992 = 110*9+2;
+        hence contradiction by A3,A234,A254,NAT_4:9;
+      end;
+      suppose
+A255:    y = 32;
+        11 divides 11*3;
+        hence contradiction by A3,A234,A255;
+      end;
+      suppose
+A256:    y = 33;
+        11 divides 11*3;
+        hence contradiction by A3,A234,A256;
+      end;
+      suppose
+A257:    y = 34;
+        1190 = 110*10+90;
+        hence contradiction by A3,A234,A257,NAT_4:9;
+      end;
+    end;
+    suppose
+A258:  x = 11;
+      per cases by A5;
+      suppose y = 0;
+        hence contradiction by A3,NAT_D:6;
+      end;
+      suppose y = 1;
+        hence contradiction by A3,A258,NAT_D:7;
+      end;
+      suppose y = 2;
+        hence contradiction by A3,A258,NAT_D:7;
+      end;
+      suppose y = 3;
+        hence contradiction by A3,A258,NAT_D:7;
+      end;
+      suppose y = 4;
+        hence contradiction by A3,A258,NAT_D:7;
+      end;
+      suppose y = 5;
+        hence contradiction by A3,A258,NAT_D:7;
+      end;
+      suppose y = 6;
+        hence contradiction by A3,A258,NAT_D:7;
+      end;
+      suppose y = 7;
+        hence contradiction by A3,A258,NAT_D:7;
+      end;
+      suppose y = 8;
+        hence contradiction by A3,A258,NAT_D:7;
+      end;
+      suppose y = 9;
+        hence contradiction by A3,A258,NAT_D:7;
+      end;
+      suppose y = 10;
+        hence contradiction by A3,A258;
+      end;
+      suppose y = 11;
+        hence contradiction by A3,A258;
+      end;
+      suppose y = 12;
+        hence contradiction by A3,A258;
+      end;
+      suppose
+A259:    y = 13;
+        182 = 132*1+50;
+        hence contradiction by A3,A258,A259,NAT_4:9;
+      end;
+      suppose
+A260:    y = 14;
+        210 = 132*1+78;
+        hence contradiction by A3,A258,A260,NAT_4:9;
+      end;
+      suppose
+A261:    y = 15;
+        240 = 132*1+108;
+        hence contradiction by A3,A258,A261,NAT_4:9;
+      end;
+      suppose
+A262:    y = 16;
+        272 = 132*2+8;
+        hence contradiction by A3,A258,A262,NAT_4:9;
+      end;
+      suppose
+A263:    y = 17;
+        306 = 132*2+42;
+        hence contradiction by A3,A258,A263,NAT_4:9;
+      end;
+      suppose
+A264:    y = 18;
+        342 = 132*2+78;
+        hence contradiction by A3,A258,A264,NAT_4:9;
+      end;
+      suppose
+A265:    y = 19;
+        380 = 132*2+116;
+        hence contradiction by A3,A258,A265,NAT_4:9;
+      end;
+      suppose
+A266:    y = 20;
+        420 = 132*3+24;
+        hence contradiction by A3,A258,A266,NAT_4:9;
+      end;
+      suppose
+A267:    y = 21;
+        11 divides 11*2;
+        hence contradiction by A3,A258,A267;
+      end;
+      suppose
+A268:    y = 22;
+        11 divides 11*2;
+        hence contradiction by A3,A258,A268;
+      end;
+      suppose
+A269:    y = 23;
+        12 divides 12*2;
+        hence contradiction by A3,A258,A269;
+      end;
+      suppose
+A270:    y = 24;
+        12 divides 12*2;
+        hence contradiction by A3,A258,A270;
+      end;
+      suppose
+A271:    y = 25;
+        650 = 132*4+122;
+        hence contradiction by A3,A258,A271,NAT_4:9;
+      end;
+      suppose
+A272:    y = 26;
+        702 = 132*5+42;
+        hence contradiction by A3,A258,A272,NAT_4:9;
+      end;
+      suppose
+A273:    y = 27;
+        756 = 132*5+96;
+        hence contradiction by A3,A258,A273,NAT_4:9;
+      end;
+      suppose
+A274:    y = 28;
+        812 = 132*6+20;
+        hence contradiction by A3,A258,A274,NAT_4:9;
+      end;
+      suppose
+A275:    y = 29;
+        870 = 132*6+78;
+        hence contradiction by A3,A258,A275,NAT_4:9;
+      end;
+      suppose
+A276:    y = 30;
+        930 = 132*7+6;
+        hence contradiction by A3,A258,A276,NAT_4:9;
+      end;
+      suppose
+A277:    y = 31;
+        992 = 132*7+68;
+        hence contradiction by A3,A258,A277,NAT_4:9;
+      end;
+      suppose
+A278:    y = 32;
+        11 divides 11*3;
+        hence contradiction by A3,A258,A278;
+      end;
+      suppose
+A279:    y = 33;
+        11 divides 11*3;
+        hence contradiction by A3,A258,A279;
+      end;
+      suppose
+A280:    y = 34;
+        1190 = 132*9+2;
+        hence contradiction by A3,A258,A280,NAT_4:9;
+      end;
+    end;
+    suppose
+A281:  x = 12;
+      per cases by A5;
+      suppose y = 0;
+        hence contradiction by A3,NAT_D:6;
+      end;
+      suppose y = 1;
+        hence contradiction by A3,A281,NAT_D:7;
+      end;
+      suppose y = 2;
+        hence contradiction by A3,A281,NAT_D:7;
+      end;
+      suppose y = 3;
+        hence contradiction by A3,A281,NAT_D:7;
+      end;
+      suppose y = 4;
+        hence contradiction by A3,A281,NAT_D:7;
+      end;
+      suppose y = 5;
+        hence contradiction by A3,A281,NAT_D:7;
+      end;
+      suppose y = 6;
+        hence contradiction by A3,A281,NAT_D:7;
+      end;
+      suppose y = 7;
+        hence contradiction by A3,A281,NAT_D:7;
+      end;
+      suppose y = 8;
+        hence contradiction by A3,A281,NAT_D:7;
+      end;
+      suppose y = 9;
+        hence contradiction by A3,A281,NAT_D:7;
+      end;
+      suppose y = 10;
+        hence contradiction by A3,A281,NAT_D:7;
+      end;
+      suppose y = 11;
+        hence contradiction by A3,A281;
+      end;
+      suppose y = 12;
+        hence contradiction by A3,A281;
+      end;
+      suppose y = 13;
+        hence contradiction by A3,A281;
+      end;
+      suppose
+A282:    y = 14;
+        210 = 156*1+54;
+        hence contradiction by A3,A281,A282,NAT_4:9;
+      end;
+      suppose
+A283:    y = 15;
+        240 = 156*1+84;
+        hence contradiction by A3,A281,A283,NAT_4:9;
+      end;
+      suppose
+A284:    y = 16;
+        272 = 156*1+116;
+        hence contradiction by A3,A281,A284,NAT_4:9;
+      end;
+      suppose
+A285:    y = 17;
+        306 = 156*1+150;
+        hence contradiction by A3,A281,A285,NAT_4:9;
+      end;
+      suppose
+A286:    y = 18;
+        342 = 156*2+30;
+        hence contradiction by A3,A281,A286,NAT_4:9;
+      end;
+      suppose
+A287:    y = 19;
+        380 = 156*2+68;
+        hence contradiction by A3,A281,A287,NAT_4:9;
+      end;
+      suppose
+A288:    y = 20;
+        420 = 156*2+108;
+        hence contradiction by A3,A281,A288,NAT_4:9;
+      end;
+      suppose
+A289:    y = 21;
+        462 = 156*2+150;
+        hence contradiction by A3,A281,A289,NAT_4:9;
+      end;
+      suppose
+A290:    y = 22;
+        506 = 156*3+38;
+        hence contradiction by A3,A281,A290,NAT_4:9;
+      end;
+      suppose
+A291:    y = 23;
+        12 divides 12*2;
+        hence contradiction by A3,A281,A291;
+      end;
+      suppose
+A292:    y = 24;
+        12 divides 12*2;
+        hence contradiction by A3,A281,A292;
+      end;
+      suppose
+A293:    y = 25;
+        13 divides 13*2;
+        hence contradiction by A3,A281,A293;
+      end;
+      suppose
+A294:    y = 26;
+        13 divides 13*2;
+        hence contradiction by A3,A281,A294;
+      end;
+      suppose
+A295:    y = 27;
+        756 = 156*4+132;
+        hence contradiction by A3,A281,A295,NAT_4:9;
+      end;
+      suppose
+A296:    y = 28;
+        812 = 156*5+32;
+        hence contradiction by A3,A281,A296,NAT_4:9;
+      end;
+      suppose
+A297:    y = 29;
+        870 = 156*5+90;
+        hence contradiction by A3,A281,A297,NAT_4:9;
+      end;
+      suppose
+A298:    y = 30;
+        930 = 156*5+150;
+        hence contradiction by A3,A281,A298,NAT_4:9;
+      end;
+      suppose
+A299:    y = 31;
+        992 = 156*6+56;
+        hence contradiction by A3,A281,A299,NAT_4:9;
+      end;
+      suppose
+A300:    y = 32;
+        1056 = 156*6+120;
+        hence contradiction by A3,A281,A300,NAT_4:9;
+      end;
+      suppose
+A301:    y = 33;
+        1122 = 156*7+30;
+        hence contradiction by A3,A281,A301,NAT_4:9;
+      end;
+      suppose
+A302:    y = 34;
+        1190 = 156*7+98;
+        hence contradiction by A3,A281,A302,NAT_4:9;
+      end;
+    end;
+    suppose
+A303:  x = 13;
+      per cases by A5;
+      suppose y = 0;
+        hence contradiction by A3,NAT_D:6;
+      end;
+      suppose y = 1;
+        hence contradiction by A3,A303,NAT_D:7;
+      end;
+      suppose y = 2;
+        hence contradiction by A3,A303,NAT_D:7;
+      end;
+      suppose y = 3;
+        hence contradiction by A3,A303,NAT_D:7;
+      end;
+      suppose y = 4;
+        hence contradiction by A3,A303,NAT_D:7;
+      end;
+      suppose y = 5;
+        hence contradiction by A3,A303,NAT_D:7;
+      end;
+      suppose y = 6;
+        hence contradiction by A3,A303,NAT_D:7;
+      end;
+      suppose y = 7;
+        hence contradiction by A3,A303,NAT_D:7;
+      end;
+      suppose y = 8;
+        hence contradiction by A3,A303,NAT_D:7;
+      end;
+      suppose y = 9;
+        hence contradiction by A3,A303,NAT_D:7;
+      end;
+      suppose y = 10;
+        hence contradiction by A3,A303,NAT_D:7;
+      end;
+      suppose y = 11;
+        hence contradiction by A3,A303,NAT_D:7;
+      end;
+      suppose y = 12;
+        hence contradiction by A3,A303;
+      end;
+      suppose y = 13;
+        hence contradiction by A3,A303;
+      end;
+      suppose y = 14;
+        hence contradiction by A3,A303;
+      end;
+      suppose
+A304:    y = 15;
+        240 = 182*1+58;
+        hence contradiction by A3,A303,A304,NAT_4:9;
+      end;
+      suppose
+A305:    y = 16;
+        272 = 182*1+90;
+        hence contradiction by A3,A303,A305,NAT_4:9;
+      end;
+      suppose
+A306:    y = 17;
+        306 = 182*1+124;
+        hence contradiction by A3,A303,A306,NAT_4:9;
+      end;
+      suppose
+A307:    y = 18;
+        342 = 182*1+160;
+        hence contradiction by A3,A303,A307,NAT_4:9;
+      end;
+      suppose
+A308:    y = 19;
+        380 = 182*2+16;
+        hence contradiction by A3,A303,A308,NAT_4:9;
+      end;
+      suppose
+A309:    y = 20;
+        420 = 182*2+56;
+        hence contradiction by A3,A303,A309,NAT_4:9;
+      end;
+      suppose
+A310:    y = 21;
+        462 = 182*2+98;
+        hence contradiction by A3,A303,A310,NAT_4:9;
+      end;
+      suppose
+A311:    y = 22;
+        506 = 182*2+142;
+        hence contradiction by A3,A303,A311,NAT_4:9;
+      end;
+      suppose
+A312:    y = 23;
+        552 = 182*3+6;
+        hence contradiction by A3,A303,A312,NAT_4:9;
+      end;
+      suppose
+A313:    y = 24;
+        600 = 182*3+54;
+        hence contradiction by A3,A303,A313,NAT_4:9;
+      end;
+      suppose
+A314:    y = 25;
+        13 divides 13*2;
+        hence contradiction by A3,A303,A314;
+      end;
+      suppose
+A315:    y = 26;
+        13 divides 13*2;
+        hence contradiction by A3,A303,A315;
+      end;
+      suppose
+A316:    y = 27;
+        14 divides 14*2;
+        hence contradiction by A3,A303,A316;
+      end;
+      suppose
+A317:    y = 28;
+        14 divides 14*2;
+        hence contradiction by A3,A303,A317;
+      end;
+      suppose
+A318:    y = 29;
+        870 = 182*4+142;
+        hence contradiction by A3,A303,A318,NAT_4:9;
+      end;
+      suppose
+A319:    y = 30;
+        930 = 182*5+20;
+        hence contradiction by A3,A303,A319,NAT_4:9;
+      end;
+      suppose
+A320:    y = 31;
+        992 = 182*5+82;
+        hence contradiction by A3,A303,A320,NAT_4:9;
+      end;
+      suppose
+A321:    y = 32;
+        1056 = 182*5+146;
+        hence contradiction by A3,A303,A321,NAT_4:9;
+      end;
+      suppose
+A322:    y = 33;
+        1122 = 182*6+30;
+        hence contradiction by A3,A303,A322,NAT_4:9;
+      end;
+      suppose
+A323:    y = 34;
+        1190 = 182*6+98;
+        hence contradiction by A3,A303,A323,NAT_4:9;
+      end;
+    end;
+  end;

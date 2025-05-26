@@ -1,0 +1,144 @@
+  5 satisfies_Sierpinski_problem_121_for 1
+  proof
+    set n = 5;
+    2|^32 + 1 >= 1 + 1 by XREAL_1:6,NAT_1:14;
+    hence 1 * 2|^(2|^n) + 1 is composite by Lm5,NAT_6:44;
+    let m be positive Nat;
+    assume m < n;
+    then per cases by Th3;
+    suppose m = 0;
+      hence thesis;
+    end;
+    suppose m = 1;
+      hence thesis by Lm2,XPRIMES1:5;
+    end;
+    suppose m = 2;
+      hence thesis by Lm2,Lm4,XPRIMES1:17;
+    end;
+    suppose m = 3;
+      hence thesis by Lm3,Lm6,XPRIMES1:257;
+    end;
+    suppose m = 4;
+      hence thesis by Lm4,Lm7,PEPIN:62;
+    end;
+  end;
+
+:: Problem 121 b
+theorem
+  1 satisfies_Sierpinski_problem_121_for 2
+  proof
+    thus 2 * 2|^(2|^1) + 1 is composite by Lm2,XPRIMES0:9;
+    thus thesis by NAT_1:14;
+  end;
+
+:: Problem 121 c
+theorem Th26:
+  2 satisfies_Sierpinski_problem_121_for 3
+  proof
+    set n = 2;
+    thus 3 * 2|^(2|^n) + 1 is composite by Lm2,Lm4,XPRIMES0:49;
+    let m be positive Nat;
+    assume m < n;
+    then per cases by NAT_1:23;
+    suppose m = 0;
+      hence thesis;
+    end;
+    suppose m = 1;
+      hence thesis by Lm2,XPRIMES1:13;
+    end;
+  end;
+
+:: Problem 121 d
+theorem Th27:
+  2 satisfies_Sierpinski_problem_121_for 4
+  proof
+    set n = 2;
+    thus 4 * 2|^(2|^n) + 1 is composite by Lm2,Lm4,XPRIMES0:65;
+    let m be positive Nat;
+    assume m < n;
+    then per cases by NAT_1:23;
+    suppose m = 0;
+      hence thesis;
+    end;
+    suppose m = 1;
+      hence thesis by Lm2,XPRIMES1:17;
+    end;
+  end;
+
+:: Problem 121 e
+theorem
+  1 satisfies_Sierpinski_problem_121_for 5
+  proof
+    thus 5 * 2|^(2|^1) + 1 is composite by Lm2,XPRIMES0:21;
+    thus thesis by NAT_1:14;
+  end;
+
+:: Problem 121 f
+theorem
+  1 satisfies_Sierpinski_problem_121_for 6
+  proof
+    thus 6 * 2|^(2|^1) + 1 is composite by Lm2,XPRIMES0:25;
+    thus thesis by NAT_1:14;
+  end;
+
+:: Problem 121 g
+theorem Th30:
+  3 satisfies_Sierpinski_problem_121_for 7
+  proof
+    set n = 3;
+    thus 7 * 2|^(2|^n) + 1 is composite by Lm3,Lm6,XPRIMES0:1793;
+    let m be positive Nat;
+    assume m < n;
+    then per cases by Th1;
+    suppose m = 0;
+      hence thesis;
+    end;
+    suppose m = 1;
+      hence thesis by Lm2,XPRIMES1:29;
+    end;
+    suppose m = 2;
+      hence thesis by Lm2,Lm4,XPRIMES1:113;
+    end;
+  end;
+
+:: Problem 121 h
+theorem
+  1 satisfies_Sierpinski_problem_121_for 8
+  proof
+    thus 8 * 2|^(2|^1) + 1 is composite by Lm2,XPRIMES0:33;
+    thus thesis by NAT_1:14;
+  end;
+
+:: Problem 121 i
+theorem Th32:
+  2 satisfies_Sierpinski_problem_121_for 9
+  proof
+    set n = 2;
+    thus 9 * 2|^(2|^n) + 1 is composite by Lm2,Lm4,XPRIMES0:145;
+    let m be positive Nat;
+    assume m < n;
+    then per cases by NAT_1:23;
+    suppose m = 0;
+      hence thesis;
+    end;
+    suppose m = 1;
+      hence thesis by Lm2,XPRIMES1:37;
+    end;
+  end;
+
+:: Problem 121 j
+theorem Th33:
+  2 satisfies_Sierpinski_problem_121_for 10
+  proof
+    set n = 2;
+    thus 10 * 2|^(2|^n) + 1 is composite by Lm2,Lm4,XPRIMES0:161;
+    let m be positive Nat;
+    assume m < n;
+    then per cases by NAT_1:23;
+    suppose m = 0;
+      hence thesis;
+    end;
+    suppose m = 1;
+      hence thesis by Lm2,XPRIMES1:41;
+    end;
+  end;

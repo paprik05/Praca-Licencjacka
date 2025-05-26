@@ -1,0 +1,41 @@
+theorem
+  13 divides 2|^70 + 3|^70
+  proof
+    dp: 2 is prime by INT_2:28;
+    tp: 13 is prime by NAT_4:28;
+    then 2,13 are_coprime by dp,INT_2:30;
+    then 2 |^ Euler 13 mod 13 = 1 & 12=13-1 by EULER_2:18;
+    :: by Fermat's little theorem
+    then (2 |^ 12) mod 13 = 1 by EULER_1:20,tp;
+    then 2|^12,1 are_congruent_mod 13 by NAT_6:10;
+    then (2|^12)|^5,1|^5 are_congruent_mod 13 by GR_CY_3:34;
+    then 2|^(12*5),1|^5 are_congruent_mod 13 by NEWTON:9;
+    then ds: 2|^60,1 are_congruent_mod 13 by NEWTON:10;
+    2|^1 = 2 by NEWTON:5;
+    then 2|^(1+1) = 2*2 by NEWTON:6;
+    then 2|^(2+1) = 2*4 by NEWTON:6;
+    then 2|^(3+1) = 2*8 by NEWTON:6;
+    then 2|^(4+1) = 2*16 by NEWTON:6;
+    then 2|^5-6=13*2;
+    then 2|^5,6 are_congruent_mod 13 by INT_1:def 5;
+    then (2|^5)|^2,6|^2 are_congruent_mod 13 by GR_CY_3:34;
+    then 2|^(5*2),6|^2 are_congruent_mod 13 by NEWTON:9;
+    then ts: 2|^(5*2),6*6 are_congruent_mod 13 by WSIERP_1:1;
+    36 - -3 = 13*3;
+    then 36,-3 are_congruent_mod 13 by INT_1:def 5;
+    then 2|^10,-3 are_congruent_mod 13 by ts,INT_1:15;
+    then (2|^60)*(2|^10),1*(-3) are_congruent_mod 13 by ds,INT_1:18;
+    then dsi: 2|^(60+10),-3 are_congruent_mod 13 by NEWTON:8;
+    3|^(2+1)=3|^2*3 by NEWTON:6 .= 3*3*3 by WSIERP_1:1 .= 2*13+1;
+    then 3|^3-1 = 2*13;
+    then 3|^3,1 are_congruent_mod 13 by INT_1:def 5;
+    then (3|^3)|^23,1|^23 are_congruent_mod 13 by GR_CY_3:34;
+    then 3|^(3*23),1|^23 are_congruent_mod 13 by NEWTON:9;
+    then 3|^69,1 are_congruent_mod 13 & 3,3 are_congruent_mod 13
+    by NEWTON:10,INT_1:11;
+    then (3|^69)*3,1*3 are_congruent_mod 13 by INT_1:18;
+    then 3|^(69+1),1*3 are_congruent_mod 13 by NEWTON:6;
+    then 2|^70 + 3|^70,-3+3 are_congruent_mod 13 by dsi,INT_1:16;
+    then 13 divides 2|^70 + 3|^70 - 0 by INT_1:def 4;
+    hence thesis;
+  end;

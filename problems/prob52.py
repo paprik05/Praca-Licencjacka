@@ -7,4 +7,4 @@ def prob52(m):
         for j in range(i+1, len(arithmetic_progression)):
             if math.gcd(arithmetic_progression[i], arithmetic_progression[j]) != 1:
                 return False
-    return {"result": True, "arithmetic_progression": arithmetic_progression}
+    return {"result": f"{True}, arithmetic_progression: {arithmetic_progression}"}

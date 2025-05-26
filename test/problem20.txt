@@ -1,0 +1,38 @@
+theorem
+  not ex n being Nat st 1 < n & n divides 2|^n-1
+  proof
+    given n being Nat such that
+A1: 1 < n and
+A2: n divides 2|^n-1;
+    defpred P[Nat] means 1 < $1 & $1 divides 2|^$1-1;
+A3: ex k being Nat st P[k] by A1,A2;
+    consider N being Nat such that
+A4: P[N] and
+A5: for n being Nat st P[n] holds N <= n from NAT_1:sch 5(A3);
+    N divides 2|^N-1 by A4;
+    then reconsider N as odd Element of NAT by A4,ORDINAL1:def 12;
+    set E = Euler N;
+    set d = N gcd E;
+A6: 1 mod N = 1 by A4,NAT_D:14;
+    reconsider k = 2|^N-1 as Nat;
+    2,N are_coprime by A4,Th45;
+    then 2|^E mod N = 1 by A4,EULER_2:18;
+    then 2|^E-1 mod N = (1-1) mod N by A6,INT_6:7
+    .= 0;
+    then N divides 2|^E-1 by INT_1:62;
+    then
+A7: N divides (2|^N - 1) gcd (2|^E - 1) by A4,INT_2:def 2;
+A8: (2|^N - 1) gcd (2|^E - 1) = 2|^d - 1 by Th26;
+A9: now
+      assume d <= 1;
+      then d < 1 or d = 1 by XXREAL_0:1;
+      hence contradiction by A4,A7,A8,NAT_1:14,WSIERP_1:15;
+    end;
+A10: d <= E by Th13;
+A11: d divides N by INT_2:def 2;
+A12: E <= N-1 by A4,EULER_1:19;
+    N-1 < N-0 by XREAL_1:15;
+    then E < N by A12,XXREAL_0:2;
+    then d < N by A10,XXREAL_0:2;
+    hence contradiction by A5,A11,A9,A7,A8,INT_2:9;
+  end;

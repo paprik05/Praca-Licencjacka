@@ -1,0 +1,25 @@
+theorem :: Problem 56
+  for i being Nat holds ArProg (2,3).i is non triangular
+  proof
+    let i be Nat;
+    assume ArProg (2,3).i is triangular; then
+    consider k being Nat such that
+A1: ArProg (2,3).i = Triangle k by NUMPOLY1:def 2;
+    per cases by NUMBER02:23;
+    suppose ex u being Nat st k = 3 * u + 1; then
+      consider u being Nat such that
+E1:   k = 3 * u + 1;
+      3 divides Triangle (3 * u + 1) - 1 by Not3DividesTriangle;
+      hence thesis by LemmaBono,A1,E1;
+    end;
+    suppose ex u being Nat st k = 3 * u + 2; then
+      consider u being Nat such that
+D1:   k = 3 * u + 2;
+      thus thesis by A1,Lemma3ArProg,D1,Divides3Triangle2;
+    end;
+    suppose ex u being Nat st k = 3 * u; then
+      consider u being Nat such that
+C1:   k = 3 * u;
+      thus thesis by A1,Lemma3ArProg,C1,Divides3Triangle;
+    end;
+  end;

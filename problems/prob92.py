@@ -3,7 +3,7 @@ from .prob47 import prob47
 
 def prob92(k):
     if k < 3:
-        return {"error": "k musi być większe lub równe 3"}
+        return {"error": "k must be greater than or equal to 3"}
 
     primes = list(primerange(1, prime(k) + 1))[:k]
     product = 1
@@ -16,4 +16,6 @@ def prob92(k):
     coprime_pair = prob47(product)["result"]
     inequality = pk1 + pk2 <= product
 
-    return {"result": inequality}
+    return {"result": f"{inequality}, {pk1} + {pk2} <= {product}"}
+
+

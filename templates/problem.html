@@ -1,6 +1,16 @@
 <h2>{{ problem['description'] }}</h2>
 
-<h3>Kod z pliku:</h3>
+{% if proof_before %}
+  <h3>Dowód Mizar:</h3>
+  <pre class="language-mizar" style="white-space: pre-wrap; font-family: monospace;">
+{{ proof_before | replace("proof", '<span id="proof-toggle" style="color:blue;cursor:pointer;">proof</span><span id="proof-content" style="display:none;">') | safe }}{{ proof_inside }}
+  </pre>
+{% endif %}
+
+
+
+
+<h3>Program weryfikujacy:</h3>
 <pre class="language-python">{{ code_content }}</pre>
 
 <form id="form{{ prob_id }}" action="/calculate{{ prob_id }}" method="POST">
@@ -50,17 +60,38 @@
             if (data.result !== undefined) {
                 if (Array.isArray(data.result)) {
                     resultElement.innerHTML = "Wynik:<br>" + data.result.map(r => `${r}`).join("<br>");
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, resultElement]);
                 } else if (typeof data.result === 'object') {
                     let resultText = Object.entries(data.result)
                         .map(([key, value]) => `${key}: ${value}`)
                         .join("<br>");
                     resultElement.innerHTML = "Wynik:<br>" + resultText;
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, resultElement]);
                 } else {
-                    resultElement.innerText = "Wynik: " + data.result;
+                    resultElement.innerHTML = "Wynik: " + data.result;
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, resultElement]);
                 }
+
             }
         })
         .catch(error => console.error('Error:', error));
     }
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const proofToggle = document.getElementById('proof-toggle');
+  const proofContent = document.getElementById('proof-content');
+
+  if(proofToggle && proofContent) {
+    proofToggle.addEventListener('click', () => {
+      if (proofContent.style.display === 'none') {
+        proofContent.style.display = 'block';
+      } else {
+        proofContent.style.display = 'none';
+      }
+    });
+  }
+});
+</script>
+
 

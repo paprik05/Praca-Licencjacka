@@ -1,0 +1,86 @@
+theorem
+  3 <= k implies primenumber(k) + primenumber(k+1) <= Product primesFinS k
+  proof
+    assume
+A1: 3 <= k;
+    set P = Product primesFinS k;
+    P >= primenumber 0 * primenumber 1 * primenumber 2 by A1,Lm12;
+    then P > 6 by XXREAL_0:2,MOEBIUS2:8,10,12;
+    then consider a,b such that
+A2: a > 1 and
+A3: b > 1 and
+A4: P = a+b and
+A5: a,b are_coprime by NUMBER05:22;
+    consider p,q being Prime such that
+A6: p divides a and
+A7: not p divides b and
+A8: q divides b and
+A9: not q divides a and
+A10: p <> q by A2,A3,A5,Th8;
+    p <= a & q <= b by A2,A3,A6,A8,NAT_D:7;
+    then
+A11: p+q <= a+b by XREAL_1:7;
+    per cases by A10,XXREAL_0:1;
+    suppose
+A12:  p < q;
+A13:  not p divides P
+      proof
+        assume p divides P;
+        then p divides a+b-a by A4,A6,INT_5:1;
+        hence contradiction by A7;
+      end;
+      now
+        assume not p,P are_coprime;
+        then consider z being Prime such that
+A14:    z divides p and
+A15:    z divides P by PYTHTRIP:def 2;
+        z = 1 or z = p by A14,INT_2:def 4;
+        hence contradiction by A13,A15,INT_2:def 4;
+      end;
+      then
+A16:  primenumber(k) <= p by Th16;
+      then per cases by XXREAL_0:1;
+      suppose primenumber(k) < p;
+        then primenumber(k+1) <= p by PRIMRECI:12;
+        then primenumber(k+1) < q by A12,XXREAL_0:2;
+        then primenumber(k) + primenumber(k+1) <= p+q by A16,XREAL_1:7;
+        hence thesis by A4,A11,XXREAL_0:2;
+      end;
+      suppose primenumber(k) = p;
+        then primenumber(k+1) <= q by A12,PRIMRECI:12;
+        then primenumber(k) + primenumber(k+1) <= p+q by A16,XREAL_1:7;
+        hence thesis by A4,A11,XXREAL_0:2;
+      end;
+    end;
+    suppose
+A17:  q < p;
+A18:  not q divides P
+      proof
+        assume q divides P;
+        then q divides a+b-b by A4,A8,INT_5:1;
+        hence contradiction by A9;
+      end;
+      now
+        assume not q,P are_coprime;
+        then consider z being Prime such that
+A19:    z divides q and
+A20:    z divides P by PYTHTRIP:def 2;
+        z = 1 or z = q by A19,INT_2:def 4;
+        hence contradiction by A18,A20,INT_2:def 4;
+      end;
+      then
+A21:  primenumber(k) <= q by Th16;
+      then per cases by XXREAL_0:1;
+      suppose primenumber(k) < q;
+        then primenumber(k+1) <= q by PRIMRECI:12;
+        then primenumber(k+1) < p by A17,XXREAL_0:2;
+        then primenumber(k) + primenumber(k+1) <= p+q by A21,XREAL_1:7;
+        hence thesis by A4,A11,XXREAL_0:2;
+      end;
+      suppose primenumber(k) = q;
+        then primenumber(k+1) <= p by A17,PRIMRECI:12;
+        then primenumber(k) + primenumber(k+1) <= p+q by A21,XREAL_1:7;
+        hence thesis by A4,A11,XXREAL_0:2;
+      end;
+    end;
+  end;

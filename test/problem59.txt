@@ -1,0 +1,63 @@
+theorem
+  not ex f being non-empty natural-valued increasing Arithmetic_Progression st
+    for i,fi being Nat st fi = f.i holds
+      fi is perfect_power
+  proof
+    assume ex f being non-empty natural-valued increasing
+      Arithmetic_Progression st
+    for i,fi being Nat st fi = f.i holds
+      fi is perfect_power; then
+    consider f being non-empty natural-valued increasing
+      Arithmetic_Progression such that
+A1: for i,fi being Nat st fi = f.i holds
+      fi is perfect_power;
+AA: dom f = NAT by FUNCT_2:def 1;
+    reconsider b = f.0 as Nat;
+    f.0 < f.1 by SEQM_3:def 1,AA; then
+    f.1 - f.0 > f.0 - f.0 by XREAL_1:14; then
+    reconsider a = difference f as Nat by NUMBER06:def 5;
+KK: f = ArProg (b,a) by NUMBER06:6;
+    consider p being Prime such that
+P1: p > a + b by NEWTON:72;
+P2: p > b by P1,NAT_1:12;
+    reconsider p2 = p^2 as Nat;
+    a gcd p = 1
+    proof
+      assume a gcd p <> 1; then
+      not a,p are_coprime; then
+      consider d being Nat such that
+Z2:   d divides a & d divides p & d <> 1 by PYTHTRIP:def 1;
+      d = 1 or d = p by Z2,INT_2:def 4; then
+      p <= a by NAT_D:7,Z2;
+      hence thesis by P1,NAT_1:12;
+    end; then
+    a gcd p2 = 1 by WSIERP_1:6; then
+    consider x,y being Nat such that
+Z1: a * x - p2 * y = 1 by WSIERP_1:31;
+oo: p - b > b - b by P2,XREAL_1:14; then
+    reconsider k = (p - b) * x as Nat;
+S1: a * k + b = a * x * (p - b) + b
+             .= (1 + p2 * y) * (p - b) + b by Z1
+             .= p2 * y * (p - b) + p;
+    reconsider akb = a * k + b as Nat;
+FZ: not p2 divides (a * k + b)
+    proof
+      assume
+SZ:   p2 divides (a * k + b);
+SA:   p > 1 by INT_2:def 4;
+      reconsider pb = p - b as Nat by oo;
+      p2 divides p2 * (y * pb);
+      hence thesis by SquareNotDiv,SA,SZ,S1,NAT_D:10;
+    end;
+Z2: akb = f.k by KK,NUMBER06:7;
+FC: p2 = p |^2 by NEWTON:81;
+    akb is not perfect_power
+    proof
+      assume
+N1:   akb is perfect_power;
+      akb = p * (p * y * (p - b) + 1) by S1; then
+      p divides akb;
+      hence thesis by FZ,FC,KeyPerfectPower,N1;
+    end;
+    hence thesis by A1,Z2;
+  end;

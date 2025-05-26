@@ -1,0 +1,196 @@
+reserve a,b,d,n,k,i,j,x,s for Nat;
+
+theorem Th1:
+  for f,g be XFinSequence of NAT holds
+    value(f^g,b) = value(f,b) + value(g,b) * b|^(len f)
+proof
+  let f,g be XFinSequence of NAT;
+  consider fx be XFinSequence of NAT such that
+A1: dom fx = dom f and
+A2: for i being Nat st i in dom fx holds fx.i = (f.i)*(b|^i) and
+A3: value(f,b) = Sum fx by NUMERAL1:def 1;
+  consider gx be XFinSequence of NAT such that
+A4: dom gx = dom g and
+A5: for i being Nat st i in dom gx holds gx.i = (g.i)*(b|^i) and
+A6: value(g,b) = Sum gx by NUMERAL1:def 1;
+  consider fgx be XFinSequence of NAT such that
+A7: dom fgx = dom (f^g) and
+A8: for i being Nat st i in dom fgx holds fgx.i = ((f^g).i)*(b|^i) and
+A9: value(f^g,b) = Sum fgx by NUMERAL1:def 1;
+  dom (f^g) = len f + len g by AFINSQ_1:def 3;
+  then consider Fx,Gx be XFinSequence such that
+A10: len Fx = len f & len Gx = len g & fgx = Fx ^ Gx by A7,AFINSQ_1:61;
+  rng Fx c= rng fgx & rng Gx c= rng fgx & rng fgx c= NAT by A10,AFINSQ_1:24,25;
+  then reconsider Fx,Gx as XFinSequence of NAT by XBOOLE_1:1,RELAT_1:def 19;
+  for k be Nat st k in dom fx holds fx.k = Fx.k
+  proof
+    let k be Nat such that
+A11:  k in dom fx;
+A12:  fx.k = (f.k)*(b|^k) by A2,A11;
+A13:  Fx.k = fgx.k by A1,A11,A10,AFINSQ_1:def 3;
+    dom f c= dom (f^g) by AFINSQ_1:21;
+    then fgx.k = ((f^g).k)*(b|^k) by A1,A11,A7,A8;
+    hence thesis by A13,A12,A1,A11,AFINSQ_1:def 3;
+  end;
+  then
+A14: fx = Fx by A10,A1,AFINSQ_1:8;
+  set B=b|^(len f);
+A15:dom (B(#)gx) = dom gx by VALUED_1:def 5;
+  for k be Nat st k in dom gx holds (B(#)gx).k = Gx.k
+  proof
+    let k be Nat such that
+A16:  k in dom gx;
+A17:  gx.k = (g.k)*(b|^k) by A5,A16;
+A18:  fgx.(k+len Fx) = ((f^g).(k+len Fx))*(b|^(k+len Fx))
+      by AFINSQ_1:23,A4,A16,A10,A8;
+A19:  (f^g).(k+len Fx) = g.k by A4,A16,A10,AFINSQ_1:def 3;
+A20:  b|^(k+len Fx) = (b|^k) * B by A10,NEWTON:8;
+    (B(#)gx).k = B*(gx.k) by VALUED_1:6;
+    hence thesis by A4,A16,A10,AFINSQ_1:def 3,A17,A18,A19,A20;
+  end;
+  then Gx = B(#)gx by A15,A4,A10,AFINSQ_1:8;
+  hence value(f^g,b) = Sum Fx + Sum (B(#)gx) by A9,A10,AFINSQ_2:55
+  .= value(f,b) + value(g,b)*B by A3,A6,A14,AFINSQ_2:64;
+end;
+
+theorem Th2:
+  b > 1 & n >0 & n*(b|^k) <= x < (n+1)*(b|^k)
+    implies digits(n,b) = digits(x,b)/^k
+proof
+  assume that
+A1: b > 1 & n > 0 and
+A2: n*(b|^k) <= x < (n+1)*(b|^k);
+  per cases;
+  suppose
+A3:   k=0;
+    then n*1 <= x < (n+1)*1 by A2,NEWTON:4;
+    then n <= x <= n by NAT_1:13;
+    then n=x by XXREAL_0:1;
+    hence thesis by A3,AFINSQ_2:10;
+  end;
+  suppose
+A4:   k>0;
+    set D=digits(x,b),Dk=D|k,K=D/^k;
+A5:   n*(b|^k) >= 1*(b|^k) by A1,NAT_1:14,XREAL_1:64;
+    x < b|^(len D) by A1,NUMBER11:9;
+    then n*(b|^k) < b|^(len D) by A2,XXREAL_0:2;
+    then b to_power k < b to_power (len D) by A5,XXREAL_0:2;
+    then k < len D by A1,PRE_FF:8;
+    then
+A6:   len Dk = k by AFINSQ_1:54;
+A7:   Dk^K = D;
+    then
+A8:   value(D,b) = value(Dk,b) + value(K,b) * b|^k by A6,Th1;
+A9:   x<>0 by A1,A2;
+    for i being Nat st i in dom Dk holds Dk.i<b
+    proof
+      let i be Nat such that
+A10:    i in dom Dk;
+      dom Dk c= dom D by A7,AFINSQ_1:21;
+      then D.i < b by A10,A1,A9,NUMERAL1:def 2;
+      hence thesis by A7,A10,AFINSQ_1:def 3;
+    end;
+    then
+A11:  0<= value(Dk,b)/(b|^k) < 1 by A6,A4,A1,NUMBER11:8,XREAL_1:191;
+    x <> 0 by A1,A2;
+    then x = value(Dk,b) + value(K,b) * b|^k by A8,A1,NUMERAL1:def 2;
+    then
+A12:  n*(b|^k)/ (b|^k) <=
+      (value(Dk,b) + value(K,b) * b|^k)/(b|^k) < (n+1)*(b|^k)/(b|^k)
+      by A1,A2,XREAL_1:72,74;
+    (value(Dk,b) + value(D/^k,b) * b|^k)/(b|^k)
+       = value(Dk,b)/(b|^k) + (value(D/^k,b) * b|^k)/(b|^k) by XCMPLX_1:62
+      .= value(Dk,b)/(b|^k) + value(D/^k,b) by A1,XCMPLX_1:89;
+    then
+A13:  n <= value(Dk,b)/(b|^k) + value(D/^k,b) < n+1 by A12,A1,XCMPLX_1:89;
+    then
+A14:  n - value(Dk,b)/(b|^k) <=
+      value(Dk,b)/(b|^k) + value(K,b) - value(Dk,b)/(b|^k) = value(K,b)
+      by XREAL_1:9;
+    n - value(Dk,b)/(b|^k) > n-1 by A11,XREAL_1:15;
+    then n-1 < value(D/^k,b) by A14,XXREAL_0:2;
+    then
+A15:  n-1+1 <= value(D/^k,b) by INT_1:7;
+A16:  value(K,b) < n+1 - value(Dk,b)/(b|^k) by A13,XREAL_1:20;
+    n+1 - value(Dk,b)/(b|^k) <= n+1 - 0 by XREAL_1:13;
+    then value(K,b) < n+1 by A16,XXREAL_0:2;
+    then value(K,b) <= n by NAT_1:13;
+    then
+A17:  digits(value(K,b),b) = digits(n,b) by A15,XXREAL_0:1;
+A18:  K <> {} by A15,A1,NUMBER11:1;
+    then reconsider L=len K-1 as Nat;
+A19:  len Dk + len K = len D by A7,AFINSQ_1:17;
+    L<L+1 by NAT_1:13;
+    then L in Segm len K by NAT_1:44;
+    then
+A20:  D.(k+L) = K.L by A7,A6,AFINSQ_1:def 3;
+A21:  D.((len D)-1)<>0 by A9,A1, NUMERAL1:def 2;
+    for i being Nat st i in dom K holds K.i<b
+    proof
+      let i be Nat such that
+A22:  i in dom K;
+      i + k in dom D by A6,A7,A22,AFINSQ_1:23;
+      then D.(k+i)<b by A1,A9,NUMERAL1:def 2;
+      hence thesis by A7,A22,A6,AFINSQ_1:def 3;
+    end;
+    hence thesis by A17,A1,A18,A21,A19,A20,A6,NUMBER11:5;
+  end;
+end;
+
+theorem Th3:
+  b > 0 & d > 1 & s > 0 implies
+    ex m,i being Nat st digits(ArProg (a,b).m,d)/^i = digits(s,d)
+proof
+  assume that
+A1: b > 0 & d > 1 and
+A2: s > 0;
+  set r = a mod b, t = a div b;
+A3: a = b*t+r by A1,NAT_D:2;
+A4: r < b by A1,NAT_D:1;
+  d>=1+1 by A1,NAT_1:13;
+  then consider n be positive Nat such that
+A5: 2*b*(t+1) +1 <= d|^n by LIOUVIL2:1;
+  b+0 < b+b by A1,XREAL_1:8;
+  then
+A6: b*(t+1) < (2*b)*(t+1) by XREAL_1:68;
+  1+0 <= s by A2,NAT_1:13;
+  then
+A7: 1*d|^n <= s*d|^n by XREAL_1:64;
+A8: 2*b*(t+1) < d|^n by A5,NAT_1:13;
+  then b*(t+1) < d|^n by A6,XXREAL_0:2;
+  then b*(t+1) < s*d|^n by A7,XXREAL_0:2;
+  then (t+1) < (s*d|^n)/ b by A1,XREAL_1:81;
+  then
+A9: (s*d|^n)/b - t >1 by XREAL_1:20;
+  set k = [/ (s*d|^n)/b - t \];
+  (s*d|^n)/b - t <= k by INT_1:def 7;
+  then reconsider k as Element of NAT by A9,INT_1:3;
+  take k,n;
+  (s*d|^n)/b <= k + t by INT_1:def 7,XREAL_1:20;
+  then
+A10: s*(d|^n) <= b *(k+t) by A1,XREAL_1:81;
+  k < (s*d|^n)/b - t +1 by INT_1:def 7;
+  then
+A11: k+1 <= (s*d|^n)/b  -t+1+1 by XREAL_1:6;
+  0+1 <= t+1 by XREAL_1:6;
+  then (2*b)*1 <= (2*b)*(t+1) by XREAL_1:64;
+  then (2*b)*1 < d|^n by A8,XXREAL_0:2;
+  then 2 < (d|^n)/b by A1,XREAL_1:81;
+  then
+A12: (s*d|^n)/b  -t +2 < (s*d|^n)/b  -t+(d|^n)/b by XREAL_1:8;
+  (s*d|^n)/b  -t+(d|^n)/b = (s*d|^n)/b +(d|^n)/b -t
+  .= ((s*d|^n)+(d|^n))/b - t by XCMPLX_1:62
+  .=((s+1)*d|^n)/b - t;
+  then k+1 < ((s+1)*d|^n)/b - t by A11,A12,XXREAL_0:2;
+  then k+1 + t < ((s+1)*d|^n)/b by XREAL_1:20;
+  then
+A13: (k+1 + t)*b < ((s+1)*d|^n) by A1,XREAL_1:79;
+  b *(k+t)+0 <= b *(k+t)+r by XREAL_1:7;
+  then
+A14: s*(d|^n) <= b*k + a by A3,A10,XXREAL_0:2;
+  b*k + a = b*k + b*t+r by A3;
+  then b*k + a < b*k + b*t+b by A4,XREAL_1:8;
+  then b*k + a < ((s+1)*d|^n) by A13,XXREAL_0:2;
+  then digits(s,d) = digits(b*k + a,d)/^n by Th2,A1,A2,A14;
+  hence thesis by NUMBER06:7;
+end;

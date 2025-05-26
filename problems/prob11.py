@@ -1,6 +1,6 @@
 def prob11(n):
     if n <= 0:
-        return {"error": "n musi być liczbą całkowitą dodatnią"}
+        return {"error": "n must be a positive integer"}
 
     a = 2 ** (2 * n + 1) - 2 ** (n + 1) + 1
     b = 2 ** (2 * n + 1) + 2 ** (n + 1) + 1

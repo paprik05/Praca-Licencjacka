@@ -1,0 +1,199 @@
+theorem :: Problem 67
+  for a,b being Nat st a > 0 & a,b are_coprime
+    ex N be infinite Subset of NAT st
+       for n,m be Nat st n in N & m in N & n <> m holds
+          ArProg(b,a).n,ArProg(b,a).m are_coprime
+proof
+  let a,b be Nat such that
+A1: a > 0 & a,b are_coprime;
+  defpred X[set] means $1 is finite & not 0 in $1 &
+        for n,m be Nat st n in $1 & m in $1 & n <> m holds
+          ArProg(b,a).n,ArProg(b,a).m are_coprime;
+  defpred G[object,object] means
+      for Y be set st Y=$1 & X[Y] holds
+       ex k be Nat st not k in Y & $2 = Y\/{k} & X[Y\/{k}];
+A2:for x being object st x in bool NAT
+     ex y being object st y in bool NAT & G[x,y]
+  proof
+    let x be object such that
+A3:   x in bool NAT;
+    reconsider N=x as set by A3;
+    per cases;
+    suppose not X[N];
+      then G[N,N];
+      hence thesis by A3;
+    end;
+    suppose
+A4:     X[N];
+      then reconsider N as finite Subset of NAT by A3;
+      set C = canFS N;
+      defpred P[object,object] means $2 = ArProg(b,a).(C.$1);
+A5:     for k be Nat st k in Seg len C ex x being Element of NAT st P[k,x];
+      consider p be FinSequence of NAT such that
+A6:     dom p = Seg len C and
+A7:     for k be Nat st k in Seg len C holds P[k,p.k] from FINSEQ_1:sch 5(A5);
+A8:     dom p=dom C by A6,FINSEQ_1:def 3;
+      Product p <> 0
+      proof
+        assume Product p=0;
+        then consider k be Nat such that
+A9:       k in dom p & p.k = 0 by RVSUM_1:103;
+        set Ck= C.k;
+        Ck in rng C =N by A9,A8,FUNCT_1:def 3,FUNCT_2:def 3;
+        then Ck<>0 by A4;
+        then
+A10:      b+a*Ck <>0 by A1;
+        p.k = ArProg(b,a).Ck by A9,A6,A7;
+        hence thesis by A9,A10,NUMBER06:7;
+      end;
+      then reconsider m=Product p as non zero Nat;
+      reconsider RC=rng ArProg(b,a) /\ Coprimes(m) as infinite set
+        by A1,NUMBER09:17;
+      RC \((rng p)\/{b}) is infinite by RAMSEY_1:4;
+      then consider r be object such that
+A11:    r in RC \((rng p)\/{b}) by XBOOLE_0:def 1;
+      r in rng ArProg(b,a) by A11,XBOOLE_0:def 4;
+      then consider k be object such that
+A12:    k in dom ArProg(b,a) & ArProg(b,a).k = r by FUNCT_1:def 3;
+      reconsider r,k as Nat by A12;
+      set Nk = N\/{k};
+      take Nk;
+      N \/{k} c= NAT by ORDINAL1:def 12,ZFMISC_1:137;
+      hence Nk in bool NAT;
+      let XX be set such that A13:XX=x & X[XX];
+      take k;
+      thus not k in XX
+      proof
+        assume k in XX;
+        then k in rng C by A13,FUNCT_2:def 3;
+        then consider i be object such that
+A14:      i in dom C & C.i=k by FUNCT_1:def 3;
+        reconsider i as Nat by A14;
+        p.i = ArProg(b,a).(C.i) by A8,A14,A6,A7;
+        then r in rng p by A12,A8,A14,FUNCT_1:def 3;
+        then r in rng p\/{b} by XBOOLE_0:def 3;
+        hence thesis by A11,XBOOLE_0:def 5;
+      end;
+      thus Nk = XX\/{k} by A13;
+      X[XX\/{k}]
+      proof
+        thus XX\/{k} is finite by A13;
+        thus not 0 in XX\/{k}
+        proof
+          assume 0 in XX\/{k};
+          then 0 = k by A13,ZFMISC_1:136;
+          then r = b+a*0 by A12,NUMBER06:7;
+          then r in rng p\/{b} by ZFMISC_1:136;
+          hence thesis by A11,XBOOLE_0:def 5;
+        end;
+A15:      for n st n in XX holds
+            ArProg(b,a).n,ArProg(b,a).k are_coprime
+        proof
+          let n be Nat;
+          assume n in XX;
+          then n in rng C by A13,FUNCT_2:def 3;
+          then consider i be object such that
+A16:        i in dom C & C.i=n by FUNCT_1:def 3;
+          reconsider i as Nat by A16;
+          A17:p.i = ArProg(b,a).(C.i) by A8,A16,A6,A7;
+          r in Coprimes(m) by A11,XBOOLE_0:def 4;
+          then r in {j where j is Integer: m,j are_coprime} by NUMBER09:def 2;
+          then ex j be Integer st r=j & m,j are_coprime;
+          hence ArProg(b,a).n,ArProg(b,a).k are_coprime
+            by A12,A16,A17,A8,INT_4:32,NUMBER12:4;
+        end;
+        let n,m be Nat such that
+A18:      n in XX\/{k} & m in XX\/{k} & n <> m;
+        per cases by A18,ZFMISC_1:136;
+        suppose n in XX & m in XX;
+          hence thesis by A18,A13;
+        end;
+        suppose (n in XX & m =k) or (n =k & m in XX);
+          hence thesis by A15;
+        end;
+        suppose n =k & m =k;
+          hence thesis by A18;
+        end;
+      end;
+      hence thesis;
+    end;
+  end;
+  consider g be Function such that
+  dom g = bool NAT & rng g c= bool NAT and
+A19: for x be object st x in bool NAT holds G[x,g.x] from FUNCT_1:sch 6(A2);
+  deffunc G(object,object) = g.$2;
+  consider f be Function such that
+A20:dom f = NAT & f.0 = {} and
+A21: for n be Nat holds f.(n+1) = G(n,f.n) from NAT_1:sch 11;
+  defpred F[Nat] means f.$1 is finite & f.$1 in bool NAT & X[f.$1] &
+  for X be finite set st X = f.$1 holds card X= $1;
+  {} c= NAT;
+  then
+A22:F[0] by A20;
+A23:F[n] implies F[n+1]
+  proof
+    assume
+A24:  F[n];
+    then reconsider fn=f.n as finite Subset of NAT;
+A25:  f.(n+1) = g.fn by A21;
+    consider k be Nat such that
+A26:  not k in fn & g.fn = fn\/{k} & X[fn\/{k}] by A19,A24;
+    reconsider gfn = g.fn as finite set by A26;
+A27:  fn\/{k} c= NAT by ORDINAL1:def 12,ZFMISC_1:137;
+    card fn = n by A24;
+    hence thesis by A27,A26,A25,CARD_2:41;
+  end;
+A28:F[n] from NAT_1:sch 2(A22,A23);
+A29:union rng f is infinite
+  proof
+    assume union rng f is finite;
+    then reconsider U= union rng f as finite set;
+    reconsider fC = f.(card U+1) as finite set by A28;
+    fC in rng f by A20,FUNCT_1:def 3;
+    then card U+1 = card fC <= card U by A28,NAT_1:43,ZFMISC_1:74;
+    hence thesis by NAT_1:13;
+  end;
+  union rng f c= NAT
+  proof
+    let y be object;
+    assume y in union rng f;
+    then consider Y be set such that
+A30:  y in Y & Y in rng f by TARSKI:def 4;
+    consider x be object such that
+A31:  x in dom f & f.x = Y by A30,FUNCT_1:def 3;
+    reconsider x as Nat by A20,A31;
+    f.x in bool NAT by A28;
+    hence thesis by A30,A31;
+  end;
+  then reconsider N=union rng f as infinite Subset of NAT by A29;
+  take N;
+  defpred G[Nat] means for n be Nat holds f.n c= f.(n+$1);
+A32:G[0];
+A33:for k st G[k] holds G[k+1]
+  proof
+    let k such that
+A34:  G[k];
+    let n be Nat;
+A35:  f.n c= f.(n+k) by A34;
+A36:  f.(n+k+1) = g.(f.(n+k)) by A21;
+    f.(n+k) in bool NAT & X[f.(n+k)] by A28;
+    then consider l be Nat such that
+A37:  not l in f.(n+k) & g.(f.(n+k)) = f.(n+k)\/{l} & X[f.(n+k)\/{l}] by A19;
+    f.(n+k) c= f.(n+k+1) by A36,A37,XBOOLE_1:7;
+    hence thesis by A35,XBOOLE_1:1;
+  end;
+A38:G[n] from NAT_1:sch 2(A32,A33);
+  let n,m be Nat such that
+A39: n in N & m in N & n <> m;
+  consider N be set such that
+A40:n in N & N in rng f by A39,TARSKI:def 4;
+  consider xn be object such that
+A41:xn in dom f & f.xn = N by A40,FUNCT_1:def 3;
+  consider M be set such that
+A42:m in M & M in rng f by A39,TARSKI:def 4;
+  consider xm be object such that
+A43:xm in dom f & f.xm = M by A42,FUNCT_1:def 3;
+  reconsider xn,xm as Nat by A20,A41,A43;
+  f.xn c= f.(xn+xm) & f.xm c= f.(xn+xm) by A38;
+  hence thesis by A40,A41,A42,A43,A28,A39;
+end;

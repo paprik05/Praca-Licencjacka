@@ -2,7 +2,7 @@ import sympy
 
 def prob16(r):
     if r <= 0:
-        return {"error": "r musi być liczbą całkowitą dodatnią"}
+        return {"error": "r must be a positive integer"}
 
     results = []
     prime_results = []

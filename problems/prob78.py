@@ -15,7 +15,7 @@ def prob78(limit, num_of_solutions = 4):
                         continue
                     right = pow(q,2) + pow(r,2)
                     if left == right:
-                        solutions.append(f"{p}^2 + 1 = {q}^2 + {r}^2")
+                        solutions.append(f"p = {p}: {p}^2 + 1 = {q}^2 + {r}^2")
                         count += 1
                         break
                 if count >= num_of_solutions:

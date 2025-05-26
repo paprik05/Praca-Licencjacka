@@ -1,0 +1,15 @@
+theorem
+  1,2,3,4 are_mutually_distinct &
+  not ex n being positive Nat st 1+n,2+n,3+n,4+n are_mutually_coprime
+  proof
+    thus 1,2,3,4 are_mutually_distinct;
+    given n being positive Nat such that
+A1: 1+n,2+n,3+n,4+n are_mutually_coprime;
+    per cases;
+    suppose n is odd;
+      hence thesis by A1,NEWTON05:35,POLYFORM:6;
+    end;
+    suppose n is even;
+      hence thesis by A1,NEWTON05:35,POLYFORM:7;
+    end;
+  end;

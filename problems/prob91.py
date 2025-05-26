@@ -1,17 +1,21 @@
-#dokonczyc
-from sympy import primerange
-def prob91(limit=1000):
+from sympy import primerange, isprime, factorint
+
+def prob91():
     results = []
-    primes = list(primerange(2,limit+1))
 
-    for n in range(19): # nie przekroczy miliona
-        form = pow(2,n) - 1
-        for i in range(len(primes)):
-            for j in range(i+1,len(primes)):
-                p = primes[i]
-                q = primes[j]
+    for n in range(2, 20):  # bo 2^20 > 1_000_000
+        num = 2 ** n - 1
 
-                if form == p*q:
-                    results.append((p, q, form))
+        if isprime(num):
+            continue
+
+        factors = factorint(num)
+        total_factors = sum(factors.values())
+
+        if total_factors == 2:
+            primes = list(factors.keys())
+            results.append(f"n = {n}: {num} = {primes[0]} * {primes[1]}")
+        elif n % 2 == 0 and n > 4 and total_factors >= 3:
+            results.append(f"n = {n}: {num} is a product of at least 3 integers > 1")
 
     return {"result": results}

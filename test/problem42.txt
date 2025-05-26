@@ -1,0 +1,14 @@
+theorem CoprimeDivides:  :: see WSIERP_1:16
+  for a,m,n being Nat st a,m are_coprime & n divides a holds
+    n,m are_coprime
+  proof
+    let a,m,n be Nat;
+    assume
+A1: a,m are_coprime & n divides a;
+    assume not n,m are_coprime; then
+    consider k being Nat such that
+A2: k divides n & k divides m & k <> 1 by PYTHTRIP:def 1;
+    k divides a by A1,A2,INT_2:9; then
+    k divides (a gcd m) by A2,INT_2:def 2;
+    hence thesis by A2,A1,WSIERP_1:15;
+  end;

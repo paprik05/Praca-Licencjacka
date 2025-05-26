@@ -1,0 +1,374 @@
+theorem
+  n > 17 implies n satisfies_Sierpinski_problem_48
+  proof
+    assume
+A1: n > 17;
+    per cases;
+    suppose
+A2:   n is even;
+      n > 8 by A1,XXREAL_0:2;
+      hence thesis by A2,Th41;
+    end;
+    suppose
+A3:   n is odd;
+      consider k such that
+A4:   n = 12*k+(0 qua Nat) or ... or n = 12*k+(12-1) by NUMBER02:22;
+      consider i being Nat such that
+A5:   0 <= i <= 11 and
+A6:   n = 12*k+i by A4;
+A7:   i = 0 or ... or i = 11 by A5;
+A8:  now
+        assume 9 divides 6*k-1;
+        then consider z being Integer such that
+A9:     6*k-1 = 9*z;
+        3 divides 3*(2*k-3*z);
+        hence contradiction by A9,NAT_D:7;
+      end;
+A10:  now
+        assume 9 divides 6*k+1;
+        then consider z being Integer such that
+A11:    6*k+1 = 9*z;
+        3 divides 3*(3*z-2*k);
+        hence contradiction by A11,NAT_D:7;
+      end;
+      12*k+0 = 2*(6*k) & 12*k+2 = 2*(6*k+1) & 12*k+4 = 2*(6*k+2) &
+      12*k+6 = 2*(6*k+3) & 12*k+8 = 2*(6*k+4) & 12*k+10 = 2*(6*k+5);
+      then per cases by A3,A6,A7;
+      suppose
+A12:     n = 12*k+1;
+        then 12*k+1-1 > 17-1 by A1,XREAL_1:9;
+        then 12*k/12 > 16/12 by XREAL_1:97;
+        then
+A13:    k > 1 by XXREAL_0:2;
+        then
+A14:    6*k > 6*1 by XREAL_1:68;
+        k-1 > 1-1 by A13,XREAL_1:9;
+        then k-1 >= 0+1 by INT_1:7;
+        then 6*(k-1) >= 6*1 by XREAL_1:64;
+        then
+A15:    6*(k-1)-1 >= 6-1 by XREAL_1:9;
+        then reconsider a = 6*(k-1)-1 as Element of NAT by INT_1:3;
+A16:    6*k-1 > 6-1 by A14,XREAL_1:9;
+        then reconsider b = 6*(k-1)+5 as Element of NAT by INT_1:3;
+        set c = 9;
+        take a, b, c;
+        thus n = a+b+c by A12;
+        thus a > 1 by A15,XXREAL_0:2;
+        thus b > 1 by A16,XXREAL_0:2;
+        thus c > 1;
+A17:    1 divides a by INT_2:12;
+A18:    1 divides b by INT_2:12;
+A19:    1 divides c by INT_2:12;
+        for d being Nat st d divides a & d divides b holds d divides 1
+        proof
+          let d be Nat such that
+A20:      d divides a and
+A21:      d divides b;
+A22:      d divides b-a by A20,A21,INT_5:1;
+A23:      3 divides 3*(2*(k-1)) & 6 divides 6*(k-1);
+          d = 1 or d = 2 or d = 3 or d = 6 by A22,Th10;
+          hence thesis by A20,A23,Th4;
+        end;
+        hence a,b are_coprime by A17,A18,NAT_D:def 5;
+        for d being Nat st d divides a & d divides c holds d divides 1
+        proof
+          let d be Nat such that
+A24:      d divides a and
+A25:      d divides c;
+A26:      3 divides 3*(2*(k-1));
+A27:      now
+            assume 9 divides 6*k-7;
+            then consider z being Integer such that
+A28:        6*k-7 = 9*z;
+A29:        3 divides 3*(2*k-3*z);
+            (2*3+1) mod 3 = 1 mod 3 by NAT_D:21
+            .= 1 by NAT_D:24;
+            hence contradiction by A28,A29,INT_1:62;
+          end;
+          d = 1 or d = 3 or d = 9 by A25,Th11;
+          hence thesis by A24,A26,A27,Th4;
+        end;
+        hence a,c are_coprime by A17,A19,NAT_D:def 5;
+        for d being Nat st d divides b & d divides c holds d divides 1
+        proof
+          let d be Nat such that
+A30:      d divides b and
+A31:      d divides c;
+A32:      3 divides 3*(2*k);
+          d = 1 or d = 3 or d = 9 by A31,Th11;
+          hence thesis by A30,A32,A8,Th4;
+        end;
+        hence b,c are_coprime by A18,A19,NAT_D:def 5;
+      end;
+      suppose
+A33:     n = 12*k+3;
+        then 12*k+3-3 > 17-3 by A1,XREAL_1:9;
+        then 12*k/12 > (1*12+2)/12 by XREAL_1:97;
+        then k > 1 by XXREAL_0:2;
+        then
+A34:    6*k > 6*1 by XREAL_1:68;
+        then
+A35:    6*k-1 > 6-1 by XREAL_1:9;
+        then reconsider a = 6*k-1 as Element of NAT by INT_1:3;
+        set b = 6*k+1;
+        set c = 3;
+        take a, b, c;
+        thus n = a+b+c by A33;
+        thus a > 1 by A35,XXREAL_0:2;
+        6*k+1 > 6+1 by A34,XREAL_1:6;
+        hence b > 1 by XXREAL_0:2;
+        thus c > 1;
+A36:    1 divides a & 1 divides b by INT_2:12;
+        for d being Nat st d divides a & d divides b holds d divides 1
+        proof
+          let d be Nat such that
+A37:      d divides a and
+A38:      d divides b;
+A39:      a = 2*(3*k)-1;
+          d divides b-a by A37,A38,INT_5:1;
+          then d = 1 or d = 2 by Th9;
+          hence thesis by A37,A39;
+        end;
+        hence a,b are_coprime by A36,NAT_D:def 5;
+A40:    3 divides 3*(2*k);
+        hence a,c are_coprime by Th6;
+        thus b,c are_coprime by A40,Th5;
+      end;
+      suppose
+A41:     n = 12*k+5;
+        then 12*k+5-5 > 17-5 by A1,XREAL_1:9;
+        then 12*k/12 > 12/12 by XREAL_1:97;
+        then
+A42:    6*k > 6*1 by XREAL_1:68;
+        then
+A43:    6*k-5 > 6-5 by XREAL_1:9;
+        then reconsider a = 6*k-5 as Element of NAT by INT_1:3,XXREAL_0:2;
+        set b = 6*k+1;
+        set c = 9;
+        take a, b, c;
+        thus n = a+b+c by A41;
+        thus a > 1 by A43;
+        6*k+1 > 6+1 by A42,XREAL_1:8;
+        hence b > 1 by XXREAL_0:2;
+        thus c > 1;
+A44:    1 divides a by INT_2:12;
+A45:    1 divides b by INT_2:12;
+A46:    1 divides c by INT_2:12;
+        for d being Nat st d divides a & d divides b holds d divides 1
+        proof
+          let d be Nat such that
+A47:      d divides a and
+A48:      d divides b;
+A49:      3 divides 3*(2*k) & 6 divides 6*k;
+          d divides b-a by A47,A48,INT_5:1;
+          then d = 1 or d = 2 or d = 3 or d = 6 by Th10;
+          hence thesis by A48,A49,Th3;
+        end;
+        hence a,b are_coprime by A44,A45,NAT_D:def 5;
+        for d being Nat st d divides a & d divides c holds d divides 1
+        proof
+          let d be Nat such that
+A50:      d divides a and
+A51:      d divides c;
+A52:      3 divides 3*(2*(k-1));
+A53:      6*k-5 = 6*(k-1)+1;
+A54:      now
+            assume 9 divides 6*k-5;
+            then consider z being Integer such that
+A55:        6*k-5 = 9*z;
+A56:        3 divides 3*(2*k-3*z);
+            (1*3+2) mod 3 = 2 mod 3 by NAT_D:21
+            .= 2 by NAT_D:24;
+            hence contradiction by A55,A56,INT_1:62;
+          end;
+          d = 1 or d = 3 or d = 9 by A51,Th11;
+          hence thesis by A50,A52,A53,A54,Th3;
+        end;
+        hence a,c are_coprime by A44,A46,NAT_D:def 5;
+        for d being Nat st d divides b & d divides c holds d divides 1
+        proof
+          let d be Nat such that
+A57:      d divides b and
+A58:      d divides c;
+A59:      3 divides 3*(2*k);
+          d = 1 or d = 3 or d = 9 by A58,Th11;
+          hence thesis by A57,A59,A10,Th3;
+        end;
+        hence b,c are_coprime by A45,A46,NAT_D:def 5;
+      end;
+      suppose
+A60:    n = 12*k+7;
+        set a = 6*k+6-1;
+        12*k+7-7 > 17-7 by A1,A60,XREAL_1:9;
+        then 12*k/12 > 10/12 by XREAL_1:97;
+        then
+A61:    k >= 0+1 by NAT_1:13;
+        then reconsider b = 6*k-1 as Element of NAT by INT_1:3;
+        set c = 3;
+        take a, b, c;
+        thus n = a+b+c by A60;
+A62:    6*k >= 6*1 by A61,XREAL_1:64;
+        then 6*k+5 >= 6+5 by XREAL_1:6;
+        hence a > 1 by XXREAL_0:2;
+        6*k-1 >= 6-1 by A62,XREAL_1:9;
+        hence b > 1 by XXREAL_0:2;
+        thus c > 1;
+A63:    1 divides a by INT_2:12;
+A64:    1 divides b by INT_2:12;
+        for d being Nat st d divides a & d divides b holds d divides 1
+        proof
+          let d be Nat such that
+A65:      d divides a and
+A66:      d divides b;
+A67:      3 divides 3*(2*k) & 6 divides 6*k;
+          d divides a-b by A65,A66,INT_5:1;
+          then d = 1 or d = 2 or d = 3 or d = 6 by Th10;
+          hence thesis by A66,A67,Th4;
+        end;
+        hence a,b are_coprime by A63,A64,NAT_D:def 5;
+        3 divides 3*(2*(k+1));
+        hence a,c are_coprime by Th6;
+        3 divides 3*(2*k);
+        hence b,c are_coprime by Th6;
+      end;
+      suppose
+A68:    n = 12*k+9;
+        then 12*k+9-9 > 17-9 by A1,XREAL_1:9;
+        then
+A69:    12*k/12 > 8/12 by XREAL_1:97;
+        then reconsider a = 6*k-1 as Element of NAT by INT_1:3;
+        set b = 6*k+1;
+        set c = 9;
+        take a, b, c;
+        thus n = a+b+c by A68;
+        k >= 0+1 by A69,NAT_1:13;
+        then
+A70:    6*k >= 6*1 by XREAL_1:64;
+        then 6*k-1 >= 6-1 by XREAL_1:9;
+        hence a > 1 by XXREAL_0:2;
+        6*k+1 >= 6+1 by A70,XREAL_1:6;
+        hence b > 1 by XXREAL_0:2;
+        thus c > 1;
+A71:    1 divides a by INT_2:12;
+A72:    1 divides b by INT_2:12;
+A73:    1 divides c by INT_2:12;
+        for d being Nat st d divides a & d divides b holds d divides 1
+        proof
+          let d be Nat such that
+A74:      d divides a and
+A75:      d divides b;
+A76:      a = 2*(3*k)-1;
+          d divides b-a by A74,A75,INT_5:1;
+          then d = 1 or d = 2 by Th9;
+          hence thesis by A74,A76;
+        end;
+        hence a,b are_coprime by A71,A72,NAT_D:def 5;
+        for d being Nat st d divides a & d divides c holds d divides 1
+        proof
+          let d be Nat such that
+A77:      d divides a and
+A78:      d divides c;
+A79:      3 divides 3*(2*k);
+          d = 1 or d = 3 or d = 9 by A78,Th11;
+          hence thesis by A8,A77,A79,Th4;
+        end;
+        hence a,c are_coprime by A71,A73,NAT_D:def 5;
+        for d being Nat st d divides b & d divides c holds d divides 1
+        proof
+          let d be Nat such that
+A80:      d divides b and
+A81:      d divides c;
+A82:      3 divides 3*(2*k);
+          d = 1 or d = 3 or d = 9 by A81,Th11;
+          hence thesis by A10,A80,A82,Th3;
+        end;
+        hence b,c are_coprime by A72,A73,NAT_D:def 5;
+      end;
+      suppose
+A83:    n = 12*k+11;
+        set a = 6*k+1;
+        set b = 6*k+6+1;
+        set c = 3;
+        take a, b, c;
+        thus n = a+b+c by A83;
+        12*k+11-11 > 17-11 by A1,A83,XREAL_1:9;
+        then 12*k/12 > 6/12 by XREAL_1:97;
+        then k >= 0+1 by NAT_1:13;
+        then
+A84:    6*k >= 6*1 by XREAL_1:64;
+        then 6*k+1 >= 6+1 by XREAL_1:6;
+        hence a > 1 by XXREAL_0:2;
+        6*k+7 >= 6+7 by A84,XREAL_1:6;
+        hence b > 1 by XXREAL_0:2;
+        thus c > 1;
+A85:    1 divides a by INT_2:12;
+A86:    1 divides b by INT_2:12;
+        for d being Nat st d divides a & d divides b holds d divides 1
+        proof
+          let d be Nat such that
+A87:      d divides a and
+A88:      d divides b;
+A89:      3 divides 3*(2*k) & 6 divides 6*k;
+          d divides b-a by A87,A88,INT_5:1;
+          then d = 1 or d = 2 or d = 3 or d = 6 by Th10;
+          hence thesis by A87,A89,Th3;
+        end;
+        hence a,b are_coprime by A85,A86,NAT_D:def 5;
+        3 divides 3*(2*k);
+        hence a,c are_coprime by Th5;
+        3 divides 3*(2*k+2);
+        hence b,c are_coprime by Th5;
+      end;
+    end;
+  end;
+
+Lm3:
+  now
+    let a,b,c such that
+A1: 1 < b and
+A2: 1 < c and
+A3: a+b+c = 17;
+    assume a >= 15;
+    then a+b > 15+1 by A1,XREAL_1:8;
+    then a+b+c > 16+1 by A2,XREAL_1:8;
+    hence contradiction by A3;
+  end;
+
+Lm4:
+  now
+    let n be odd Nat;
+    assume 1 < n & n < 15;
+    then 1 < n & n < 14+1;
+    then 1+1 <= n <= 14 by NAT_1:13;
+    then n = 2+0 or ... or n = 2+12 by NAT_1:62;
+    then n = 2*1 or n = 3 or n = 2*2 or n = 5 or n = 2*3 or n = 7 or n = 2*4
+    or n = 9 or n = 2*5 or n = 11 or n = 2*6 or n = 13 or n = 2*7;
+    hence n = 3 or n = 5 or n = 7 or n = 9 or n = 11 or n = 13;
+  end;
+
+theorem
+  not 17 satisfies_Sierpinski_problem_48
+  proof
+    given a,b,c being Nat such that
+A1: 17 = a+b+c and
+A2: a > 1 and
+A3: b > 1 and
+A4: c > 1 and
+A5: a,b,c are_mutually_coprime;
+A6: 17 = 2*8+1;
+    then a is odd by A1,A5,Th7;
+    then
+A7: a = 3 or a = 5 or a = 7 or a = 9 or a = 11 or a = 13
+    by A1,A2,A3,A4,Lm4,Lm3;
+    b is odd by A1,A5,A6,Th7;
+    then
+A8: b = 3 or b = 5 or b = 7 or b = 9 or b = 11 or b = 13
+    by A1,A2,A3,A4,Lm4,Lm3;
+A9: c is odd by A1,A5,A6,Th7;
+    a+b+c = c+a+b;
+    then
+A10: c = 3 or c = 5 or c = 7 or c = 9 or c = 11 or c = 13
+    by A1,A2,A3,A4,A9,Lm4,Lm3;
+    not 3,3*3 are_coprime by Th1;
+    hence contradiction by A1,A5,A7,A8,A10,EULER_1:1;
+  end;

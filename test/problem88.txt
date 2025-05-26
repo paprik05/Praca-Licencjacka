@@ -1,0 +1,139 @@
+theorem
+  n > 7 implies
+  ex m being Nat, p, q being Prime st p <> q &
+  (m = n or m = n+1 or m = n+2) & p divides m & q divides m
+  proof
+    assume
+A1: n > 7;
+    assume
+A2: not thesis;
+    then not 2 divides n or not 3 divides n by XPRIMES1:2,3;
+    then
+A3: not 2*3 divides n by NUMBER04:3;
+    not 2 divides n+1 or not 3 divides n+1 by A2,XPRIMES1:2,3;
+    then
+A4: not 2*3 divides n+1 by NUMBER04:3;
+    not 2 divides n+2 or not 3 divides n+2 by A2,XPRIMES1:2,3;
+    then
+A5: not 2*3 divides n+2 by NUMBER04:3;
+    consider k such that
+A6: n = 6*k or n = 6*k+1 or n = 6*k+2 or n = 6*k+3 or n = 6*k+4 or n = 6*k+5
+    by NUMBER02:26;
+A7: n is having_exactly_one_prime_divisor
+    proof
+      consider p being Element of NAT such that
+A8:   p is prime and
+A9:   p divides n by A1,XXREAL_0:2,INT_2:31;
+      reconsider p as Prime by A8;
+      take p;
+      thus thesis by A2,A9;
+    end;
+A10: n+1 is having_exactly_one_prime_divisor
+    proof
+      n+1 > n+0 by XREAL_1:8;
+      then n+1 > 7 by A1,XXREAL_0:2;
+      then consider p being Element of NAT such that
+A11:   p is prime and
+A12:   p divides n+1 by INT_2:31,XXREAL_0:2;
+      reconsider p as Prime by A11;
+      take p;
+      thus thesis by A2,A12;
+    end;
+A13: n+2 is having_exactly_one_prime_divisor
+    proof
+      n+2 > n+0 by XREAL_1:8;
+      then n+2 > 7 by A1,XXREAL_0:2;
+      then consider p being Element of NAT such that
+A14:   p is prime and
+A15:   p divides n+2 by INT_2:31,XXREAL_0:2;
+      reconsider p as Prime by A14;
+      take p;
+      thus thesis by A2,A15;
+    end;
+    per cases by A6;
+    suppose n = 6*k;
+      hence thesis by A3;
+    end;
+    suppose
+A16:   n = 6*k+1;
+      consider m being non zero Nat such that
+A17:   n+1 = (the_only_divisor_of (n+1)) |^ m by A10,Th78;
+      n+1 = 2*(3*k+1) by A16;
+      then 2 divides n+1;
+      then
+A18:   the_only_divisor_of (n+1) = 2 by A10,Def7,XPRIMES1:2;
+      consider s being non zero Nat such that
+A19:   n+2 = (the_only_divisor_of (n+2)) |^ s by A13,Th78;
+      n+2 = 3*(2*k+1) by A16;
+      then 3 divides n+2;
+      then
+A20:   the_only_divisor_of (n+2) = 3 by A13,Def7,XPRIMES1:3;
+A21:   now
+        assume m <= 3;
+        then n+1 <= 7+1 by A17,A18,Lm12,PREPOWER:93;
+        hence contradiction by A1,XREAL_1:8;
+      end;
+      3|^s - 2|^m = 1 by A17,A19,A18,A20;
+      then s = m = 1 or s = 2 & m = 3 by Th73;
+      hence thesis by A21;
+    end;
+    suppose
+A22:   n = 6*k+2;
+      consider m being non zero Nat such that
+A23:   n = (the_only_divisor_of n) |^ m by A7,Th78;
+      n = 2*(3*k+1) by A22;
+      then 2 divides n;
+      then
+A24:   the_only_divisor_of n = 2 by A7,Def7,XPRIMES1:2;
+      consider s being non zero Nat such that
+A25:   n+1 = (the_only_divisor_of (n+1)) |^ s by A10,Th78;
+      n+1 = 3*(2*k+1) by A22;
+      then 3 divides n+1;
+      then
+A26:   the_only_divisor_of (n+1) = 3 by A10,Def7,XPRIMES1:3;
+A27:   now
+        assume m <= 3;
+        then
+A28:     n <= 7+1 by A23,A24,Lm12,PREPOWER:93;
+        n >= 7+1 by A1,NAT_1:13;
+        then
+A29:     n = 8 by A28,XXREAL_0:1;
+        not 2*5 is having_exactly_one_prime_divisor by Th77,XPRIMES1:2,5;
+        hence contradiction by A13,A29;
+      end;
+      3|^s - 2|^m = 1 by A23,A25,A24,A26;
+      then s = m = 1 or s = 2 & m = 3 by Th73;
+      hence thesis by A27;
+    end;
+    suppose
+A30:   n = 6*k+3;
+      consider s being non zero Nat such that
+A31:   n = (the_only_divisor_of n) |^ s by A7,Th78;
+      n = 3*(2*k+1) by A30;
+      then 3 divides n;
+      then
+A32:   the_only_divisor_of n = 3 by A7,Def7,XPRIMES1:3;
+      consider m being non zero Nat such that
+A33:   n+1 = (the_only_divisor_of (n+1)) |^ m by A10,Th78;
+      n+1 = 2*(3*k+2) by A30;
+      then 2 divides n+1;
+      then
+A34:   the_only_divisor_of (n+1) = 2 by A10,Def7,XPRIMES1:2;
+A35:   now
+        assume m <= 3;
+        then n+1 <= 7+1 by A33,A34,Lm12,PREPOWER:93;
+        hence contradiction by A1,XREAL_1:8;
+      end;
+      2|^m - 3|^s = 1 by A33,A31,A34,A32;
+      then s = 1 & m = 2 by Th67;
+      hence thesis by A35;
+    end;
+    suppose n = 6*k+4;
+      then n+2 = 6*(k+1);
+      hence thesis by A5;
+    end;
+    suppose n = 6*k+5;
+      then n+1 = 6*(k+1);
+      hence thesis by A4;
+    end;
+  end;

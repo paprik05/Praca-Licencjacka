@@ -1,0 +1,26 @@
+theorem :: Problem 66
+  4,11 are_coprime &
+  for m being Nat holds not ArProg (4,11).m is Fibonacci
+proof
+A1:  4 gcd 11 = 4 gcd (11-4) = 4 gcd (7-4) by PREPOWER:97;
+  3 gcd 4 = 3 gcd (4-3) by PREPOWER:97;
+  hence 4,11 are_coprime by A1;
+A2: 0*11+0 mod 11 = 0 & 5*11+0 mod 11 = 0 & 11*0+1 mod 11 = 1
+    & 11*8+1 mod 11 = 1 by NUMBER02:16;
+  then Fib(0),Fib(0+10) are_congruent_mod 11 &
+    Fib(0+1),Fib(0+10+1) are_congruent_mod 11 by Th7,PRE_FF:1,NAT_D:64;
+  then
+A3: (for x,y be Nat st x,y are_congruent_mod 10 holds
+       Fib(x),Fib(y) are_congruent_mod 11) by Th11;
+  for x be Nat st x < 10 holds Fib(x) mod 11 <> 4
+  proof
+    let x be Nat such that
+A4:   x < 10;
+A5:   x=0 or ... or x=10 by A4;
+    0*11+2 mod 11 = 2 & 11*0+3 mod 11 = 3 & 0*11+5 mod 11 = 5 &
+    11*0+8 mod 11 = 8 & 1*11+2 mod 11 = 2 & 11*1+10 mod 11 = 10 &
+    3*11+1 mod 11 = 1 by NUMBER02:16;
+    hence thesis by A5,A2,Th7,FIB_NUM2:21,22,23,PRE_FF:1,NUMBER06:46;
+  end;
+  hence thesis by A3,Th12;
+end;

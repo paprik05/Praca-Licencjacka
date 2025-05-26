@@ -1,0 +1,75 @@
+theorem
+  11*31*61 divides 20|^15-1
+  proof
+    20|^15 >= 1|^15 by PREPOWER:9;
+    then 20|^15 >= 1 by NEWTON:10;
+    then 20|^15-1 >= 1-1 by XREAL_1:9;
+    then 20|^15-1 in NAT by INT_1:3;
+    then reconsider D=20|^15-1 as Nat;
+    jp: 11 is prime by NAT_4:27;
+    tp: 31 is prime by NUMERAL2:24;
+    sp: 61 is prime by NUMERAL2:29;
+    jtc: 11,31 are_coprime by jp,tp,INT_2:30;
+    cp1: 11,61 are_coprime by jp,sp,INT_2:30;
+    cp2: 31,61 are_coprime by tp,sp,INT_2:30;
+    jsc: 11*31,61 are_coprime by cp1,cp2,EULER_1:14;
+    2|^1 = 2 by NEWTON:5;
+    then 2|^(1+1) = 2*2 by NEWTON:6;
+    then 2|^(2+1) = 2*4 by NEWTON:6;
+    then 2|^(3+1) = 2*8 by NEWTON:6;
+    then dc: 2|^(4+1) = 2*16 & 3*11 = 32 - -1 by NEWTON:6;
+    then dp: 2|^5,-1 are_congruent_mod 11 by INT_1:def 5;
+    5=2*2+1; then
+    po: 5 is odd;
+    reconsider J=-1 as Integer;
+    11*1=10 - -1;
+    then 10,-1 are_congruent_mod 11 by INT_1:def 5;
+    then 10|^5,(-1)|^5 are_congruent_mod 11 by GR_CY_3:34;
+    then 10|^5,-1 are_congruent_mod 11 by po,POLYFORM:9;
+    then (2|^5)*(10|^5),J*J are_congruent_mod 11 by dp,INT_1:18;
+    then (2*10)|^5,1 are_congruent_mod 11 by NEWTON:7;
+    then (20|^5)|^3,1|^3 are_congruent_mod 11 by GR_CY_3:34;
+    then 20|^(5*3),1|^3 are_congruent_mod 11 by NEWTON:9;
+    then 20|^15,1 are_congruent_mod 11 by NEWTON:10;
+    then jd: 11 divides D by INT_1:def 4;
+
+    31*4=121 - -3; then
+    sd: 121,-3 are_congruent_mod 31 by INT_1:def 5;
+    31*1 = 33 - 2; then
+    tt: 33,2 are_congruent_mod 31 by INT_1:def 5;
+    31*1=20 - -11;
+    then dw: 20,-11 are_congruent_mod 31 by INT_1:def 5;
+    then 20|^2,(-11)|^2 are_congruent_mod 31 by GR_CY_3:34;
+    then 20|^2,(-11)*(-11) are_congruent_mod 31 by WSIERP_1:1;
+    then 20|^2,-3 are_congruent_mod 31 by sd,INT_1:15;
+    then 20*(20|^2),(-11)*(-3) are_congruent_mod 31 by dw,INT_1:18;
+    then 20|^(2+1),33 are_congruent_mod 31 by NEWTON:6;
+    then 20|^3,2 are_congruent_mod 31 by tt,INT_1:15;
+    then (20|^3)|^5,2|^5 are_congruent_mod 31 by GR_CY_3:34;
+    then dwp: 20|^(3*5),2|^5 are_congruent_mod 31 by NEWTON:9;
+
+    31*1=(2|^5) - 1 by dc;
+    then 2|^5,1 are_congruent_mod 31 by INT_1:def 5;
+    then 20|^15,1 are_congruent_mod 31 by dwp,INT_1:15;
+    then 31 divides D by INT_1:def 4;
+    then jtd: 11*31 divides D by jd,jtc,PEPIN:4;
+
+    3|^(2+2) = (3|^2)*(3|^2) by NEWTON:8
+    .= (3*3)*(3|^2) by WSIERP_1:1
+    .= (3*3)*(3*3) by WSIERP_1:1;
+    then 61*1=(3|^4) - 20;
+    then 3|^4,20 are_congruent_mod 61 by INT_1:def 5;
+    then (3|^4)|^15,20|^15 are_congruent_mod 61 by GR_CY_3:34;
+    then 3|^(4*15),20|^15 are_congruent_mod 61 by NEWTON:9;
+    then f: 20|^15,3|^60 are_congruent_mod 61 by INT_1:14;
+
+    3,61 are_coprime by sp,PEPIN:41,INT_2:30;
+    then 3|^(Euler 61) mod 61 = 1 & 60=61-1 by EULER_2:18;
+    :: by Fermat's little theorem
+    then (3 |^ 60) mod 61 = 1 by EULER_1:20,sp;
+    then 3|^60,1 are_congruent_mod 61 by NAT_6:10;
+    then 20|^15,1 are_congruent_mod 61 by f,INT_1:15;
+    then 61 divides D by INT_1:def 4;
+    then 11*31*61 divides D by jsc,jtd,PEPIN:4;
+    hence thesis;
+  end;

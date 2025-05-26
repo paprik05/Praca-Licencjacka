@@ -4,7 +4,7 @@ from math import gcd
 def unique(a,b,c):
     numbers = [a,b,c]
     if len(numbers) != len(set(numbers)):
-        raise ValueError("Wszystkie liczby muszą być inne")
+        return {"error": "All numbers must be different"}
     return True
 
 
@@ -12,7 +12,7 @@ def prob45(a, b, c, n):
     try:
         if unique(a,b,c):
             if n <= 0:
-                return {"error": "n musi być liczbą całkowitą dodatnią"}
+                return {"error": "n must be a positive integer"}
 
             results = []
             k = 1

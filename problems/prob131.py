@@ -12,4 +12,4 @@ def prob131(limit):
             highest_counter = counter
             result = k
 
-    return {"result": result}
+    return {"result": f"k = {result}"}

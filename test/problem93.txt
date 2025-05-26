@@ -1,0 +1,100 @@
+theorem :: Problem 93
+  for r be Real_Sequence st
+    for n be non zero Nat ex q be Prime st
+       r.n = q/n & not q divides n &
+       for p be Prime st not p divides n holds q <= p
+  holds r is convergent & lim r = 0
+proof
+  let r be Real_Sequence such that
+A1: for n be non zero Nat ex q be Prime st
+      r.n = q/n & not q divides n &
+      for p be Prime st not p divides n holds q <= p;
+A2: for p be Real st 0<p
+       ex n be Nat st for m be Nat st n<=m holds |.r.m-0.| < p
+  proof
+    let p be Real such that
+A3:   0<p;
+    consider w be Nat such that
+A4:   w > 0 & 1/w < p by A3,UNIFORM1:1;
+    set m = w+4;
+    take N = Product primesFinS (m) +1;
+    let n be Nat such that
+A5:   N <= n;
+A6:   2|^m <= Product primesFinS m by Th26;
+    1 <= m by NAT_1:14;
+    then 2 <= 2|^m by PREPOWER:12;
+    then 2 <= Product primesFinS m by A6,XXREAL_0:2;
+    then 2 < N by NAT_1:13;
+    then 2 < n by A5,XXREAL_0:2;
+    then consider k be non zero Nat such that
+A7:   Product primesFinS k <= n < Product primesFinS (k+1) by Th27;
+    set k1=k-1;
+    Product primesFinS (m) < N by NAT_1:13;
+    then Product primesFinS (m) < n by A5,XXREAL_0:2;
+    then Product primesFinS (m) < Product primesFinS (k+1) by A7,XXREAL_0:2;
+    then m < k+1 by Th33;
+    then
+A8:   4 <= m <= k by NAT_1:13,XREAL_1:31;
+    then 3+1 <= k1+1 by XXREAL_0:2;
+    then
+A9:   3 <= k1 by XREAL_1:8;
+    n is non zero Nat by A5;
+    then consider q be Prime such that
+A10:  r.n = q/n and not q divides n and
+A11:  for p be Prime st not p divides n holds q <= p by A1;
+    1 <= primenumber k1 by INT_2:def 4;
+    then
+A12:  1+primenumber k <= (primenumber k1)+primenumber (k1+1)
+      by XREAL_1:6;
+    q <= primenumber k
+    proof
+      assume
+A13:    q > primenumber k;
+      for i being Nat st i < k+1 holds primenumber i divides n
+      proof
+        let i be Nat such that
+A14:      i < k+1;
+        i <= k by A14,NAT_1:13;
+        then primenumber i <= primenumber k by MOEBIUS2:21;
+        then primenumber i < q by A13,XXREAL_0:2;
+        hence thesis by A11;
+      end;
+      then Product primesFinS (k+1) divides n by Th32;
+      then Product primesFinS (k+1) <= n by A5,NAT_D:7;
+      hence thesis by A7;
+    end;
+    then q < 1+primenumber k by NAT_1:13;
+    then
+A15:  q < (primenumber k1)+primenumber (k1+1) by A12,XXREAL_0:2;
+    (primenumber k1)+primenumber (k1+1) <= Product primesFinS (k1)
+    by A9,NUMBER13:23;
+    then q < Product primesFinS k1 by A15,XXREAL_0:2;
+    then
+A16:  q/n < Product primesFinS k1/n by A5,XREAL_1:74;
+    Product primesFinS k1/n <= Product primesFinS k1/Product primesFinS (k)
+    by A7,XREAL_1:118;
+    then
+A17:  q/n < Product primesFinS k1/Product primesFinS (k) by A16,XXREAL_0:2;
+    Product primesFinS (k1+1) = Product (primesFinS k1) * (primenumber k1)
+    by Th25;
+    then
+A18:  (1 * Product primesFinS k1)/Product primesFinS (k) = 1/(primenumber k1)
+      by XCMPLX_1:91;
+    k1 <= primenumber k1 by PRIMRECI:11;
+    then 1/primenumber k1  <= 1/k1 by A9,XREAL_1:118;
+    then
+A19:  q/n < 1/k1 by A17,A18,XXREAL_0:2;
+    w+3+1 <= k1+1 by A8;
+    then w+3 <= 0+k1 by XREAL_1:6;
+    then w < k1 by XREAL_1:8;
+    then 1/k1 < 1/w by A4,XREAL_1:76;
+    then 1/k1 < p by A4,XXREAL_0:2;
+    then
+A20:  q/n < p by A19,XXREAL_0:2;
+    |. q/n.|= q/n by ABSVALUE:def 1;
+    then |.r.n-0.| < p by A20,A10;
+    hence thesis;
+  end;
+  then r is convergent by SEQ_2:def 6;
+  hence thesis by A2,SEQ_2:def 7;
+end;

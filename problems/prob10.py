@@ -1,6 +1,6 @@
 def prob10(r):
     if r <= 1:
-        return {"error": "r musi być większe od 1"}
+        return {"error": "r must be greater than 1"}
 
     results = []
     for n in range(2, r + 1):

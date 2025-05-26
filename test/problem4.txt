@@ -1,0 +1,44 @@
+theorem
+  for n being positive Integer holds 169 divides 3|^(3*n+3)-26*n-27
+  proof
+    let n be positive Integer;
+    reconsider k=n as Nat by TARSKI:1;
+    defpred P[Nat] means 169 divides 3|^(3*$1+3)-26*$1-27;
+    tt: 3|^(2+1) = 3|^(1+1)*3 by NEWTON:6
+    .= 3|^(0+1)*3*3 by NEWTON:6
+    .= 3*3*3 by NEWTON:5;
+    3|^(3*1+3)-26*1-27 = 3|^(5+1)-53
+    .= 3|^(4+1)*3 - 53 by NEWTON:6
+    .= 3|^(3+1)*3*3 - 53 by NEWTON:6
+    .= 3|^(2+1)*3*3*3 - 53 by NEWTON:6
+    .= 169*4 by tt;
+    then o: P[1] by INT_1:def 3;
+    i:
+    now
+      let n be Nat;
+      assume n: 1 <= n & P[n];
+      d: 13 divides 13*2 by INT_1:def 3;
+      e: 3|^(3*(n+1)+3)-26*(n+1)-27 - (3|^(3*n+3)-26*n-27) =
+      (3|^3)*3|^(3*n+3)-26*(n+1)-27 - (3|^(3*n+3)-26*n-27) by NEWTON:8
+      .= 26*(3|^(3*n+3)-1) by tt;
+      3|^(2+1) - 1 = 3|^(1+1)*3 - 1 by NEWTON:6
+      .= 3|^(0+1)*3*3 - 1 by NEWTON:6
+      .= 3*3*3 - 1 by NEWTON:5;
+      then 3|^3-1 = 13*2; then
+      t: 13 divides 3|^3-1 by INT_1:def 3;
+      3|^(3*(n+1)) - 1 = (3|^3)|^(n+1) - 1 by NEWTON:9
+      .= (3|^3)|^(n+1) - 1|^(n+1) by NEWTON:10;
+      then 3|^3 - 1 divides 3|^(3*n+3) - 1 by NEWTON01:33;
+      then 13 divides 3|^(3*n+3) - 1 by t,INT_2:9;
+      then 13*13 divides 3|^(3*(n+1)+3)-26*(n+1)-27 - (3|^(3*(n+1))-26*n-27)
+      by d,e,NEWTON03:5;
+      then 169 divides -(3|^(3*(n+1)+3)-26*(n+1)-27 - (3|^(3*n+3)-26*n-27))
+      by INT_2:10;
+      then 169 divides (3|^(3*n+3)-26*n-27) - (3|^(3*(n+1)+3)-26*(n+1)-27);
+      then 169 divides 3|^(3*(n+1)+3)-26*(n+1)-27 by n,INT_5:2;
+      hence P[n+1];
+    end;
+    for k being Nat st 1 <= k holds P[k] from NAT_1:sch 8(o,i);
+    then P[k] by NAT_1:14;
+    hence thesis;
+  end;

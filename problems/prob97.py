@@ -6,7 +6,7 @@ def prob97(limit=100,num_of_results=1):
     for n in range(1,limit+1):
         formula = pow(n,4)+pow((n+1),4)
         if not isprime(formula):
-            results.append(n)
+            results.append(f"\\( n = {n},\\ n^4 + (n+1)^4 = {n ** 4 + (n + 1) ** 4} \\)")
             counter +=1
         if counter >= num_of_results:
             break

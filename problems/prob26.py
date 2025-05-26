@@ -1,6 +1,6 @@
 def prob26(r):
     if r <= 1:
-        return {"error": " musi być liczbą całkowitą dodatnią większą od 1"}
+        return {"error": " r must be a positive integer greater than 1"}
 
     def is_divisible_by_5(n):
         return (2**n - 3) % 5 == 0

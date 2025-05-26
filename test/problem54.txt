@@ -1,0 +1,60 @@
+theorem :: Problem 54
+  for x,y,z being Nat st
+    y = 5 * x + 2 & z = 7 * x + 3 holds
+      x * (x + 1), y * (y + 1), z * (z + 1) form_an_AP &
+        x < y < z
+  proof
+    let x,y,z be Nat;
+    assume
+A1: y = 5 * x + 2 & z = 7 * x + 3;
+t0: 1 * x <= 5 * x by XREAL_1:64;
+TT: 5 * x + 0 < 5 * x + 2 by XREAL_1:8;
+    5 * x <= 7 * x by XREAL_1:64;
+    hence thesis by TT,A1,XREAL_1:8,t0,XXREAL_0:2;
+  end;
+
+theorem :: Problem 54
+  {<*x,y,z*> where x is Real, y is Real, z is Real :
+     x*(x+1), y*(y+1), z*(z+1) form_an_AP } is infinite
+  proof
+    set AP = {<*x,y,z*> where x is Real, y is Real, z is Real :
+       x*(x+1), y*(y+1), z*(z+1) form_an_AP };
+    reconsider x = 1 as Nat;
+    reconsider y = 5 * x + 2 as Nat;
+    reconsider z = 7 * x + 3 as Nat;
+    x * (x + 1), y * (y + 1), z * (z + 1) form_an_AP; then
+    <*1,5*1+2,7*1+3*> in AP; then
+    reconsider AP as non empty set;
+    defpred P[Element of REAL, Element of AP] means
+      $2 = <*$1,5*$1+2,7*$1+3*>;
+AA: for x being Element of REAL
+    ex y being Element of AP st P[x,y]
+    proof
+      let x be Element of REAL;
+      set y = 5 * x + 2;
+      set z = 7 * x + 3;
+      x * (x + 1), y * (y + 1), z * (z + 1) form_an_AP; then
+      <*x,5*x+2,7*x+3*> in AP; then
+      reconsider yy = <*x,5*x+2,7*x+3*> as Element of AP;
+      take yy;
+      thus thesis;
+    end;
+    consider f being Function of REAL, AP such that
+A0: for x being Element of REAL holds
+    P[x,f.x] from FUNCT_2:sch 3(AA);
+A1: dom f is infinite by FUNCT_2:def 1;
+    for x1,x2 being object st
+    x1 in REAL & x2 in REAL & f.x1 = f.x2 holds x1 = x2
+    proof
+      let x1,x2 be object;
+      assume
+B0:   x1 in REAL & x2 in REAL & f.x1 = f.x2; then
+      reconsider xx1 = x1, xx2 = x2 as Element of REAL;
+      f.xx1 = <*xx1,5*xx1+2,7*xx1+3*> by A0; then
+      <*xx1,5*xx1+2,7*xx1+3*> = <*xx2,5*xx2+2,7*xx2+3*> by A0,B0;
+      hence thesis by FINSEQ_1:78;
+    end; then
+A2: f is one-to-one by FUNCT_2:19;
+    rng f c= AP by RELAT_1:def 19;
+    hence thesis by A1,A2,CARD_1:59;
+  end;

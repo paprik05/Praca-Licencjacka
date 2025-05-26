@@ -1,0 +1,67 @@
+theorem
+  n > 1 implies 1/5 * (2|^(4*n+2)+1) is composite
+  proof
+    assume
+A1: n > 1;
+    set W = 2|^(4*n+2)+1;
+    set L = 2|^(2*n+1)-2|^(n+1)+1;
+    set R = 2|^(2*n+1)+2|^(n+1)+1;
+A2: 2|^(2*n+1)*2|^(2*n+1) = 2|^((2*n+1)+(2*n+1)) by NEWTON:8;
+A3: 2*2|^(2*n+1) = 2|^(2*n+1+1) by NEWTON:6;
+A4: 2|^(n+1)*2|^(n+1) = 2|^(n+1+(n+1)) by NEWTON:8;
+    2|^(2*n+1+1) = 2|^(n+1+(n+1));
+    then
+A5: 2|^(4*n+2) = 2|^(2*n+1)*2|^(2*n+1) + 2*2|^(2*n+1) - 2|^(n+1)*2|^(n+1)
+    by A2,A3,A4;
+A6: 2|^(n+1+n) = 2|^(n+1)*2|^n by NEWTON:8;
+A7: n >= 1+1 by A1,NAT_1:13;
+    then n+1 >= 2+1 by XREAL_1:6;
+    then
+A8: 2|^(n+1) >= 2|^3 by PREPOWER:93;
+A9: 2|^n >= 2|^2 by A7,PREPOWER:93;
+    then 2|^n-1 >= 4-1 by Lm1,XREAL_1:9;
+    then
+A10: 2|^(n+1)*(2|^n-1) >= 8*3 by A8,Lm2,XREAL_1:66;
+    then
+A11: 2|^(n+1)*(2|^n-1)+1 >= 24+1 by XREAL_1:6;
+    then L*R >= 25*R by A6,XREAL_1:64;
+    then
+A12: 1/5*W >= 1/5 * (25*R) by A5,XREAL_1:64;
+    reconsider L as Element of NAT by A6,A11;
+    2|^n+1 >= 4+1 by A9,Lm1,XREAL_1:6;
+    then
+A13: 2|^(n+1)*(2|^n+1) >= 8*5 by A8,Lm2,XREAL_1:66;
+    then
+A14: 2|^(n+1)*(2|^n+1)+1 >= 40+1 by XREAL_1:6;
+    then 5*R >= 5*41 by A6,XREAL_1:64;
+    then 2 <= 5*R by XXREAL_0:2;
+    hence 2 <= 1/5*W by A12,XXREAL_0:2;
+A15: W = L*R by A5;
+    then per cases by Th40,XPRIMES1:5,INT_5:7;
+    suppose 5 divides L;
+      then consider N being Nat such that
+A16:  L = 5*N;
+A17:  1/5*W = 1/5*(5*N*R) by A15,A16
+      .= N*R;
+A18:  now
+        assume N < 2;
+        then N = 0 or N = 1 by NAT_1:23;
+        hence thesis by A6,A10,A16;
+      end;
+      R >= 2 by A6,A14,XXREAL_0:2;
+      hence thesis by A17,A18,Th3;
+    end;
+    suppose 5 divides R;
+      then consider N being Nat such that
+A19:  R = 5*N;
+A20:  1/5*W = 1/5*(5*N*L) by A15,A19
+      .= N*L;
+A21:  now
+        assume N < 2;
+        then N = 0 or N = 1 by NAT_1:23;
+        hence thesis by A6,A13,A19;
+      end;
+      L >= 2 by A6,A11,XXREAL_0:2;
+      hence thesis by A20,A21,Th3;
+    end;
+  end;

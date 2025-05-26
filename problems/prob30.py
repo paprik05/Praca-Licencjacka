@@ -2,7 +2,7 @@ import sympy
 
 def prob30(a):
     if a <= 0:
-        return {"error": "a musi być liczbą całkowitą dodatnią większą od 1"}
+        return {"error": "a must be a positive integer greater than 1"}
 
     n = 4
 

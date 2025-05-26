@@ -1,0 +1,30 @@
+theorem :: Problem 60
+  not ex n being Nat st
+    n is perfect_power & n+1 is perfect_power &
+      n+2 is perfect_power & n+3 is perfect_power
+  proof
+    assume ex n being Nat st
+    n is perfect_power & n+1 is perfect_power &
+      n+2 is perfect_power & n+3 is perfect_power; then
+    consider n being Nat such that
+A1: n is perfect_power & n+1 is perfect_power &
+      n+2 is perfect_power & n+3 is perfect_power;
+    consider k being Nat such that
+A3: n = 4*k or n = 4*k+1 or n = 4*k+2 or n = 4*k+3
+      by NUMBER02:24;
+    per cases by A3;
+    suppose n = 4 * k;
+      hence thesis by A1,Four2NotPerfect;
+    end;
+    suppose n = 4 * k + 1; then
+      n + 1 = 4 * k + 2;
+      hence thesis by A1,Four2NotPerfect;
+    end;
+    suppose n = 4 * k + 2;
+      hence thesis by A1,Four2NotPerfect;
+    end;
+    suppose n = 4 * k + 3; then
+      n + 3 = 4 * (k+1) + 2;
+      hence thesis by A1,Four2NotPerfect;
+    end;
+  end;

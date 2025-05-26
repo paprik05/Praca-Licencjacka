@@ -1,0 +1,42 @@
+theorem
+  341 divides 2|^341-2
+  proof
+    341 = 11*31;
+    hence thesis by PEPIN:4,INT_2:30,NAT_4:27,NUMERAL2:24,NUMBER02:20,21;
+  end;
+
+theorem Th50:
+  not 341 divides 3|^341-3
+  proof
+A1: Euler 31 = 31-1 by EULER_1:20,NUMERAL2:24;
+A2: 1 mod 31 = 1 by NAT_D:24;
+A3: (3|^30)|^11 = 3|^(30*11) by NEWTON:9;
+A4: 3|^330*3|^11 = 3|^(330+11) by NEWTON:8;
+    (3|^Euler 31) mod 31 = 1 by EULER_2:18,NUMERAL2:24,PEPIN:41,INT_2:30;
+    then (3|^30)|^11,1|^11 are_congruent_mod 31 by A1,A2,NAT_D:64,GR_CY_3:34;
+    then 3|^330*3|^11,1*3|^11 are_congruent_mod 31 by A3,INT_4:11;
+    then 3|^341,-18 are_congruent_mod 31 by A4,Lm1115,INT_1:15;
+    then 3|^341-3,-18-3 are_congruent_mod 31;
+    then not 31 divides 3|^341-3 or 31 divides -21 by Th4;
+    then not 11*31 divides 3|^341-3 by Lm1116,Th3,INT_1:62;
+    hence not 341 divides 3|^341-3;
+
+theorem
+  n <= 341 & n divides 2|^n-2 & not n divides 3|^n-3 implies n = 341
+  proof
+    assume n <= 341;
+    then per cases by XXREAL_0:1;
+    suppose n = 341;
+      hence thesis;
+    end;
+    suppose
+A1:   n < 341;
+      assume that
+A2:   n divides 2|^n-2 and
+A3:   not n divides 3|^n-3;
+      n is composite by A2,A3,Th62;
+      then n in {341,561,645,1105} by A1,A2,Th49,XXREAL_0:2;
+      then n = 341 or n = 561 or n = 645 or n = 1105 by ENUMSET1:def 2;
+      hence thesis by A1;
+    end;
+  end;

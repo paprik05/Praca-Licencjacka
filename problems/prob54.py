@@ -1,8 +1,7 @@
 def prob54(n):
     triplets = []
-    for y in range(1, n):
-        x = y - (y + 1) // 2
-        z = y + (y + 1) // 2
-        if x > 0 and z > 0:
-            triplets.append((x, y, z))
+    for x in range(1, n + 1):
+        y = 5 * x + 2
+        z = 7 * x + 3
+        triplets.append(f"x = {x}, y = {y}, z = {z}, arithmetic progession: ({x**2+x}, {y*(y+1)}, {z*(z+1)})")
     return {"result": triplets}

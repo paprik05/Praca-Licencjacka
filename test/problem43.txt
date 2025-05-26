@@ -1,0 +1,223 @@
+definition let n be Nat;
+  func Tetrahedron n -> Nat equals
+    n * (n+1) * (n+2) / 6;
+  coherence
+  proof
+A1: 2 divides (n * (n+1) * (n+2))
+    proof
+      per cases;
+      suppose n is odd;
+        thus thesis by ABIAN:def 1;
+      end;
+      suppose n is even;
+        thus thesis by ABIAN:def 1;
+      end;
+    end;
+    3 divides (n * (n+1) * (n+2))
+    proof
+      per cases by NUMBER06:18;
+      suppose 3 divides n; then
+        3 divides n * ((n+1) * (n+2)) by NAT_D:9;
+        hence thesis;
+      end;
+      suppose 3 divides n + 1; then
+        3 divides (n+1) * (n * (n+2)) by NAT_D:9;
+        hence thesis;
+      end;
+      suppose 3 divides n + 2;
+        hence thesis by NAT_D:9;
+      end;
+    end; then
+    2 * 3 divides (n * (n+1) * (n+2))
+      by A1,INT_2:30,INT_2:28,XPRIMES1:3,PEPIN:4;
+    hence thesis;
+  end;
+end;
+
+definition let n be Nat;
+  attr n is tetrahedral means
+    ex k being Nat st n = Tetrahedron k;
+end;
+
+theorem :: Problem 43
+  for n being Nat holds
+  ex f being increasing non-empty FinSequence of NAT st
+    dom f = Seg (n + 1) &
+   (for i being Nat st i in dom f holds f.i is tetrahedral) &
+     f is with_all_coprime_terms
+  proof
+     defpred P[Nat] means
+      ex f being increasing non-empty FinSequence of NAT st
+      dom f = Seg ($1+1) &
+      (for i being Nat st i in dom f holds f.i is tetrahedral) &
+        f is with_all_coprime_terms;
+A1: P[0]
+    proof
+      set f = (Seg 1) --> 1;
+      reconsider f as increasing FinSequence of NAT by IncFinNAT;
+G1:   dom f = Seg (0+1) by FUNCOP_1:13;
+g1:   dom f = {1} by FINSEQ_1:2,FUNCOP_1:13;
+G2:   for i being Nat st i in dom f holds f.i is tetrahedral non empty
+      proof
+        let i be Nat;
+        assume
+g4:     i in dom f;
+        Tetrahedron 1 = 1;
+        hence thesis by g4,FUNCOP_1:7,G1;
+      end; then
+GG:   for i being Nat st i in dom f holds f.i is tetrahedral;
+      for n being object st n in dom f holds f.n is non empty
+        by G2; then
+JH:   f is non-empty by FUNCT_1:def 9;
+      for i,j being Nat st i in dom f & j in dom f & i <> j holds
+        f.i, f.j are_coprime
+      proof
+        let i,j be Nat;
+        assume
+H1:     i in dom f & j in dom f & i <> j; then
+        i = 1 & j = 1 by g1,TARSKI:def 1;
+        hence thesis by H1;
+      end; then
+      f is with_all_coprime_terms by INT_6:def 2;
+      hence thesis by FUNCOP_1:13,GG,JH;
+    end;
+A2: for k being Nat st P[k] holds P[k+1]
+    proof
+      let k be Nat;
+      assume P[k]; then
+      consider f being increasing non-empty FinSequence of NAT such that
+B1:   dom f = Seg (k+1) &
+      (for i being Nat st i in dom f holds f.i is tetrahedral) &
+      f is with_all_coprime_terms;
+      reconsider ff = f as FinSequence of NAT;
+J1:   len ff = k + 1 by FINSEQ_1:def 3,B1;
+      set a = Product ff;
+      reconsider a as Nat;
+G2:   a, 2*a+1 are_coprime by Coprime21;
+      reconsider T = (6 * a + 1) * (3 * a + 1) * (2 * a + 1) as Element of NAT;
+we:   ex k being Nat st T = Tetrahedron k :: by NUMPOLY1:def 4
+      proof
+        take k = 6 * a + 1;
+        thus thesis;
+      end;
+      not ex i being Nat st i in dom ff & ff.i = 0 by FUNCT_1:def 9;
+        then
+::: What is the purpose of INT_6:6?? Isn't it just RVSUM_1:103?
+WC:   Product ff <> 0 by RVSUM_1:103; then
+v1:   1 < 6 * a + 1 by NAT_1:16;
+      k + 1 >= 1 by NAT_1:12; then
+      f.(k + 1) divides a by B1,INT_4:32,FINSEQ_1:1; then
+WV:   f.(k + 1) <= a by WC,NAT_D:7;
+SE:   1 < (6 * a + 1) * (3 * a + 1) by v1,WC,XREAL_1:161,NAT_1:16;
+      1 * a < 2 * a by WC,XREAL_1:68; then
+SR:   a + 1 < 2 * a + 1 by XREAL_1:8;
+      1 * (2 * a + 1) < (6 * a + 1) * (3 * a + 1) * (2 * a + 1)
+        by SE,XREAL_1:68; then
+      1 * (a + 1) < (6 * a + 1) * (3 * a + 1) * (2 * a + 1)
+        by SR,XXREAL_0:2; then
+      a < T by NAT_1:16,XXREAL_0:2; then
+ZW:   ff.(k+1) < T by WV,XXREAL_0:2;
+      ::: NOTE: NUMBER08:8 = repeated NUMBER04:64
+SX:   6 * a + 1, a are_coprime by Coprime61;
+      3 * a + 1, a are_coprime by Coprime31; then
+      (6 * a + 1) * (3 * a + 1), a are_coprime by WC,SX,EULER_1:14; then
+CD:   T,a are_coprime by WC,G2,EULER_1:14;
+      set fg = ff ^ <*T*>;
+C1:   dom fg = Seg (len ff + len <*T*>) by FINSEQ_1:def 7
+            .= Seg (k + 1 + 1) by J1,FINSEQ_1:39;
+      for i being Nat st i in dom ff holds ff.i < T
+      proof
+        let i be Nat;
+        assume
+ZP:     i in dom ff;
+        1 <= k + 1 by NAT_1:12; then
+ZR:     k + 1 in dom ff by B1;
+        i <= k + 1 by ZP,B1,FINSEQ_1:1; then
+        ff.i <= f.(k+1) by ZP,ZR,SEQM_3:def 3;
+        hence thesis by ZW,XXREAL_0:2;
+      end; then
+      reconsider fg as increasing FinSequence of NAT
+        by ConcatIsIncreasing;
+v1:   Seg (k + 1 + 1) = Seg (k + 1) \/ {k + 1 + 1} by FINSEQ_1:9;
+GD:   fg.1 <> 0
+      proof
+        assume
+F1:     fg.1 = 0;
+f3:     1 <= k+1 by NAT_1:12; then
+        1 in Seg (k+1); then
+        fg.1 = ff.1 by FINSEQ_1:def 7,B1;
+        hence thesis by F1,f3,B1,FUNCT_1:def 9,FINSEQ_1:1;
+      end;
+T1:   for i being Nat st i in dom fg holds fg.i is tetrahedral non empty
+      proof
+        let i be Nat;
+        assume
+WR:     i in dom fg; then
+        i in Seg (k + 1) \/ {k + 1 + 1} by C1,FINSEQ_1:9; then
+        per cases by XBOOLE_0:def 3;
+        suppose
+U1:       i in Seg (k + 1); then
+KK:       fg.i = ff.i by B1,FINSEQ_1:def 7;
+          1 <= k + 1 + 1 by NAT_1:12; then
+SE:       1 in dom fg by C1;
+          1 <= i by U1,FINSEQ_1:1;
+          hence thesis by U1,B1,KK,GD,WR,SE,SEQM_3:def 3;
+        end;
+        suppose i in {k + 1 + 1}; then
+          i = k + 1 + 1 by TARSKI:def 1;
+          hence thesis by we,J1;
+        end;
+      end;
+      for i being object st i in dom fg holds fg.i is non empty
+        by T1; then
+      reconsider fg as increasing non-empty FinSequence of NAT
+        by FUNCT_1:def 9;
+      for i,j being Nat st i in dom fg & j in dom fg & i <> j holds
+        fg.i, fg.j are_coprime
+      proof
+        let i,j be Nat;
+        assume
+Z1:     i in dom fg & j in dom fg & i <> j;
+        per cases;
+        suppose
+Z2:       i in dom ff & j in dom ff; then
+          ff.i = fg.i & ff.j = fg.j by FINSEQ_1:def 7;
+          hence thesis by B1,Z1,Z2,INT_6:def 2;
+        end;
+        suppose
+Z2:       i in dom ff & not j in dom ff; then
+          i in Seg (k+1) & j in {k+1+1}
+            by B1,v1,Z1,C1,XBOOLE_0:def 3; then
+Y1:       j = len ff + 1 by J1,TARSKI:def 1;
+          ff.i, T are_coprime by CD,CoprimeDivides,Z2,INT_4:32;
+          hence thesis by Y1,Z2,FINSEQ_1:def 7;
+        end;
+        suppose
+Z2:       not i in dom ff & j in dom ff; then
+          j in Seg (k+1) & i in {k+1+1}
+            by B1,v1,Z1,C1,XBOOLE_0:def 3; then
+Y7:       i = len ff + 1 by J1,TARSKI:def 1;
+          ff.j, T are_coprime by CD,CoprimeDivides,Z2,INT_4:32;
+          hence thesis by Y7,Z2,FINSEQ_1:def 7;
+        end;
+        suppose not i in dom ff & not j in dom ff; then
+          i in {k+1+1} & j in {k+1+1}
+            by v1,Z1,B1,C1,XBOOLE_0:def 3; then
+          i = k+1+1 & j = k+1+1 by TARSKI:def 1;
+          hence thesis by Z1;
+        end;
+      end; then
+      dom fg = Seg (k+1+1) &
+      (for i being Nat st i in dom fg holds fg.i is tetrahedral) &
+      fg is with_all_coprime_terms by C1,T1,INT_6:def 2;
+      hence thesis;
+    end;
+A3: for n being Nat holds P[n] from NAT_1:sch 2 (A1,A2);
+    let n be Nat;
+    consider f being increasing non-empty FinSequence of NAT such that
+JJ: dom f = Seg (n + 1) &
+    (for i being Nat st i in dom f holds f.i is tetrahedral) &
+      f is with_all_coprime_terms by A3;
+    take f;
+    thus thesis by JJ;
+  end;

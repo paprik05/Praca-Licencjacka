@@ -1,0 +1,40 @@
+theorem
+  NatDivisors(p|^4) = {1,p,p|^2,p|^3,p|^4}
+  proof
+    set A = NatDivisors(p|^4);
+    set B = {1,p,p|^2,p|^3,p|^4};
+    thus A c= B
+    proof
+      let x be object;
+      assume x in A;
+      then ex k st x = k & k <> 0 & k divides p|^4;
+      hence thesis by Th85;
+    end;
+    let m be object;
+    assume
+A1: m in B;
+    then reconsider m as Nat by ENUMSET1:def 3;
+    m divides p|^4 by A1,Th85;
+    hence thesis by A1;
+  end;
+
+theorem
+  { p where p is Prime: 1 + p + p|^2 + p|^3 + p|^4 is square } = {3}
+  proof
+    set A = { p where p is Prime: 1 + p + p|^2 + p|^3 + p|^4 is square };
+    thus A c= {3}
+    proof
+      let x be object;
+      assume x in A;
+      then ex p being Prime st x = p & 1 + p + p|^2 + p|^3 + p|^4 is square;
+      then x = 3 by Th86;
+      hence thesis by TARSKI:def 1;
+    end;
+    let p be object;
+    assume p in {3};
+    then
+A1: p = 3 by TARSKI:def 1;
+    then reconsider p as Prime by XPRIMES1:3;
+    1 + p + p|^2 + p|^3 + p|^4 is square by A1,Th86;
+    hence thesis;
+  end;

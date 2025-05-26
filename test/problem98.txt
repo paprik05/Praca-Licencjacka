@@ -1,0 +1,33 @@
+theorem
+  { 10|^n+3 where n is Nat: 10|^n+3 is composite } is infinite
+  proof
+    set X = { 10|^n+3 where n is Nat: 10|^n+3 is composite };
+    set z = 10|^(6*0+4) + 3;
+    z is composite by Th66;
+    then
+A1: z in X;
+A2: X is natural-membered
+    proof
+      let x be object;
+      assume x in X;
+      then ex n being Nat st x = 10|^n+3 & 10|^n+3 is composite;
+      hence thesis;
+    end;
+    for a st a in X ex b st b > a & b in X
+    proof
+      let a;
+      assume a in X;
+      then consider n being Nat such that
+A3:   a = 10|^n+3 and
+      10|^n+3 is composite;
+      take b = 10|^(6*(n+1)+4)+3;
+      n+0 < n+1 by XREAL_1:8;
+      then 1*n < 6*(n+1) by XREAL_1:96;
+      then n+0 < 6*(n+1)+4 by XREAL_1:8;
+      then 10|^n < 10|^(6*(n+1)+4) by PEPIN:66;
+      hence b > a by A3,XREAL_1:8;
+      b is composite by Th66;
+      hence b in X;
+    end;
+    hence thesis by A1,A2,Th1;
+  end;

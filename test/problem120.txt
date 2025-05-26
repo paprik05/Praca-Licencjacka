@@ -1,0 +1,38 @@
+theorem
+  for m being non zero Nat
+  ex s being Nat st for n being Nat st n > s holds
+  (2|^m) * 2|^(2|^n) + 1 is composite
+  proof
+    let m be non zero Nat;
+    set k = 2|^m;
+    consider s,z being Nat such that
+A1: m = (2|^s)*(2*z+1) by NAGATA_2:1;
+    set h = 2*z+1;
+    take s;
+    let n be Nat such that
+A2: n > s;
+    reconsider ns = n-s as non zero Element of NAT by A2,INT_1:5;
+    0+1 <= k * 2|^(2|^n) by NAT_1:13;
+    then 1+1 <= k * 2|^(2|^n) + 1 by XREAL_1:6;
+    hence 2 <= k * 2|^(2|^n) + 1;
+A3: k * 2|^(2|^n) = 2|^m * 2|^(2|^n)
+    .= 2|^(2|^(s+ns)+2|^s*h) by A1,NEWTON:8
+    .= 2|^(2|^s*2|^ns+2|^s*h) by NEWTON:8
+    .= 2|^(2|^s*(2|^ns+h))
+    .= 2|^(2|^s)|^(2|^ns+h) by NEWTON:9;
+    consider z being Nat such that
+A4: 2|^ns + h = 2*z+1 by ABIAN:9;
+A5: 2|^(2|^s) + 1|^(2|^ns+h) divides k * 2|^(2|^n) + 1|^(2|^ns+h)
+    by A3,A4,NEWTON01:35;
+A6: 2 is non trivial by NAT_2:def 1;
+    then 2|^0 < 2|^m by NAT_6:2;
+    then
+A7: 1 < k by NEWTON:4;
+    2|^s < 2|^n by A2,A6,NAT_6:2;
+    then 2|^(2|^s) < 2|^(2|^n) by A6,NAT_6:2;
+    then 1 * 2|^(2|^s) < k * 2|^(2|^n) by A7,XREAL_1:96;
+    then
+A8: 2|^(2|^s) + 1 < k * 2|^(2|^n) + 1 by XREAL_1:6;
+    2|^(2|^s) + 1 > 0 + 1 by XREAL_1:6;
+    hence k * 2|^(2|^n) + 1 is non prime by A5,A8;
+  end;

@@ -1,0 +1,54 @@
+:Problem 86 a
+theorem
+  14 satisfies_Sierpinski_problem_86
+  proof
+    reconsider a = 3 as Prime by XPRIMES1:3;
+    reconsider b = 5 as Prime by XPRIMES1:5;
+    reconsider c = 13 as Prime by XPRIMES1:13;
+    take a,b,c;
+    thus thesis by Th54;
+  end;
+
+::Problem 86 b
+theorem
+  16 satisfies_Sierpinski_problem_86
+  proof
+    reconsider a = 3 as Prime by XPRIMES1:3;
+    reconsider b = 5 as Prime by XPRIMES1:5;
+    reconsider c = 17 as Prime by XPRIMES1:17;
+    take a,b,c;
+    thus thesis by Th55;
+  end;
+
+::Problem 86 c
+theorem
+  20 satisfies_Sierpinski_problem_86
+  proof
+    reconsider a = 3 as Prime by XPRIMES1:3;
+    reconsider b = 7 as Prime by XPRIMES1:7;
+    reconsider c = 19 as Prime by XPRIMES1:19;
+    take a,b,c;
+    thus thesis by Th56;
+  end;
+
+::Problem 86 d
+theorem
+  22 satisfies_Sierpinski_problem_86
+  proof
+    reconsider a = 3 as Prime by XPRIMES1:3;
+    reconsider b = 7 as Prime by XPRIMES1:7;
+    reconsider c = 23 as Prime by XPRIMES1:23;
+    take a,b,c;
+    thus thesis by Th57;
+  end;
+
+::Problem 86 e
+theorem
+  32 satisfies_Sierpinski_problem_86
+  proof
+    reconsider a = 3 as Prime by XPRIMES1:3;
+    reconsider b = 11 as Prime by XPRIMES1:11;
+    reconsider c = 31 as Prime by XPRIMES1:31;
+    take a,b,c;
+    thus thesis by Th58;
+  end;

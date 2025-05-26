@@ -1,0 +1,52 @@
+theorem
+  {p where p is Prime:
+   (ex a,b being Prime st p = a+b) & (ex c,d being Prime st p = c-d)}
+  = {5}
+  proof
+    set A = {p where p is Prime:
+    (ex a,b being Prime st p = a+b) & (ex c,d being Prime st p = c-d)};
+    thus A c= {5}
+    proof
+      let x be object;
+      assume x in A;
+      then consider r being Prime such that
+A1:   x = r and
+A2:   ex a,b being Prime st r = a+b and
+A3:   ex c,d being Prime st r = c-d;
+      consider a,b being Prime such that
+A4:   r = a+b by A2;
+      consider c,d being Prime such that
+A5:   r = c-d by A3;
+A6:   1 < a & 1 < b by INT_2:def 4;
+      then
+A7:   1+1 < r by A4,XREAL_1:8;
+      then
+A8:   r is odd by PEPIN:17;
+A9:   1+1 <= a & 1+1 <= b by A6,NAT_1:13;
+      not a is odd or not b is odd by A4,A7,PEPIN:17;
+      then a <= 2 or b <= 2 by PEPIN:17;
+      then a = 2 or b = 2 by A9,XXREAL_0:1;
+      then consider p being Prime such that
+A10:  r = p+2 by A4;
+      1 < c & 1 < d by INT_2:def 4;
+      then
+A11:  1+1 <= c & 1+1 <= d by NAT_1:13;
+      not c is odd or not d is odd by A5,A7,PEPIN:17;
+      then c <= 2 or d <= 2 by PEPIN:17;
+      then
+A12:  c = 2 or d = 2 by A11,XXREAL_0:1;
+      2-d <= d-d by A11,XREAL_1:9;
+      then 2-d <= 0;
+      then consider q being Prime such that
+A13:  r = q-2 by A5,A12;
+      (r+2)-r = 2 & r-(r-2) = 2;
+      then r-2 = 3 & r = 5 & r+2 = 7 by A8,A10,A13,Th33;
+      hence thesis by A1,TARSKI:def 1;
+    end;
+    let x be object;
+    assume x in {5};
+    then
+A14: x = 5 by TARSKI:def 1;
+    5 = 3+2 & 5 = 7-2;
+    hence thesis by A14,PEPIN:41,59,INT_2:28,NAT_4:26;
+  end;

@@ -1,6 +1,6 @@
 def prob17(a, r):
     if a <= 0 and r <= 0:
-        return {"error": "a, r muszą być liczbami całkowitymi dodatnimi"}
+        return {"error": "a and r must be a positive integers"}
     results = []
     n = 1
     while len(results) < r:

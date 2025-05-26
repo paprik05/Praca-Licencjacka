@@ -1,0 +1,187 @@
+theorem
+  {2|^n-1 where n is Nat: 2|^n-1 <= 10|^6 & 2|^n-1 is a_product_of_two_primes}
+  = { 2|^4-1, 2|^9-1, 2|^11-1 }
+  proof
+    set A =
+    {2|^n-1: 2|^n-1 <= 10|^6 & 2|^n-1 is a_product_of_two_primes};
+    set B = {2|^4-1,2|^9-1,2|^11-1};
+A1: 10|^6 = 10*10*10*10*10*10 by NUMBER02:2;
+    thus A c= B
+    proof
+      let x be object;
+      assume x in A;
+      then consider n such that
+A2:   x = 2|^n-1 and
+A3:   2|^n-1 <= 10|^6 and
+A4:   2|^n-1 is a_product_of_two_primes;
+A5:   now
+        assume n < 2+1 & 2 = 3-1;
+        then n = 0 or ... or n = 2 by NUMBER02:7;
+        hence contradiction by A4,Th19,Lm1,Lm2;
+      end;
+A6:   now
+        assume n is even;
+        then consider k such that
+A7:     n = 2*k;
+A8:     2|^k+1 <> 0+1;
+        now
+          assume 2|^k = 2|^1;
+          then k = 1 by PEPIN:30;
+          hence contradiction by A7,A4,Th19,Lm2;
+        end;
+        then
+A9:     2|^k-1 <> 2-1;
+        2|^(2*k) = 2|^k|^2 by NEWTON:9
+        .= (2|^k)^2 by WSIERP_1:1;
+        then 2|^n-1 = (2|^k+1)*(2|^k-1) by A7;
+        then 2|^k+1 is prime & 2|^k-1 is prime by A4,A8,A9,NUMBER07:59;
+        then k = 2 by Th22;
+        hence n > 4 implies contradiction by A7;
+      end;
+      n = 0 or ... or n = 19 by A1,A3,Lm25;
+      then per cases by A5;
+      suppose n = 3;
+        hence thesis by A4,Lm3,XPRIMES1:7;
+      end;
+      suppose n = 4;
+        hence thesis by A2,ENUMSET1:def 1;
+      end;
+      suppose n = 5;
+        hence thesis by A4,Lm5,XPRIMES1:31;
+      end;
+      suppose n = 2*3;
+        hence thesis by A6;
+      end;
+      suppose n = 7;
+        hence thesis by A4,Lm7,XPRIMES1:127;
+      end;
+      suppose n = 2*4;
+        hence thesis by A6;
+      end;
+      suppose n = 9;
+        hence thesis by A2,ENUMSET1:def 1;
+      end;
+      suppose n = 2*5;
+        hence thesis by A6;
+      end;
+      suppose n = 11;
+        hence thesis by A2,ENUMSET1:def 1;
+      end;
+      suppose n = 2*6;
+        hence thesis by A6;
+      end;
+      suppose n = 13;
+        hence thesis by A4,Lm11,XPRIMES2:8191;
+      end;
+      suppose n = 2*7;
+        hence thesis by A6;
+      end;
+      suppose
+A10:    n = 15;
+        2|^15-1 = 7*31*151 by Lm12;
+        hence thesis by A4,A10,XPRIMES1:7,31,151;
+      end;
+      suppose n = 2*8;
+        hence thesis by A6;
+      end;
+      suppose n = 17;
+        hence thesis by A4,Th24;
+      end;
+      suppose n = 2*9;
+        hence thesis by A6;
+      end;
+      suppose n = 19;
+        hence thesis by A4,Th25;
+      end;
+    end;
+    thus B c= A
+    proof
+      let x be object;
+      assume x in B;
+      then per cases by ENUMSET1:def 1;
+      suppose
+A11:    x = 2|^4-1;
+        2|^4-1 = 3*5 by Lm4;
+        hence thesis by A1,A11,XPRIMES1:3,5;
+      end;
+      suppose
+A12:    x = 2|^9-1;
+        2|^9-1 = 7*73 by Lm9;
+        hence thesis by A1,A12,XPRIMES1:7,73;
+      end;
+      suppose
+A13:    x = 2|^11-1;
+        2|^11-1 = 23*89 by Lm10;
+        hence thesis by A1,A13,XPRIMES1:23,89;
+      end;
+    end;
+  end;
+
+theorem
+  n is even & n > 4 implies 2|^n-1 is having_at_least_three_different_divisors
+  proof
+    assume n is even;
+    then consider k such that
+A1: n = 2*k;
+    assume that
+A2: n > 4 and
+A3: not 2|^n-1 is having_at_least_three_different_divisors;
+    reconsider k as non zero Nat by A1,A2;
+A4: now
+      assume 2|^k-1 <= 1;
+      then 2|^k-1 = 0 or 2|^k-1 = 1 by NAT_1:25;
+      then 2|^k = 2|^1;
+      then k = 1 by PEPIN:30;
+      hence contradiction by A1,A2;
+    end;
+    2|^(2*k) = 2|^k|^2 by NEWTON:9
+    .= (2|^k)^2 by WSIERP_1:1;
+    then
+A5: 2|^n-1 = (2|^k+1)*(2|^k-1) by A1;
+    then
+A6: 2|^k-1 divides 2|^n-1;
+A7: 2|^k+1 divides 2|^n-1 by A5;
+A8: 2|^k-1 < 2|^k+1 by XREAL_1:8;
+    then
+A9: 2|^k+1 > 1 by A4,XXREAL_0:2;
+    now
+      assume not 2|^k+1 is prime or not 2|^k-1 is prime;
+      then per cases;
+      suppose not 2|^k-1 is prime;
+        then consider a such that
+A10:    a divides 2|^k-1 and
+A11:    a <> 1 and
+A12:    a <> 2|^k-1 by A4;
+A13:    now
+          assume a <= 1;
+          then a = 0 or a = 1 by NAT_1:25;
+          hence contradiction by A10,A11;
+        end;
+A14:    a,2|^k-1,2|^k+1 are_mutually_distinct by A8,A10,A12,NAT_D:7;
+        a divides 2|^n-1 by A6,A10,INT_2:9;
+        hence contradiction by A3,A4,A6,A7,A9,A13,A14;
+      end;
+      suppose not 2|^k+1 is prime;
+        then consider a such that
+A15:    a divides 2|^k+1 and
+A16:    a <> 1 and
+A17:    a <> 2|^k+1 by A4,A8,XXREAL_0:2;
+A18:    now
+          assume a <= 1;
+          then a = 0 or a = 1 by NAT_1:25;
+          hence contradiction by A15,A16;
+        end;
+        now
+          assume a = 2|^k-1;
+          then 2|^k-1 divides (2|^k+1)-(2|^k-1) by A15,INT_5:1;
+          hence contradiction by A4,NUMBER07:9;
+        end;
+        then
+A19:    a,2|^k-1,2|^k+1 are_mutually_distinct by A17;
+        a divides 2|^n-1 by A7,A15,INT_2:9;
+        hence contradiction by A3,A4,A6,A7,A9,A18,A19;
+      end;
+    end;
+    then k = 2 by Th22;
+    hence contradiction by A1,A2;
+  end;

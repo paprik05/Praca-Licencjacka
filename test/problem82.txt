@@ -1,0 +1,57 @@
+theorem
+  {n where n is Nat: n+1 is prime & n+3 is prime & n+7 is prime &
+   n+9 is prime & n+13 is prime & n+15 is prime} = {4}
+  proof
+    set A = {n where n is Nat: n+1 is prime & n+3 is prime & n+7 is prime &
+    n+9 is prime & n+13 is prime & n+15 is prime};
+A1: 5 = 4+1;
+    thus A c= {4}
+    proof
+      let x be object;
+      assume x in A;
+      then consider n such that
+A2:   x = n and
+A3:   n+1 is prime and
+A4:   n+3 is prime and
+A5:   n+7 is prime and
+A6:   n+9 is prime and
+A7:   n+13 is prime and
+A8:   n+15 is prime;
+      now
+        assume n <> 4;
+        then per cases by XXREAL_0:1;
+        suppose n < 3+1;
+          then n <= 3 by NAT_1:13;
+          then n = 0 or ... or n = 3;
+          then per cases;
+          suppose n = 0;
+            hence contradiction by A3;
+          end;
+          suppose n = 1;
+            hence contradiction by A4,INT_2:29;
+          end;
+          suppose n = 2;
+            hence contradiction by A5,NAT_4:57;
+          end;
+          suppose n = 3;
+            hence contradiction by A3,INT_2:29;
+          end;
+        end;
+        suppose
+A9:       n > 4;
+          5 divides n+1 or 5 divides n+7 or 5 divides n+9 or 5 divides n+13 or
+          5 divides n+15 by Th62;
+          then 5 = n+1 or 5 = n+7 or 5 = n+9 or 5 = n+13 or 5 = n+15
+          by A3,A5,A6,A7,A8;
+          hence contradiction by A1,A9,XREAL_1:8;
+        end;
+      end;
+      hence thesis by A2,TARSKI:def 1;
+    end;
+    let x be object;
+    assume x in {4};
+    then
+A10: x = 4 by TARSKI:def 1;
+    4+3 = 7 & 4+7 = 11 & 4+9 = 13 & 4+13 = 17 & 4+15 = 19;
+    hence thesis by A1,A10,PEPIN:59,60,NAT_4:26,27,28,29;
+  end;

@@ -1,0 +1,75 @@
+theorem
+  n > 6 implies ex a,b being Nat st a > 1 & b > 1 & n = a+b & a,b are_coprime
+  proof
+    assume
+A1: n > 6;
+    per cases;
+    suppose
+A2:   n is odd;
+      2 = 2*1;
+      then reconsider a = 2 as even Nat;
+      reconsider b = n-a as Element of NAT by A1,XXREAL_0:2,INT_1:5;
+      take a, b;
+      thus a > 1;
+      n-a > 6-a by A1,XREAL_1:14;
+      hence b > 1 by XXREAL_0:2;
+      thus n = a+b;
+      2 = 2|^1;
+      hence thesis by A2,NAT_5:3;
+    end;
+    suppose
+A3:   n is even;
+      consider k such that
+A4:   n = 4*k or n = 4*k+1 or n = 4*k+2 or n = 4*k+3 by NUMBER02:24;
+      4*k+1 = 2*(2*k)+1 & 4*k+3 = 2*(2*k+1)+1;
+      then per cases by A3,A4;
+      suppose
+A5:     n = 4*k;
+A6:     now
+          assume 1 >= k;
+          then k = 0 or k = 1 by NAT_1:25;
+          hence contradiction by A1,A5;
+        end;
+        then
+A7:     2*1 < 2*k by XREAL_1:68;
+        then reconsider a = 2*k-1 as odd Element of NAT by INT_1:5,XXREAL_0:2;
+        reconsider b = 2*k+1 as odd Element of NAT;
+        take a,b;
+        2*k-1 > 2-1 by A7,XREAL_1:9;
+        hence a > 1;
+        1+0 < 2*k+1 by A6,XREAL_1:8;
+        hence b > 1;
+        thus n = a+b by A5;
+        b - a = 2;
+        hence thesis by NUMBER03:31;
+      end;
+      suppose
+A8:     n = 4*k+2;
+        reconsider a = 2*k+2+1 as Nat;
+        4*k+2 > 4+2 by A1,A8;
+        then 2*(2*k) > 2*(2*1) by XREAL_1:6;
+        then
+A9:     2*k > 2*1 by XREAL_1:64;
+        then
+A10:     1 <= 2*k by XXREAL_0:2;
+        then reconsider b = 2*k-1 as Element of NAT by INT_1:5;
+        take a,b;
+        2*k+3 > 2*k+0 by XREAL_1:8;
+        hence a > 1 by A10,XXREAL_0:2;
+        2*k-1 > 1+1-1 by A9,XREAL_1:9;
+        hence b > 1;
+        thus n = a+b by A8;
+A11:     1 divides a & 1 divides b by INT_2:12;
+        for d being Nat st d divides a & d divides b holds d divides 1
+        proof
+          let d be Nat such that
+A12:      d divides a and
+A13:      d divides b;
+          d divides a-b by A12,A13,INT_5:1;
+          then d = 1 or d = 2*1 or d = 2*2 by Th21;
+          hence thesis by A12;
+        end;
+        hence a gcd b = 1 by A11,NAT_D:def 5;
+      end;
+    end;
+  end;

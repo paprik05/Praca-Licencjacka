@@ -1,0 +1,61 @@
+theorem
+  { (2|^(2*n)+1)|^2 + 2|^2 where n is Nat:
+    (2|^(2*n)+1)|^2 + 2|^2 is composite }
+  is infinite
+  proof
+    set X =
+    { (2|^(2*n)+1)|^2+2|^2 where n is Nat:
+    (2|^(2*n)+1)|^2+2|^2 is composite };
+    set n = 28*1+1;
+    (2|^(2*n)+1)|^2+2|^2 is composite by Th78;
+    then
+A1: (2|^(2*n)+1)|^2+2|^2 in X;
+A2: X is natural-membered
+    proof
+      let x be object;
+      assume x in X;
+      then ex n st x = (2|^(2*n)+1)|^2+2|^2 & (2|^(2*n)+1)|^2+2|^2
+      is composite;
+      hence thesis;
+    end;
+    for a st a in X ex b st b > a & b in X
+    proof
+      let a;
+      assume a in X;
+      then consider n such that
+A3:   a = (2|^(2*n)+1)|^2+2|^2 and
+      (2|^(2*n)+1)|^2+2|^2 is composite;
+      per cases;
+      suppose
+A4:     n <> 0;
+        take b = (2|^(2*(28*n+1))+1)|^2+2|^2;
+A5:     (2|^(2*n)+1)|^2 = (2|^(2*n)+1)^2 by WSIERP_1:1;
+A6:     (2|^(2*(28*n+1))+1)|^2 = (2|^(2*(28*n+1))+1)^2 by WSIERP_1:1;
+A7:     1*n <= 28*n by XREAL_1:64;
+        28*n+0 < 28*n+1 by XREAL_1:8;
+        then n < 28*n+1 by A7,XXREAL_0:2;
+        then 2*n < 2*(28*n+1) by XREAL_1:68;
+        then 2|^(2*n) < 2|^(2*(28*n+1)) by PEPIN:66;
+        then 2|^(2*n)+1 < 2|^(2*(28*n+1))+1 by XREAL_1:8;
+        then (2|^(2*n)+1)^2 < (2|^(2*(28*n+1))+1)^2 by XREAL_1:96;
+        hence b > a by A3,A5,A6,XREAL_1:8;
+        b is composite by A4,Th78;
+        hence thesis;
+      end;
+      suppose n = 0;
+        then
+A8:     a = (1+1)|^2+4 by A3,Lm1,NEWTON:4
+        .= 4+4 by Lm1;
+        set z = 28*1+1;
+        take b = (2|^(2*z)+1)|^2 + 2|^2;
+A9:     2|^0 = 1 by NEWTON:4;
+        2|^(2*z) > 2|^0 by PEPIN:66;
+        then 2|^(2*z)+1 > 1+1 by A9,XREAL_1:8;
+        then (2|^(2*z)+1)|^2 > 2|^2 by PREPOWER:10;
+        hence b > a by A8,Lm1,XREAL_1:8;
+        b is composite by Th78;
+        hence thesis;
+      end;
+    end;
+    hence thesis by A1,A2,NUMBER04:1;
+  end;

@@ -1,5 +1,6 @@
 from sympy import isprime
 def prob116(limit=10):
+    results = []
     k_list = [6*t-1 for t in range(1, limit+1)]
     for k in k_list:
         composite = True
@@ -8,6 +9,8 @@ def prob116(limit=10):
             if isprime(result):
                 composite = False
                 break
+        if composite:
+            results.append(f"k = {k}")
 
 
-    return {"result": composite}
+    return {"result": results}

@@ -1,0 +1,26 @@
+theorem
+  for x,y,z being Nat st x,y are_coprime & x|^2+y|^2 = z|^4 holds 7 divides x*y
+  proof
+    let x,y,z be Nat;
+    assume
+A1: x,y are_coprime;
+    then x is odd or y is odd by NEWTON05:35;
+    hence thesis by A1,Lm1;
+  end;
+
+theorem
+  not 15,20 are_coprime & 15|^2+20|^2 = 5|^4 & not 7 divides 15*20
+  proof
+    (3*1+1) mod 3 = 1 by NUMBER02:16;
+    then
+A1: 1 = 3 gcd (4 mod 3) by NEWTON:51
+    .= 4 gcd 3 by NAT_D:30;
+    (5*3) gcd (5*4) = 5*(3 gcd 4) by PYTHTRIP:8;
+    hence not 15,20 are_coprime by A1;
+A2: 15|^2 = 15*15 & 20|^2 = 20*20 by WSIERP_1:1;
+    5|^4 = 5*5*5*5 by POLYEQ_5:3;
+    hence 15|^2+20|^2 = 5|^4 by A2;
+    15*20 = 7*42+6;
+    then 15*20 mod 7 = 6 by NUMBER02:16;
+    hence not 7 divides 15*20 by PEPIN:6;
+  end;

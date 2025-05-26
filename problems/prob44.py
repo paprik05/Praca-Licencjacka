@@ -3,9 +3,9 @@ from math import gcd
 
 def prob44(a, b, limit):
     if a == b:
-        return {"error": "A and B muszą być od siebie różne"}
+        return {"error": "A and B must be different integers"}
     if limit <= 0:
-        return {"error": "zmienna limit musi być liczbą całkowitą dodatnią"}
+        return {"error": "variable limit must a a positive integer"}
 
     results = []
     n = 1

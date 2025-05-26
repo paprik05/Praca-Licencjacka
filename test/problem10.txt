@@ -1,0 +1,190 @@
+theorem
+  for s being XFinSequence of NAT, n being Nat st
+  n>1 & len s=n-1 & for i being Nat st i in dom s holds s.i=(i+1)|^n
+  holds n is odd iff n divides Sum s
+  proof
+    let s be XFinSequence of NAT, n be Nat such that
+    n: n>1 & len s=n-1 and
+    s: for i being Nat st i in dom s holds s.i=(i+1)|^n;
+    reconsider n1=n-1 as Nat by n;
+
+    d: dom s = dom Rev s by AFINSQ_2:5;
+    d2: dom (s+Rev s) = (dom s) /\ (dom Rev s) by VALUED_1:def 1
+    .= dom s by d;
+    reconsider ss=s as (n1)-element complex-valued XFinSequence
+    by n,CARD_1:def 7;
+    reconsider rs=Rev s as (n1)-element complex-valued XFinSequence
+    by n,CARD_1:def 7,d;
+    ss: Sum (ss+rs) = Sum s + Sum Rev s by RVSUM_4:49
+     .= Sum s + Sum s by AFINSQ_2:69
+     .= 2*Sum s;
+    rng (s+Rev s) c= NAT
+    proof
+      let o be object;
+      assume o in rng (s+Rev s);
+      then consider a being object such that
+      a: a in dom (s+Rev s) & o=(s+Rev s).a by FUNCT_1:def 3;
+      reconsider a as Nat by a;
+      o=s.a+(Rev s).a by a,VALUED_1:def 1;
+      hence o in NAT by ORDINAL1:def 12;
+    end;
+    then reconsider sr=s+Rev s as XFinSequence of NAT by RELAT_1:def 19;
+    thus n is odd implies n divides Sum s
+    proof
+      assume no: n is odd;
+      2|^1=2 by NEWTON:5;
+      then 2c: 2,n are_coprime by NAT_5:3,no;
+      now
+        let k be Nat;
+        assume k: k in dom sr;
+        then serek: sr.k = s.k + (Rev s).k by VALUED_1:def 1
+        .= (k+1)|^n + (Rev s).k by d2,k,s
+        .= (k+1)|^n + s.(len s - (k + 1)) by k,d,d2,AFINSQ_2:def 1
+        .= (k+1)|^n + s.(n-k-2) by n;
+        k < n-1 by n,AFINSQ_1:66,k,d2;
+        then k+2 < n-1+2 by XREAL_1:6;
+        then k+2 < n+1;
+        then k+2<=n by NAT_1:13;
+        then reconsider nik=n-(k+2) as Nat by NAT_1:21;
+        1 < k+2 by XREAL_1:40; then
+        nik < n-1 by XREAL_1:10;
+        then nik in dom s by n,AFINSQ_1:66;
+        then
+        sr.k = (k+1)|^n + (nik+1)|^n by serek,s
+            .= (k+1)|^n + (n-(k+1))|^n;
+        hence n divides sr.k by no,lemmandiv;
+      end;
+      then n divides Sum (sr) by NUMERAL1:2;
+      then n divides 2*Sum s by ss;
+      then n divides Sum s by 2c,EULER_1:13;
+      hence n divides Sum s;
+    end;
+    thus n divides Sum s implies n is odd
+    proof
+      assume that nd: n divides Sum s and e: n is even;
+      reconsider ne=n as even Nat by e;
+      consider n2 being Nat such that n2: n=2*n2 by ABIAN:def 2,e;
+      set h=2 |-count n;
+      2 divides n by n2,INT_1:def 3; then
+      h <> 0 by n,NAT_3:27; then
+      hen: h > 0;
+      then reconsider hj=h-1 as Nat by NAT_1:20;
+
+      dwah: 2 |^ h divides n by n,NAT_3:def 7; then
+      2n: 2 |^ h <= n by n,INT_2:27;
+
+      2|^h >= h by NAT_3:2;
+      then h <= n by 2n,XXREAL_0:2;
+      then hn2: 2|^h divides 2|^n by NEWTON:89;
+
+      deffunc F(Nat) = s.$1 mod 2|^h;
+      consider sm being XFinSequence of NAT such that
+      sm: len sm = len s &
+      for j being Nat st j in len s holds sm.j = F(j)
+      from AFINSQ_2:sch 1;
+      ss: Sum s mod 2|^h = Sum sm mod 2|^h by sm,NUMERAL2:17;
+
+      set B1=OddNAT, B2=EvenNAT;
+      now
+        let o be object;
+        assume o: o in dom SubXFinS(sm,B1);
+        then reconsider k=o as Nat;
+        reconsider ds=dom sm as natural-membered finite set;
+        reconsider BB=B1 /\ ds as finite natural-membered set;
+        kid: k in dom Sgm0(BB) by o,NUMERAL2:6;
+
+        SX: SubXFinS(sm,B1).o = sm.((Sgm0(BB)).k) by o,FUNCT_1:12
+        .= sm.(2*k+1) by kid,NUMERAL2:13;
+        thus SubXFinS(sm,B1).o = 0
+        proof
+          per cases;
+          suppose
+            dk: 2*k+1 in dom s;
+            then sf: SubXFinS(sm,B1).o = s.(2*k+1) mod 2|^h by SX,sm
+            .= ((2*k+1)+1)|^n mod 2|^h by s,dk
+            .= (2*(k+1))|^n mod 2|^h
+            .= ((2|^n) * ((k+1)|^n)) mod 2|^h by NEWTON:7;
+            2|^h divides (2|^n)*((k+1)|^n) by hn2,INT_2:2;
+            hence SubXFinS(sm,B1).o = 0 by sf,PEPIN:6;
+          end;
+          suppose
+            not 2*k+1 in dom s;
+            then not 2*k+1 in dom sm by sm;
+            hence SubXFinS(sm,B1).o = 0 by SX,FUNCT_1:def 2;
+          end;
+        end;
+      end; then
+      SubXFinS(sm,B1) = (dom SubXFinS(sm,B1)) --> 0 by FUNCOP_1:11; then
+      sz: Sum(SubXFinS(sm,B1))=(len SubXFinS(sm,B1))*0 by AFINSQ_2:58;
+
+      ll: len sm = ne-1 by n,sm;
+      then reconsider Slm=Segm(len sm) as odd Nat;
+      card (Slm /\ B2) = (Slm div 2) + 1 by lemmacardeven
+      .= (Slm-1)/2 + 1 by NAT_6:5
+      .= n2 by n2,ll; then
+      dn2: len SubXFinS(sm,B2) = n2 by AFINSQ_2:36;
+      now
+        let o be object;
+        assume o: o in dom SubXFinS(sm,B2);
+        then reconsider k=o as Nat;
+        reconsider ds=dom sm as natural-membered finite set;
+        reconsider BB=B2 /\ ds as finite natural-membered set;
+        kid: k in dom Sgm0(BB) by o,NUMERAL2:6;
+
+        reconsider dk=2*k as even Nat;
+        reconsider dkj=dk+1 as odd Nat;
+        k < len SubXFinS(sm,B2) by o,AFINSQ_1:86;
+        then k < n2 by dn2;
+        then 2*k < 2*n2 by XREAL_1:68;
+        then dk < len s + 1 by n,n2;
+        then dk <= len s by NAT_1:13;
+        then dk < len s or dk=ne-1 by n,XXREAL_0:1;
+        then dks: dk in dom s by AFINSQ_1:86;
+
+        SX: SubXFinS(sm,B2).o = sm.((Sgm0(BB)).k) by o,FUNCT_1:12
+        .= sm.(2*k) by kid,NUMERAL2:12
+        .= s.(dk) mod 2|^h by sm,dks
+        .= dkj|^n mod 2|^h by s,dks;
+
+        reconsider d=2 as Prime by INT_2:28;
+        hen1: h >= 1 by hen,NAT_1:14;
+        then eu: Euler (2|^h)= d|^h - d|^(h-'1) by INT_8:8
+        .= d|^(hj+1) - d|^hj by XREAL_1:233,hen1
+        .= (d|^hj)*d - d|^hj by NEWTON:6
+        .= d|^hj;
+
+        2|^h >= 1+1 by hen1,PREPOWER:12;
+        then ddh: 2|^h > 1 by NAT_1:13;
+        hj<=h-0 by XREAL_1:10; then
+        2|^hj divides 2|^h by PEPIN:31;
+        then 2|^hj divides n by dwah,INT_2:9;
+        then consider a being Nat such that
+        a: n=2|^hj*a by NAT_D:def 3;
+
+        dkj,2|^1 are_coprime by NAT_5:3;
+        then dkj,2 are_coprime by NEWTON:5;
+        then dkj,2|^h are_coprime by EULER_2:17;
+        then dkj|^(Euler (2|^h)) mod (2|^h) = 1 by ddh,EULER_2:18;
+        :: by Euler's theorem
+        then dkj|^(d|^hj) mod (2|^h) = 1 by eu;
+        then (dkj|^(d|^hj))|^a mod (2|^h) = 1 by ddh,PEPIN:35;
+        then (dkj|^((d|^hj)*a)) mod (2|^h) = 1 by NEWTON:9;
+        hence SubXFinS(sm,B2).o = 1 by SX,a;
+      end; then
+      SubXFinS(sm,B2) = (dom SubXFinS(sm,B2)) --> 1 by FUNCOP_1:11; then
+      sn: Sum SubXFinS(sm,B2) = n2*1 by dn2,AFINSQ_2:58;
+      B1 misses B2 by NUMERAL2:7;
+      then Sum(SubXFinS(sm,B1\/B2))=0+Sum(SubXFinS(sm,B2)) by NUMERAL2:10,sz;
+      then Sum sm = Sum(SubXFinS(sm,B2)) by NUMERAL2:8,11;
+      then Sum s mod 2|^h = n2 mod 2|^h by sn,ss; then
+      fs: n2, Sum s are_congruent_mod 2|^h by NAT_D:64;
+      2|^h divides n by n,NAT_3:def 7;
+      then 2|^h divides Sum s - 0 by INT_2:9,nd;
+      then Sum s, 0 are_congruent_mod 2|^h by INT_1:def 4;
+      then n2,0 are_congruent_mod 2|^h by fs,INT_1:15;
+      then 2|^h divides n2-0 by INT_1:def 4;
+      then 2*(2|^h) divides n by INT_6:8,n2;
+      then 2|^(h+1) divides n by NEWTON:6;
+      hence contradiction by n,NAT_3:def 7;
+    end;
+end;

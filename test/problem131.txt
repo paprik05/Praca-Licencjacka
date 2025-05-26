@@ -1,0 +1,66 @@
+theorem
+  card primeNumbers(0,10) = 4 by Th69,CARD_2:59;
+
+:: Problem 131 b
+theorem
+  card primeNumbers(1,10) = 5
+  proof
+    2,3,5,7,11 are_mutually_distinct;
+    hence thesis by Th70,CARD_2:63;
+  end;
+
+:: Problem 131 c
+theorem
+  2 <= k implies card primeNumbers(k,10) <= 4
+  proof
+    set A = primeNumbers(k,10);
+    assume 2 <= k;
+    then per cases by XXREAL_0:1;
+    suppose k = 2;
+      hence thesis by Th71,CARD_2:59;
+    end;
+    suppose
+A1:   k > 2;
+      consider m being Multiple of 3 such that
+A2:   m in seq(k,10) and
+A3:   m is odd by Th84;
+      set D = multiples(2) /\ seq(k,10);
+A4:   now
+        assume m in D;
+        then reconsider m as Multiple of 2 by Th61;
+        2 divides m by Def15;
+        hence contradiction by A3;
+      end;
+      set W = D \/ {m};
+      10 = 2*5;
+      then card D = 5 by Th83;
+      then
+A5:   card W = 5 + 1 by A4,CARD_2:41;
+A6:   card seq(k,10) = 10 by Th73;
+A7:   k+1 > 2+1 by A1,XREAL_1:6;
+      now
+        assume W meets A;
+        then consider x being object such that
+A8:     x in W and
+A9:     x in A by XBOOLE_0:3;
+        reconsider x as Prime by A9,NEWTON:def 6;
+A10:    1+k <= x by A9,CALCUL_2:1;
+        per cases by A8,XBOOLE_0:def 3;
+        suppose x in D;
+          then x = 1 or x = 2 by Th62,INT_2:def 4;
+          hence contradiction by A7,A10,XXREAL_0:2;
+        end;
+        suppose x in {m};
+          then x = m by TARSKI:def 1;
+          hence contradiction by A7,A10,Th60;
+        end;
+      end;
+      then
+A11:  card (W \/ A) = 6 + card A by A5,CARD_2:40;
+      {m} c= seq(k,10) by A2,ZFMISC_1:31;
+      then W c= seq(k,10) by XBOOLE_1:8;
+      then W \/ A c= seq(k,10) by XBOOLE_1:8;
+      then card A <= 10-6 by A6,A11,XREAL_1:19,NAT_1:43;
+      hence thesis;
+    end;
+  end;

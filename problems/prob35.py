@@ -1,6 +1,6 @@
 def prob35(n):
     if n <= 0:
-        return {"error": "n musi być liczbą całkowitą dodatnią"}
+        return {"error": "n must be a positive integer"}
 
 
     pairs = []

@@ -1,0 +1,65 @@
+theorem
+  {n where n is positive Integer:
+  5 divides 4*(n|^2) + 1 & 13 divides 4*(n|^2) + 1} is infinite
+proof
+    set S={n where n is positive Integer:
+    5 divides 4*n|^2 + 1 & 13 divides 4*n|^2 + 1};
+    deffunc F(Nat) = 65*$1+56;
+    consider f being ManySortedSet of NAT such that
+    f: for n being Element of NAT holds f.n=F(n) from PBOOLE:sch 5;
+    set R = rng f;
+    d: dom f = NAT by PARTFUN1:def 2;
+    rs: R c= S
+    proof
+      let a be object;
+      assume a in R;
+      then consider k being object such that
+      k: k in dom f & a=f.k by FUNCT_1:def 3;
+      reconsider k as Element of NAT by d,k;
+      a: a=65*k+56 by f,k;
+      then reconsider n=a as positive Integer;
+      c: 4*(n|^(1+1)) + 1 = 4*((n|^(1))*n)+1 by NEWTON:6
+      .= 4*(n*n) + 1 by NEWTON:5;
+      65=5*13; then
+    p: 13 divides 65-0 by INT_1:def 3;
+      65*k+56-1 = 5*(13*k+11);
+      then 5 divides 65*k+56-1 by INT_1:def 3;
+      then n,1 are_congruent_mod 5 by a,INT_1:def 4;
+      then n*n,1*1 are_congruent_mod 5 & 4,4 are_congruent_mod 5
+      by INT_1:18,11;
+      then 4*(n*n),1*4 are_congruent_mod 5 & 1,1 are_congruent_mod 5
+      by INT_1:18,11;
+      then 4*(n*n)+1,4+1 are_congruent_mod 5 & 5,0 are_congruent_mod 5
+      by INT_1:16,12;
+      then 4*(n*n)+1,0 are_congruent_mod 5 by INT_1:15;
+      then 4*n|^2 + 1,0 are_congruent_mod 5 by c;
+      then d1: 5 divides (4*n|^2 + 1) - 0 by INT_1:def 4;
+      65*k+56-4 = 13*(5*k+4);
+      then 13 divides 65*k+56-4 by INT_1:def 3;
+      then n,4 are_congruent_mod 13 by a,INT_1:def 4;
+      then n*n,4*4 are_congruent_mod 13 & 4,4 are_congruent_mod 13
+      by INT_1:18,11;
+      then 4*(n*n),4*4*4 are_congruent_mod 13 & 1,1 are_congruent_mod 13
+      by INT_1:18,11;
+      then 4*(n*n)+1,64+1 are_congruent_mod 13 & 65,0 are_congruent_mod 13
+      by INT_1:16,def 4,p;
+      then 4*(n*n)+1,0 are_congruent_mod 13 by INT_1:15;
+      then 4*n|^2 + 1,0 are_congruent_mod 13 by c;
+      then 13 divides (4*n|^2 + 1) - 0 by INT_1:def 4;
+      hence a in S by d1;
+    end;
+    for m being Nat ex n being Nat st n >= m & n in R
+    proof
+      let m be Nat;
+      take n=F(m);
+      65*m >= 1*m by XREAL_1:66;
+      hence n >= m by XREAL_1:38;
+    aa:   m in NAT by ORDINAL1:def 12;
+      then m in dom f by d;
+      then f.m in rng f by FUNCT_1:3;
+      hence n in R by f,aa;
+    end;
+    then R is infinite by PYTHTRIP:9;
+    hence thesis by rs;
+end;
+

@@ -1,0 +1,28 @@
+theorem
+  5|^4+(5+1)|^4 is composite &
+  not ex n being Nat st n < 5 & n|^4+(n+1)|^4 is composite
+  proof
+    set x = 5|^4+(5+1)|^4;
+    thus 2 <= x by Lm6,Lm7;
+    x = 17 * 113 by Lm6,Lm7;
+    hence x is non prime by Th13,PEPIN:60;
+    given n being Nat such that
+A1: n < 5 and
+A2: n|^4+(n+1)|^4 is composite;
+    n <= 5-1 by A1,INT_1:52;
+    then n = 0 or ... or n = 4;
+    hence thesis by A2,Th56,Th57,Th58,Th59;
+  end;
+
+theorem Th61:
+  1 <= a implies 2|^(2|^n) + (6*a-1) > 6
+  proof
+    assume 1 <= a;
+    then 6*1 <= 6*a by XREAL_1:64;
+    then
+A1: 6*1-1 <= 6*a-1 by XREAL_1:9;
+    0+1 <= 2|^n by NAT_1:13;
+    then 2 <= 2|^(2|^n) by PREPOWER:12;
+    then 2+5 <= 2|^(2|^n) + (6*a-1) by A1,XREAL_1:7;
+    hence thesis by XXREAL_0:2;
+  end;

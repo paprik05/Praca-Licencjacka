@@ -1,0 +1,73 @@
+theorem
+  (for n be non zero Nat st n < 6 holds value(<%1%>^(n-->3),10) is prime) &
+    value(<%1%>^(8-->3),10) is non prime &
+  {value(<%1%>^(n-->3),10) where n is Nat:
+     value(<%1%>^(n-->3),10) is non prime} is infinite
+proof
+  hereby let n be non zero Nat;
+    assume
+A1:   n < 6;
+    then
+A2:   n = 0 or ... or n = 6;
+A3:   value(<%1%>^(n-->3),10) = (10|^(n+1)-7)/3 by Th16;
+    10|^(0+1) = 10;
+    then A4:10|^(1+1) = 10*10 by NEWTON:6;
+    then A5:10|^(2+1) = 10*10*10 by NEWTON:6;
+    then A6:10|^(3+1) = 10*10*10*10 by NEWTON:6;
+    then A7:10|^(4+1) = 10*10*10*10*10 by NEWTON:6;
+    then A8:10|^(5+1) = 10*10*10*10*10*10 by NEWTON:6;
+    per cases by A1,A2;
+    suppose n=1;
+      hence value(<%1%>^(n-->3),10) is prime by A3,A4,XPRIMES1:31;
+    end;
+    suppose n=2;
+      hence value(<%1%>^(n-->3),10) is prime by A3,A5,XPRIMES1:331;
+    end;
+    suppose n=3;
+      hence value(<%1%>^(n-->3),10) is prime by A3,A6,XPRIMES1:3331;
+    end;
+    suppose n=4;
+      hence value(<%1%>^(n-->3),10) is prime by A3,A7,Th18;
+    end;
+    suppose n=5;
+      hence value(<%1%>^(n-->3),10) is prime by A3,A8,Th19;
+    end;
+  end;
+  consider v be Nat such that
+A9: 17 divides v = (10|^(16*0+9)-7)/3 by Th17;
+  value(<%1%>^(8-->3),10) = (10|^(8+1)-7)/3 by Th16;
+  hence value(<%1%>^(8-->3),10) is non prime by A9,Lm1;
+  set V = {value(<%1%>^(n-->3),10) where n is Nat:
+    value(<%1%>^(n-->3),10) is non prime};
+  deffunc F(Nat) = (10|^(16*$1+9)-7)/3;
+  consider f be Function such that
+A10: dom f = NAT & for d be Element of NAT holds f.d = F(d)
+   from FUNCT_1:sch 4;
+A11: for x1,x2 be object st x1 in dom f & x2 in dom f & f.x1=f.x2 holds x1=x2
+  proof
+    let x1,x2 be object such that
+A12:  x1 in dom f & x2 in dom f & f.x1=f.x2;
+    reconsider n1=x1,n2=x2 as Element of NAT by A12,A10;
+    (10|^(16*n1+9)-7)/3 =f.n1 & f.n2=(10|^(16*n2+9)-7)/3 by A10;
+    then (10|^(16*n1+9)-7)/3 = (10|^(16*n2+9)-7)/3 by A12;
+    then 16*n1+9 = 16*n2+9 by PEPIN:30;
+    hence thesis;
+  end;
+  rng f c= V
+  proof
+    let y be object;
+    assume y in rng f;
+    then consider x be object such that
+A13:  x in dom f & f.x = y by FUNCT_1:def 3;
+    reconsider x as Nat by A13,A10;
+    f.x = (10|^(16*x+9)-7)/3 = (10|^(16*x+8+1)-7)/3 by A13,A10;
+    then
+A14:  f.x = value(<%1%>^((16*x+8)-->3),10) by Th16;
+    consider v be Nat such that
+A15:  17 divides v = (10|^(16*x+9)-7)/3 by Th17;
+    value(<%1%>^((16*x+8)-->3),10) = (10|^((16*x+8)+1)-7)/3 by Th16;
+    then value(<%1%>^((16*x+8)-->3),10) is non prime by A15,Lm1;
+    hence thesis by A14,A13;
+  end;
+  hence thesis by A11,FUNCT_1:def 4,A10,CARD_1:59;
+end;

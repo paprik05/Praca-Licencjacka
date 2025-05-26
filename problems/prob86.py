@@ -13,7 +13,7 @@ def prob86(limit, num_of_results = 5):
                     q = primes[j]
                     r = primes[k]
                     if test_case == p*q*r:
-                        results.append(n)
+                        results.append(f"n = {n}, n^2-1 = {test_case} = {p} * {q} * {r}")
                         counter += 1
         if counter >= num_of_results:
             break

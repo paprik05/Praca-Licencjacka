@@ -1,0 +1,37 @@
+theorem
+  for a being non zero Nat
+   ex n being non prime Nat st n divides a|^n-a
+  proof
+    let a be non zero Nat;
+    per cases;
+    suppose a is non prime;
+      then reconsider n = a as non prime non zero Nat;
+      take n;
+      a divides a|^n-a|^1 by Th18;
+      hence thesis;
+    end;
+    suppose that
+A1:   a is prime and
+A2:   a > 2;
+      reconsider a as odd Nat by A1,A2,PEPIN:17;
+      2*a > 1*a by XREAL_1:68;
+      then 2*a > 2*1 by A2,XXREAL_0:2;
+      then reconsider n = 2*a as non prime Nat by PEPIN:17;
+      take n;
+A3:   2 = 2|^1;
+A4:   a|^n-a is even;
+      a divides a|^n-a|^1 by Th18;
+      hence thesis by A3,A4,PEPIN:4,NAT_5:3;
+    end;
+    suppose that
+A5:   a is prime and
+A6:   a <= 2;
+      a >= 1+1 by A5,NAT_1:13;
+      then
+A7:   a = 2 by A6,XXREAL_0:1;
+A8:   341 = 11*31;
+      then reconsider n = 341 as non prime Nat by NAT_4:27,NUMERAL2:24;
+      take n;
+      thus thesis by A7,A8,Th20,Th21,PEPIN:4,INT_2:30,NAT_4:27,NUMERAL2:24;
+    end;
+  end;

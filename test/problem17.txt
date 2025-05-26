@@ -1,0 +1,64 @@
+theorem
+  for a being Nat st a > 1 holds
+  {n where n is Nat: n divides a|^n+1} is infinite
+  proof
+    let a be Nat such that
+A1: a > 1;
+    set A = {s where s is Nat:
+     s is double_odd & a|^s+1 is double_odd & s divides a|^s+1};
+    set X = {n where n is Nat: n divides a|^n+1};
+A2: A is natural-membered
+    proof
+      let x be object;
+      assume x in A;
+      then ex s being Nat st x = s & s is double_odd & a|^s+1 is double_odd &
+      s divides a|^s+1;
+      hence thesis;
+    end;
+A3: A c= X
+    proof
+      let x be object;
+      assume x in A;
+      then ex s being Nat st x = s & s is double_odd & a|^s+1 is double_odd &
+      s divides a|^s+1;
+      hence thesis;
+    end;
+    per cases;
+    suppose
+A4:   a is odd;
+      2 = 2*(2*0+1);
+      then
+A5:   2 is double_odd;
+      a|^2+1 is double_odd by A4;
+      then 2 divides a|^2+1;
+      then
+A6:   2 in A by A4,A5;
+      for x being Nat st x in A ex b st b > x & b in A
+      proof
+        let x be Nat;
+        assume x in A;
+        then consider s being Nat such that
+A7:     x = s and
+A8:     s is double_odd & a|^s+1 is double_odd & s divides a|^s+1;
+        take s1 = a|^s+1;
+        s1 > s & s1 is double_odd & a|^s1+1 is double_odd & s1 divides a|^s1+1
+        by A1,A4,A8,Th24;
+        hence s1 > x & s1 in A by A7;
+      end;
+      hence thesis by A2,A3,A6,Th1;
+    end;
+    suppose
+A9:   a is even;
+      now
+        given i being Nat such that
+A10:    a+1 = 2|^i;
+        now
+          assume i < 1;
+          then a+1 = 1 by A10,Lm1,NAT_1:14;
+          hence contradiction by A1,NAT_1:14;
+        end;
+        hence contradiction by A9,A10;
+      end;
+      hence thesis by Lm1117;
+    end;
+  end;

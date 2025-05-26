@@ -1,0 +1,51 @@
+theorem
+  for s1,s2 being XFinSequence of NAT, n being Nat st
+  (len s1=n+1 & for i being Nat st i in dom s1 holds s1.i=i|^5) &
+  (len s2=n+1 & for i being Nat st i in dom s2 holds s2.i=i|^3)
+  holds Sum s2 divides 3*Sum s1
+  proof
+    let s1,s2 be XFinSequence of NAT, n be Nat;
+    assume that
+    s1: len s1=n+1 & for i being Nat st i in dom s1 holds s1.i=i|^5 and
+    s2: len s2=n+1 & for i being Nat st i in dom s2 holds s2.i=i|^3;
+    deffunc F(Nat) = $1|^3;
+    consider S2 being Real_Sequence such that
+    S2: for i being Nat holds S2.i=F(i) from SEQ_1:sch 1;
+    Segm(n+1) c= NAT & dom S2=NAT by PARTFUN1:def 2;
+    then dom (S2|Segm(n+1)) = Segm(n+1);
+    then dr: dom (S2|Segm(n+1)) = dom s2 by s2;
+    now
+      let o be object;
+      assume o: o in dom s2;
+      then o in Segm(n+1) by s2;
+      then o is natural;
+      then reconsider on=o as Nat by TARSKI:1;
+      thus s2.o=on|^3 by s2,o
+      .= S2.on by S2
+      .= (S2|Segm(n+1)).o by o,dr,FUNCT_1:47;
+    end;
+    then s2=S2|Segm(n+1) by dr,FUNCT_1:2;
+    then Sum s2=Partial_Sums(S2).n by RVSUM_4:4;
+    then ss: Sum s2 = n|^2*(n+1)|^2/4 by S2,SERIES_2:15;
+    deffunc G(Nat) = $1|^5;
+    consider S1 being Real_Sequence such that
+    S1: for i being Nat holds S1.i=G(i) from SEQ_1:sch 1;
+    Segm(n+1) c= NAT & dom S1=NAT by PARTFUN1:def 2;
+    then dom (S1|Segm(n+1)) = Segm(n+1);
+    then ds: dom (S1|Segm(n+1)) = dom s1 by s1;
+    now
+      let o be object;
+      assume o: o in dom s1;
+      then o in Segm(n+1) by s1;
+      then o is natural;
+      then reconsider on=o as Nat by TARSKI:1;
+      thus s1.o=on|^5 by s1,o
+      .= S1.on by S1
+      .= (S1|Segm(n+1)).o by o,ds,FUNCT_1:47;
+    end;
+    then s1=S1|Segm(n+1) by ds,FUNCT_1:2;
+    then Sum s1=Partial_Sums(S1).n by RVSUM_4:4;
+    then Sum s1 = n|^2*(n+1)|^2*(2*n|^2+2*n-1)/12 by S1,SERIES_2:19;
+    then 3*Sum s1 = (2*n|^2+2*n-1)*Sum s2 by ss;
+    hence Sum s2 divides 3*Sum s1 by INT_1:def 3;
+  end;
