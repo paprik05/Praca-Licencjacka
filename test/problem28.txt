@@ -5,7 +5,7 @@ theorem
     hence thesis by PEPIN:4,INT_2:30,NAT_4:27,NUMERAL2:24,NUMBER02:20,21;
   end;
 
-theorem Th50:
+theorem
   not 341 divides 3|^341-3
   proof
 A1: Euler 31 = 31-1 by EULER_1:20,NUMERAL2:24;

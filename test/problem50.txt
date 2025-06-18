@@ -1,0 +1,51 @@
+theorem
+  ex f being Fibonacci-valued sequence of REAL st
+     f is increasing with_all_coprime_terms
+  proof
+    deffunc F(Nat) = Fib primenumber $1;
+    consider f being sequence of REAL such that
+A1: for n being Nat holds f.n = F(n) from SEQ_1:sch 1;
+    for n being Nat holds f.n < f.(n+1)
+    proof
+      let n be Nat;
+B3:   1 < primenumber n by INT_2:def 4;
+B1:   f.n = Fib (primenumber n) by A1;
+B4:   f.(n+1) = Fib primenumber (n+1) by A1;
+      n < n+1 by NAT_1:13; then
+      primenumber n < primenumber (n+1) by MOEBIUS2:21;
+      hence thesis by B1,B4,B3,FIB_NUM2:46;
+    end; then
+T1: f is increasing by SEQM_3:def 6;
+    for n being Nat holds
+      ex fn being Nat st fn = f.n & fn is Fibonacci
+    proof
+      let n be Nat;
+      f.n = Fib (primenumber n) by A1;
+      hence thesis;
+    end; then
+    f is Fibonacci-valued; then
+    reconsider f as Fibonacci-valued sequence of REAL;
+    for i,j being Nat st i in dom f & j in dom f & i <> j holds
+      f.i, f.j are_coprime
+    proof
+      let i,j be Nat;
+      assume
+A2:   i in dom f & j in dom f & i <> j;
+A3:   f.i = Fib (primenumber i) by A1;
+A4:   f.j = Fib (primenumber j) by A1;
+      primenumber i <> primenumber j
+      proof
+        per cases by A2,XXREAL_0:1;
+        suppose i < j;
+          hence thesis by MOEBIUS2:21;
+        end;
+        suppose i > j;
+          hence thesis by MOEBIUS2:21;
+        end;
+      end; then
+      primenumber i, primenumber j are_coprime by PQCoprime;
+      hence thesis by A3,A4,FIB_NUM:5,PRE_FF:1;
+    end; then
+    f is with_all_coprime_terms;
+    hence thesis by T1;
+  end;

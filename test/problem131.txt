@@ -1,7 +1,6 @@
 theorem
   card primeNumbers(0,10) = 4 by Th69,CARD_2:59;
 
-:: Problem 131 b
 theorem
   card primeNumbers(1,10) = 5
   proof
@@ -9,7 +8,6 @@ theorem
     hence thesis by Th70,CARD_2:63;
   end;
 
-:: Problem 131 c
 theorem
   2 <= k implies card primeNumbers(k,10) <= 4
   proof

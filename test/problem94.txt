@@ -46,7 +46,6 @@ A11:  2*P <= 2*(2*k) by A9,XREAL_1:64;
     end;
   end;
 
-:: Problem 94 b
 theorem
   n > 15 implies
   ex m being Nat st n < m < 2*n & m is a_product_of_three_different_primes

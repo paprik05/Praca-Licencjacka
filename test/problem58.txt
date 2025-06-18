@@ -1,4 +1,4 @@
-theorem :: Problem 58
+theorem
   for s being Nat
    ex f being fAP-like increasing positive-yielding FinSequence of NAT
   st len f = s & for i being Nat st 1 <= i <= len f holds f.i is perfect_power

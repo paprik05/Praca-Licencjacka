@@ -1,0 +1,47 @@
+theorem
+  561 is composite by XPRIMES0:561,NUMBER02:def 1;
+
+theorem
+  1105 is composite by XPRIMES0:1105,NUMBER02:def 1;
+
+theorem
+  561 divides 2|^561-2
+  proof
+A1: 561 = 3*11*17;
+    3,11,17 are_mutually_coprime by PEPIN:41,60,NAT_4:27,INT_2:30;
+    hence thesis by A1,Th37,Th38,Th39,Th12;
+  end;
+
+theorem
+  1105 divides 2|^1105-2
+  proof
+A1: 1105 = 5*13*17;
+    5,13,17 are_mutually_coprime by PEPIN:59,60,NAT_4:28,INT_2:30;
+    hence thesis by A1,Th45,Th46,Th47,Th12;
+  end;
+
+theorem
+  561 divides 3|^561-3
+  proof
+A1: 561 = 3*11*17;
+    3,11,17 are_mutually_coprime by PEPIN:41,60,NAT_4:27,INT_2:30;
+    hence thesis by A1,Th51,Th52,Th53,Th12;
+  end;
+
+theorem
+  1105 divides 3|^1105-3
+  proof
+A1: 1105 = 5*13*17;
+    5,13,17 are_mutually_coprime by PEPIN:59,60,NAT_4:28,INT_2:30;
+    hence thesis by A1,Th57,Th58,Th59,Th12;
+  end;
+
+theorem
+  n <= 1105 & n is composite & n divides 2|^n-2 & n divides 3|^n-3 implies
+  n in {561,1105}
+  proof
+    assume n <= 1105 & n is composite & n divides 2|^n-2;
+    then n in {341,561,645,1105} by Th49;
+    then n = 341 or n = 561 or n = 645 or n = 1105 by ENUMSET1:def 2;
+    hence thesis by Th50,Th56,TARSKI:def 2;
+  end;

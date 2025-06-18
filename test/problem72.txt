@@ -1,0 +1,43 @@
+theorem
+  for f being increasing natural-valued Arithmetic_Progression
+    st for i being Nat st i < 10 holds f.i is odd Prime holds
+      f.9 >= 2089
+  proof
+    let f be increasing natural-valued Arithmetic_Progression;
+    assume
+A1: for i being Nat st i < 10 holds f.i is odd Prime; then
+A3: difference f >= 210 by NAT_D:7,Cantor5Div;
+    per cases;
+    suppose
+      difference f <= 210; then
+      difference f = 210 by A3,XXREAL_0:1; then
+A2:   f.0 >= 199 by A1,Theorem72V1;
+a4:   f = ArProg (f.0, difference f) by NUMBER06:6;
+      9 * difference f >= 9 * 210 by A1,Cantor5,XREAL_1:64; then
+      f.0 + 9 * difference f >= 199 + 9 * 210 by A2,XREAL_1:7;
+      hence thesis by a4,NUMBER06:7;
+    end;
+    suppose
+T1:   difference f > 210;
+T2:   difference f = 210 * ((difference f) div 210)
+        by A1,Cantor5Div,NAT_D:3;
+      (difference f) div 210 > 1
+      proof
+        assume (difference f) div 210 <= 1; then
+        (difference f) div 210 < 1 + 1 by NAT_1:13; then
+        (difference f) div 210 = 1 or (difference f) div 210 = 0
+           by NAT_1:23;
+        hence thesis by T1,T2;
+      end; then
+      (difference f) div 210 >= 1 + 1 by NAT_1:13; then
+S0:   difference f >= 2 * 210 by T2,XREAL_1:64;
+      f.0 is Prime by A1; then
+      f.0 > 1 by INT_2:def 4; then
+S1:   f.0 >= 1+1 by NAT_1:13;
+      f = ArProg (f.0, difference f) by NUMBER06:6; then
+A4:   f.9 = 9 * difference f + f.0 by NUMBER06:7;
+      9 * difference f >= 9 * (2 * 210) by S0,XREAL_1:64; then
+      f.0 + 9 * difference f >= 2 + 9 * 420 by S1,XREAL_1:7;
+      hence thesis by A4,XXREAL_0:2;
+    end;
+  end;

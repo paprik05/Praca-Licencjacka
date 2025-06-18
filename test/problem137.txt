@@ -39,14 +39,3 @@ A9: rng f c= A
     f is one-to-one by Th92;
     hence thesis by A2,A9,CARD_1:59;
   end;
-
-begin :: Problem 138
-
-registration
-  cluster infinite natural-membered for set;
-  existence
-  proof
-    take NAT;
-    thus thesis;
-  end;
-end;

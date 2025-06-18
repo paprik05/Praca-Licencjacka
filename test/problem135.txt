@@ -1,4 +1,4 @@
-theorem :: Problem 135
+theorem
   for p being Prime st
     p+2 is Prime & p+6 is Prime & p+8 is Prime & p+12 is Prime & p+14 is Prime
       holds

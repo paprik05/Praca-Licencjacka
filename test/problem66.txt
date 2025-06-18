@@ -1,4 +1,4 @@
-theorem :: Problem 66
+theorem
   4,11 are_coprime &
   for m being Nat holds not ArProg (4,11).m is Fibonacci
 proof

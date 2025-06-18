@@ -1,4 +1,4 @@
-theorem Th39:
+theorem
   5 divides 2|^(2*n+1) - 2|^(n+1) + 1 iff n mod 4 = 1 or n mod 4 = 2
   proof
     consider k such that
@@ -15,7 +15,7 @@ A3: an(4*k+2) mod 5 = 0 by Lm36;
     hence thesis by A1,A2,A3,Lm8,NAT_D:21,INT_1:62;
   end;
 
-theorem Th40:
+theorem
   5 divides 2|^(2*n+1) + 2|^(n+1) + 1 iff n mod 4 = 0 or n mod 4 = 3
   proof
     consider k such that

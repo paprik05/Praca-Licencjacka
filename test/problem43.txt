@@ -1,45 +1,4 @@
-definition let n be Nat;
-  func Tetrahedron n -> Nat equals
-    n * (n+1) * (n+2) / 6;
-  coherence
-  proof
-A1: 2 divides (n * (n+1) * (n+2))
-    proof
-      per cases;
-      suppose n is odd;
-        thus thesis by ABIAN:def 1;
-      end;
-      suppose n is even;
-        thus thesis by ABIAN:def 1;
-      end;
-    end;
-    3 divides (n * (n+1) * (n+2))
-    proof
-      per cases by NUMBER06:18;
-      suppose 3 divides n; then
-        3 divides n * ((n+1) * (n+2)) by NAT_D:9;
-        hence thesis;
-      end;
-      suppose 3 divides n + 1; then
-        3 divides (n+1) * (n * (n+2)) by NAT_D:9;
-        hence thesis;
-      end;
-      suppose 3 divides n + 2;
-        hence thesis by NAT_D:9;
-      end;
-    end; then
-    2 * 3 divides (n * (n+1) * (n+2))
-      by A1,INT_2:30,INT_2:28,XPRIMES1:3,PEPIN:4;
-    hence thesis;
-  end;
-end;
-
-definition let n be Nat;
-  attr n is tetrahedral means
-    ex k being Nat st n = Tetrahedron k;
-end;
-
-theorem :: Problem 43
+theorem
   for n being Nat holds
   ex f being increasing non-empty FinSequence of NAT st
     dom f = Seg (n + 1) &

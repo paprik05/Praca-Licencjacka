@@ -1,4 +1,4 @@
-theorem :: Problem 60
+theorem
   not ex n being Nat st
     n is perfect_power & n+1 is perfect_power &
       n+2 is perfect_power & n+3 is perfect_power

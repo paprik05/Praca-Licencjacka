@@ -1,0 +1,125 @@
+theorem
+  for k,l,m being Nat st 0 < k < l < m &
+    :::: two exceptions implicitly stated
+       not (k = 2 & l = 3 & m = 4) &
+       not (k = 1 & l = 4 & m = 5) &
+    Fib (m) - Fib (l) = Fib (l) - Fib (k) & Fib l - Fib k > 0 holds
+       l > 2 & k = l - 2 & m = l + 1  :: niekoniecznie, dla k = 2 jest OK
+proof
+    let k,l,m be Nat;
+    set uk = Fib k, ul = Fib l, um = Fib m;
+    assume
+A1: 0 < k < l < m &
+    not (k = 2 & l = 3 & m = 4) &
+    not (k = 1 & l = 4 & m = 5) &
+    Fib m - Fib l = Fib l - Fib k &
+    Fib l - Fib k > 0; then
+    k >= 1 + 0 by NAT_1:13; then
+II: l > 1 by A1,XXREAL_0:2;
+sO: Fib l > 1
+    proof
+      assume Fib l <= 1; then
+      Fib l < 1+1 by NAT_1:13; then
+Ia:   Fib l = 0 or Fib l = 1 by NAT_1:23;
+      Fib l - Fib k + Fib k > 0 + Fib k by A1,XREAL_1:8; then
+      Fib k = 0 by Ia,NAT_1:14;
+      hence thesis by A1,LemmaFib0;
+    end; then
+SO: l > 2 by FibGe2; then
+    l >= 2+1 by NAT_1:13; then
+Y1: m > 3 by A1,XXREAL_0:2;
+h1: Fib l < Fib (l+1) by II,FIB_NUM2:44;
+    um = ul + ul - uk by A1; then
+H1: um < ul + ul by XREAL_1:44,A1,LemmaFib0;
+    ul + ul < ul + Fib (l+1) by h1,XREAL_1:8; then
+    ul + ul < Fib (l+1+1) by PRE_FF:1; then
+XX: Fib m < Fib (l+1+1) by H1,XXREAL_0:2;
+    l + 1 <= m by A1,NAT_1:13; then
+S2: um >= Fib (l+1) by FIB_NUM2:45;
+JK: m in NAT by ORDINAL1:def 12;
+    m > 1 by Y1,XXREAL_0:2; then
+dd: Fib m <= Fib (l+1) by XX,FiboLeq; then
+dx: Fib m = Fib (l+1) by S2,XXREAL_0:1;
+    reconsider l1 = l - 1 as Nat by A1;
+    reconsider l2 = l - 2 as Element of NAT by SO,INT_1:5;
+    per cases;
+    suppose
+D1:   k = 1;
+K1:   Fib l2 + Fib (l2+1) = Fib (l2+1+1) by PRE_FF:1;
+x2:   Fib (l1+1+1) = Fib (l1+1) + Fib l1 by PRE_FF:1;
+      2 * ul - um = ul - (Fib(l+1) - ul) by dx; then
+      l2 = 1 or l2 = 2 by FIB_NUM2:47,D1,PRE_FF:1,K1,A1,x2; then
+      per cases;
+      suppose
+        l = 3;
+        hence thesis by dx,A1,JK,FIB_NUM2:48,D1;
+      end;
+      suppose
+        l = 4;
+        hence thesis by A1,D1,dx,JK,FIB_NUM2:48;
+      end;
+    end;
+    suppose
+JA:   k <> 1;
+      per cases;
+      suppose
+Ss:     l2 = 1; then
+        3 - Fib 3 = Fib 3 - Fib k by FIB_NUM2:23,dd,A1,S2,XXREAL_0:1;
+        hence thesis by dx,A1,Ss,FIB_NUM2:47,48,22,II,JK;
+      end;
+      suppose
+ja:     l2 <> 1;
+K1:     Fib l2 + Fib (l2+1) = Fib (l2+1+1) by PRE_FF:1;
+X2:     Fib (l1+1+1) = Fib (l1+1) + Fib l1 by PRE_FF:1;
+        l <> 0 by sO,FibGe2; then
+LL:     m > 1 & l+1 <> 1 by Y1,XXREAL_0:2;
+        2 * ul - um = ul - (Fib(l+1) - ul) by dx;
+        hence thesis by sO,LL,JA,ja,Th48,K1,A1,X2,FibGe2;
+      end;
+    end;
+  end;
+
+theorem
+  not ex k,l,m,n being Nat st 0 < k < l < m < n &
+    Fib (m) - Fib (l) = Fib (l) - Fib (k) = Fib n - Fib m &
+      Fib l - Fib k > 0
+  proof
+    assume ex k,l,m,n being Nat st 0 < k < l < m < n &
+    Fib (m) - Fib (l) = Fib (l) - Fib (k) = Fib n - Fib m &
+      Fib l - Fib k > 0; then
+    consider k,l,m,n being Nat such that
+A1: 0 < k < l < m < n &
+    Fib (m) - Fib (l) = Fib (l) - Fib (k) = Fib n - Fib m &
+      Fib l - Fib k > 0;
+    per cases;
+    suppose
+      not (k = 2 & l = 3 & m = 4) &
+      not (k = 1 & l = 4 & m = 5); then
+A2:   l > 2 & k = l - 2 & m = l + 1 by A1,Problem64Part1; then
+      n >= l + 1 + 1 by A1,NAT_1:13; then
+P1:   Fib n >= Fib (l+2) by FIB_NUM2:45;
+      Fib (l+1+1) = Fib (l+1) + Fib l by PRE_FF:1; then
+S1:   Fib (l+2) - Fib (l+1) = Fib l;
+      reconsider l1 = l - 1 as Element of NAT by A2,INT_1:5,XXREAL_0:2;
+b2:   l - 1 > 2 - 1 by A2,XREAL_1:14;
+B1:   Fib n - Fib (l+1) >= Fib l by S1,P1,XREAL_1:13;
+ba:   l > l1 by XREAL_1:44;
+      Fib (l1+1+1) = Fib (l1+1) + Fib l1 by PRE_FF:1;
+      hence thesis by A1,A2,ba,B1,b2,FIB_NUM2:46;
+    end;
+    suppose not
+      (not (k = 2 & l = 3 & m = 4) &
+      not (k = 1 & l = 4 & m = 5)); then
+      per cases;
+      suppose
+SU:     k = 2 & l = 3 & m = 4; then
+        Fib l - Fib k = 1 by FIB_NUM2:21,22;
+        hence thesis by A1,LemmaGe1,SU;
+      end;
+      suppose
+SU:     k = 1 & l = 4 & m = 5; then
+        Fib l - Fib k = 2 by FIB_NUM2:23,PRE_FF:1;
+        hence thesis by A1,LemmaGe2a,SU;
+      end;
+    end;
+  end;

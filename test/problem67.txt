@@ -1,4 +1,4 @@
-theorem :: Problem 67
+theorem
   for a,b being Nat st a > 0 & a,b are_coprime
     ex N be infinite Subset of NAT st
        for n,m be Nat st n in N & m in N & n <> m holds

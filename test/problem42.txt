@@ -1,4 +1,4 @@
-theorem CoprimeDivides:  :: see WSIERP_1:16
+theorem
   for a,m,n being Nat st a,m are_coprime & n divides a holds
     n,m are_coprime
   proof

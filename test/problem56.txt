@@ -1,4 +1,4 @@
-theorem :: Problem 56
+theorem
   for i being Nat holds ArProg (2,3).i is non triangular
   proof
     let i be Nat;

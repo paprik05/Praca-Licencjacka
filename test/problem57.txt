@@ -1,4 +1,4 @@
-theorem :: Problem 57
+theorem
   for m, n being non zero Nat,
       A being set st
     A = { i where i is Nat : ArProg (m,n).i is square } holds

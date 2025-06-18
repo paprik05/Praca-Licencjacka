@@ -1,4 +1,4 @@
-theorem :: Problem 54
+theorem
   for x,y,z being Nat st
     y = 5 * x + 2 & z = 7 * x + 3 holds
       x * (x + 1), y * (y + 1), z * (z + 1) form_an_AP &
@@ -13,7 +13,7 @@ TT: 5 * x + 0 < 5 * x + 2 by XREAL_1:8;
     hence thesis by TT,A1,XREAL_1:8,t0,XXREAL_0:2;
   end;
 
-theorem :: Problem 54
+theorem
   {<*x,y,z*> where x is Real, y is Real, z is Real :
      x*(x+1), y*(y+1), z*(z+1) form_an_AP } is infinite
   proof

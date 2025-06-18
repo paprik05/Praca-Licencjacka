@@ -1,4 +1,4 @@
-theorem :: Problem 38 b
+theorem
   { n where n is Nat: card divisors(n,4,1) = card divisors(n,4,3) } is infinite
   proof
     deffunc A(Nat) = divisors($1,4,1);

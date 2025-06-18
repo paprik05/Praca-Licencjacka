@@ -1,4 +1,4 @@
-theorem :: Problem 38 a
+theorem
   for n being non zero Nat holds card divisors(n,4,3) <= card divisors(n,4,1)
 proof
   defpred P[Nat] means

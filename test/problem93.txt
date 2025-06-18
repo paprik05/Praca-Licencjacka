@@ -1,4 +1,4 @@
-theorem :: Problem 93
+theorem
   for r be Real_Sequence st
     for n be non zero Nat ex q be Prime st
        r.n = q/n & not q divides n &

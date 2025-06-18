@@ -67,10 +67,14 @@ from problems.prob60 import prob60
 from problems.prob61 import prob61
 from problems.prob62 import prob62
 from problems.prob63 import prob63
+from problems.prob64 import prob64
 from problems.prob66 import prob66
 from problems.prob67 import prob67
 from problems.prob68 import prob68
+from problems.prob69 import prob69
 from problems.prob70 import prob70
+from problems.prob71 import prob71
+from problems.prob72 import prob72
 from problems.prob74 import prob74
 from problems.prob75 import prob75
 from problems.prob76 import prob76
@@ -78,6 +82,7 @@ from problems.prob77 import prob77
 from problems.prob78 import prob78
 from problems.prob79 import prob79
 from problems.prob80 import prob80
+from problems.prob81 import prob81
 from problems.prob82 import prob82
 from problems.prob83 import prob83
 from problems.prob84 import prob84
@@ -90,6 +95,7 @@ from problems.prob91 import prob91
 from problems.prob92 import prob92
 from problems.prob93 import prob93
 from problems.prob94 import prob94
+from problems.prob95 import prob95
 from problems.prob96 import prob96
 from problems.prob97 import prob97
 from problems.prob98 import prob98
@@ -112,8 +118,9 @@ from problems.prob139 import prob139
 problem_ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
                21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 381, 382, 383, 39, 40,
                41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 511, 52, 53, 54, 55, 56, 57, 58, 59,
-               60, 61, 62, 63, 66, 67, 68, 70, 74, 75, 76, 77, 78, 79, 80, 82, 83, 84, 85, 86, 87, 88, 90, 91,
-               92, 93, 94, 96, 97, 98, 99, 100, 105, 111, 116, 120, 121, 122, 123, 124, 125, 131, 135, 137, 139]
+               60, 61, 62, 63, 64, 66, 67, 68, 69, 70, 71, 72, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 90, 91,
+               92, 93, 94, 95, 96, 97, 98, 99, 100, 105, 111, 116, 120, 121, 122, 123, 124, 125, 131, 135, 137, 139,
+                ]
 
 problem_data = {
     1: {
@@ -125,6 +132,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER01:1", "url": "http://mizar.uwb.edu.pl/version/current/html/number01.html#T1"}
         ]
     },
     2: {
@@ -140,6 +150,9 @@ problem_data = {
                 "label": "Maksymalna sprawdzana wartość x:",
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER01:5", "url": "http://mizar.uwb.edu.pl/version/current/html/number01.html#T5"}
         ]
     },
     3: {
@@ -151,6 +164,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER01:6", "url": "http://mizar.uwb.edu.pl/version/current/html/number01.html#T6"}
         ]
     },
     4: {
@@ -162,6 +178,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER01:7", "url": "http://mizar.uwb.edu.pl/version/current/html/number01.html#T7"}
         ]
     },
     5: {
@@ -173,15 +192,24 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER01:8", "url": "http://mizar.uwb.edu.pl/version/current/html/number01.html#T8"}
         ]
     },
     6: {
         "description": r"6.Prove the theorem, due to Kraitchik, asserting that \(13|2^70+3^70\)",
-        "inputs": []
+        "inputs": [],
+        "links": [
+            {"title": "NUMBER01:9", "url": "http://mizar.uwb.edu.pl/version/current/html/number01.html#T9"}
+        ]
     },
     7: {
         "description": r"7.Prove that \(11*31*61|20^15-1\)",
-        "inputs": []
+        "inputs": [],
+        "links": [
+            {"title": "NUMBER01:10", "url": "http://mizar.uwb.edu.pl/version/current/html/number01.html#T10"}
+        ]
     },
     8: {
         "description": "8. Prove that for a positive integer \\(m\\) and \\(a > 1\\), we have \n\\[\n\\gcd\\left(\\frac{a^m - 1}{a - 1},\\, a - 1\\right) = \\gcd(a - 1, m).\n\\]\n",
@@ -198,6 +226,9 @@ problem_data = {
                 "min": 2,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER01:13", "url": "http://mizar.uwb.edu.pl/version/current/html/number01.html#T13"}
         ]
     },
     9: {
@@ -209,6 +240,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER01:14", "url": "http://mizar.uwb.edu.pl/version/current/html/number01.html#T14"}
         ]
     },
     10: {
@@ -220,6 +254,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER01:18", "url": "http://mizar.uwb.edu.pl/version/current/html/number01.html#T18"}
         ]
     },
     11: {
@@ -231,6 +268,11 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER03:39", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T39"},
+            {"title": "NUMBER03:40", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T40"},
+            {"title": "NUMBER03:41", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T41"}
         ]
     },
     12: {
@@ -254,6 +296,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER05:2", "url": "http://mizar.uwb.edu.pl/version/current/html/number05.html#T2"}
         ]
     },
     13: {
@@ -277,6 +322,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER05:5", "url": "http://mizar.uwb.edu.pl/version/current/html/number05.html#T5"}
         ]
     },
     14: {
@@ -288,6 +336,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER02:42", "url": "http://mizar.uwb.edu.pl/version/current/html/number02.html#T42"}
         ]
     },
     15: {
@@ -299,6 +350,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER02:43", "url": "http://mizar.uwb.edu.pl/version/current/html/number02.html#T43"}
         ]
     },
     16: {
@@ -310,6 +364,10 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER03:42", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T42"},
+            {"title": "NUMBER03:43", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T43"}
         ]
     },
     17: {
@@ -327,6 +385,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER04:25", "url": "http://mizar.uwb.edu.pl/version/current/html/number04.html#T25"}
         ]
     },
     18: {
@@ -338,6 +399,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER04:26", "url": "http://mizar.uwb.edu.pl/version/current/html/number04.html#T26"}
         ]
     },
     19: {
@@ -349,6 +413,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER03:44", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T44"}
         ]
     },
     20: {
@@ -360,6 +427,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER03:46", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T46"}
         ]
     },
     21: {
@@ -371,6 +441,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER03:47", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T47"}
         ]
     },
 
@@ -383,6 +456,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER03:48", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T48"}
         ]
     },
 
@@ -401,6 +477,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER03:51", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T51"}
         ]
     },
 
@@ -413,6 +492,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER03:52", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T52"}
         ]
     },
 
@@ -425,6 +507,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER08:48", "url": "http://mizar.uwb.edu.pl/version/current/html/number08.html#T48"}
         ]
     },
 
@@ -437,22 +522,44 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER04:27", "url": "http://mizar.uwb.edu.pl/version/current/html/number04.html#T27"},
+            {"title": "NUMBER04:28", "url": "http://mizar.uwb.edu.pl/version/current/html/number04.html#T28"},
+            {"title": "NUMBER04:31", "url": "http://mizar.uwb.edu.pl/version/current/html/number04.html#T31"}
         ]
     },
 
     27: {
         "description": r"27.Find two least composite numbers \(n\) such that \(n|2^n-2\) and \(n|3^n-3\).",
-        "inputs": []
+        "inputs": [],
+        "links": [
+            {"title": "NUMBER04:33", "url": "http://mizar.uwb.edu.pl/version/current/html/number04.html#T33"},
+            {"title": "NUMBER04:35", "url": "http://mizar.uwb.edu.pl/version/current/html/number04.html#T35"},
+            {"title": "NUMBER04:40", "url": "http://mizar.uwb.edu.pl/version/current/html/number04.html#T40"},
+            {"title": "NUMBER04:48", "url": "http://mizar.uwb.edu.pl/version/current/html/number04.html#T48"},
+            {"title": "NUMBER04:54", "url": "http://mizar.uwb.edu.pl/version/current/html/number04.html#T54"},
+            {"title": "NUMBER04:60", "url": "http://mizar.uwb.edu.pl/version/current/html/number04.html#T60"},
+            {"title": "NUMBER04:61", "url": "http://mizar.uwb.edu.pl/version/current/html/number04.html#T61"}
+        ]
     },
 
     28: {
         "description": r"28.Find the least positive integer \(n\) such that \(n|2^n-2\) but \(n\not|\;3^n-3\).",
-        "inputs": []
+        "inputs": [],
+        "links": [
+            {"title": "NUMBER04:36", "url": "http://mizar.uwb.edu.pl/version/current/html/number04.html#T36"},
+            {"title": "NUMBER04:50", "url": "http://mizar.uwb.edu.pl/version/current/html/number04.html#T50"},
+            {"title": "NUMBER04:63", "url": "http://mizar.uwb.edu.pl/version/current/html/number04.html#T63"}
+        ]
     },
 
     29: {
         "description": r"29.Find the least integer \(n\) such that \(n\not|\;2^n-2\) but \(n|3^n-3\).",
-        "inputs": []
+        "inputs": [],
+        "links": [
+            {"title": "NUMBER02:44", "url": "http://mizar.uwb.edu.pl/version/current/html/number02.html#T44"}
+        ]
     },
 
     30: {
@@ -464,6 +571,9 @@ problem_data = {
                 "min": 1,
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER02:45", "url": "http://mizar.uwb.edu.pl/version/current/html/number02.html#T45"}
         ]
     },
 
@@ -488,6 +598,9 @@ problem_data = {
                 "type": "number",
                 "min": 1
             }
+        ],
+        "links": [
+            {"title": "NUMBER05:7", "url": "http://mizar.uwb.edu.pl/version/current/html/number05.html#T7"}
         ]
     },
     32: {
@@ -499,6 +612,9 @@ problem_data = {
                 "min": 1,
                 "type": "number"
             }
+        ],
+        "links": [
+            {"title": "NUMBER05:11", "url": "http://mizar.uwb.edu.pl/version/current/html/number05.html#T11"}
         ]
     },
     33: {
@@ -522,6 +638,10 @@ problem_data = {
                 "type": "number",
                 "min": 1
             }
+        ],
+        "links": [
+            {"title": "NUMBER05:13", "url": "http://mizar.uwb.edu.pl/version/current/html/number05.html#T13"},
+            {"title": "NUMBER05:14", "url": "http://mizar.uwb.edu.pl/version/current/html/number05.html#T14"}
         ]
     },
     34: {
@@ -537,6 +657,9 @@ problem_data = {
                 "label": "Podaj liczbę b:",
                 "type": "number",
             }
+        ],
+        "links": [
+            {"title": "NUMBER02:52", "url": "http://mizar.uwb.edu.pl/version/current/html/number02.html#T52"}
         ]
     },
     35: {
@@ -548,6 +671,11 @@ problem_data = {
                 "min": 1,
                 "type": "number"
             }
+        ],
+        "links": [
+            {"title": "NUMBER05:16", "url": "http://mizar.uwb.edu.pl/version/current/html/number05.html#T16"},
+            {"title": "NUMBER05:17", "url": "http://mizar.uwb.edu.pl/version/current/html/number05.html#T17"},
+            {"title": "NUMBER05:18", "url": "http://mizar.uwb.edu.pl/version/current/html/number05.html#T18"}
         ]
     },
     36: {
@@ -581,6 +709,9 @@ problem_data = {
                 "min": 1,
                 "type": "number"
             }
+        ],
+        "links": [
+            {"title": "NUMBER15:22", "url": "http://mizar.uwb.edu.pl/version/current/html/number15.html#T22"}
         ]
     },
     382: {
@@ -592,6 +723,9 @@ problem_data = {
                 "min": 1,
                 "type": "number"
             }
+        ],
+        "links": [
+            {"title": "NUMBER15:33", "url": "http://mizar.uwb.edu.pl/version/current/html/number15.html#T33"}
         ]
     },
     383: {
@@ -603,6 +737,9 @@ problem_data = {
                 "min": 1,
                 "type": "number"
             }
+        ],
+        "links": [
+            {"title": "NUMBER15:40", "url": "http://mizar.uwb.edu.pl/version/current/html/number15.html#T40"}
         ]
     },
     39: {
@@ -632,6 +769,9 @@ problem_data = {
                 "min": 3,
                 "type": "number"
             }
+        ],
+        "links": [
+            {"title": "NUMBER03:53", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T53"}
         ]
     },
     40: {
@@ -643,6 +783,9 @@ problem_data = {
                 "min": 1,
                 "type": "number"
             }
+        ],
+        "links": [
+            {"title": "NUMBER05:20", "url": "http://mizar.uwb.edu.pl/version/current/html/number05.html#T20"}
         ]
     },
     41: {
@@ -654,6 +797,10 @@ problem_data = {
                 "min": 1,
                 "type": "number"
             }
+        ],
+        "links": [
+            {"title": "NUMBER13:6", "url": "http://mizar.uwb.edu.pl/version/current/html/number13.html#T6"},
+            {"title": "NUMBER13:7", "url": "http://mizar.uwb.edu.pl/version/current/html/number13.html#T7"}
         ]
     },
     42: {
@@ -665,6 +812,9 @@ problem_data = {
                 "min": 1,
                 "type": "number"
             }
+        ],
+        "links": [
+            {"title": "NUMBER12:10", "url": "http://mizar.uwb.edu.pl/version/current/html/number12.html#T10"}
         ]
     },
     43: {
@@ -676,6 +826,9 @@ problem_data = {
                 "min": 1,
                 "type": "number"
             }
+        ],
+        "links": [
+            {"title": "NUMBER12:11", "url": "http://mizar.uwb.edu.pl/version/current/html/number12.html#T11"}
         ]
     },
     44: {
@@ -699,6 +852,9 @@ problem_data = {
                 "min": 1,
                 "type": "number"
             }
+        ],
+        "links": [
+            {"title": "NUMBER03:54", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T54"}
         ]
     },
     45: {
@@ -708,6 +864,9 @@ problem_data = {
             {"id": "inputNumberB45", "label": "Podaj liczbę b:", "type": "number", "min": 1},
             {"id": "inputNumberC45", "label": "Podaj liczbę c:", "type": "number", "min": 1},
             {"id": "inputNumberN45", "label": "Podaj ilość liczb n spełniających dany warunek do wyświetlenia:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER14:46", "url": "http://mizar.uwb.edu.pl/version/current/html/number14.html#T46"}
         ]
     },
     46: {
@@ -718,49 +877,77 @@ problem_data = {
             {"id": "inputNumberC46", "label": "Podaj liczbę c:", "type": "number", "min": 1},
             {"id": "inputNumberD46", "label": "Podaj liczbę d:", "type": "number", "min": 1},
             {"id": "inputNumberN46", "label": "Podaj maksymalną liczbę n do sprawdzenia:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER03:57", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T57"}
         ]
     },
     47: {
         "description": r"47.Prove that every integer \(>6\) can be represented as a sum of two integers \(>1\) which are relatively prime.",
         "inputs": [
             {"id": "inputNumber47", "label": "Podaj liczbę:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER05:22", "url": "http://mizar.uwb.edu.pl/version/current/html/number05.html#T22"}
         ]
     },
     48: {
         "description": r"48.Prove that every integer \(>17\) can be represented as a sum of three integers \(>1\) which are pairwise relatively prime, and show that \(17\) does not have this property.",
         "inputs": [
             {"id": "inputNumber48", "label": "Podaj liczbę:", "type": "number", "min": 1}
-        ]
+        ],
+        "links": [
+            {"title": "NUMBER07:42", "url": "http://mizar.uwb.edu.pl/version/current/html/number07.html#T42"},
+            {"title": "NUMBER07:43", "url": "http://mizar.uwb.edu.pl/version/current/html/number07.html#T43"}
+]
+
     },
     49: {
         "description": r"49.Prove that for every positive integer \(m\) every even number \(2k\) can be represented as a difference of two positive integers relatively prime to \(m\).",
         "inputs": [
             {"id": "inputNumberM49", "label": "Podaj liczbę m:", "type": "number", "min": 1},
             {"id": "inputNumberE49", "label": "Podaj liczbę parzystą:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER14:54", "url": "http://mizar.uwb.edu.pl/version/current/html/number14.html#T54"},
+            {"title": "NUMBER14:55", "url": "http://mizar.uwb.edu.pl/version/current/html/number14.html#T55"}
         ]
     },
     50: {
         "description": r"50.Prove that Fibonacci's sequence (defined by conditions \(u_1 = u_2 = 1, u_{n+2} = u_n+u_{n+1}, n=1,2,...\)) contains an infinite increasing sequence such that every two terms of this sequence are relatively prime.",
         "inputs": [
             {"id": "inputNumber50", "label": "Podaj maksymalną liczbę do sprawdzenia:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER06:17", "url": "http://mizar.uwb.edu.pl/version/current/html/number06.html#T17"}
         ]
     },
     51: {
         "description": r"51.Prove that \((n,2^{2^n}+1) = 1\) for \(n = 1,2,...\).",
         "inputs": [
             {"id": "inputNumber51", "label": "Podaj liczbę n:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER12:12", "url": "http://mizar.uwb.edu.pl/version/current/html/number12.html#T12"}
         ]
+
     },
     511: {
         "description": r"51a.Prove that there exist infinitely many positive integers \(n\) such that \((n,2^n-1)>1\), and find the least of them.",
         "inputs": [
             {"id": "inputNumber511", "label": "Podaj ilość liczb n spełniających dany warunek do wyświetlenia:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER12:15", "url": "http://mizar.uwb.edu.pl/version/current/html/number12.html#T15"}
         ]
     },
     52: {
         "description": r"52.Prove that there exist arbitrarily long arithmetic progressions formed of different positive integers such that every two terms of these progressions are relatively prime.",
         "inputs": [
             {"id": "inputNumber52", "label": "Podaj długość ciągu", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER06:22", "url": "http://mizar.uwb.edu.pl/version/current/html/number06.html#T22"}
         ]
     },
     53: {
@@ -775,18 +962,28 @@ problem_data = {
         "description": r"54.Prove that there exist infinitely many triplets of positive integers \(x,y,z\) for which the numbers \(x(x+1),y(y+1),z(z+1)\) form an increasing arithmetic progression.",
         "inputs": [
             {"id": "inputNumber54", "label": "Podaj maksymalną liczbę x do sprawdzenia:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER06:24", "url": "http://mizar.uwb.edu.pl/version/current/html/number06.html#T24"}
         ]
     },
     55: {
         "description": r"55.Find all rectangular triangles with integer sides forming an arithmetic progression.",
         "inputs": [
             {"id": "inputNumber55", "label": "Maksymalna długośc najdłuższego boku trójkąta::", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER06:25", "url": "http://mizar.uwb.edu.pl/version/current/html/number06.html#T25"}
         ]
+
     },
     56: {
         "description": r"56.Find an increasing arithmetic progression with the least possible difference, formed of positive integers and containing no triangular number.",
         "inputs": [
             {"id": "inputNumber56", "label": "Podaj długość ciągu:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER06:34", "url": "http://mizar.uwb.edu.pl/version/current/html/number06.html#T34"}
         ]
     },
     57: {
@@ -794,12 +991,18 @@ problem_data = {
         "inputs": [
             {"id": "inputNumberA57", "label": "Podaj liczbę a:", "type": "number", "min": 1},
             {"id": "inputNumberB57", "label": "Podaj liczbę b:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER12:19", "url": "http://mizar.uwb.edu.pl/version/current/html/number12.html#T19"}
         ]
     },
     58: {
         "description": r"58.Prove that there exist arbitrarily long arithmetic progressions formed of different positive integers, whose terms are powers of positive integers with integer exponents \(>1\).",
         "inputs": [
             {"id": "inputNumber58", "label": "Podaj długość ciągu:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER15:51", "url": "http://mizar.uwb.edu.pl/version/current/html/number15.html#T51"}
         ]
     },
     59: {
@@ -808,6 +1011,9 @@ problem_data = {
             {"id": "inputNumberStart59", "label": "Podaj limit przeszukiwania:", "type": "number", "min": 1},
             {"id": "inputNumberDiff59", "label": "Podaj róznicę między liczbami:", "type": "number", "min": 1},
             {"id": "inputNumberLen59", "label": "Podaj długość ciągu:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER12:22", "url": "http://mizar.uwb.edu.pl/version/current/html/number12.html#T22"}
         ]
     },
     60: {
@@ -815,6 +1021,9 @@ problem_data = {
         "inputs": [
             {"id": "inputNumberStart60", "label": "Podaj początek zakresu:", "type": "number", "min": 1},
             {"id": "inputNumberEnd60", "label": "Podaj koniec zakresu:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER06:40", "url": "http://mizar.uwb.edu.pl/version/current/html/number06.html#T40"}
         ]
     },
     61: {
@@ -832,6 +1041,9 @@ problem_data = {
             {"id": "inputNumberB62", "label": "Podaj liczbę b:", "type": "number", "min": 1},
             {"id": "inputNumberM62", "label": "Podaj liczbę m:", "type": "number", "min": 1},
             {"id": "inputNumberN62", "label": "Podaj liczbę wyrazów do wyświetlenia:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER09:17", "url": "http://mizar.uwb.edu.pl/version/current/html/number09.html#T17"}
         ]
     },
     63: {
@@ -840,12 +1052,32 @@ problem_data = {
             {"id": "inputNumberA63", "label": "Podaj liczbę a:", "type": "number", "min": 1},
             {"id": "inputNumberB63", "label": "Podaj liczbę b:", "type": "number", "min": 1},
             {"id": "inputNumberPrefix63", "label": "Podaj prefix:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER16:4", "url": "http://mizar.uwb.edu.pl/version/current/html/number16.html#T4"}
+        ]
+    },
+    64: {
+        "description": r"64. Find all increasing arithmetic progressions formed of three terms of the Fibonacci sequence (see Problem 50), and prove that there are no increasing arithmetic progressions formed of four terms of this sequence.",
+        "inputs": [
+            {
+                "id": "inputNumber64",
+                "label": "Podaj koniec przeszukiwanego zakresu:",
+                "min": 1,
+                "type": "number"
+            }
+        ],
+        "links": [
+            {"title": "NUMBER06:41", "url": "http://mizar.uwb.edu.pl/version/current/html/number06.html#T41"}
         ]
     },
     66: {
         "description": r"66.Find a progression \(ak+b(k=0,1,2,...)\), with positive integers \(a\) and \(b\) such that \((a,b)=1\), which does not contain any term of Fibonacci sequence.",
         "inputs": [
             {"id": "inputNumber66", "label": "Podaj długość ciągu:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER16:15", "url": "http://mizar.uwb.edu.pl/version/current/html/number16.html#T15"}
         ]
     },
     67: {
@@ -854,6 +1086,9 @@ problem_data = {
             {"id": "inputNumberA67", "label": "Podaj liczbę a:", "type": "number", "min": 1},
             {"id": "inputNumberB67", "label": "Podaj liczbę b:", "type": "number", "min": 1},
             {"id": "inputNumberN67", "label": "Podaj liczbę wyrazów do wyświetlenia:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER16:5", "url": "http://mizar.uwb.edu.pl/version/current/html/number16.html#T5"}
         ]
     },
     68: {
@@ -862,34 +1097,90 @@ problem_data = {
             {"id": "inputNumberA68", "label": "Podaj liczbę a:", "type": "number", "min": 1},
             {"id": "inputNumberB68", "label": "Podaj liczbę b:", "type": "number", "min": 1},
             {"id": "inputNumberN68", "label": "Podaj liczbę wyrazów:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER16:6", "url": "http://mizar.uwb.edu.pl/version/current/html/number16.html#T6"}
+        ]
+    },
+    69: {
+        "description": r"69.From the theorem of Lejeune-Dirichlet, asserting that each arithmetic progression \(ak+b\) \((k=0,1,2,...)\) with relatively prime positive integers \(a\) and \(b\) contains infinitely many primes, deduce that for every such progression and every positive integer \(s\) there exist infinitely any terms which are products of \(s\) distinct primes.",
+        "inputs": [
+            {"id": "inputNumberA69", "label": "Podaj liczbę a:", "type": "number", "min": 1},
+            {"id": "inputNumberB69", "label": "Podaj liczbę b:", "type": "number", "min": 1},
+            {"id": "inputNumberS69", "label": "Podaj liczbę s:", "type": "number", "min": 1},
+            {"id": "inputNumberCount69", "label": "Podaj liczbę wyrazów:", "type": "number", "min": 1},
+            {"id": "inputNumberLimit69", "label": "Podaj limit przeszukiwań:", "type": "number", "min": 1}
         ]
     },
     70: {
         "description": r"70.Find all arithmetic progressions with difference 10 formed of more than two primes.",
-        "inputs": []
+        "inputs": [
+            {"id": "inputNumberDiff70", "label": "Podaj rożninice między wyrazami:", "type": "number", "min": 1},
+            {"id": "inputNumberLength70", "label": "Podaj długość ciągu:", "type": "number", "min": 1},
+            {"id": "inputNumberLimit70", "label": "Podaj limit przeszukiwań:", "type": "number", "min": 1},
+        ],
+        "links": [
+            {"title": "NUMBER06:49", "url": "http://mizar.uwb.edu.pl/version/current/html/number06.html#T49"},
+            {"title": "NUMBER06:50", "url": "http://mizar.uwb.edu.pl/version/current/html/number06.html#T50"}
+        ]
+    },
+    71: {
+        "description": r"71.Find all arithmetic progressions with difference 100 formed of more than two primes.",
+        "inputs": [
+            {"id": "inputNumberDiff71", "label": "Podaj rożninice między wyrazami:", "type": "number", "min": 1},
+            {"id": "inputNumberLength71", "label": "Podaj długość ciągu:", "type": "number", "min": 1},
+            {"id": "inputNumberLimit71", "label": "Podaj limit przeszukiwań:", "type": "number", "min": 1},
+        ],
+        "links": [
+            {"title": "NUMBER06:51", "url": "http://mizar.uwb.edu.pl/version/current/html/number06.html#T51"}
+        ]
+    },
+    72: {
+        "description": r"72. Find an increasing arithmetic progression with ten terms, formed of primes, with the least possible last term.",
+        "inputs": [
+            {"id": "inputNumberLength72", "label": "Podaj długość ciągu:", "type": "number", "min": 1},
+            {"id": "inputNumberStart72", "label": "Podaj maksymalną liczbę startową przeszukiwań:", "type": "number", "min": 1},
+            {"id": "inputNumberDiff72", "label": "Podaj maksymalną różnicę między wyrazami:", "type": "number", "min": 1},
+        ],
+        "links": [
+            {"title": "NUMBER12:41", "url": "http://mizar.uwb.edu.pl/version/current/html/number12.html#T41"}
+        ]
     },
     74: {
         "description": r"74.Prove that for every even \(n > 6\) there exist primes \(p\) and \(q\) such that \((n-p,n-q) = 1\).",
         "inputs": [
             {"id": "inputNumber74", "label": "Podaj liczbę n:", "type": "number", "min": 8}
+        ],
+        "links": [
+            {"title": "NUMBER03:58", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T58"}
         ]
     },
     75: {
         "description": r"75.Find all primes which can be represented both as sums and as differences of two primes.",
         "inputs": [
             {"id": "inputNumber75", "label": "Podaj limit przeszukiwań:", "type": "number", "min": 2}
+        ],
+        "links": [
+            {"title": "NUMBER03:59", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T59"}
         ]
     },
     76: {
         "description": r"76.Find three least positive integers \(n\) such that there are no primes between \(n\) and \(n+10\), and three least positive integers \(m\) such that there are no primes between \(10m\) and \(10(m+1)\).",
         "inputs": [
             {"id": "inputNumber76", "label": "Podaj liczbę startową do sprawdzenia:", "type": "number", "min": 10}
+        ],
+        "links": [
+            {"title": "NUMBER05:30", "url": "http://mizar.uwb.edu.pl/version/current/html/number05.html#T30"},
+            {"title": "NUMBER05:36", "url": "http://mizar.uwb.edu.pl/version/current/html/number05.html#T36"}
         ]
     },
     77: {
         "description": r"77.Prove that every prime of the form \(4k+1\) is a hypotenuse of a rectangular triangle with integer sides.",
         "inputs": [
             {"id": "inputNumber77", "label": "Podaj liczbę wyników spełniających dany warunek do wyświetlenia:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER03:61", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T61"}
         ]
     },
     78: {
@@ -897,24 +1188,42 @@ problem_data = {
         "inputs": [
             {"id": "inputNumber78", "label": "Podaj dolną granicę dla p:", "type": "number", "min": 10},
             {"id": "inputNumberSol78", "label": "Podaj liczbę wyników spełniających dany warunek do wyświetlenia:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER02:53", "url": "http://mizar.uwb.edu.pl/version/current/html/number02.html#T53"}
         ]
     },
     79: {
         "description": r"79.Prove that the equation \(p^2+q^2=r^2+s^2+t^2\) has no solution with primes \(p,q,r,s,t\).",
         "inputs": [
             {"id": "inputNumber79", "label": "Podaj limit przeszukiwań:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER05:45", "url": "http://mizar.uwb.edu.pl/version/current/html/number05.html#T45"}
         ]
     },
     80: {
         "description": r"80.Find all prime solutions \(p,q,r\) of the equation \(p(p+1)+q(q+1)=r(r+1)\).",
         "inputs": [
             {"id": "inputNumber80", "label": "Podaj dolną granicę dla p i q", "type": "number", "min": 10}
+        ],
+        "links": [
+            {"title": "NUMBER07:45", "url": "http://mizar.uwb.edu.pl/version/current/html/number07.html#T45"}
+        ]
+    },
+    81: {
+        "description": r"81. Find all primes \(p,q,\) and \(r\) such that the nubers \(p(p+1\), \(q(q+1)\), \(r(r+1)\) form an increasing arithmetic progression.",
+        "inputs": [
+            {"id": "inputNumber81", "label": "Podaj limit przeszukiwań:", "type": "number", "min": 1}
         ]
     },
     82: {
         "description": r"82.Find all positive integers \(n\) such that each of the numbers \(n+1,n+3,n+7,n+9,n+13\) and \(n+15\) is a prime.",
         "inputs": [
             {"id": "inputNumber82", "label": "Podaj limit przeszukiwań:", "type": "number", "min": 10}
+        ],
+        "links": [
+            {"title": "NUMBER03:63", "url": "http://mizar.uwb.edu.pl/version/current/html/number03.html#T63"}
         ]
     },
     83: {
@@ -922,12 +1231,18 @@ problem_data = {
         "inputs": [
             {"id": "inputNumber83", "label": "Podaj limit przeszukiwań:", "type": "number", "min": 10},
             {"id": "inputNumberSol83", "label": "Podaj liczbę rozwiązań:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER02:54", "url": "http://mizar.uwb.edu.pl/version/current/html/number02.html#T54"}
         ]
     },
     84: {
         "description": r"84.Prove that there exist infinitely many pairs of consecutive primes which are not twin primes.",
         "inputs": [
             {"id": "inputNumber84", "label": "Podaj liczbę wyników spełniających dany warunek do wyświetlenia:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER10:36", "url": "http://mizar.uwb.edu.pl/version/current/html/number10.html#T36"}
         ]
     },
     85: {
@@ -942,6 +1257,10 @@ problem_data = {
         "inputs": [
             {"id": "inputNumber86", "label": "Podaj liczbę wyników spełniających dany warunek do wyświetlenia:", "type": "number", "min": 10},
             {"id": "inputNumberSol86", "label": "Podaj liczbę rozwiązań", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER08:59", "url": "http://mizar.uwb.edu.pl/version/current/html/number08.html#T59"},
+            {"title": "NUMBER08:64", "url": "http://mizar.uwb.edu.pl/version/current/html/number08.html#T64"}
         ]
     },
     87: {
@@ -949,34 +1268,51 @@ problem_data = {
         "inputs": [
             {"id": "inputNumber87", "label": "Podaj limit przeszukiwań:", "type": "number", "min": 10},
             {"id": "inputNumberSol87", "label": "Podaj liczbę wyników spełniających dany warunek do wyświetlenia", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER07:56", "url": "http://mizar.uwb.edu.pl/version/current/html/number07.html#T56"},
+            {"title": "NUMBER07:58", "url": "http://mizar.uwb.edu.pl/version/current/html/number07.html#T58"}
         ]
     },
     88: {
         "description": r"88.Prove that among each three consecutive integers \(>7\) at least one has at least two different prime divisors.",
         "inputs": [
             {"id": "inputNumber88", "label": "Podaj liczbę:", "type": "number", "min": 8}
+        ],
+        "links": [
+            {"title": "NUMBER08:79", "url": "http://mizar.uwb.edu.pl/version/current/html/number08.html#T79"}
         ]
     },
     90: {
         "description": r"90.Prove that the theorem asserting that there exist only finitely many positive integers \(n\) such that both \(n\) and \(n+1\) have only one prime divisor is equivalent to the theorem asserting that there exist only finitely many prime Mersenne numbers and finitely many prime Fermat numbers.",
         "inputs": [
             {"id": "inputNumber90", "label": "Podaj limit przeszukiwań:", "type": "number", "min": 1}
-        ]
+        ],
     },
     91: {
         "description": r"91.Find all numbers of the form \(2^n-1\) with positive integer \(n\), not exceeding million, which are products of two primes, and prove that if \(n\) is even and \(>4\), then \(2^n-1\) is a product of at least three integers \(>1\).",
-        "inputs": []
+        "inputs": [],
+        "links": [
+            {"title": "NUMBER09:26", "url": "http://mizar.uwb.edu.pl/version/current/html/number09.html#T26"},
+            {"title": "NUMBER09:28", "url": "http://mizar.uwb.edu.pl/version/current/html/number09.html#T28"}
+        ]
     },
     92: {
         "description": r"92.Using Problem 47, prove that if \(p_k\) denotes the \(kth\) prime, then for \(k \geq 3\) we have the inequality \(p_{k+1}+p_{k+2} \leq p_1p_2...p_k\).",
         "inputs": [
             {"id": "inputNumber92", "label": "Podaj k:", "type": "number", "min": 4}
+        ],
+        "links": [
+            {"title": "NUMBER13:23", "url": "http://mizar.uwb.edu.pl/version/current/html/number13.html#T23"}
         ]
     },
     93: {
         "description": r"93.For positive integer \(n\), let \(q_n\) dente the least prime which is not a divisor of \(n\). Using Problem 92, prove that the ratio \( q_n/n \) tends to zero as \(n\) increases to infinity.",
         "inputs": [
             {"id": "inputNumber93", "label": "Podaj limit k:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER16:34", "url": "http://mizar.uwb.edu.pl/version/current/html/number16.html#T34"}
         ]
     },
     94: {
@@ -984,6 +1320,21 @@ problem_data = {
         "inputs": [
             {"id": "inputNumber94", "label": "Podaj dolną granicę:", "type": "number", "min": 1},
             {"id": "inputNumberMax94", "label": "Podaj górną granicę:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER10:38", "url": "http://mizar.uwb.edu.pl/version/current/html/number10.html#T38"},
+            {"title": "NUMBER10:39", "url": "http://mizar.uwb.edu.pl/version/current/html/number10.html#T39"}
+        ]
+    },
+    95: {
+        "description": r"95. Prove by elementary means that the Chebyshev theorem implies that for every positive integer \(s\), for all sufficiently large \(n\), between \(n\) and \(2n\) there exists at least one number which is a product of \(s\) different primes.",
+        "inputs": [
+            {"id": "inputNumberS95", "label": "Podaj liczbę s:", "type": "number", "min": 1},
+            {"id": "inputNumberMin95", "label": "Podaj dolną granicę przeszukiwanego zakresu:", "type": "number", "min": 1},
+            {"id": "inputNumberMax95", "label": "Podaj górną granicę przeszukiwanego zakresu", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER16:35", "url": "http://mizar.uwb.edu.pl/version/current/html/number16.html#T35"}
         ]
     },
     96: {
@@ -991,6 +1342,9 @@ problem_data = {
         "inputs": [
             {"id": "inputNumber96", "label": "Podaj limit przeszukiwań:", "type": "number", "min": 1},
             {"id": "inputNumberSol96", "label": "Podaj liczbe wyników:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER16:20", "url": "http://mizar.uwb.edu.pl/version/current/html/number16.html#T20"}
         ]
     },
     97: {
@@ -998,18 +1352,27 @@ problem_data = {
         "inputs": [
             {"id": "inputNumber97", "label": "Podaj dolną granicę:", "type": "number", "min": 10},
             {"id": "inputNumberSol97", "label": "Podaj liczbę rozwiązań n do wyświetlenia:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER02:60", "url": "http://mizar.uwb.edu.pl/version/current/html/number02.html#T60"}
         ]
     },
     98: {
         "description": r"98.Show that there are infinitely many composite numbers of the form \(10^n+3\) \((n=1,2,3,...)\).",
         "inputs": [
             {"id": "inputNumber98", "label": "Podaj liczbę rozwiązań n do wyświetlenia:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER04:67", "url": "http://mizar.uwb.edu.pl/version/current/html/number04.html#T67"}
         ]
     },
     99: {
         "description": r"99.Show that for integers \(n>1\) the number \(\frac{1}{5}(2^{4n+2}+1)\) is composite.",
         "inputs": [
             {"id": "inputNumber99", "label": "Podaj limit n do sprawdzenia:", "type": "number", "min": 2}
+        ],
+        "links": [
+            {"title": "NUMBER10:41", "url": "http://mizar.uwb.edu.pl/version/current/html/number10.html#T41"}
         ]
     },
     100: {
@@ -1023,18 +1386,29 @@ problem_data = {
         "inputs": [
             {"id": "inputNumber105", "label": "Podaj limit przeszukiwań:", "type": "number", "min": 10},
             {"id": "inputNumberSol105", "label": "Podaj liczbę rozwiązań do wyświetlenia:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER08:82", "url": "http://mizar.uwb.edu.pl/version/current/html/number08.html#T82"},
+            {"title": "NUMBER08:83", "url": "http://mizar.uwb.edu.pl/version/current/html/number08.html#T83"}
         ]
     },
     111: {
         "description": r"111.Find all primes \(p\) such that the sum of all positive integer divisors of \(p^4\) is equal to a square of an integer.",
         "inputs": [
             {"id": "inputNumber111", "label": "Podaj limit przeszukiwań:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER08:87", "url": "http://mizar.uwb.edu.pl/version/current/html/number08.html#T87"},
+            {"title": "NUMBER08:88", "url": "http://mizar.uwb.edu.pl/version/current/html/number08.html#T88"}
         ]
     },
     116: {
         "description": r"116.Prove that there exist infinitely many odd numbers \(k>0\) such that all numbers \(2^{2^n}+k\) \((n=1,2,...)\) are composite.",
         "inputs": [
             {"id": "inputNumber116", "label": "Podaj limit przeszukiwań:", "type": "number", "min": 10}
+        ],
+        "links": [
+            {"title": "NUMBER02:65", "url": "http://mizar.uwb.edu.pl/version/current/html/number02.html#T65"}
         ]
     },
     120: {
@@ -1043,6 +1417,9 @@ problem_data = {
             {"id": "inputNumberM120", "label": "Podaj wykładnik potęgi liczby k: ", "type": "number", "min": 1},
             {"id": "inputNumberLimit120", "label": "Podaj limit n:", "type": "number", "min": 1},
             {"id": "inputNumberTime120", "label": "Podaj maksymalny czas obliczeń (w sekundach):", "type": "number", "min": 5}
+        ],
+        "links": [
+            {"title": "NUMBER14:56", "url": "http://mizar.uwb.edu.pl/version/current/html/number14.html#T56"}
         ]
     },
     121: {
@@ -1050,12 +1427,27 @@ problem_data = {
         "inputs": [
             {"id": "inputNumber121", "label": "Podaj wartość liczby k:", "type": "number", "min": 1},
             {"id": "inputNumberLimit121", "label": "Podaj limit przeszukiwań:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER13:24", "url": "http://mizar.uwb.edu.pl/version/current/html/number13.html#T24"},
+            {"title": "NUMBER13:25", "url": "http://mizar.uwb.edu.pl/version/current/html/number13.html#T25"},
+            {"title": "NUMBER13:26", "url": "http://mizar.uwb.edu.pl/version/current/html/number13.html#T26"},
+            {"title": "NUMBER13:27", "url": "http://mizar.uwb.edu.pl/version/current/html/number13.html#T27"},
+            {"title": "NUMBER13:28", "url": "http://mizar.uwb.edu.pl/version/current/html/number13.html#T28"},
+            {"title": "NUMBER13:29", "url": "http://mizar.uwb.edu.pl/version/current/html/number13.html#T29"},
+            {"title": "NUMBER13:30", "url": "http://mizar.uwb.edu.pl/version/current/html/number13.html#T30"},
+            {"title": "NUMBER13:31", "url": "http://mizar.uwb.edu.pl/version/current/html/number13.html#T31"},
+            {"title": "NUMBER13:32", "url": "http://mizar.uwb.edu.pl/version/current/html/number13.html#T32"},
+            {"title": "NUMBER13:33", "url": "http://mizar.uwb.edu.pl/version/current/html/number13.html#T33"}
         ]
     },
     122: {
         "description": r"122.Find all positive integers \(k \leq 10\) such that every number \(k \cdot 2^{2^n} + 1\) \((n=1,2,...)\) is composite.",
         "inputs": [
             {"id": "inputNumber122", "label": "Podaj limit wartośći n:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER13:38", "url": "http://mizar.uwb.edu.pl/version/current/html/number13.html#T38"}
         ]
     },
     123: {
@@ -1063,6 +1455,9 @@ problem_data = {
         "inputs": [
             {"id": "inputNumber123", "label": "Podaj limit przeszukiwań wartośći n:", "type": "number", "min": 1},
             {"id": "inputNumberTime123", "label": "Podaj maksymalny czas obliczeń (w sekundach):", "type": "number", "min": 5}
+        ],
+        "links": [
+            {"title": "NUMBER13:46", "url": "http://mizar.uwb.edu.pl/version/current/html/number13.html#T46"}
         ]
     },
     124: {
@@ -1070,36 +1465,56 @@ problem_data = {
         "inputs": [
             {"id": "inputNumber124", "label": "Podaj limit wartości n:", "type": "number", "min": 1},
             {"id": "inputNumberTime124", "label": "Podaj maksymalny czas obliczeń (w sekundach):", "type": "number", "min": 5}
+        ],
+        "links": [
+            {"title": "NUMBER07:79", "url": "http://mizar.uwb.edu.pl/version/current/html/number07.html#T79"}
         ]
     },
     125: {
         "description": r"125.Prove that for every \(a\) with \(1 < a \leq 100\) there exists at least positive integer \(n \leq 6\) such that \(a^{2^n}+1\) is composite.",
         "inputs": [
             {"id": "inputNumber125", "label": "Podaj a", "type": "number", "min": 1, "max": 100}
+        ],
+        "links": [
+            {"title": "NUMBER09:49", "url": "http://mizar.uwb.edu.pl/version/current/html/number09.html#T49"}
         ]
     },
     131: {
         "description": r"131.Find all integers \(k \geq 0\) for which the sequence \(k+1,k+2,...,k+10\) contains maximal numbers of primes.",
         "inputs": [
             {"id": "inputNumber131", "label": "Podaj limit wartości k:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER14:86", "url": "http://mizar.uwb.edu.pl/version/current/html/number14.html#T86"},
+            {"title": "NUMBER14:87", "url": "http://mizar.uwb.edu.pl/version/current/html/number14.html#T87"},
+            {"title": "NUMBER14:88", "url": "http://mizar.uwb.edu.pl/version/current/html/number14.html#T88"}
         ]
     },
     135: {
         "description": r"135.Find all numbers \(p\) such that all six numbers \(p,p+2,p+6,p+8,p+12\) and \(p+14\) are primes.",
         "inputs": [
             {"id": "inputNumber135", "label": "Podaj limit wartości p:", "type": "number", "min": 2}
+        ],
+        "links": [
+            {"title": "NUMBER12:44", "url": "http://mizar.uwb.edu.pl/version/current/html/number12.html#T44"}
         ]
     },
     137: {
         "description": r"137.Prove by elementary means that the equation \(3x^2-7y^2+1=0\) has infinitely many solutions in positive integers x,y.",
         "inputs": [
             {"id": "inputNumber137", "label": "Podaj ilość oczekiwanych rozwiązań:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER08:93", "url": "http://mizar.uwb.edu.pl/version/current/html/number08.html#T93"}
         ]
     },
     139: {
-        "description": r"137.Prove by elementary means that the equation \((x-1)^2+(x+1)^2=y^2+1\) has infinitely many solutions in positive integers x,y.",
+        "description": r"139.Prove by elementary means that the equation \((x-1)^2+(x+1)^2=y^2+1\) has infinitely many solutions in positive integers x,y.",
         "inputs": [
-            {"id": "inputNumber137", "label": "Podaj ilość oczekiwanych rozwiązań:", "type": "number", "min": 1}
+            {"id": "inputNumber139", "label": "Podaj ilość oczekiwanych rozwiązań:", "type": "number", "min": 1}
+        ],
+        "links": [
+            {"title": "NUMBER08:99", "url": "http://mizar.uwb.edu.pl/version/current/html/number08.html#T99"}
         ]
     }
 
@@ -1122,7 +1537,7 @@ def split_proof_content(text):
     proof_before = text[:proof_start + len("proof")]
     proof_inside = text[proof_start + len("proof"):]
     proof_before = proof_before.strip()
-    proof_inside = proof_inside.strip()
+    proof_inside = proof_inside.replace("\n", "", 1)
     return proof_before, proof_inside
 
 @app.route('/problem/<int:prob_id>')
@@ -1152,9 +1567,8 @@ def problem_page(prob_id):
     return render_template("problem.html", prob_id=prob_id, problem=problem,
                            code_content=code_content,
                            proof_before=proof_before,
-                           proof_inside=proof_inside)
-
-
+                           proof_inside=proof_inside,
+                           links=problem.get('links', []))
 
 
 @app.route('/')
@@ -2049,6 +2463,18 @@ def calculate63():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+@app.route('/calculate64', methods=['POST'])
+def calculate64():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        n = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob64(n))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
 @app.route('/calculate66', methods=['POST'])
 def calculate66():
     data = request.get_json()
@@ -2091,9 +2517,65 @@ def calculate68():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+@app.route('/calculate69', methods=['POST'])
+def calculate69():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        a = next((int(value) for key, value in data.items() if key.startswith("inputNumberA")), None)
+        b = next((int(value) for key, value in data.items() if key.startswith("inputNumberB")), None)
+        s = next((int(value) for key, value in data.items() if key.startswith("inputNumberS")), None)
+        count = next((int(value) for key, value in data.items() if key.startswith("inputNumberCount")), None)
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumberLimit")), None)
+
+        return jsonify(prob69(a, b, s, count, limit))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
 @app.route('/calculate70', methods=['POST'])
 def calculate70():
-    return jsonify(prob70())
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        diff = next((int(value) for key, value in data.items() if key.startswith("inputNumberDiff")), None)
+        length = next((int(value) for key, value in data.items() if key.startswith("inputNumberLength")), None)
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumberLimit")), None)
+        return jsonify(prob70(diff,length,limit))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate71', methods=['POST'])
+def calculate71():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        diff = next((int(value) for key, value in data.items() if key.startswith("inputNumberDiff")), None)
+        length = next((int(value) for key, value in data.items() if key.startswith("inputNumberLength")), None)
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumberLimit")), None)
+        return jsonify(prob71(diff,length,limit))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate72', methods=['POST'])
+def calculate72():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        length = next((int(value) for key, value in data.items() if key.startswith("inputNumberLength")), None)
+        start = next((int(value) for key, value in data.items() if key.startswith("inputNumberStart")), None)
+        diff = next((int(value) for key, value in data.items() if key.startswith("inputNumberDiff")), None)
+        return jsonify(prob72(length,start,diff))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
 
 @app.route('/calculate74', methods=['POST'])
 def calculate74():
@@ -2182,6 +2664,18 @@ def calculate80():
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
+
+@app.route('/calculate81', methods=['POST'])
+def calculate81():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        limit = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
+        return jsonify(prob81(limit))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
 
 @app.route('/calculate82', methods=['POST'])
 def calculate82():
@@ -2327,6 +2821,21 @@ def calculate94():
         max = next((int(value) for key, value in data.items() if key.startswith("inputNumberMax")), None)
 
         return jsonify(prob94(n,max))
+    except ValueError:
+        return jsonify({"error": "Invalid number"}), 400
+
+@app.route('/calculate95', methods=['POST'])
+def calculate95():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data received"}), 400
+
+    try:
+        s = next((int(value) for key, value in data.items() if key.startswith("inputNumberS")), None)
+        min = next((int(value) for key, value in data.items() if key.startswith("inputNumberMin")), None)
+        max = next((int(value) for key, value in data.items() if key.startswith("inputNumberMax")), None)
+
+        return jsonify(prob95(s,min,max))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 

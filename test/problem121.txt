@@ -1,3 +1,4 @@
+theorem
   5 satisfies_Sierpinski_problem_121_for 1
   proof
     set n = 5;
@@ -23,7 +24,6 @@
     end;
   end;
 
-:: Problem 121 b
 theorem
   1 satisfies_Sierpinski_problem_121_for 2
   proof
@@ -31,8 +31,7 @@ theorem
     thus thesis by NAT_1:14;
   end;
 
-:: Problem 121 c
-theorem Th26:
+theorem
   2 satisfies_Sierpinski_problem_121_for 3
   proof
     set n = 2;
@@ -48,8 +47,7 @@ theorem Th26:
     end;
   end;
 
-:: Problem 121 d
-theorem Th27:
+theorem
   2 satisfies_Sierpinski_problem_121_for 4
   proof
     set n = 2;
@@ -65,7 +63,6 @@ theorem Th27:
     end;
   end;
 
-:: Problem 121 e
 theorem
   1 satisfies_Sierpinski_problem_121_for 5
   proof
@@ -73,7 +70,6 @@ theorem
     thus thesis by NAT_1:14;
   end;
 
-:: Problem 121 f
 theorem
   1 satisfies_Sierpinski_problem_121_for 6
   proof
@@ -81,8 +77,7 @@ theorem
     thus thesis by NAT_1:14;
   end;
 
-:: Problem 121 g
-theorem Th30:
+theorem
   3 satisfies_Sierpinski_problem_121_for 7
   proof
     set n = 3;
@@ -101,7 +96,6 @@ theorem Th30:
     end;
   end;
 
-:: Problem 121 h
 theorem
   1 satisfies_Sierpinski_problem_121_for 8
   proof
@@ -109,8 +103,7 @@ theorem
     thus thesis by NAT_1:14;
   end;
 
-:: Problem 121 i
-theorem Th32:
+theorem
   2 satisfies_Sierpinski_problem_121_for 9
   proof
     set n = 2;
@@ -126,8 +119,7 @@ theorem Th32:
     end;
   end;
 
-:: Problem 121 j
-theorem Th33:
+theorem
   2 satisfies_Sierpinski_problem_121_for 10
   proof
     set n = 2;

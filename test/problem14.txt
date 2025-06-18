@@ -1,4 +1,4 @@
-theorem Th42:
+theorem
   n^2 divides (n+1)|^n - 1
   proof
     set P = (n,1) In_Power n;

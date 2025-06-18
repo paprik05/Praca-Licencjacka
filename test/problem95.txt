@@ -1,0 +1,59 @@
+theorem
+  for s be non zero Nat
+    for n be Nat st n > Product primesFinS s
+      ex p be Nat st n < p < 2*n &
+        rng prime_exponents p c= {0,1} &
+        card support (prime_exponents p) = s
+proof
+  let s be non zero Nat;
+  let n be Nat such that
+A1: n > Product primesFinS s;
+  reconsider s1=s-1 as Nat;
+  set Ps = Product primesFinS s1;
+  set k = n div Ps, r = n mod Ps;
+A2: n = k*Ps+r by INT_1:59;
+A3: s=s1+1;
+A4: k*Ps+Ps > k*Ps+r by INT_1:58,XREAL_1:6;
+  k*Ps+r > Ps * primenumber s1 by A3,A1,A2,Th25;
+  then (k+1)*Ps > Ps * primenumber s1 by A4,XXREAL_0:2;
+  then k+1 > primenumber s1 by XREAL_1:66;
+  then
+A5: k >= primenumber s1 by NAT_1:13;
+  then consider p be Prime such that
+A6: k < p & p <=2*k by NAT_1:14,NAT_4:56;
+  take pP=p*Ps;
+A7: p<> 2*k
+  proof
+    assume p = 2*k;
+    then p = 1+1 by NUMBER06:2;
+    then k <= 1 by A6,NAT_1:13;
+    hence thesis by INT_2:def 4,A5,XXREAL_0:2;
+  end;
+  k+1 <= p by A6,NAT_1:13;
+  then (k+1)*Ps <= p*Ps by XREAL_1:66;
+  hence n < pP by A2,A4,XXREAL_0:2;
+  p < 2*k by A6,A7,XXREAL_0:1;
+  then
+A8: p*Ps < (2*k)*Ps by XREAL_1:68;
+  (2*k)*Ps +0 <= (2*k)*Ps +2*r by XREAL_1:7;
+  hence pP < 2*n by A2,A8,XXREAL_0:2;
+A9:  support pfexp p \/ support pfexp Ps = support pfexp pP by NAT_3:46;
+A10: primeindex p <> s1 by A5,A6,NUMBER10:def 4;
+A11: s1 < primeindex p
+  proof
+    assume s1 >= primeindex p;
+    then s1 > primeindex p by A10,XXREAL_0:1;
+    then primenumber s1 > p by NUMBER13:12;
+    hence thesis by A5,A6,XXREAL_0:2;
+  end;
+  then support pfexp p misses support pfexp Ps by Th30,NAT_3:44;
+  then
+A12: card support pfexp pP =
+  (card support pfexp p) + card  support pfexp Ps by A9,CARD_2:40;
+A13: rng pfexp (p*Ps) = rng pfexp p \/ rng pfexp Ps by A11,Th30,Th24;
+A14: rng pfexp p c= {0,1} by Th22;
+  rng pfexp Ps c= {0,1} by Th31;
+  hence rng pfexp (pP) c= {0,1} by A13,A14,XBOOLE_1:8;
+  card support (pfexp p) = 1 by Th22;
+  hence card support pfexp pP = s by A3,Th31,A12;
+end;

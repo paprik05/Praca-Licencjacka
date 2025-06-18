@@ -1,4 +1,4 @@
-theorem :: Problem 51a
+theorem
   for A being set st
     A = { n where n is non zero Nat : n gcd (2 |^ n - 1) > 1 } holds
      A is infinite &

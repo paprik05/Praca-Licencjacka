@@ -1,4 +1,4 @@
-theorem Th54:
+theorem
   for m being positive Nat, k being Nat
   for S being Sierp49FS of m,k
   for q being CR_Sequence st q = PrimeDivisorsFS(m)

@@ -1,5 +1,5 @@
 from sympy import isprime
-def prob70(diff=10, length=3, limit=100000):
+def prob71(diff=100, length=3, limit=100000):
     results = []
 
     for start in range(2, limit):

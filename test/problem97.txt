@@ -14,15 +14,3 @@ A2: n|^4+(n+1)|^4 is composite;
     hence thesis by A2,Th56,Th57,Th58,Th59;
   end;
 
-theorem Th61:
-  1 <= a implies 2|^(2|^n) + (6*a-1) > 6
-  proof
-    assume 1 <= a;
-    then 6*1 <= 6*a by XREAL_1:64;
-    then
-A1: 6*1-1 <= 6*a-1 by XREAL_1:9;
-    0+1 <= 2|^n by NAT_1:13;
-    then 2 <= 2|^(2|^n) by PREPOWER:12;
-    then 2+5 <= 2|^(2|^n) + (6*a-1) by A1,XREAL_1:7;
-    hence thesis by XXREAL_0:2;
-  end;

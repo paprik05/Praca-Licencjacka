@@ -1,4 +1,4 @@
-theorem :: Problem 52
+theorem
   for n being Nat holds
    ex f being AP-like integer-valued XFinSequence st
      dom f >= n &

@@ -194,3 +194,7 @@ A14: s*(d|^n) <= b*k + a by A3,A10,XXREAL_0:2;
   then digits(s,d) = digits(b*k + a,d)/^n by Th2,A1,A2,A14;
   hence thesis by NUMBER06:7;
 end;
+
+theorem
+  b > 0 & s > 0 implies
+    ex m,i being Nat st digits(ArProg (a,b).m,10)/^i = digits(s,10) by Th3;

@@ -23,61 +23,6 @@ A2: n <= 181;
   end;
 
 theorem
-  20 satisfies_Sierpinski_problem_76b
-  proof
-    let x be Nat;
-    assume 10*20 < x < 10*(20+1);
-    then 200 < x < 209+1;
-    then 200+1 <= x <= 209 by NAT_1:13;
-    then x = 201 or ... or x = 209;
-    hence thesis by XPRIMES0:201,202,203,204,205,206,207,208,209;
-  end;
-
-theorem
-  32 satisfies_Sierpinski_problem_76b
-  proof
-    let x be Nat;
-    assume 10*32 < x < 10*(32+1);
-    then 320 < x < 329+1;
-    then 320+1 <= x <= 329 by NAT_1:13;
-    then x = 321 or ... or x = 329;
-    hence thesis by XPRIMES0:321,322,323,324,325,326,327,328,329;
-  end;
-
-theorem
-  51 satisfies_Sierpinski_problem_76b
-  proof
-    let x be Nat;
-    assume 10*51 < x < 10*(51+1);
-    then 510 < x < 519+1;
-    then 510+1 <= x <= 519 by NAT_1:13;
-    then x = 511 or ... or x = 519;
-    hence thesis by XPRIMES0:511,512,513,514,515,516,517,518,519;
-  end;
-
-theorem
-  53 satisfies_Sierpinski_problem_76b
-  proof
-    let x be Nat;
-    assume 10*53 < x < 10*(53+1);
-    then 530 < x < 539+1;
-    then 530+1 <= x <= 539 by NAT_1:13;
-    then x = 531 or ... or x = 539;
-    hence thesis by XPRIMES0:531,532,533,534,535,536,537,538,539;
-  end;
-
-theorem
-  62 satisfies_Sierpinski_problem_76b
-  proof
-    let x be Nat;
-    assume 10*62 < x < 10*(62+1);
-    then 620 < x < 629+1;
-    then 620+1 <= x <= 629 by NAT_1:13;
-    then x = 621 or ... or x = 629;
-    hence thesis by XPRIMES0:621,622,623,624,625,626,627,628,629;
-  end;
-
-theorem
   m satisfies_Sierpinski_problem_76b & m <= 62 implies m in {20,32,51,53,62}
   proof
     assume

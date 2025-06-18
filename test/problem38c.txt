@@ -1,4 +1,4 @@
-theorem :: Problem 38 c
+theorem
   { n where n is positive Nat: card divisors(n,4,1) > card divisors(n,4,3) }
   is infinite
   proof

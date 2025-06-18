@@ -1,4 +1,4 @@
-theorem T51: :: Problem 51
+theorem
   for n being non zero Nat holds
     n gcd (Fermat n) = 1
   proof

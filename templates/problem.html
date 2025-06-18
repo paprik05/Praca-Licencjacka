@@ -7,8 +7,14 @@
   </pre>
 {% endif %}
 
-
-
+{% if links %}
+  <h3>Odnośniki do dowodów umieszczonych na stronie:</h3>
+  <ul>
+    {% for link in links %}
+      <li><a href="{{ link['url'] }}">{{ link['title'] }}</a></li>
+    {% endfor %}
+  </ul>
+{% endif %}
 
 <h3>Program weryfikujacy:</h3>
 <pre class="language-python">{{ code_content }}</pre>
