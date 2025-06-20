@@ -191,7 +191,9 @@ problem_data = {
                 "label": "Podaj maksymalną liczbę k do sprawdzenia:",
                 "min": 1,
                 "type": "number",
-            }
+            },
+            {"id": "inputNumberTime5", "label": "Podaj maksymalny czas obliczeń (w sekundach):", "type": "number",
+             "min": 5}
         ],
         "links": [
             {"title": "NUMBER01:8", "url": "http://mizar.uwb.edu.pl/version/current/html/number01.html#T8"}
@@ -1453,8 +1455,7 @@ problem_data = {
     123: {
         "description": r"123.Prove that for integer \(n>1\) the numbers \(\frac{1}{3}(2^{2^{n+1}}+2^{2^n}+1)\) are all composite.",
         "inputs": [
-            {"id": "inputNumber123", "label": "Podaj limit przeszukiwań wartośći n:", "type": "number", "min": 1},
-            {"id": "inputNumberTime123", "label": "Podaj maksymalny czas obliczeń (w sekundach):", "type": "number", "min": 5}
+            {"id": "inputNumber123", "label": "Podaj limit przeszukiwań wartośći n:", "type": "number", "min": 1}
         ],
         "links": [
             {"title": "NUMBER13:46", "url": "http://mizar.uwb.edu.pl/version/current/html/number13.html#T46"}
@@ -1463,8 +1464,7 @@ problem_data = {
     124: {
         "description": r"124.Prove that there exist infinitely many composite numbers of the form \((2^{2n}+1)^2+2^2\).",
         "inputs": [
-            {"id": "inputNumber124", "label": "Podaj limit wartości n:", "type": "number", "min": 1},
-            {"id": "inputNumberTime124", "label": "Podaj maksymalny czas obliczeń (w sekundach):", "type": "number", "min": 5}
+            {"id": "inputNumber124", "label": "Podaj limit wartości n:", "type": "number", "min": 1}
         ],
         "links": [
             {"title": "NUMBER07:79", "url": "http://mizar.uwb.edu.pl/version/current/html/number07.html#T79"}
@@ -1663,7 +1663,9 @@ def calculate5():
 
     try:
         r = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
-        return jsonify(prob5(r))
+        time = next((int(value) for key, value in data.items() if key.startswith("inputNumberTime")), None)
+
+        return jsonify(prob5(r,time))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
@@ -2996,8 +2998,7 @@ def calculate123():
 
     try:
         n = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
-        time = next((int(value) for key, value in data.items() if key.startswith("inputNumberTime")), None)
-        return jsonify(prob123(n, time))
+        return jsonify(prob123(n))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 
@@ -3010,8 +3011,7 @@ def calculate124():
 
     try:
         n = next((int(value) for key, value in data.items() if key.startswith("inputNumber")), None)
-        time = next((int(value) for key, value in data.items() if key.startswith("inputNumberTime")), None)
-        return jsonify(prob124(n, time))
+        return jsonify(prob124(n))
     except ValueError:
         return jsonify({"error": "Invalid number"}), 400
 

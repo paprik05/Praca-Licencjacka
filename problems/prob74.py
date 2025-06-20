@@ -5,7 +5,7 @@ def prob74(n):
     for i in range(8,n+1,2):
         p = 3
         q = 5
-        if gcd(n-p,n-q) == 1:
-            results.append(f"{i}: {gcd(n-p,n-q) == 1}")
+        if gcd(i-p,i-q) == 1:
+            results.append(f"{i}: {gcd(i-p,i-q) == 1}")
 
     return{"result": results}

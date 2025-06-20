@@ -1,6 +1,6 @@
 def prob12(n, max_x, iterations):
     if n <= 0 or max_x <= 0 or iterations <= 0:
-        raise ValueError("n, max_x, iterations muszą być liczbami całkowitymi dodatnimi")
+        raise ValueError("n, max_x, iterations must be a positive integers")
 
     for x in range(1, max_x + 1):
         current_x = x
