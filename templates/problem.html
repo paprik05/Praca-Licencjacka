@@ -28,8 +28,11 @@
     {% endfor %}
     <button type="button" onclick="sendNumber({{ prob_id }}, {% for field in problem['inputs'] %}'{{ field['id'] }}'{% if not loop.last %}, {% endif %}{% endfor %})">Oblicz</button>
 </form>
+<button type="button" onclick="stopComputation({{ prob_id }})">Przerwij algorytm</button>
+
 
 <p id="result{{ prob_id }}"></p>
+
 
 <script type="text/javascript" async
     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
@@ -81,6 +84,14 @@
             }
         })
         .catch(error => console.error('Error:', error));
+    }
+    function stopComputation(probNumber) {
+        fetch('/stop' + probNumber, { method: 'POST' })
+            .then(res => res.json())
+            .then(data => {
+                const resultEl = document.getElementById("result" + probNumber);
+                if (resultEl) resultEl.innerHTML = data.result;
+            });
     }
 </script>
 <script>
