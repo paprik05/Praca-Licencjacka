@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 import os
 from multiprocessing import Process, Queue
-active_processes = {}  # {prob_number: Process}
+active_processes = {}
 
 from problems.prob1 import prob1
 from problems.prob2 import prob2
@@ -126,7 +126,7 @@ problem_ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 
 problem_data = {
     1: {
-        "description": r"1.Find all positive integers \(n\) such that \( n^2 + 1 \) is divisible by \( n + 1 \)",
+        "description": r"1.Find all positive integers \(n\) such that \( n^2 + 1 \) is divisible by \( n + 1 \).",
         "inputs": [
             {
                 "id": "inputNumber1",
@@ -140,7 +140,7 @@ problem_data = {
         ]
     },
     2: {
-        "description": r"2.Find all integers \( x \neq 3 \) such that \( x - 3 | x^3 - 3\)",
+        "description": r"2.Find all integers \( x \neq 3 \) such that \( x - 3 | x^3 - 3\).",
         "inputs": [
             {
                 "id": "inputMin",
@@ -158,7 +158,7 @@ problem_data = {
         ]
     },
     3: {
-        "description": r"3.Prove that there exists infinitely many positive integers \(n\) such that \(4n^2+1\) is divisible both by \(5\) and \(13\)",
+        "description": r"3.Prove that there exists infinitely many positive integers \(n\) such that \(4n^2+1\) is divisible both by \(5\) and \(13\).",
         "inputs": [
             {
                 "id": "inputNumber3",
@@ -172,7 +172,7 @@ problem_data = {
         ]
     },
     4: {
-        "description": r"4.Prove that for positive integer \(n\) we have \(169|3^{3n+3}-26n-27\)",
+        "description": r"4.Prove that for positive integer \(n\) we have \(169|3^{3n+3}-26n-27\).",
         "inputs": [
             {
                 "id": "inputNumber4",
@@ -186,7 +186,7 @@ problem_data = {
         ]
     },
     5: {
-        "description": r"5.Prove that \(19|2^{2^{6k+2}}+3\) for \(k = 0, 1, 2, ...\)",
+        "description": r"5.Prove that \(19|2^{2^{6k+2}}+3\) for \(k = 0, 1, 2, ...\).",
         "inputs": [
             {
                 "id": "inputNumber5",
@@ -200,21 +200,21 @@ problem_data = {
         ]
     },
     6: {
-        "description": r"6.Prove the theorem, due to Kraitchik, asserting that \(13|2^{70}+3^{70}\)",
+        "description": r"6.Prove the theorem, due to Kraitchik, asserting that \(13|2^{70}+3^{70}\).",
         "inputs": [],
         "links": [
             {"title": "NUMBER01:9", "url": "http://mizar.uwb.edu.pl/version/current/html/number01.html#T9"}
         ]
     },
     7: {
-        "description": r"7.Prove that \(11*31*61|20^15-1\)",
+        "description": r"7.Prove that \(11*31*61|20^{15}-1\).",
         "inputs": [],
         "links": [
             {"title": "NUMBER01:10", "url": "http://mizar.uwb.edu.pl/version/current/html/number01.html#T10"}
         ]
     },
     8: {
-        "description": "8. Prove that for a positive integer \\(m\\) and \\(a > 1\\), we have \n\\[\n\\gcd\\left(\\frac{a^m - 1}{a - 1},\\, a - 1\\right) = \\gcd(a - 1, m).\n\\]\n",
+        "description": r"8. Prove that for a positive integer \(m\) and \(a > 1\), we have \[\left(\frac{a^m - 1}{a - 1},\, a - 1\right) = (a - 1, m).\]",
         "inputs": [
             {
                 "id": "inputNumberM8",
@@ -278,7 +278,7 @@ problem_data = {
         ]
     },
     12: {
-        "description": r"12.Prove that for every positive integer \(n\) there exists a positive integer \(x\) such that each of the terms of the infinite sequence \(x+1,x^x+1,x^{x^x}+1,...\) is divisible by \(n\)",
+        "description": r"12.Prove that for every positive integer \(n\) there exists a positive integer \(x\) such that each of the terms of the infinite sequence \(x+1,x^x+1,x^{x^x}+1,...\) is divisible by \(n\).",
         "inputs": [
             {
                 "id": "inputNumber12",
@@ -330,7 +330,7 @@ problem_data = {
         ]
     },
     14: {
-        "description": r"14.Prove that for positive integer \(n\) we have \(n^2|(n+1)^n-1.\)",
+        "description": r"14.Prove that for positive integer \(n\) we have \(n^2|(n+1)^n-1.\).",
         "inputs": [
             {
                 "id": "inputNumber14",
@@ -344,7 +344,7 @@ problem_data = {
         ]
     },
     15: {
-        "description": r"15.Prove that for positive integer \(n\) we have \((2^n-1)^2|2^{(2^{n}-1)n}-1.\)",
+        "description": r"15.Prove that for positive integer \(n\) we have \((2^n-1)^2|2^{(2^{n}-1)n}-1.\).",
         "inputs": [
             {
                 "id": "inputNumber15",
@@ -358,7 +358,7 @@ problem_data = {
         ]
     },
     16: {
-        "description": r"16.Prove that there exist infinitely many positive integers \(n\) such that \(n|2^n+1\); find all such prime numbers",
+        "description": r"16.Prove that there exist infinitely many positive integers \(n\) such that \(n|2^n+1\); find all such prime numbers.",
         "inputs": [
             {
                 "id": "inputNumber16",
@@ -698,7 +698,7 @@ problem_data = {
                 "id": "inputNumber37",
                 "label": "Podaj wartość s do sprawdzenia:",
                 "min": 1,
-                "type": "number"
+                "type": "cnumber"
             }
         ]
     },
@@ -1255,7 +1255,7 @@ problem_data = {
         ]
     },
     86: {
-        "description": r"86.Find five least positive integers for which \(n^2-1\) is a product of three different primes",
+        "description": r"86.Find five least positive integers for which \(n^2-1\) is a product of three different primes.",
         "inputs": [
             {"id": "inputNumber86", "label": "Podaj liczbę wyników spełniających dany warunek do wyświetlenia:", "type": "number", "min": 10},
             {"id": "inputNumberSol86", "label": "Podaj liczbę rozwiązań", "type": "number", "min": 1}
@@ -1567,7 +1567,7 @@ def problem_page(prob_id):
     filename_suffix = code_filename_map.get(prob_id, str(prob_id))
 
     problem_file_path = os.path.join('problems', f'prob{filename_suffix}.py')
-    text_file_path = os.path.join('test', f'problem{filename_suffix}.txt')
+    text_file_path = os.path.join('proofs', f'problem{filename_suffix}.txt')
 
     if os.path.exists(problem_file_path):
         with open(problem_file_path, 'r') as file:

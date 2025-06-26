@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twierdzenie nr.{{ prob_id }} </title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+
+</head>
+<body>
 <h2>{{ problem['description'] }}</h2>
 
 {% if proof_before %}
@@ -26,10 +37,11 @@
                min="{{ field['min'] }}" max="{{ field['max'] }}" required>
         <small>{{ field['description'] }}</small><br><br>
     {% endfor %}
-    <button type="button" onclick="sendNumber({{ prob_id }}, {% for field in problem['inputs'] %}'{{ field['id'] }}'{% if not loop.last %}, {% endif %}{% endfor %})">Oblicz</button>
+    <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <button type="button" onclick="sendNumber({{ prob_id }}, {% for field in problem['inputs'] %}'{{ field['id'] }}'{% if not loop.last %}, {% endif %}{% endfor %})">Wykonaj algorytm</button>
+        <button type="button" onclick="stopComputation({{ prob_id }})">Przerwij działanie algorytmu</button>
+    </div>
 </form>
-<button type="button" onclick="stopComputation({{ prob_id }})">Przerwij algorytm</button>
-
 
 <p id="result{{ prob_id }}"></p>
 
@@ -110,5 +122,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
-
+</body>
 
