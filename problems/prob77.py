@@ -18,4 +18,4 @@ def prob77(n):
             if not found:
                 results.append(f"No representation found for {p}")
         p += 2
-        return {"result": results}
+    return {"result": results}

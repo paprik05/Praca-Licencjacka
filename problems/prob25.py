@@ -3,7 +3,7 @@ import math
 
 def prob25(r):
     if r <= 0:
-        return {"error": "r musi być liczbą całkowitą dodatnią"}
+        return {"error": "r must be positive integers"}
 
     results = []
     for n in range(1, r + 1):

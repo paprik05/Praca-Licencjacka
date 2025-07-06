@@ -1,6 +1,6 @@
 def prob13(x, max_n, iterations):
     if x <= 1 or max_n <= 0 or iterations <= 0:
-        raise ValueError("x, max_n, iterations muszą być liczbami całkowitymi dodatnimi")
+        raise ValueError("x, max_n, iterations must be positive integers")
 
     if x % 2 != 0:
         raise ValueError("x must be even number")
@@ -20,6 +20,6 @@ def prob13(x, max_n, iterations):
             current_term = current_x + 1
 
         if not all_divisible:
-            results.append(n)
+            results.append(f"Not divisible by: {n}")
 
     return {"result": results}

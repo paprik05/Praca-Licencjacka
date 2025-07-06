@@ -282,13 +282,13 @@ problem_data = {
         "inputs": [
             {
                 "id": "inputNumber12",
-                "label": "Podaj wartość x:",
+                "label": "Podaj wartość n:",
                 "min": 1,
                 "type": "number",
             },
             {
                 "id": "inputNumberMax12",
-                "label": "Podaj maksymalną wartość n do sprawdzenia::",
+                "label": "Podaj maksymalną wartość x do sprawdzenia::",
                 "min": 1,
                 "type": "number",
             },
@@ -1169,7 +1169,7 @@ problem_data = {
     76: {
         "description": r"76.Find three least positive integers \(n\) such that there are no primes between \(n\) and \(n+10\), and three least positive integers \(m\) such that there are no primes between \(10m\) and \(10(m+1)\).",
         "inputs": [
-            {"id": "inputNumber76", "label": "Podaj liczbę startową do sprawdzenia:", "type": "number", "min": 10}
+            {"id": "inputNumber76", "label": "Podaj maksymalną liczbę do sprawdzenia:", "type": "number", "min": 10}
         ],
         "links": [
             {"title": "NUMBER05:30", "url": "http://mizar.uwb.edu.pl/version/current/html/number05.html#T30"},
@@ -1188,7 +1188,7 @@ problem_data = {
     78: {
         "description": r"78.Find four solutions of the equation \(p^2+1=q^2+r^2\) with primes \(p,q,\) and \(r\).",
         "inputs": [
-            {"id": "inputNumber78", "label": "Podaj dolną granicę dla p:", "type": "number", "min": 10},
+            {"id": "inputNumber78", "label": "Podaj górną granicę dla p:", "type": "number", "min": 10},
             {"id": "inputNumberSol78", "label": "Podaj liczbę wyników spełniających dany warunek do wyświetlenia:", "type": "number", "min": 1}
         ],
         "links": [
@@ -1528,6 +1528,14 @@ code_filename_map = {
     511: "51a"
 }
 
+custom_func_map = {
+    381: "prob38a",
+    382: "prob38b",
+    383: "prob38c",
+    511: "prob51a"
+}
+
+
 def worker_wrapper(prob_func, args_dict, queue):
     try:
         result = prob_func(**args_dict)
@@ -1749,7 +1757,7 @@ def calculate_dynamic(prob_id):
     if not data:
         return jsonify({"error": "Brak danych wejściowych"}), 400
 
-    prob_func_name = f"prob{prob_id}"
+    prob_func_name = custom_func_map.get(prob_id, f"prob{prob_id}")
     prob_func = globals().get(prob_func_name)
     if not prob_func:
         return jsonify({"error": f"Brak funkcji {prob_func_name}"}), 404
